@@ -1,0 +1,265 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card ">
+      <div class="card card-statistics one">
+        <div class="card-body" (click)="chartChange(1)">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="icon-bell icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">총 비상벨</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">{{NoBells}}</h3>
+              </div>
+              
+            </div>
+          </div>
+          <button class="btn btn-outline-primary" style="margin-top: 15px; width: 100%; height:40px;">상세 내용 확인</button>
+          <!-- <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total {{NoBells}}
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="card card-statistics two">
+        <div class="card-body" (click)="chartChange(2)">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="icon-microphone icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">전체 알림</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">{{NoEvents}}</h3>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-primary" style="margin-top: 15px; width: 100%; height:40px;">상세 내용 확인</button>
+          <!-- <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total {{NoEvents}}
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="card card-statistics three">
+        <div class="card-body" (click)="chartChange(3)">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="icon-location-pin icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">전체 설치 장소</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">{{NoInstallation}}</h3>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-primary" style="margin-top: 15px; width: 100%; height:40px;">상세 내용 확인</button>
+          <!-- <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total {{NoInstallation}}
+          </p> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="card card-statistics four">
+        <div class="card-body" (click)="chartChange(4)">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="icon-people icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">전체 보고 회수</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">{{NoCases}}</h3>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline-primary" style="margin-top: 15px; width: 100%; height:40px;">상세 내용 확인</button>
+          <!-- <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Total {{NoCases}}
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Graph and maps start-->
+  <div class="row">
+    <div class="col-sm-12 grid-margin">
+      <div class="card">  
+        <div class="card-body" *ngIf="chartType==1">
+          <h4 class="card-title">Bells</h4>
+          <canvas  id="bells" width="600" height="200"></canvas>
+        </div>
+        <div class="card-body" *ngIf="chartType==2">
+          <h4 class="card-title">Events</h4>
+          <div id="events" [style.height]="'300px'"></div>
+        </div>
+        <div class="card-body" *ngIf="chartType==3">
+          <h4 class="card-title">Locations</h4>
+          <div id='map' style='width: 100%; height: 500px;'></div>
+          <!-- <ng-mapbox></ng-mapbox> -->
+          <agm-map [latitude]="35.25228" [longitude]="126.8633" [zoom]="16" [disableDefaultUI]="false" [zoomControl]="false">
+            <agm-marker [latitude]="35.25228" [longitude]="126.8633">
+              <agm-info-window>location 1</agm-info-window>
+            </agm-marker>
+          </agm-map>
+        </div>
+
+        <div class="card-body" *ngIf="chartType==4">
+            <h4 class="card-title">cases</h4>
+            <div id="cases" class="row">
+
+              <div class="col-md-4 grid-margin stretch-card" *ngFor="let case of caseList">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">{{devices[case.deviceid].name}}({{case.event}})</h4>
+                    <p class="text-muted"><i class="mdi mdi-clock"></i>{{case.datetime}}</p>
+                    <ul class="bullet-line-list">
+                      <li>
+                        <h6>{{case.status}}</h6>
+                        <p class="mb-0"><i class="mdi mdi-clock"></i>{{case.reportTime?case.reportTime:case.falseAlarmTime}} </p>
+                        <!-- <p class="text-muted">
+                          <i class="mdi mdi-clock"></i>
+                          {{case.reportTime?case.reportTime:case.falseAlarmTime}}
+                        </p> -->
+                      </li>
+                      <li>
+                        <h6>Inspection</h6>
+                        <p class="mb-0"><i class="mdi mdi-clock"></i>
+                          {{case.inspectionTime}}</p>
+                        <!-- <p class="text-muted">
+                          <i class="mdi mdi-clock"></i>
+                          {{case.inspectionTime}}
+                        </p> -->
+                      </li>
+                      <li>
+                        <h6>Check</h6>
+                        <p class="mb-0"><i class="mdi mdi-clock"></i>
+                          {{case.checkTime}}</p>
+                        <!-- <p class="text-muted">
+                          <i class="mdi mdi-clock"></i>
+                          {{case.checkTime}}
+                        </p> -->
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>			
+          </div>
+      </div>  
+    </div>
+  </div>
+  
+  <div id="waveform"><button class="wav"></button></div>
+
+  <!-- Graph and maps end-->
+  <div class="row">
+    <div class="col-md-3 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Detected Case Status</h4>
+          <div class="aligner-wrapper"><div class="chartjs-size-monitor"></div>
+            <canvas id="detectedCaseDoughnutChart" height="132" style="display: block; width: 283px; height: 132px;" width="283" class="chartjs-render-monitor"></canvas>
+            <div class="wrapper d-flex flex-column justify-content-center absolute absolute-center">
+              <h4 class="text-center mb-0">{{NoEvents}}</h4>
+              <small class="d-block text-center text-muted mb-0">Events</small>
+            </div>
+          </div>
+          <div class="wrapper mt-4">
+            <div class="d-flex align-items-center py-3 border-bottom">
+              <span class="dot-indicator bg-danger"></span>
+              <p class="mb-0 ml-3">Reported</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent.reported/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+            </div>
+            <div class="d-flex align-items-center py-3 border-bottom">
+              <span class="dot-indicator bg-success"></span>
+              <p class="mb-0 ml-3">Detected</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent.detected/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+            </div>
+            <div class="d-flex align-items-center pt-3">
+              <span class="dot-indicator bg-primary"></span>
+              <p class="mb-0 ml-3">False alarm</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent['false alarm']/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+              <div class="col-md-9 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Detected Events</h4>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr >
+                            <th>
+                              #
+                            </th>
+                            <th>
+                              Event Type
+                            </th>
+                            <th>
+                              Site
+                            </th>
+                            <th>
+                              Device
+                            </th>
+                            <th>
+                              Datetime
+                            </th>
+                            <th>
+                              Status
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let log of noticeList">
+                            <td class="font-weight-medium">
+                              {{logs.indexOf(log) + 1}}
+                            </td>
+                            <td>
+                              {{log.event}}
+                            </td>
+                            <td>
+                              {{sites[devices[log.deviceid].siteId].name}}
+                            </td>
+                            <td>
+                              {{devices[log.deviceid].name}}
+                            </td>
+                            <td class="text-danger"> 
+                              {{log.datetime}}
+                            </td>
+                            <td>
+                                <label class="badge"
+                                [class.badge-primary]="!log.status"
+                                [class.badge-info]="log.status=='check'"
+                                [class.badge-danger]="log.status=='inspection'"
+                                [class.badge-success]="log.status=='reported'"
+                                [class.badge-warning]="log.status=='falseAlarm'"
+                                >{{!log.status?"감지됨":""}}
+                                {{log.status=='check'?"현장출동":""}}
+                                {{log.status=='inspection'?"확인중":""}}
+                                {{log.status=='reported'?"신고":""}}
+                                {{log.status=='falseAlarm'?"오작동":""}}
+                                </label>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+
+</div>
+<!-- content-wrapper ends -->

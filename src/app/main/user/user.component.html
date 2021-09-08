@@ -1,0 +1,241 @@
+<div class="content-wrapper">
+    <div class="row profile-page">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="profile-header text-white">
+              <div class="d-flex justify-content-around">
+                <div class="profile-info d-flex align-items-center">
+                  <img class="rounded-circle img-lg" src="{{userData.photoUrl?userData.photoUrl:'assets/images/faces/face1.jpg'}}" alt="profile image">
+                  <div class="wrapper pl-4">
+                    <p class="profile-user-name">{{userData.name}}</p>
+                    <div class="wrapper d-flex align-items-center">
+                      <p class="profile-user-designation">{{userData.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="detail-col">
+                    <p>Sites</p>
+                    <p>{{sites.length}}</p>
+                  </div>
+                  <div class="detail-col">
+                    <p>Devices</p>
+                    <p>{{devices.length}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="profile-body">
+              <ul class="nav tab-switch" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true">Profile</a>
+                  
+                </li>
+                
+                <!-- <li class="nav-item">
+                  <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false">Activity</a>
+                </li> -->
+              </ul>
+              
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="tab-content tab-body" id="profile-log-switch">
+                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">이름</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" [(ngModel)]="userData['name']" name="name">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">홈페이지</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" [(ngModel)]="userData['homepage']" name="homepage">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">지역</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="text" [(ngModel)]="userData['region']" name="region">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">이메일</label>
+                              <div class="col-sm-9">
+                                <input class="form-control" type="email" [(ngModel)]="userData['email']" name="email">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">소속</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" [(ngModel)]="userData['affiliation']" name="ailliation">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">전화</label>
+                                <div class="col-sm-9">
+                                  <input class="form-control" type="text" [(ngModel)]="userData['phone']" name="phone">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-primary btn-fw" (click)="updateUserData()">Save</button>
+                      <div class="row">
+                        <div class="col-12 mt-5">
+                          <h5 class="mb-5">New devices</h5>
+                          <div class="stage-wrapper pl-4" *ngFor="let device of newDevices">
+                            <div class="stages border-left pl-5 pb-4">
+                              <div class="btn btn-icons btn-rounded stage-badge btn-inverse-success">
+                                <i class="mdi mdi-checkbox-marked-circle-outline"></i>
+                              </div>
+                              <div class="d-flex align-items-center mb-2 justify-content-between">
+                                <h5 class="mb-0">{{device.id}}</h5>
+                                
+                                <small class="text-muted">{{device.status}}</small>
+                              </div>
+                              <p>Last Updated : {{device.lastUpdated}}</p>
+                              <span class="d-flex align-items-center mt-2">
+                                <span class="btn btn-xs btn-rounded btn-outline-light mr-2" data-toggle="modal" data-target="#addDeviceModal" (click)="selectDevice(device)" >Add</span>
+                                <!-- <span class="btn btn-xs btn-rounded btn-outline-primary">Delete</span> -->
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="modal fade" id="addDeviceModal" tabindex="-1" role="dialog" aria-labelledby="addDeviceModalLabel" style="display: none;" aria-hidden="true">
+                          <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="addDeviceModalLabel">New Device</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form class="forms-sample">
+                                  <div class="form-group">
+                                    <label for="siteInfoName">디바이스 이름</label>
+                                    <input class="form-control" id="siteInfoName" placeholder="지역명" type="text" name="name" [(ngModel)]="newDevice.name">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="siteInfoAddress">설치장소</label>
+                                    <select class="form-control border-primary" id="siteId" name="siteId" [(ngModel)]="newDevice.siteId">
+                                      <option *ngFor="let site of sites" [value]="site.id">{{site.name}}</option>
+                                    </select>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addDeviceModal"(click)="addDevice()" >추가</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <h5 class="my-4">Collaborate With</h5>
+                  <div class="new-accounts">
+                    <ul class="chats ps">
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face2.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">전광명</p>
+                              <p class="u-designation">(주)비에스소프트</p>
+                            </div>
+                          </a>
+                      </li>
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face3.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">반성훈</p>
+                              <p class="u-designation">(주)비에스소프트</p>
+                            </div>
+                          </a>
+                      </li>
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face4.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">임채준</p>
+                              <p class="u-designation">(주)비에스소프트</p>
+                            </div>
+                          </a>
+                      </li>
+                    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
+                  </div>
+                  <!-- <h5 class="my-4">Pending</h5>
+                  <div class="new-accounts">
+                    <ul class="chats">
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face5.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">Marina Michel</p>
+                              <p class="u-designation">Business Development</p>
+                              <span class="d-flex align-items-center mt-2">
+                                <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
+                                <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
+                              </span>
+                            </div>
+                          </a>
+                      </li>
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face6.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">Stella Johnson</p>
+                              <p class="u-designation">SEO Expert</p>
+                              <span class="d-flex align-items-center mt-2">
+                                <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
+                                <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
+                              </span>
+                            </div>
+                          </a>
+                      </li>
+                      <li class="chat-persons">
+                        <a href="#">
+                            <span class="pro-pic"><img src="assets/images/faces/face7.jpg" alt="profile image"></span>
+                            <div class="user">
+                              <p class="u-name">Peter Joo</p>
+                              <p class="u-designation">UI/UX designer</p>
+                              <span class="d-flex align-items-center mt-2">
+                                <span class="btn btn-xs btn-rounded btn-outline-light mr-2">Buyer</span>
+                                <span class="btn btn-xs btn-rounded btn-outline-primary">Lead</span>
+                              </span>
+                            </div>
+                          </a>
+                      </li>
+                    </ul>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

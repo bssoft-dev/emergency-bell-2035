@@ -1,0 +1,125 @@
+<div class="content-wrapper">
+    <div class="row">
+      
+      <div class="col-md-12 grid-margin">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Device List</h4>
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                        <div class="row">
+                          <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="order-listing_length">
+                              
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                            <div id="order-listing_filter" class="dataTables_filter">
+                              
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 51px;" aria-sort="ascending" aria-label="activate to sort column descending">No</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 91px;" aria-label="activate to sort column ascending">Id</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 66px;" aria-label="activate to sort column ascending">Name</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 60px;" aria-label="activate to sort column ascending">Status</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 67px;" aria-label="activate to sort column ascending">Logs</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 105px;" aria-label="activate to sort column ascending">Repoted cases</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 67px;" aria-label="activate to sort column ascending">Site</th>
+                            <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 67px;" aria-label="activate to sort column ascending">Edit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <tr role="row" class="odd" *ngFor="let device of devices">
+                              <td class="sorting_1">{{devices.indexOf(device) + 1}}</td>
+                              <td>{{device.id}}</td>
+                              <td>{{device.name}}</td>
+                              <td>
+                                  <label class="badge badge-info">{{device.status}}</label>
+                                </td>
+                              <td>{{device.logs?device.logs:'-'}}</td>
+                              <td>{{device.cases?device.cases:'-'}}</td>
+                              <td>
+                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#siteInfoModal">{{sites[device.siteId].name}}</button>
+                              </td>
+                              <td>
+                                <button class="btn btn-outline-danger" (click)="deleteDevice(device)">Delete</button>
+                              </td>
+                              
+                              <div class="modal fade" id="siteInfoModal" tabindex="-1" role="dialog" aria-labelledby="siteInfoModalLabe" style="display: none;" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="siteInfoModalLabel">Site Information</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">×</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="card">
+                                          <div class="card-body">
+                                            <h4 class="card-title">Site Information</h4>
+                                            <p class="card-description">
+                                              설치장소를 변경합니다
+                                            </p>
+
+                                            <div class="form-group">
+                                              <label for="siteInfoAddress">설치장소</label>
+                                              <select class="form-control border-primary" id="siteId" name="siteId" [(ngModel)]="siteId">
+                                                <option *ngFor="let site of siteList" [value]="site.id">{{site.name}}</option>
+                                              </select>
+                                            </div>
+                                            
+                                          </div>
+                                          </div>
+                                      </div>
+                                      <div class="modal-footer">                                        
+                                        <button type="submit" class="btn btn-success mr-2" (click)="updateDeviceInfo(device)" data-toggle="modal" data-target="#siteInfoModal">수정</button>
+                                        <button type="submit" class="btn btn-success mr-2" data-toggle="modal" data-target="#siteInfoModal">취소</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                          </tr>
+                          </tbody>
+                      </table></div></div>
+                      
+                      <div class="row">
+                          
+
+                        <!-- <div class="col-sm-12 col-md-5">
+                          <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
+                            <ul class="pagination">
+                              <li class="paginate_button page-item previous disabled" id="order-listing_previous">
+                                <a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                              </li>
+                              <li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="order-listing_next">
+                                <a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>            
+        </div>
+    </div>
+  </div>

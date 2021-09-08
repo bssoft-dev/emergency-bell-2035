@@ -1,0 +1,132 @@
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Notices</h4>
+            <!-- <div class="row grid-margin">
+              <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+                </div>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                    <div class="row">
+                      <!-- <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="order-listing_length">
+                          <label>Show 
+                            <select name="order-listing_length" aria-controls="order-listing" class="form-control">
+                              <option value="5">5</option>
+                              <option value="10">10</option>
+                              <option value="15">15</option>
+                              <option value="-1">All</option>
+                            </select> entries</label>
+                          </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                          <div id="order-listing_filter" class="dataTables_filter">
+                            <label>
+                              <input class="form-control" placeholder="Search" aria-controls="order-listing" type="search">
+                            </label>
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="row"><div class="col-sm-12"><table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                    <thead>
+                      <tr class="bg-primary text-white" role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 51px;" aria-sort="ascending" aria-label="activate to sort column descending">Order #</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 66px;" aria-label="activate to sort column ascending">ID</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 67px;" aria-label="activate to sort column ascending">Site Name</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 90px;" aria-label="activate to sort column ascending">Device Name</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 110px;" aria-label="activate to sort column ascending">Datetime</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 105px;" aria-label="activate to sort column ascending">Case</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 67.6px;" aria-label="activate to sort column ascending">Status</th>
+                        <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1" colspan="1" style="width: 210px;" aria-label="activate to sort column ascending">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>  
+                      <tr role="row" class="odd" *ngFor="let notice of noticeList">
+                        <td class="sorting_1">{{noticeList.indexOf(notice) + 1}}</td>
+                        <td class="sorting_1">{{notice.id}}</td>
+                        <td>{{sites[devices[notice.deviceid].siteId]?sites[devices[notice.deviceid].siteId].name:""}}</td>
+                        <td>{{devices[notice.deviceid]?devices[notice.deviceid].name:""}}</td>
+                        <td>{{notice.datetime}}</td>
+                        <td>{{notice.event}}</td>
+                        <td>
+                          <label class="badge"
+                          [class.badge-primary]="!notice.status"
+                          [class.badge-info]="notice.status=='check'"
+                          [class.badge-danger]="notice.status=='inspection'"
+                          [class.badge-success]="notice.status=='reported'"
+                          [class.badge-warning]="notice.status=='falseAlarm'"
+                          >{{!notice.status?"감지됨":""}}
+                          {{notice.status=='check'?"현장출동":""}}
+                          {{notice.status=='inspection'?"확인중":""}}
+                          {{notice.status=='reported'?"신고":""}}
+                          {{notice.status=='falseAlarm'?"오작동":""}}
+                          </label>
+                        </td>
+                        <td class="text-right">
+                          <button class="btn btn-" *ngIf="!notice.status" (click)="doCheck(notice)">
+                            <i class="mdi mdi-ambulance text-info"></i>현장출동
+                          </button>
+                          <button class="btn btn-info" *ngIf="notice.status=='check'" (click)="doInspection(notice)">
+                            <i class="mdi mdi-ambulance text-danger"></i>확인중
+                          </button>
+                          <button class="btn btn-danger" *ngIf="notice.status=='inspection'" (click)="doReport(notice)">
+                            <i class="mdi mdi-ambulance text-success"></i>신고
+                          </button>
+                          <button class="btn btn-warning" *ngIf="notice.status=='inspection'" (click)="doFalseAlarm(notice)">
+                            <i class="mdi mdi-ambulance text-warning"></i>오작동
+                          </button>
+                          <button class="btn btn-light" (click)="removeNotice(notice)">
+                            <i class="mdi mdi-close text-dark" ></i>Remove
+                          </button>
+                        </td>
+                        
+                        <div class="modal fade" id="siteInfoModal" tabindex="-1" role="dialog" aria-labelledby="siteInfoModalLabe" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="siteInfoModalLabel">Site Information</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <h4 class="card-title">Site Information</h4>
+                                      <p class="card-description">
+                                        관리하는 지역에 대한 정보를 입력합니다.
+                                      </p>
+                                      c
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-success mr-2" (click)="addSiteInfo()" data-toggle="modal" data-target="#siteInfoModal">추가</button>
+                                  <button type="submit" class="btn btn-success mr-2" (click)="updateSiteInfo()" data-toggle="modal" data-target="#siteInfoModal">수정</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        
+                      </tr>
+                    </tbody>
+                  </table></div></div>
+                  <!-- <div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing 1 to 10 of 20 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="order-listing_previous"><a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="order-listing_next"><a href="#" aria-controls="order-listing" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
