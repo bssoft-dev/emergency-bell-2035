@@ -54,14 +54,27 @@
 	<!-- End custom js for this page-->
   <script src="assets/js/misc.js"></script>
   <script>
+	  var play = document.getElementById('play');
+	  var stop = document.getElementById('stop');
+
 	  var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    scrollParent: true
+		container: '#waveform',
+		mediaType:'audio',
+		barwidth: 3,
+		normalize: 'audio',
+		scrollParent: true,
+		waveColor: 'violet',
+		progressColor: 'purple'
+		});
 	
-	});
 	wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
-	wavesurfer.on('ready', function () {
-    wavesurfer.play();
-});
+	
+	play.onclick= function(){
+		wavesurfer.on('ready', function () {
+		wavesurfer.play();
+		});
+	}
+	
+	
   </script>
 </html>
