@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 import * as mapboxgl from 'mapbox-gl';
+import WaveSurfer from '../../../assets/js/wavesurfer.js';
+
 
 declare const AmCharts: any;
 
@@ -60,7 +62,7 @@ export class DashboardComponent implements OnInit {
   sites = {};
   
   noticeList = [];
-
+  wavesurfer;
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
 
     
@@ -270,17 +272,37 @@ export class DashboardComponent implements OnInit {
 
 
     });
-
+   
 }
 
-    ngOnI
+    
 
     ngOnInit() {
+        this.wavesurfer = WaveSurfer.create({
+          container: '#waveform',
+          waveColor: 'violet',
+          progressColor: 'purple',
+          mediaType:'audio',
+          barwidth: 3,
+          normalize: 'audio',
+          scrollParent: true,
+        });
+    }
 
-         
+    ngAfterViewInit(){
+        
+        
+        this.wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
 
         
-  
+    }
+
+    playPause(){
+        
+      
+
+        console.log("play");
+        this.wavesurfer.playPause();
     }
 
     chartChange(type){
