@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  user;
+
   credential= {
     email: '',
     password: ''
@@ -28,7 +30,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithEmail(){
-    console.log(this.credential);
+
+    function alarm(e){
+    if(e=="The email address is badly formatted."){
+          alert("아이디가 존재하지 않습니다.")
+    }
+    else if(e=="The password is invalid or the user does not have a password."){
+          alert("비밀번호가 다릅니다.")
+      }
+    }
+    // console.log(this.credential);
+    // console.log(this.user.email);
     this.as.loginWithEmail(this.credential.email, this.credential.password)
     .then(() => {
       console.log("success");
@@ -37,8 +49,7 @@ export class LoginComponent implements OnInit {
       console.log(">>> router", this.router)
       this.router.navigate(['/main/dashboard']);
     })
-    .catch(error => console.log(error));
-    
+    .catch(error => alarm(error.message));
   }
 
 }

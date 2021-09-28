@@ -12,7 +12,6 @@
               <div class="fluid-container">
                 <h3 class="font-weight-medium text-right mb-0">{{NoBells}}</h3>
               </div>
-              
             </div>
           </div>
           <button class="btn btn-outline-primary" style="margin-top: 15px; width: 100%; height:40px;">상세 내용 확인</button>
@@ -87,31 +86,31 @@
     </div>
   </div>
   <!-- Graph and maps start-->
-  <div class="row">
+  <div class="row" style="width: 100%; height: auto; float: left;">
     <div class="col-sm-12 grid-margin">
-      <div class="card">  
-        <div class="card-body" *ngIf="chartType==1">
+      <div class="card" style="height: 200;">  
+        <div class="card-body" *ngIf="chartType==1" >
           <h4 class="card-title">Bells</h4>
-          <canvas  id="bells" width="600" height="200"></canvas>
+          <canvas  id="bells" [style.height]="'400px'"></canvas>
         </div>
         <div class="card-body" *ngIf="chartType==2">
           <h4 class="card-title">Events</h4>
-          <div id="events" [style.height]="'300px'"></div>
+          <div id="events" [style.height]="'400px'"></div>
         </div>
         <div class="card-body" *ngIf="chartType==3">
           <h4 class="card-title">Locations</h4>
-          <div id='map' style='width: 100%; height: 500px;'></div>
-          <!-- <ng-mapbox></ng-mapbox> -->
+          <div id='map'></div>
+          <!-- <ng-mapbox></ng-mapbox>
           <agm-map [latitude]="35.25228" [longitude]="126.8633" [zoom]="16" [disableDefaultUI]="false" [zoomControl]="false">
             <agm-marker [latitude]="35.25228" [longitude]="126.8633">
               <agm-info-window>location 1</agm-info-window>
             </agm-marker>
-          </agm-map>
+          </agm-map> -->
         </div>
 
         <div class="card-body" *ngIf="chartType==4">
             <h4 class="card-title">cases</h4>
-            <div id="cases" class="row">
+            <div id="cases" class="row" style="width: 100%;height: 400px;">
 
               <div class="col-md-4 grid-margin stretch-card" *ngFor="let case of caseList">
                 <div class="card">
@@ -120,7 +119,7 @@
                     <p class="text-muted"><i class="mdi mdi-clock"></i>{{case.datetime}}</p>
                     <ul class="bullet-line-list">
                       <li>
-                        <h6>{{case.status}}</h6>
+                        <p>{{case.status}}</p>
                         <p class="mb-0"><i class="mdi mdi-clock"></i>{{case.reportTime?case.reportTime:case.falseAlarmTime}} </p>
                         <!-- <p class="text-muted">
                           <i class="mdi mdi-clock"></i>
@@ -128,7 +127,7 @@
                         </p> -->
                       </li>
                       <li>
-                        <h6>Inspection</h6>
+                        <p>Inspection</p>
                         <p class="mb-0"><i class="mdi mdi-clock"></i>
                           {{case.inspectionTime}}</p>
                         <!-- <p class="text-muted">
@@ -137,7 +136,7 @@
                         </p> -->
                       </li>
                       <li>
-                        <h6>Check</h6>
+                        <p>Check</p>
                         <p class="mb-0"><i class="mdi mdi-clock"></i>
                           {{case.checkTime}}</p>
                         <!-- <p class="text-muted">
@@ -156,16 +155,63 @@
     </div>
   </div>
 
-  <div class="card">
-    <div class="wave-container" style="width: 100%;">  
+  
+  <div class="card" id="soundcard">
+    <div style="width: 100%; text-align: center;vertical-align: center;">
+      <ul id="color">
+        <li ><div id="scream"></div>scream</li>
+        <li ><div id="slip"></div>slip</li>
+        <li ><div id="help"></div>help</li>
+        <li ><div id="violent"></div>violent</li>
+      </ul>
+    </div>
+    <div class="wave-container" style="width: 90%; ">  
       <div id="waveform"></div>
     </div>
-    <button class="btn btn-outline-primary" (click)="playPause()">play/pause</button>
+    
+    <button class="btn btn-outline-primary" (click)="playPause()"><i class="fa fa-play"></i><i class="fa fa-pause"></i></button>
+    <!-- <button class="toggle" onCLick="togglePlay()">play/pause</button> -->
+    <div id="annotations" class="table-responsive" ></div>
+
+
+        <div style="text-align: center; overflow: auto;">
+            <!-- <ul class="sound">
+              <li class="soundtitle">Date</li>
+              <li class="sounditem">{{sitetime}}</li>
+            </ul>
+            <ul class="sound">
+              <li class="soundtitle">ID</li>
+              <li class="sounditem">{{siteid}}</li>
+            </ul>
+            <ul class="sound">
+              <li class="soundtitle">SITE</li>
+              <li class="sounditem">{{sitename}}</li>
+            </ul>
+            <ul class="sound">
+              <li class="soundtitle">CASE</li>
+              <li class="sounditem">{{sitecase}}</li>
+            </ul> -->
+
+            <ul class="musictitle">
+              <li style="width: 15%;" >start</li>
+              <li style="width: 15%;">end</li>
+              <li style="width: 20%;">Name</li>
+              <li style="width: 50%;">comment</li>
+            </ul>
+            <ul class="musiccontent" *ngFor="let annotation of annotations; let i = index" [ngClass]="{ clicked : activeIndex === i }" (click)="activeIndex = i">
+              <li class="annotation"  style="width: 15%;" (click)="playPauseann(annotation.start)" >{{annotation.start}}</li>
+              <li class="annotation" style="width: 15%;" (click)="playPauseann(annotation.start)" >{{annotation.end}}</li>
+              <li class="annotation" style="width: 20%;" (click)="playPauseann(annotation.start)">{{annotation.name}}</li>
+              <li class="annotation" style="width: 50%;" (click)="playPauseann(annotation.start)">{{annotation.comment}}</li>
+            </ul>
+        </div>
+    
   </div>
+ 
   
   
   <!-- Graph and maps end-->
-  <div class="row" style="margin-top: 50px;">
+  <div class="row" style="margin-top: 30px; float: clear; display: flexbox;">
     <div class="col-md-3 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
@@ -270,13 +316,7 @@
               </div>
 
         </div>
-
+        
 </div>
-<script>     
-        play.onclick= function(){
-            wavesurfer.on('ready', function () {
-            wavesurfer.play();
-            });
-        }
-</script>
+
 <!-- content-wrapper ends -->

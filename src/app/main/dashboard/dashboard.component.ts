@@ -5,23 +5,49 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 import * as mapboxgl from 'mapbox-gl';
-import WaveSurfer from '../../../assets/js/wavesurfer.js';
 
 
+declare var WaveSurfer;
 declare const AmCharts: any;
+declare let i: 0;
+
 
 import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
 
+
+export class DashboardComponent implements OnInit {
     
+    
+    screamhsla = 'hsla(5, 100%, 50%, 0.5)'
+    sliphsla = 'hsla(150, 100%, 30%, 0.5)'
+    helphsla = 'hsla(80, 100%, 30%, 0.5)'
+    violenthsla = 'hsla(300, 100%, 30%, 0.5)'
+
+    // 소리 정보
+    annotations = [
+        {name: '낙상', start: 0,end: 5,loop: false,color: this.screamhsla ,comment: '출동완료'},
+        {name: '비명',start: 6,end: 10,loop: false,color: this.sliphsla,comment: '출동완료'},
+        {name: '도움요청',start: 12,end: 15,loop: false,color: this.helphsla,comment: '확인중'},
+        {name: '비명',start: 16,end: 20,loop: false,color: this.violenthsla,comment: '출동완료'},
+        {name: '비명',start: 32,end: 38,loop: false,color: this.screamhsla,comment: '출동완료'},
+        {name: '비명',start: 50,end: 60,loop: false,color: this.sliphsla,comment: '출동완료'},
+    ];
+    
+  
+    
+  siteid = 'ttat1120';
+  sitename = 'TTA 테스트지역';
+  sitecase = 'SCREAM';
+  date = new Date();
 
 
   chartType = 0;
@@ -64,7 +90,7 @@ export class DashboardComponent implements OnInit {
   noticeList = [];
   wavesurfer;
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
-
+    
     
     afAuth.authState.subscribe(auth =>{
 
@@ -274,36 +300,98 @@ export class DashboardComponent implements OnInit {
     });
    
 }
+    
+
+    
+    
+    ngOnInit() {
+
+        this.wavesurfer = WaveSurfer.create({
+            container: document.querySelector('#waveform'),
+            waveColor: '#D9DCFF',
+            progressColor: '#4353FF',
+            cursorColor: '#4353FF',
+            barWidth: 3,
+            barRadius: 3,
+            cursorWidth: 1,
+            height: 200,
+            barGap: 3,
+            backend: 'MediaElement',
+            plugins: [
+                WaveSurfer.regions.create({
+                    regionsMinLength: 2,
+                    regions: this.annotations
+                        // [
+                        //     {   
+                        //         id: 'myid',
+                        //         start: 10,
+                        //         end: 23,
+                        //         loop: false,
+                        //         color: 'hsla(400, 100%, 30%, 0.5)'
+                        //     }, {
+                        //         start: 5,
+                        //         end: 7,
+                        //         loop: false,
+                        //         color: 'hsla(200, 50%, 70%, 0.4)',
+                        //         minLength: 1,
+                        //     }
+                        // ]
+                    ,
+                    dragSelection: {
+                        slop: 5
+                    }
+                }),
+                ],
+            }); 
+            
+
+        this.wavesurfer.load('../../../assets/music/screaming.mp3');
 
     
 
-    ngOnInit() {
-        this.wavesurfer = WaveSurfer.create({
-          container: '#waveform',
-          waveColor: 'violet',
-          progressColor: 'purple',
-          mediaType:'audio',
-          barwidth: 3,
-          normalize: 'audio',
-          scrollParent: true,
+            
+            this.wavesurfer.stop();
+
+           
+
+    }
+    
+    
+    regionPlay(){
+        
+        
+    }
+
+    // play/pause 버튼 클릭
+    playPause(){
+        this.wavesurfer.playPause();
+        //this.wavesurfer.play(10,20);
+        // this.wavesurfer.addRegion({  
+        //     id: 'myid',
+        //     start: 10,
+        //     end: 23,
+        //     loop: true,
+        //     color: 'hsla(400, 100%, 30%, 0.5)'
+        // });
+    }
+    
+    
+    
+    playPauseann(value){
+        var start = value;
+        this.wavesurfer.play(start);
+    }
+
+    playregion(){
+        this.wavesurfer.on('region-click', function(region, e) {
+            console.log(region.start);
+            console.log(region.end);
+            e.stopPropagation();
+            this.wavesurfer.play(region.start, region.end);
         });
     }
-
-    ngAfterViewInit(){
-        
-        
-        this.wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
-
-        
-    }
-
-    playPause(){
-        
-      
-
-        console.log("play");
-        this.wavesurfer.playPause();
-    }
+    
+    
 
     chartChange(type){
 
@@ -467,8 +555,9 @@ export class DashboardComponent implements OnInit {
                 var map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/streets-v9',
-                    center: [this.siteList[0].locationLon, this.siteList[0].locationLat],
-                    zoom: 11
+                    // center: [this.siteList[0].locationLon, this.siteList[0].locationLat],
+                    center: [126.849516, 35.222406],
+                    zoom: 15
                 });
 
                 this.siteList.forEach(site => {
@@ -489,6 +578,12 @@ export class DashboardComponent implements OnInit {
         
     
     }
+
+    playlist = ['1','2'];
     
+    
+
     
 }
+
+

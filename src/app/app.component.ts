@@ -68,7 +68,7 @@ export class AppComponent implements OnInit{
           backgroundColor: [
             dangerColor,
             successColor,
-            primaryColor              
+            primaryColor,
           ],
           borderColor: [
               dangerColor,
