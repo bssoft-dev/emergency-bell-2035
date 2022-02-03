@@ -21,10 +21,12 @@ export class NoticeComponent implements OnInit {
   isUpdated = 0;
 
   constructor( public db: AngularFireDatabase, public afAuth: AngularFireAuth ) {
-
+    
     afAuth.authState.subscribe(auth =>{
       this.userId = auth.uid;
 
+      
+      
       db.list('devices').snapshotChanges()
       .subscribe(val => {
         if(val.length > 0){
@@ -40,8 +42,8 @@ export class NoticeComponent implements OnInit {
 
               this.devices[data['id']] = data;
               this.isUpdated += 1;
-
-              this.db.list('logs/'+data['id'], ref => ref.orderByChild('datetime')).snapshotChanges().subscribe(val => {
+              this.deviceList.push(data);
+              /* this.db.list('logs/'+data['id'], ref => ref.orderByChild('datetime')).snapshotChanges().subscribe(val => {
                 if(this.isUpdated > 0){
                   if(val.length > 0){
                     
@@ -61,36 +63,74 @@ export class NoticeComponent implements OnInit {
                   console.log(this.noticeList);
                 }
                 this.isUpdated -= 1;
-              });
+              }); */
               
             }
-            
           });
+          
+          db.list('sites/'+this.userId).snapshotChanges()
+          .subscribe(val => {
+            if(val.length > 0){
+              this.sites = {};
+              this.siteList = [];
+              val.forEach((site) => {
+                let data = site.payload.val();
+                if(data['userId'] == this.userId){
+                  data['id'] = site.key;
+                  this.sites[data['id']] = data;
+                  this.siteList.push(data);
+                }
+              })
+            }
+          });
+          this.noticeList = [];
+          this.deviceList.forEach(device => {
+            console.log(device)
+            db.list('detections/'+device.id).snapshotChanges().subscribe(val=>{
+              console.log("detections");
+              const tempval = val.slice();
+              
+              tempval.reverse().forEach(data => {
+                const detection = data.payload.val();
+                const notice = detection;
+                notice['id'] = data.key;
+                if(notice['result']['event'] != 'speech' && notice['result']['event'] != 'normal' && notice['result']['event'] != '0' && notice['result']['event'] != 'failed')
+                this.noticeList.push(notice);
+                this.noticeList.sort(function (a,b){
+                  let date1 = new Date(a.datetime);
+                  let date2 = new Date(b.datetime);
+                  return date1>date2 ? -1 : date1<date2 ? 1 : 0;
+              });
+              });
+            })
+
+            db.list('logs/'+device.id).snapshotChanges().subscribe(val=>{
+              console.log("logs");
+              const tempval = val.slice();
+              tempval.reverse().forEach(data => {
+                const log = data.payload.val();
+                const notice = log;
+                notice['id'] = data.key;
+                if(notice['event'] != null){
+                  this.noticeList.push(notice);
+                  this.noticeList.sort(function (a,b){
+                    let date1 = new Date(a.datetime);
+                    let date2 = new Date(b.datetime);
+                    return date1>date2 ? -1 : date1<date2 ? 1 : 0;
+                });
+                }
+                
+              });
+            })
+          })
+         
           
         }
       });
               
-      db.list('sites/'+this.userId).snapshotChanges()
-      .subscribe(val => {
-        console.log(val);
-        if(val.length > 0){
-          this.sites = {};
-          this.siteList = [];
-          val.forEach((site) => {
-            
-            let data = site.payload.val();
-            console.log(site);
-            console.log(data);
-            if(data['userId'] == this.userId){
-              data['id'] = site.key;
-              this.sites[data['id']] = data;
-              this.siteList.push(data);
-            }
-          })
-          console.log(this.sites);
-        }
-      });
+      
     })
+      
   }
   
   ngOnInit() {
@@ -105,12 +145,16 @@ export class NoticeComponent implements OnInit {
       'lastUpdated' : datetime
     });
 
-    this.db.list('logs/'+notice.deviceid).remove(notice.id);
+    this.db.list('detections/'+notice.deviceid).remove(notice.id);
+  }
+  detail(notice){
+    console.log(notice);
+    this.doCheck(notice);
   }
 
   doCheck(notice){
 
-    let logPath:string = 'logs/'+notice['deviceid'] + "/" + notice['id'] + "/";
+    let logPath:string = 'detections/'+notice['deviceid'] + "/" + notice['id'] + "/";
     let devicePath:string = 'devices/'+notice['deviceid']+"/";
     let datetime:string = new Date().toLocaleString('ko-KR');
     this.db.list("/").update(logPath,{
@@ -123,7 +167,7 @@ export class NoticeComponent implements OnInit {
   }
 
   doInspection(notice){
-    let logPath:string = 'logs/'+notice['deviceid'] + "/" + notice['id'] + "/";
+    let logPath:string = 'detections/'+notice['deviceid'] + "/" + notice['id'] + "/";
     let devicePath:string = 'devices/'+notice['deviceid']+"/";
     let datetime:string = new Date().toLocaleString('ko-KR');
     this.db.list("/").update(logPath,{
@@ -136,7 +180,7 @@ export class NoticeComponent implements OnInit {
   }
 
   doReport(notice){
-    let logPath:string = 'logs/'+notice['deviceid'] + "/" + notice['id'] + "/";
+    let logPath:string = 'detections/'+notice['deviceid'] + "/" + notice['id'] + "/";
     let devicePath:string = 'devices/'+notice['deviceid']+"/";
     let datetime:string = new Date().toLocaleString('ko-KR');
     this.db.list("/").update(logPath,{
@@ -149,7 +193,7 @@ export class NoticeComponent implements OnInit {
   }
 
   doFalseAlarm(notice){
-    let logPath:string = 'logs/'+notice['deviceid'] + "/" + notice['id'] + "/";
+    let logPath:string = 'detections/'+notice['deviceid'] + "/" + notice['id'] + "/";
     let devicePath:string = 'devices/'+notice['deviceid']+"/";
     let datetime:string = new Date().toLocaleString('ko-KR');
     this.db.list("/").update(logPath,{

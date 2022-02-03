@@ -68,12 +68,13 @@ export class UserComponent implements OnInit {
       if(val.length > 0){
         this.newDevices = [];
         val.forEach((device) => {
-          if(!device['userId']){
-            this.newDevices.push(device)
-          } else if(this.userId == device['userId']){
-            this.devices.push(device);
+          if(device['status'] == 0){
+            if(!device['userId']){
+              this.newDevices.push(device)
+            } else if(this.userId == device['userId']){
+              this.devices.push(device);
+            }
           }
-
         })
       }
     });

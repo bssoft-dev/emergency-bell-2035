@@ -55,9 +55,9 @@
                         <td>{{sites[devices[notice.deviceid].siteId]?sites[devices[notice.deviceid].siteId].name:""}}</td>
                         <td>{{devices[notice.deviceid]?devices[notice.deviceid].name:""}}</td>
                         <td>{{notice.datetime}}</td>
-                        <td>{{notice.event}}</td>
+                        <td>{{notice.result != null ? notice.result.event : notice.event}}</td>
                         <td>
-                          <label class="badge"
+                          <label class="badge" (click)="detail(notice)" data-toggle="modal" data-target="#noticeDeatilInfo"
                           [class.badge-primary]="!notice.status"
                           [class.badge-info]="notice.status=='check'"
                           [class.badge-danger]="notice.status=='inspection'"
@@ -69,6 +69,32 @@
                           {{notice.status=='reported'?"신고":""}}
                           {{notice.status=='falseAlarm'?"오작동":""}}
                           </label>
+                          <div class="modal fade" id="noticeDeatilInfo" tabindex="-1" role="dialog" aria-labelledby="noticeDeatilInfoLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="noticeDeatilInfoLabel">Notice Detail</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <div class="card-description">
+                                        <div style="overflow: auto; height: 150px;">
+                                          {{notice.string}}
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+
                         </td>
                         <td class="text-right">
                           <button class="btn btn-" *ngIf="!notice.status" (click)="doCheck(notice)">

@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+emergency-bell-2035.zip
+nohup.out
+
 # compiled output
 /dist
 /dist-server

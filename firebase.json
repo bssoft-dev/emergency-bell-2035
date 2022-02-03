@@ -1,13 +1,21 @@
 {
   "hosting": {
     "public": "src",
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    } ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/node_modules/**"
     ]
-  }
+  },
+  "emulators": {
+    "functions": {
+      "port": 21061,
+      "host": "0.0.0.0"
+    }
+  } 
 }

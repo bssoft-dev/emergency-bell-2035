@@ -15,6 +15,7 @@ declare let i: 0;
 import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
+import { RegisterComponent } from '../../register/register.component';
 
 
 @Component({
@@ -25,6 +26,7 @@ import '../../../assets/amchart/light.js';
 
 
 export class DashboardComponent implements OnInit {
+  
     
     
     screamhsla = 'hsla(5, 100%, 50%, 0.5)'
@@ -48,6 +50,8 @@ export class DashboardComponent implements OnInit {
   sitename = 'TTA 테스트지역';
   sitecase = 'SCREAM';
   date = new Date();
+
+  wavetext = "";
 
 
   chartType = 0;
@@ -87,6 +91,9 @@ export class DashboardComponent implements OnInit {
   devices = {};
   sites = {};
   
+  detectionList = [];
+  logList = [];
+
   noticeList = [];
   wavesurfer;
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
@@ -111,26 +118,60 @@ export class DashboardComponent implements OnInit {
               if(data['userId'] == this.userId){
   
                 this.devices[data['id']] = data;
-                this.db.list('logs/'+data['id']).snapshotChanges().subscribe(val => {
+                this.db.list('detections/'+data['id']).snapshotChanges().subscribe(val => {
                   if(val.length > 0){
                     
                     val.forEach((log) => {
                       let data = log.payload.val();
                       data['id'] = log.key;
-                      this.noticeList.push(data);
+                      if(data['result']['event'] != 'speech' && data['result']['event'] != 'normal' && data['result']['event'] != 'failed'){
+                        if(this.noticeList.find(element => element['id'] == data['id']) == null){
+                            this.noticeList.push(data);
 
-                      this.noticeList.sort(
-                        function(a, b) {
-                          let date1 = new Date(a.datetime);
-                          let date2 = new Date(b.datetime);
-                          return date1>date2 ? -1 : date1<date2 ? 1 : 0;
+                            this.noticeList.sort(
+                                function(a, b) {
+                                let date1 = new Date(a.datetime);
+                                let date2 = new Date(b.datetime);
+                                return date1>date2 ? -1 : date1<date2 ? 1 : 0;
+                                }
+                            )
                         }
-                      )
+                        
+                      }
+                      
                     })
                   }
                   
                   console.log(this.noticeList);
                 });
+
+                this.db.list('logs/'+data['id']).snapshotChanges().subscribe(val => {
+                    if(val.length > 0){
+                      
+                      val.forEach((log) => {
+                        let data = log.payload.val();
+                        console.log(data)
+                        console.log(this.noticeList)
+                        data['id'] = log.key;
+                        if(data['deviceid'] != null && data['event'] != 'speech'){
+                            if(this.noticeList.find(element => element['id'] == data['id']) == null){
+                                this.noticeList.push(data);
+    
+                                this.noticeList.sort(
+                                    function(a, b) {
+                                    let date1 = new Date(a.datetime);
+                                    let date2 = new Date(b.datetime);
+                                    return date1>date2 ? -1 : date1<date2 ? 1 : 0;
+                                    }
+                                )
+                            }
+                        }
+                        
+                      })
+                    }
+                    
+                    console.log(this.noticeList);
+                  });
   
               }
               
@@ -141,22 +182,18 @@ export class DashboardComponent implements OnInit {
                 
         db.list('sites/'+this.userId).snapshotChanges()
         .subscribe(val => {
-          console.log(val);
           if(val.length > 0){
             this.sites = {};
             this.siteList = [];
             val.forEach((site) => {
               
               let data = site.payload.val();
-              console.log(site);
-              console.log(data);
               if(data['userId'] == this.userId){
                 data['id'] = site.key;
                 this.sites[data['id']] = data;
                 this.siteList.push(data);
               }
             })
-            console.log(this.sites);
           }
         });
         
@@ -182,23 +219,20 @@ export class DashboardComponent implements OnInit {
                     this.deviceList.push(device);
                     this.isUpdated += 1;
                     this.NoCases = 0;
-                    console.log(this.NoBellsSite[device['siteId']]);
+                    //console.log(this.NoBellsSite[device['siteId']]);
                     if(this.NoBellsSite[device['siteId']]){
                         this.NoBellsSite[device['siteId']] += 1;
                     } else {
                         this.NoBellsSite[device['siteId']] = 1;
                     }
-                    console.log(this.NoBellsSite[device['siteId']]);
-                    db.list('logs/'+device['id'], ref => ref.orderByKey()).snapshotChanges().subscribe((val) => {
+                    //console.log(this.NoBellsSite[device['siteId']]);
+                    db.list('detections/'+device['id'], ref => ref.orderByKey()).snapshotChanges().subscribe((val) => {
                         
                         if(this.isUpdated > 0){
-                            console.log(val);
-                            console.log(val.length);
                             this.NoEvents += val.length;
                             val.forEach((data) =>{
                                 let event = data.payload.val();
                                 
-                                this.logs.push(event);
                                 if(event['status'] == "reported"){
                                     this.NoCases += 1;
                                     this.casePercent.reported += 1;
@@ -206,8 +240,11 @@ export class DashboardComponent implements OnInit {
                                 } else if(event['status'] == "falseAlarm"){
                                     this.casePercent["false alarm"] += 1;
                                     //this.caseList.push(event);
-                                } else {
+                                } else if(event['result']['event'] != 'speech' && event['result']['event'] != '0' && event['result']['event'] != 'failed' && event['result']['event'] != 'normal'){
+                                    console.log(event)
                                     this.casePercent.detected += 1;
+                                } else {
+                                    this.NoEvents -= 1;
                                 }
 
                             })
@@ -218,8 +255,6 @@ export class DashboardComponent implements OnInit {
                         this.logs.sort(function (a,b){
                             return a.datetime > b.datetime ? -1 : a.datetime < b.datetime ? 1 : 0;
                         });
-                        
-                        this.noticeList = this.logs.slice(0,6);
 
                         console.log(this.logs);
                         console.log(this.noticeList);
@@ -280,6 +315,90 @@ export class DashboardComponent implements OnInit {
                         this.detectedCaseChart.update();
                         console.log("detectedCaseChart dataset");
                         console.log(this.detectedCaseChart.data.dataset); */
+
+                    })
+
+                    db.list('logs/'+device['id'], ref => ref.orderByKey()).snapshotChanges().subscribe((val) => {
+                        
+                        if(this.isUpdated > 0){
+                            this.NoEvents += val.length;
+                            val.forEach((data) =>{
+                                let event = data.payload.val();
+                                
+                                if(event['status'] == "reported"){
+                                    this.NoCases += 1;
+                                    this.casePercent.reported += 1;
+                                    this.caseList.push(event);
+                                    this.logs.push(event);
+                                } else if(event['status'] == "falseAlarm"){
+                                    this.casePercent["false alarm"] += 1;
+                                    //this.caseList.push(event);
+                                    this.logs.push(event);
+                                } else {
+                                    console.log(event['result']['event'])
+                                    this.casePercent.detected += 1;
+                                    this.logs.push(event);
+                                }
+
+                            })
+                            this.isUpdated -= 1;
+                            
+                        }
+
+                        this.logs.sort(function (a,b){
+                            return a.datetime > b.datetime ? -1 : a.datetime < b.datetime ? 1 : 0;
+                        });
+
+                        console.log(this.logs);
+                        console.log(this.noticeList);
+                        this.caseList.sort(function (a,b){
+                            return a.datetime > b.datetime ? -1 : a.datetime < b.datetime ? 1 : 0;
+                        });
+                        this.caseList = this.caseList.splice(0,3);
+                        console.log(this.caseList);
+
+                        this.detectedCaseChart = new Chart('detectedCaseDoughnutChart', {
+                            type: 'doughnut',
+                            data: {
+                              labels: ["Reported","Detected","False Alarm"],
+                              datasets: [{ 
+                                    data: [
+                                        this.casePercent.reported,
+                                        this.casePercent.detected,
+                                        this.casePercent["false alarm"]],
+                                    backgroundColor: [
+                                        "#00ce68",
+                                        "#308ee0",
+                                        "#e65251"
+                                    ],
+                                    borderColor: [
+                                        "#00ce68",
+                                        "#308ee0",
+                                        "#e65251"
+                                    ]
+                                }]
+                            },
+                            options: {
+                                cutoutPercentage: 75,
+                                animationEasing: "easeOutBounce",
+                                animateRotate: true,
+                                animateScale: false,
+                                responsive: true,
+                                maintainAspectRatio: true,
+                                showScale: true,
+                                legend: {
+                                    display: false
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 0,
+                                        right: 0,
+                                        top: 0,
+                                        bottom: 0
+                                    }
+                                }
+                            }
+                          });
                     })
                 }
             });
@@ -303,12 +422,11 @@ export class DashboardComponent implements OnInit {
     
 
     
-    
     ngOnInit() {
 
         this.wavesurfer = WaveSurfer.create({
             container: document.querySelector('#waveform'),
-            waveColor: '#D9DCFF',
+            waveColor: '#00ff00',
             progressColor: '#4353FF',
             cursorColor: '#4353FF',
             barWidth: 3,
@@ -317,7 +435,7 @@ export class DashboardComponent implements OnInit {
             height: 200,
             barGap: 3,
             backend: 'MediaElement',
-            plugins: [
+            /* plugins: [
                 WaveSurfer.regions.create({
                     regionsMinLength: 2,
                     regions: this.annotations
@@ -341,16 +459,12 @@ export class DashboardComponent implements OnInit {
                         slop: 5
                     }
                 }),
-                ],
+                ], */
             }); 
             
 
-        this.wavesurfer.load('../../../assets/music/screaming.mp3');
-
-    
-
-            
-            this.wavesurfer.stop();
+        
+        this.wavesurfer.stop();
 
            
 
@@ -363,8 +477,18 @@ export class DashboardComponent implements OnInit {
     }
 
     // play/pause 버튼 클릭
-    playPause(){
-        this.wavesurfer.playPause();
+    playPause(log){
+        console.log(log)
+        if(log != null){
+            if(log.soundurl != null && this.wavesurfer != null){
+                this.wavesurfer.load(log.soundurl);
+                this.wavesurfer.playPause();
+            }
+            this.wavetext = log.result.text;
+        } else {
+            this.wavesurfer.playPause();
+        }
+        
         //this.wavesurfer.play(10,20);
         // this.wavesurfer.addRegion({  
         //     id: 'myid',

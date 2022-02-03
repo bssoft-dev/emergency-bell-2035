@@ -55,12 +55,12 @@ const appRoutes: Routes = [
         component: NoticeComponent
       }
     ]},
-  { path: 'register', component: RegisterComponent}/* ,
+  { path: 'register', component: RegisterComponent},
 
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'
-  } */
+  } 
 ];
 
 @NgModule({

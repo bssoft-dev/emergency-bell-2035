@@ -155,42 +155,27 @@
     </div>
   </div>
 
+  <!-- Graph and maps end-->
   
   <div class="card" id="soundcard">
-    <div style="width: 100%; text-align: center;vertical-align: center;">
+    <!-- <div style="width: 100%; text-align: center;vertical-align: center;">
       <ul id="color">
         <li ><div id="scream"></div>scream</li>
         <li ><div id="slip"></div>slip</li>
         <li ><div id="help"></div>help</li>
         <li ><div id="violent"></div>violent</li>
       </ul>
-    </div>
+    </div> -->
+    <button class="btn btn-outline-primary" (click)="playPause()"><i class="fa fa-play"></i><i class="fa fa-pause"></i></button>
     <div class="wave-container" style="width: 90%; ">  
       <div id="waveform"></div>
+      <div id="waveText">대화내용 : {{wavetext}}</div>
     </div>
-    
-    <button class="btn btn-outline-primary" (click)="playPause()"><i class="fa fa-play"></i><i class="fa fa-pause"></i></button>
-    <!-- <button class="toggle" onCLick="togglePlay()">play/pause</button> -->
-    <div id="annotations" class="table-responsive" ></div>
+    <!-- <div id="annotations" class="table-responsive" ></div>
 
 
         <div style="text-align: center; overflow: auto;">
-            <!-- <ul class="sound">
-              <li class="soundtitle">Date</li>
-              <li class="sounditem">{{sitetime}}</li>
-            </ul>
-            <ul class="sound">
-              <li class="soundtitle">ID</li>
-              <li class="sounditem">{{siteid}}</li>
-            </ul>
-            <ul class="sound">
-              <li class="soundtitle">SITE</li>
-              <li class="sounditem">{{sitename}}</li>
-            </ul>
-            <ul class="sound">
-              <li class="soundtitle">CASE</li>
-              <li class="sounditem">{{sitecase}}</li>
-            </ul> -->
+          
 
             <ul class="musictitle">
               <li style="width: 15%;" >start</li>
@@ -204,15 +189,14 @@
               <li class="annotation" style="width: 20%;" (click)="playPauseann(annotation.start)">{{annotation.name}}</li>
               <li class="annotation" style="width: 50%;" (click)="playPauseann(annotation.start)">{{annotation.comment}}</li>
             </ul>
-        </div>
+        </div> -->
     
   </div>
  
   
   
-  <!-- Graph and maps end-->
   <div class="row" style="margin-top: 30px; float: clear; display: flexbox;">
-    <div class="col-md-3 grid-margin stretch-card">
+    <!-- <div class="col-md-3 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Detected Case Status</h4>
@@ -227,12 +211,12 @@
             <div class="d-flex align-items-center py-3 border-bottom">
               <span class="dot-indicator bg-danger"></span>
               <p class="mb-0 ml-3">Reported</p>
-              <p class="ml-auto mb-0 text-muted">{{casePercent.reported/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent.reported/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100 | number:'1.0-2'}}%</p>
             </div>
             <div class="d-flex align-items-center py-3 border-bottom">
               <span class="dot-indicator bg-success"></span>
               <p class="mb-0 ml-3">Detected</p>
-              <p class="ml-auto mb-0 text-muted">{{casePercent.detected/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent.detected/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100 | number:'1.0-2'}}%</p>
             </div>
             <div class="d-flex align-iteplay.onclick= function(){
               wavesurfer.on('ready', function () {
@@ -241,14 +225,14 @@
           }ms-center pt-3">
               <span class="dot-indicator bg-primary"></span>
               <p class="mb-0 ml-3">False alarm</p>
-              <p class="ml-auto mb-0 text-muted">{{casePercent['false alarm']/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100}}%</p>
+              <p class="ml-auto mb-0 text-muted">{{casePercent['false alarm']/(casePercent.reported+casePercent.detected+casePercent['false alarm'])*100 | number:'1.0-2'}}%</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
         
-              <div class="col-md-9 grid-margin">
+              <div class="col-md-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Detected Events</h4>
@@ -277,18 +261,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let log of noticeList">
+                          <tr *ngFor="let log of noticeList | slice:0:6">
                             <td class="font-weight-medium">
-                              {{logs.indexOf(log) + 1}}
+                              {{noticeList.indexOf(log) + 1}}
+                            </td>
+                            <td (click)="playPause(log)">
+                              {{log.result ? log.result.event : log.event}}
+                              {{log.soundurl ? '(재생)':''}}
                             </td>
                             <td>
-                              {{log.event}}
+                              {{log.deviceid ? sites[devices[log.deviceid].siteId].name : ''}}
                             </td>
                             <td>
-                              {{sites[devices[log.deviceid].siteId].name}}
-                            </td>
-                            <td>
-                              {{devices[log.deviceid].name}}
+                              {{log.deviceid ? devices[log.deviceid].name : ''}}
                             </td>
                             <td class="text-danger"> 
                               {{log.datetime}}
@@ -318,5 +303,4 @@
         </div>
         
 </div>
-
 <!-- content-wrapper ends -->

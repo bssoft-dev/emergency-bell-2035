@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(public db: AngularFireDatabase) {
+    
+    let count = 0;
+
+    const ref = db.object('/logs/').snapshotChanges();
+    ref.subscribe((snapshot) => {
+        count++;
+      console.log('added:', snapshot);
+    });
+
+   }
 
   ngOnInit() {
   }
