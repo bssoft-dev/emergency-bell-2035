@@ -21,6 +21,27 @@ body{
 .card-title {
 	color: #ffffff;
 }
+.firstcard {
+	width: 100%; 
+	height: 100%; 
+	background-color: #282b30;
+}
+.secondcard {
+
+}
+.thirdcard {
+
+}
+.fourthcard {
+
+
+}
+.fifthcard {
+
+}
+.sisthcard {
+	
+}
 
 .fluid-container{
 	margin-right: 15px;
