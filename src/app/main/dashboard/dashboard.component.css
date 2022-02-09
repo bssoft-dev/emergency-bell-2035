@@ -18,7 +18,9 @@ div.card{
 body{
 	box-shadow: none !important;
 }
-
+.card-title {
+	color: #ffffff;
+}
 
 .fluid-container{
 	margin-right: 15px;
