@@ -31,7 +31,12 @@ body{
 
 }
 .fourthcard {
-
+	display: flex;
+	flex-direction: row;
+	align-items: space;
+	justify-content: space-around;
+	width: 100%; height: 100%;
+	background-color: #282b30;
 
 }
 .fifthcard {
@@ -161,4 +166,99 @@ body{
 }
 .sixthcard{
 	
+}
+#outcircle{
+	display: flex;
+	background-color: #5151cc;
+	width:220px;
+	height:220px;
+	border-radius: 110px;
+	margin: 10px;
+  }
+  #incircle{
+	margin: auto;
+	background-color: #4b4a50;
+	width:190px;
+	height:190px;
+	border-radius: 95px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+  }
+  .iconcircle{
+	margin: auto;
+	width:70px;
+	height:70px;
+	border-radius: 35px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+  }
+  #fixing{
+	background-color: #ffa14d;
+  }
+  #normal{
+	background-color: #5dc276;
+  }
+  .circletitle{
+	  margin-top: 20px;
+	  color: #ffffff;
+	  font-size: 17px;
+	  font-weight: 600;
+  }
+  .circlestatus{
+	  color: #ffffff;
+	  font-size: 14px;
+	  font-weight: 600;
+
+  }
+.innercard1{
+margin: auto;
+width:100%;
+height:40%;
+border-radius: 10px;
+display: flex;
+flex-direction: row;
+text-align: center;
+align-items: center;
+justify-content: space-around;
+background-color: #5156be;
+}
+.innercard2{
+	margin: auto;
+	width:100%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #1a1f71;
+	}
+.innerfont1{
+	font-size: 40px;
+	font-weight: 700;
+	color: #ffffff;
+}
+.innerfont2{
+font-size: 25px;
+font-weight: 400;
+color: #ffffff;
+}
+.innerfont3{
+	font-size: 15px;
+	font-weight: 600;
+	color: #ffffff;
+}
+.innercardcon{
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+align-items: center;
+justify-content: space-around;
+
 }
