@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="row" style="width: 100%; height: 500px; margin-top: 30px;">
+      <div class="row" style="width: 100%; height: 500px; margin-top: 18px;">
         <div class="card thirdcard" style="width: 100%; height: 100%; background-color: #282b30;">
           <h4 class="card-title">스마트벨 설치 현황</h4>
           <div id='map' style="width: 95%;height: 78%; border-radius: 5px;"></div>
@@ -54,7 +54,7 @@
       </div>
 
       <!-- 디바이스 넘버 -->
-      <div class="row" style="width: 100%; height: 300px; margin-top: 30px;">
+      <div class="row" style="width: 100%; height: 300px; margin-top: 18px;">
         <div class="card fourthcard" style="width: 100%; height: 100%; background-color: #282b30;">
           <h5 class="card-title">Card 44</h5>
           <div class="card-body">
@@ -84,54 +84,55 @@
         </div>
       </div>
 
-      <div class="row" style="width: 100%; height: 830px; margin-top: 30px; display: block !important;">
+      <div class="row" style="width: 100%; height: 817px; margin-top: 18px; display: block !important;">
         <div class="card" style="width: 100%; height: 100%; background-color: #282b30; padding: 50px;">
-          <div class="table-responsive" style="overflow: auto; white-space:nowrap;border-collapse:collapse">
+          <div class="table-responsive"
+            style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
             <h5 class="card-title">전체 감지 내역</h5>
-            <table class="table table-dark table-striped" style="table-layout: fixed; ">
+            <table class="table table-dark table-striped" style="table-layout: fixed;">
               <thead>
                 <tr>
-                  <th>
+                  <th style="font-size: 18px;">
                     #
                   </th>
-                  <th>
+                  <th style="font-size: 18px;">
                     Event Type
                   </th>
-                  <th>
+                  <th style="font-size: 18px;">
                     Site
                   </th>
-                  <th>
+                  <th style="font-size: 18px;">
                     Device
                   </th>
-                  <th>
+                  <th style="font-size: 18px;">
                     Datetime
                   </th>
-                  <th>
+                  <th style="font-size: 18px;">
                     Status
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let log of noticeList">
-                  <td class="font-weight-medium">
+                  <td class="font-weight-medium" style="font-size: 15px;">
                     {{logs.indexOf(log) + 1}}
                   </td>
-                  <td>
+                  <td style="font-size: 15px;">
                     {{log.event}}
                   </td>
-                  <td>
+                  <td style="font-size: 15px;">
                     {{sites[devices[log.deviceid].siteId].name}}
                   </td>
-                  <td>
+                  <td style="font-size: 15px;">
                     {{devices[log.deviceid].name}}
                   </td>
-                  <td class="text-danger">
+                  <td class="text-danger" style="font-size: 15px;">
                     {{log.datetime}}
                   </td>
-                  <td>
+                  <td style="font-size: 15px;">
                     <label class="badge" [class.badge-primary]="!log.status" [class.badge-info]="log.status=='check'"
                       [class.badge-danger]="log.status=='inspection'" [class.badge-success]="log.status=='reported'"
-                      [class.badge-warning]="log.status=='falseAlarm'">{{!log.status?"감지됨":""}}
+                      [class.badge-warning]="log.status=='falseAlarm'" style="font-size: 15px;">{{!log.status?"감지됨":""}}
                       {{log.status=='check'?"현장출동":""}}
                       {{log.status=='inspection'?"확인중":""}}
                       {{log.status=='reported'?"신고":""}}
