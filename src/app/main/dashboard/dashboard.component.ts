@@ -26,6 +26,8 @@ import { RegisterComponent } from '../../register/register.component';
 
 
 export class DashboardComponent implements OnInit {
+
+    
   
     
     
@@ -96,6 +98,9 @@ export class DashboardComponent implements OnInit {
 
   noticeList = [];
   wavesurfer;
+
+
+
   constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
     
     
@@ -196,6 +201,26 @@ export class DashboardComponent implements OnInit {
             })
           }
         });
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYnVtc3VramFuZyIsImEiOiJjam93YjBmenAxZ3pzM3NwamwycGF2amFxIn0.f6yryjJn1NMUzgjWxdquNQ';
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v9',
+                    // center: [this.siteList[0].locationLon, this.siteList[0].locationLat],
+                    center: [126.849516, 35.222406],
+                    zoom: 15
+                });
+
+                this.siteList.forEach(site => {
+                    //console.log("new makrer");
+                    //console.log(site);
+                    map.flyTo({center: [site.locationLon, site.locationLat]});
+                    
+                    
+                    new mapboxgl.Marker()
+                        .setLngLat([site.locationLon, site.locationLat])
+                        .addTo(map);
+                })
         
         db.list('sites/'+this.userId).snapshotChanges().subscribe((val) =>{
             this.NoInstallation = val.length;
@@ -423,6 +448,8 @@ export class DashboardComponent implements OnInit {
 
     
     ngOnInit() {
+
+        
 
         this.wavesurfer = WaveSurfer.create({
             container: document.querySelector('#waveform'),

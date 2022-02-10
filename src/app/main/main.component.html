@@ -97,38 +97,58 @@
 
 		<nav class="sidebar sidebar-offcanvas" id="sidebar"
 			style="z-index: 150;padding-top: 74px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f; ">
+
+			<div class="avatarcon" style="height: 200px; text-align: center; margin-top: 100px;">
+
+				<img class="avatar bg-light rounded-circle text-white p-1"
+					src="https://raw.githubusercontent.com/twbs/icons/main/icons/person-fill.svg"
+					style="width: 80px; height: 80px;">
+				<p style="color: white;
+				margin-top: 10px;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-weight: 400; font-size: 20px;">관리자 이름</p>
+				<p style="color: white;
+				margin-top: 10px;
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				font-weight: 400; font-size: 14px;">관리자 직책</p>
+			</div>
+
 			<ul class="nav">
-
-
 				<li class="nav-item">
 					<a class="nav-link" routerLink="dashboard">
-						<i class="menu-icon mdi mdi-television" style="font-size: 40px;"></i>
+						<i class="menu-icon mdi mdi-television" style="font-size: 60px;"></i>
 						<div class="menu-title" style="display: block;">전체화면</div>
 					</a>
 				</li>
 
 				<li class="nav-item">
 					<a class="nav-link" routerLink="user">
-						<i class="menu-icon mdi mdi-account" style="font-size: 40px;"></i><span class="menu-title">사용자
+						<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i><span class="menu-title">사용자
 							설정</span>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" routerLink="site">
-						<i class="menu-icon mdi mdi-sitemap" style="font-size: 40px;"></i><span
+						<i class="menu-icon mdi mdi-sitemap" style="font-size: 60px;"></i><span
 							class="menu-title">장소</span>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" routerLink="device">
-						<i class="menu-icon mdi mdi-cellphone" style="font-size: 40px;"></i><span class="menu-title">기기
+						<i class="menu-icon mdi mdi-cellphone" style="font-size: 60px;"></i><span class="menu-title">기기
 							설정</span>
 					</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" routerLink="notice">
-						<i class="menu-icon mdi mdi-alarm-light" style="font-size: 40px;"></i><span
+						<i class="menu-icon mdi mdi-alarm-light" style="font-size: 60px;"></i><span
 							class="menu-title">알림</span>
+					</a>
+				</li>
+				<li class="nav-item" style="margin-top: 160%;">
+					<a class="nav-link" routerLink="notice">
+						<i class="menu-icon mdi mdi-logout" style="font-size: 60px;"></i><span
+							class="menu-title">로그아웃</span>
 					</a>
 				</li>
 			</ul>

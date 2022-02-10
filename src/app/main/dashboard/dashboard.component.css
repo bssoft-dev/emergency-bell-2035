@@ -18,9 +18,7 @@ div.card{
 body{
 	box-shadow: none !important;
 }
-.card-title {
-	color: #ffffff;
-}
+
 .firstcard {
 	width: 100%; 
 	height: 100%; 
@@ -39,8 +37,8 @@ body{
 .fifthcard {
 
 }
-.sisthcard {
-	
+.sixthcard {
+
 }
 
 .fluid-container{
@@ -136,4 +134,31 @@ body{
 	height:12px; 
 	background-color: hsla(300, 100%, 30%, 0.5); 
 	display:inline-flex;
+}
+.avatarcon{
+	margin-top: 50px;
+	width: 100%;
+	height: 300px !important;
+	display: flex;
+}
+
+.card{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.card > * {
+	margin-top: 10px;
+}
+.card-title{
+	color: #ffffff;
+	font-size: 25px;
+	font-weight: 600;
+}
+.doughnut { 
+    border: 10px solid #ffffff;
+    border-radius: 100px;
+}
+.sixthcard{
+	
 }

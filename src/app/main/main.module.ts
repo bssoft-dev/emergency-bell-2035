@@ -3,6 +3,8 @@ import { MainComponent } from './main.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import '@fortawesome/fontawesome-free/js/all.js';
+
 
 import { MainRoutingModule } from './main-routing.module';
 

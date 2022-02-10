@@ -53,3 +53,6 @@
 .card.card.card-statistics .card-body .text-muted:active{
     color:white;
 }
+.nav-item{
+    margin-top: 30px;
+}

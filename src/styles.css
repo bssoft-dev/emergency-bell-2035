@@ -9334,8 +9334,7 @@ pre code {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -12.5px;
-    margin-left: -12.5px;
+    
 }
 
 .no-gutters {
