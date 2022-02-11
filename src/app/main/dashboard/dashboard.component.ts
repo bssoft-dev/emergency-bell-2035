@@ -135,7 +135,15 @@ export class DashboardComponent implements OnInit {
         "year": "2023",
         "button": 2.4,
         "scream": 0.5
-        },]
+        },{
+        "year": "2024",
+        "button": 2.4,
+        "scream": 0.5
+        },{
+        "year": "2025",
+        "button": 2.4,
+        "scream": 0.5
+        }]
 
 
         // Create axes

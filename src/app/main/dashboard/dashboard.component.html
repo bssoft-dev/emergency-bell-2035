@@ -9,9 +9,8 @@
   <div class="row" style="height: 100%;">
 
     <div class="col" style="width: 50%; height: auto;">
-      <!-- 총 비상벨, 최근 감지 내역 -->
       <div class="row" style="width: 100%; height: 400px;">
-        <div class="col" style="width: 50%; height: 400px;">
+        <div class="col" style="width: 40%; height: 400px;">
           <!-- <div style="background-color: aqua; height: 100%;">11</div> -->
           <div class="card firstcard">
             <h5 class="card-title">총 비상벨</h5>
@@ -35,26 +34,58 @@
                 <p class="innerfont2">기타</p>
               </div>
             </div>
-
           </div>
         </div>
 
-        <div class="col" style="width: 50%; ">
-          <div class="card secondcard" style="width: 100%; height: 100%; background-color: #282b30;">
+        <div class="col" style="width: 60%; height: 400px; ">
+
+          <div class="card secondcard" style="width: 100%; height: 100%; background-color: #282b30; padding: 15px;">
             <h5 class="card-title">최근 감지 내역</h5>
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                of
-                the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="table-responsive"
+              style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
+              <table class="table table-dark " style="table-layout: fixed;">
+                <thead>
+                  <tr>
+                    <th style="font-size: 14px;">
+                      위험등급
+                    </th>
+                    <th style="font-size: 14px;">
+                      위치
+                    </th>
+                    <th style="font-size: 14px;">
+                      시간
+                    </th>
+                    <th style="font-size: 14px;">
+                      처리상황
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let log of noticeList">
+                    <td class="font-weight-medium" style="font-size: 12px;">
+                      <div class="iconcircle1" id="fixing"><i class="menu-icon mdi mdi-shield-outline"
+                          style="font-size: 20px; color: #ffffff;"></i></div>
+                    </td>
+                    <td style="font-size: 12px;">
+                      {{sites[devices[log.deviceid].siteId].name}}
+                    </td>
+                    <td class="text-danger" style="font-size: 12px;">
+                      {{log.datetime}}
+                    </td>
+                    <td style="font-size: 12px;">
+                      ...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+
         </div>
       </div>
 
       <div class="row" style="width: 100%; height: 500px; margin-top: 18px;">
-        <div class="card thirdcard" style="width: 100%; height: 100%; background-color: #282b30;">
+        <div class="card thirdcard" style="width: 150%; height: 100%; background-color: #282b30;">
           <h4 class="card-title">스마트벨 설치 현황</h4>
           <div id='map' style="width: 95%;height: 78%; border-radius: 10px;"></div>
           <!-- <ng-mapbox></ng-mapbox>
@@ -108,7 +139,7 @@
     </div>
 
     <div class="col" style="width: 50%;">
-      <div class="row" style=" height: 400px; background-color: #282b30;">
+      <div class="row" style=" height: 400px; background-color: #282b30; ">
         <div id="chartdiv"></div>
       </div>
 
