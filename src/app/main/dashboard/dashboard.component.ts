@@ -122,11 +122,11 @@ export class DashboardComponent implements OnInit {
         // Add scrollbar
         // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
 
-
+        var colorSet = am5.ColorSet.new(root, {});
         var data = [{
         "year": "2021",
         "button": 2.1,
-        "scream": 0.4
+        "scream": 0.4,
         }, {
         "year": "2022",
         "button": 2.2,
@@ -135,7 +135,7 @@ export class DashboardComponent implements OnInit {
         "year": "2023",
         "button": 2.4,
         "scream": 0.5
-        }]
+        },]
 
 
         // Create axes
@@ -147,6 +147,9 @@ export class DashboardComponent implements OnInit {
         }));
 
         xAxis.data.setAll(data);
+
+        
+        
 
         var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
         min: 0,
@@ -165,57 +168,76 @@ export class DashboardComponent implements OnInit {
         x: am5.p50
         }));
 
-        // grid color
-        root.interfaceColors.set("grid", am5.color(0xffffff));
-        root.interfaceColors.set("text", am5.color(0xffffff));
+        // set text,grid color white
+        root.interfaceColors.set("grid", am5.color("#ffffff"));
+        root.interfaceColors.set("text", am5.color("#ffffff"));
+        
+        
 
         
         // Add series
         // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
         function makeSeries(name, fieldName) {
-        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-            name: name,
-            stacked: true,
-            xAxis: xAxis,
-            yAxis: yAxis,
-            valueYField: fieldName,
-            valueYShow: "valueYTotalPercent",
-            categoryXField: "year"
-        }));
-
-        series.columns.template.setAll({
-            tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
-            tooltipY: am5.percent(10)
-        });
-        series.data.setAll(data);
-
-        // Make stuff animate on load
-        // https://www.amcharts.com/docs/v5/concepts/animations/
-        series.appear();
-
-        series.bullets.push(function () {
-            return am5.Bullet.new(root, {
-            sprite: am5.Label.new(root, {
-                text: "{valueYTotalPercent.formatNumber('#.#')}%",
-                fill: root.interfaceColors.get("alternativeText"),
-                centerY: am5.p50,
-                centerX: am5.p50,
-                populateText: true
-            })
+            if(name==="Button"){
+                var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+                    fill: am5.color("#6794dc"),
+                    name: name,
+                    stacked: true,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: fieldName,
+                    valueYShow: "valueYTotalPercent",
+                    categoryXField: "year"
+                }));
+            }else{
+                var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+                    fill: am5.color("#a367dc"),
+                    name: name,
+                    stacked: true,
+                    xAxis: xAxis,
+                    yAxis: yAxis,
+                    valueYField: fieldName,
+                    valueYShow: "valueYTotalPercent",
+                    categoryXField: "year"
+                }));
+            }
+            series.columns.template.setAll({
+                tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+                tooltipY: am5.percent(10),
+                
             });
-        });
+            series.data.setAll(data);
 
-        legend.data.push(series);
+            // Make stuff animate on load
+            // https://www.amcharts.com/docs/v5/concepts/animations/
+            series.appear();
+
+            series.bullets.push(function () {
+                return am5.Bullet.new(root, {
+                sprite: am5.Label.new(root, {
+                    text: "{valueYTotalPercent.formatNumber('#.#')}%",
+                    fill: root.interfaceColors.get("alternativeText"),
+                    centerY: am5.p50,
+                    centerX: am5.p50,
+                    populateText: true
+                })
+                });
+            });
+
+            legend.data.push(series);
         }
 
 
         makeSeries("Button", "button");
         makeSeries("Scream", "scream");
 
-
+        xAxis.get("renderer").labels.template.setAll({
+            fill: root.interfaceColors.get("alternativeText")
+          });
+          
         // Make stuff animate on load
         // https://www.amcharts.com/docs/v5/concepts/animations/
-        chart.appear(1000, 100);
+   
 
 
         console.log("auth : ");
