@@ -262,3 +262,6 @@ align-items: center;
 justify-content: space-around;
 
 }
+#chartdiv {
+	width: 100%;
+  }

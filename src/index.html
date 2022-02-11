@@ -13,9 +13,9 @@
 	<link rel="stylesheet" href="assets/vendors/css/vendor.bundle.addons.css">
 	<!-- endinject -->
 	<!-- plugin css for this page -->
-  	<link rel="stylesheet" href="assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
-  	<link rel="stylesheet" href="assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
-  	<link rel="stylesheet" href="assets/vendors/iconfonts/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css">
+	<link rel="stylesheet" href="assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendors/iconfonts/ti-icons/css/themify-icons.css">
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
 	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
@@ -26,46 +26,51 @@
 
 
 </head>
+
 <body>
-  <app-root></app-root>
-  
+	<app-root></app-root>
+
 </body>
-	<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
-	
-  <!-- plugins:js -->
-	<script src="https://unpkg.com/wavesurfer.js"></script>
-	<script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.regions.js"></script>
-	<script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.elan.js"></script>
-	<script src="assets/vendors/js/vendor.bundle.base.js"></script>
-	<script src="assets/vendors/js/vendor.bundle.addons.js"></script>
-	<!-- jQuery custom content scroller -->
-	
-	<!-- inject:js -->
-	<!-- <script src="assets/js/off-canvas.js"></script> -->
-	<script>
-	setTimeout(function(){ 
-    	$('.site-preloader').fadeOut(200);
-    	$('body').fadeIn(300);
-		}, 500);
-	</script>
-	<!-- endinject -->
-	<!-- Custom js for this page-->
-	<!-- <script src="assets/js/float-chart.js"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+
+<!-- plugins:js -->
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.regions.js"></script>
+<script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.elan.js"></script>
+<script src="assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="assets/vendors/js/vendor.bundle.addons.js"></script>
+<!-- jQuery custom content scroller -->
+
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- inject:js -->
+<!-- <script src="assets/js/off-canvas.js"></script> -->
+<script>
+	setTimeout(function () {
+		$('.site-preloader').fadeOut(200);
+		$('body').fadeIn(300);
+	}, 500);
+</script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<!-- <script src="assets/js/float-chart.js"></script>
 	<script type="text/javascript" src="assets/js/dashboard.js"></script> -->
-	<!-- <script type="text/javascript" src="assets/js/widgets.js"></script> -->
-	<!-- End custom js for this page-->
-  <script src="assets/js/misc.js"></script>
-  <script>
+<!-- <script type="text/javascript" src="assets/js/widgets.js"></script> -->
+<!-- End custom js for this page-->
+<script src="assets/js/misc.js"></script>
+<script>
 	// TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
 	// https://account.mapbox.com
 	mapboxgl.accessToken = 'pk.eyJ1IjoiYnVtc3VramFuZyIsImEiOiJjam93YjBmenAxZ3pzM3NwamwycGF2amFxIn0.f6yryjJn1NMUzgjWxdquNQ';
-const map = new mapboxgl.Map({
-container: 'map', // container ID
-style: 'mapbox://styles/mapbox/streets-v11', // style URL
-center: [-74.5, 40], // starting position [lng, lat]
-zoom: 9 // starting zoom
-});
+	const map = new mapboxgl.Map({
+		container: 'map', // container ID
+		style: 'mapbox://styles/mapbox/streets-v11', // style URL
+		center: [-74.5, 40], // starting position [lng, lat]
+		zoom: 9 // starting zoom
+	});
 </script>
 
 </html>
