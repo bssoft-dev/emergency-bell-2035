@@ -2,4 +2,79 @@
     border-radius: 8px !important;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
+.card{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.card-title{
+	color: #ffffff;
+	font-size: 25px;
+	font-weight: 600;
+}
 
+
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	margin-left: 60px;
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 70px;
+	height: 25px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: #5156be;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 30px;
+}
+td{
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+ul{
+	list-style: none;
+	text-align: center;
+}
+li{
+	display: inline-block;
+}
+.modifying{
+	background-color: #5156be;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	border-radius: 3px;
+}

@@ -2,8 +2,9 @@ import { NoticeComponent } from './main/notice/notice.component';
 import { DeviceComponent } from './main/device/device.component';
 import { SiteComponent } from './main/site/site.component';
 import { MainComponent } from './main/main.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { RouterModule, Routes, CanActivate  } from '@angular/router';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './main/user/user.component';
+import { ClientComponent } from './main/client/client.component';
 
 import { ChartModule } from 'angular2-chartjs';
 
@@ -28,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AuthService } from './auth.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ApiService } from './services/api.service';
 
 
 const appRoutes: Routes = [
@@ -41,6 +44,10 @@ const appRoutes: Routes = [
       {
         path: 'user',
         component: UserComponent
+      },
+      {
+        path: 'client',
+        component: ClientComponent
       },
       { 
         path: 'site',
@@ -73,6 +80,7 @@ const appRoutes: Routes = [
     NoticeComponent,
     SiteComponent,
     UserComponent,
+    ClientComponent,
     RegisterComponent,
   ],
   imports: [
@@ -81,6 +89,7 @@ const appRoutes: Routes = [
       appRoutes
     ),
     BrowserModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAEQ4MyV0f1OKQ4u6Y0WR-tQoOm9e_SOhE'
     }),
@@ -89,7 +98,8 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

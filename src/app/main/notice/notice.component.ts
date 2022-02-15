@@ -2,6 +2,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './../../auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-notice',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notice.component.css']
 })
 export class NoticeComponent implements OnInit {
+
+  testdata = [];
 
   userId;
   devices = {};
@@ -20,8 +23,10 @@ export class NoticeComponent implements OnInit {
 
   isUpdated = 0;
 
-  constructor( public db: AngularFireDatabase, public afAuth: AngularFireAuth ) {
+  constructor( public db: AngularFireDatabase, public afAuth: AngularFireAuth, private service:ApiService ) {
     
+
+
     afAuth.authState.subscribe(auth =>{
       this.userId = auth.uid;
 
@@ -134,6 +139,15 @@ export class NoticeComponent implements OnInit {
   }
   
   ngOnInit() {
+
+    const getData = this.service.getData().subscribe((res)=>{
+      console.log('테스트테슨트', JSON.stringify(res))
+      this.testdata.push(JSON.stringify(res));
+    })
+
+
+    
+    console.log('dkdk', this.testdata)
   }
 
   removeNotice(notice){

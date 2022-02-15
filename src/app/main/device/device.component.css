@@ -2,3 +2,13 @@
     border-radius: 8px !important;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
+.card{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.card-title{
+	color: #ffffff;
+	font-size: 25px;
+	font-weight: 600;
+}
