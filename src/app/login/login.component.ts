@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
   user;
 
@@ -16,11 +20,41 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(public as: AuthService, public router: Router) { 
+  constructor(public as: AuthService, public router: Router, private service:ApiService) { 
   }
 
-  ngOnInit() {
-    
+  ngOnInit(): void{
+    this.loginForm = new FormGroup({
+      'username': new FormControl("", [Validators.required, Validators.email]),
+      'password': new FormControl("", [Validators.required,Validators.minLength(2),]),
+    });
+  }
+
+  login(){
+    const change = this.loginForm.value.username.replace('@','%40')
+    console.log(change,'체인지')
+    let king = `username=${change}&password=${this.loginForm.value.password}`
+    console.log(king)
+    if(this.loginForm.valid){
+      try{
+        this.service.login(king).subscribe((res)=>{
+          console.log('res', res);
+          if(res.length > 0){
+            this.loginForm.reset();
+            this.user = res[0]
+            this.service.setCurrentUser(this.user)
+            //this.router.navigate(["/"]);
+            this.router.navigateByUrl('/');
+          } else {
+            localStorage.setItem('currentUser',null)
+          }
+        });
+      } catch(error){
+        console.log("로그인통신에러", error)
+      }
+    }else{
+      console.log('all field is required')
+    }
   }
 
   loginWithGoogle(){
@@ -50,6 +84,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main/dashboard']);
     })
     .catch(error => alarm(error.message));
+  }
+
+  gotodash(){
+    this.router.navigateByUrl('/');
+
   }
 
 }

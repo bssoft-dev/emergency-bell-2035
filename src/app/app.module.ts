@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,6 @@ import { ChartModule } from 'angular2-chartjs';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { FormsModule } from '@angular/forms';
 
 
 import { AuthService } from './auth.service';
@@ -95,6 +95,7 @@ const appRoutes: Routes = [
     }),
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
+    ReactiveFormsModule,
     AngularFireDatabaseModule
   ],
   providers: [
