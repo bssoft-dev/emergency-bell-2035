@@ -5,16 +5,18 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
       <div class="inputDiv">
         <i class="mdi mdi-bell-outline icon"></i>
-        <input class="underline" type="text" placeholder="ID" formControlName="username" />
+        <input class="underline" type="text" placeholder="ID" formControlName="username" tabindex="1" />
       </div>
       <div class="inputDiv">
         <i class="mdi mdi-bell-outline icon"></i>
-        <input class="underline" type="password" placeholder="Password" formControlName="password" />
+        <input class="underline" type="password" placeholder="Password" formControlName="password" tabindex="2" />
       </div>
-      <button>회원가입</button>
-      <button>로그인</button>
+      <button class="singin" tabindex="3">로그인</button>
     </form>
-    <a href='/main/dashboard'>대시보드</a>
+    <div class="another">
+      <button class="anotherbutton" tabindex="4" (click)="goregister()">회원가입</button>
+      <button class="anotherbutton" tabindex="5">비밀번호찾기</button>
+    </div>
 
   </div>
 </div>

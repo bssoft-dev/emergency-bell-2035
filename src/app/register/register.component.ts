@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
     password: ''
   }
   
-  constructor(public authService: AuthService, public db:AngularFireDatabase, public router: Router) { 
+  constructor(public authService: AuthService, public router: Router) { 
   }
 
   ngOnInit() {
@@ -27,18 +28,5 @@ export class RegisterComponent implements OnInit {
     //this.db.list('users').update(this.authService.currentUser().uid, this.authService.currentUser());
     this.router.navigate(['/main/dashboard']);
   }
-/* 
-  tryRegister(value){
-    this.authService.doRegister(value)
-    .then(res => {
-      console.log(res);
-      this.errorMessage = "";
-      this.successMessage = "Your account has been created";
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-      this.successMessage = "";
-    })
-  }
- */
+
 }

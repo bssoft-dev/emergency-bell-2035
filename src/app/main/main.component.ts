@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main',
@@ -8,7 +10,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public db: AngularFireDatabase) {
+  constructor(public db: AngularFireDatabase, public router: Router) {
     
     let count = 0;
 
@@ -20,7 +22,11 @@ export class MainComponent implements OnInit {
 
    }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  logout(){
+    console.log('안녕하세요')
+    localStorage.removeItem("token")
+    this.router.navigate(['/login'])
+  }
 }

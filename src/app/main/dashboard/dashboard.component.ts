@@ -7,6 +7,8 @@ declare const am5: any;
 declare const am5xy: any;
 declare const am5themes_Animated: any;
 import * as mapboxgl from 'mapbox-gl';
+import { Router } from '@angular/router';
+
 
 
 declare var WaveSurfer;
@@ -103,7 +105,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth) {
+  constructor(public db: AngularFireDatabase, public afAuth: AngularFireAuth, public router: Router) {
 
     
     
@@ -590,7 +592,7 @@ export class DashboardComponent implements OnInit {
 
     
     ngOnInit() {
-
+        
         
 
         this.wavesurfer = WaveSurfer.create({
