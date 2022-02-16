@@ -28,5 +28,8 @@ export class RegisterComponent implements OnInit {
     //this.db.list('users').update(this.authService.currentUser().uid, this.authService.currentUser());
     this.router.navigate(['/main/dashboard']);
   }
-
+  
+  gologin(){
+    this.router.navigate(['/login']);
+  }
 }

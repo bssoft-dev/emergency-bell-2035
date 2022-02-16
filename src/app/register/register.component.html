@@ -1,21 +1,32 @@
 <div class="full-page-wrapper page-body-wrapper contain" style="background-color: black;">
-  <div>
-    <p class="title">스마트 비상벨 관제시스템</p>
+  <div style="width: 20%;">
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-      <div class="inputDiv">
-        <i class="mdi mdi-bell-outline icon"></i>
-        <input class="underline" type="text" placeholder="ID" formControlName="username" tabindex="1" />
-      </div>
-      <div class="inputDiv">
-        <i class="mdi mdi-bell-outline icon"></i>
-        <input class="underline" type="password" placeholder="Password" formControlName="password" tabindex="2" />
-      </div>
-      <button class="singin" tabindex="3">로그인</button>
-    </form>
+    <div class="registercard">
+      <p class="title">회원가입</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="Email" formControlName="Email" tabindex="1" />
+        </div>
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="userId" formControlName="userId" tabindex="2" />
+        </div>
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="name" formControlName="name" tabindex="3" />
+        </div>
+        <div class="inputDiv">
+          <input class="underline" type="password" placeholder="Password" formControlName="password" tabindex="4" />
+        </div>
+        <div class="inputDiv">
+          <input class="underline" type="password" placeholder="Password확인" formControlName="passwordconfirm"
+            tabindex="5" />
+        </div>
+        <button class="singin" tabindex="6">회원가입</button>
+      </form>
+    </div>
     <div class="another">
-      <button class="anotherbutton" tabindex="4">회원가입</button>
-      <button class="anotherbutton" tabindex="5">비밀번호찾기</button>
+      <button class="anotherbutton" (click)="gologin()">로그인</button>
+      <button class="anotherbutton">비밀번호찾기</button>
     </div>
 
   </div>

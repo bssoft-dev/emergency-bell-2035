@@ -10,14 +10,17 @@
     font-size: 32px;
     font-weight: 500;
 }
+.registercard{
+    background-color: #282b30;
+    border-radius: 10px;
+    padding: 30px;
+}
 input{
-    margin-top: 100px;
+    margin-top: 30px;
     background: transparent;
-    width: 250px;
-    BORDER-BOTTOM: teal 2px solid;
-    BORDER-LEFT: medium none;
-    BORDER-RIGHT: medium none;
-    BORDER-TOP: medium none;
+    width: 100%;
+    height: 50px;
+    border: #3a418e 2px solid;
     FONT-SIZE: 15px;
     color:#ffffff;
 }
@@ -32,7 +35,7 @@ input{
 .singin{
     margin: 10px;
     margin-top: 60PX;
-    width: 300px;
+    width: 100px;
     height: 50px;
     BORDER-LEFT: medium none;
     BORDER-RIGHT: medium none;
@@ -57,7 +60,7 @@ button:active{
 }
 .anotherbutton{
     margin: 5px;
-    width: 39%;
+    width: 30%;
     height: 50px;
     BORDER-LEFT: medium none;
     BORDER-RIGHT: medium none;
