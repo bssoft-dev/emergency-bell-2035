@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 
 
@@ -10,17 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public db: AngularFireDatabase, public router: Router) {
-    
-    let count = 0;
-
-    const ref = db.object('/logs/').snapshotChanges();
-    ref.subscribe((snapshot) => {
-        count++;
-      console.log('added:', snapshot);
-    });
-
-   }
+  constructor(public router: Router) {}
 
   ngOnInit() {}
 

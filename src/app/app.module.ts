@@ -1,6 +1,5 @@
 import { NoticeComponent } from './main/notice/notice.component';
 import { DeviceComponent } from './main/device/device.component';
-import { SiteComponent } from './main/site/site.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,10 +49,6 @@ const appRoutes: Routes = [
         path: 'client',
         component: ClientComponent
       },
-      { 
-        path: 'site',
-        component: SiteComponent
-      },
       {
         path: 'device',
         component: DeviceComponent
@@ -79,7 +74,6 @@ const appRoutes: Routes = [
     DashboardComponent,
     DeviceComponent,
     NoticeComponent,
-    SiteComponent,
     UserComponent,
     ClientComponent,
     RegisterComponent,

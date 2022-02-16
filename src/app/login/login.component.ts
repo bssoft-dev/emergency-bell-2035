@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor(public as: AuthService, public router: Router, private service:ApiService) { 
+  constructor(public router: Router, private service:ApiService) { 
   }
 
   ngOnInit(): void{
@@ -28,8 +27,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main/dashboard']);
     }
     this.loginForm = new FormGroup({
-      'username': new FormControl("", [Validators.required, Validators.email]),
-      'password': new FormControl("", [Validators.required,Validators.minLength(2),]),
+      'username': new FormControl("", [Validators.required]),
+      'password': new FormControl("", [Validators.required,Validators.minLength(1),]),
     });
   }
 

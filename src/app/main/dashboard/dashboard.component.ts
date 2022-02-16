@@ -1,5 +1,4 @@
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AuthService } from './../../auth.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
