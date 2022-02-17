@@ -10,6 +10,10 @@
     font-size: 32px;
     font-weight: 500;
 }
+.requirefield{
+    color: red;
+    font-size: 12px;
+}
 .registercard{
     background-color: #282b30;
     border-radius: 10px;

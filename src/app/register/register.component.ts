@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
 
   register(){
     const data = this.registerForm.value;
-
     if(this.registerForm.valid){
         if(this.registerForm.value.password === this.registerForm.value.confirmpassword){
           this.service.register(data).subscribe({
