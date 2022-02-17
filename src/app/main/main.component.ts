@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {}
 
   logout(){
-    console.log('안녕하세요')
     localStorage.removeItem("token")
     this.router.navigate(['/login'])
   }

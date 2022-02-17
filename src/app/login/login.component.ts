@@ -12,14 +12,8 @@ import { ApiService } from '../services/api.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  user;
 
-  credential= {
-    email: '',
-    password: ''
-  }
-
-  constructor(public router: Router, private service:ApiService) { 
+  constructor( public router: Router, private service:ApiService) { 
   }
 
   ngOnInit(): void{
@@ -27,14 +21,14 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main/dashboard']);
     }
     this.loginForm = new FormGroup({
-      'username': new FormControl("", [Validators.required]),
-      'password': new FormControl("", [Validators.required,Validators.minLength(1),]),
+      'userId': new FormControl("", [Validators.required]),
+      'password': new FormControl("", [Validators.required,Validators.minLength(2),]),
     });
   }
 
   login(){
-    const change = this.loginForm.value.username.replace('@','%40')
-    let king = `username=${change}&password=${this.loginForm.value.password}`
+    const change = this.loginForm.value.userId.replace('@','%40')
+    let king = `userId=${change}&password=${this.loginForm.value.password}`
     
     if(this.loginForm.valid){
         this.service.login(king).subscribe({

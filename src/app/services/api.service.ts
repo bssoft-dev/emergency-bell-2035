@@ -20,6 +20,12 @@ export class ApiService {
      const headers = new HttpHeaders({"accept":"application/json", "Content-Type":"application/x-www-form-urlencoded"}) 
       return this.http.post(`${this.apiUrl}`+'auth/jwt/login', data, {headers});
     }
+    
+    register(data:any):Observable<any>
+    {
+      const headers = new HttpHeaders({"accept":"application/json", "Content-Type":"application/json"}) 
+      return this.http.post(`${this.apiUrl}`+'auth/register', data, {headers});
+    }
 
     logout(){
       localStorage.removeItem('currentUser');

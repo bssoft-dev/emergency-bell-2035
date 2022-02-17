@@ -4,24 +4,32 @@
     <div class="registercard">
       <p class="title">회원가입</p>
 
-      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div class="inputDiv">
-          <input class="underline" type="text" placeholder="Email" formControlName="Email" tabindex="1" />
+          <input class="underline" type="text" placeholder="Id" formControlName="userId" tabindex="1" />
+        </div>
+
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="Email" formControlName="Email" tabindex="2" />
+        </div>
+
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="customerCode" formControlName="customerCode" tabindex="3" />
+        </div>
+
+        <div class="inputDiv">
+          <input class="underline" type="text" placeholder="name" formControlName="name" tabindex="4" />
+        </div>
+
+        <div class="inputDiv">
+          <input class="underline" type="password" placeholder="Password" formControlName="password" tabindex="5" />
         </div>
         <div class="inputDiv">
-          <input class="underline" type="text" placeholder="userId" formControlName="userId" tabindex="2" />
+          <input class="underline" type="password" placeholder="Password확인" formControlName="confirmpassword"
+            tabindex="6" />
         </div>
-        <div class="inputDiv">
-          <input class="underline" type="text" placeholder="name" formControlName="name" tabindex="3" />
-        </div>
-        <div class="inputDiv">
-          <input class="underline" type="password" placeholder="Password" formControlName="password" tabindex="4" />
-        </div>
-        <div class="inputDiv">
-          <input class="underline" type="password" placeholder="Password확인" formControlName="passwordconfirm"
-            tabindex="5" />
-        </div>
-        <button class="singin" tabindex="6">회원가입</button>
+
+        <button class="singin" tabindex="7">회원가입</button>
       </form>
     </div>
     <div class="another">
