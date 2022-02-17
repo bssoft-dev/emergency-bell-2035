@@ -10,15 +10,15 @@ export class ApiService {
 
     apiUrl = "http://api-2207.bs-soft.co.kr/"
 
-    getData():Observable<any>
-    {
-        return this.http.get(`${this.apiUrl}`);
-    }
-
+    /////////////
     login(data:any):Observable<any>
     {
      const headers = new HttpHeaders({"accept":"application/json", "Content-Type":"application/x-www-form-urlencoded"}) 
       return this.http.post(`${this.apiUrl}`+'auth/jwt/login', data, {headers});
+    }
+
+    logout(){
+      localStorage.removeItem('currentUser');
     }
     
     register(data:any):Observable<any>
@@ -27,12 +27,36 @@ export class ApiService {
       return this.http.post(`${this.apiUrl}`+'auth/register', data, {headers});
     }
 
-    logout(){
-      localStorage.removeItem('currentUser');
+
+    /////////////
+    detectiongraph(data:any):Observable<any>
+    {
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections/graph/d');
     }
 
-    setCurrentUser(user)
+    detectionstatus(data:any):Observable<any>
     {
-      localStorage.setItem('currentUser', user['email']);
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections/text/30');
     }
+
+    alldevice(data:any):Observable<any>
+    {
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/devices/deviceNum');
+    }
+
+    alivecheck(data:any):Observable<any>
+    {
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/devcie/abc/isConnection');
+    }
+
+    alldetection(data:any):Observable<any>
+    {
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections');
+    }
+
+    ///////////
+    
+
+    
+  
 }

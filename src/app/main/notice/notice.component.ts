@@ -9,6 +9,8 @@ import { ApiService } from '../../services/api.service';
 export class NoticeComponent implements OnInit {
 
   constructor(private service:ApiService ) {}
+
+  
   
   ngOnInit() {
   }
