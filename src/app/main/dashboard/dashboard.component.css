@@ -165,14 +165,10 @@ body{
     border-radius: 100px;
 }
 #outcircle{
-	display: flex;
-	background-color: #5151cc;
-	width:220px;
-	height:220px;
-	border-radius: 110px;
-	margin: 10px;
+	
   }
   #incircle{
+	border: 10px solid #5151cc;
 	margin: auto;
 	background-color: #4b4a50;
 	width:190px;
