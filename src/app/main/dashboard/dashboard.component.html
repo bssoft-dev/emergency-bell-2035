@@ -45,7 +45,7 @@
               style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
               <table class="table table-dark " style="table-layout: fixed;">
                 <thead>
-                  <tr>
+                  <tr style="background-color: #5156be">
                     <th style="font-size: 14px;">
                       위험등급
                     </th>
@@ -150,53 +150,40 @@
             <h5 class="card-title">전체 감지 내역</h5>
             <table class="table table-dark table-striped" style="table-layout: fixed;">
               <thead>
-                <tr>
+                <tr style="background-color: #5156be">
                   <th style="font-size: 18px;">
-                    #
+                    deviceid
                   </th>
                   <th style="font-size: 18px;">
-                    Event Type
+                    name
                   </th>
                   <th style="font-size: 18px;">
-                    Site
+                    time
                   </th>
                   <th style="font-size: 18px;">
-                    Device
+                    type
                   </th>
                   <th style="font-size: 18px;">
-                    Datetime
-                  </th>
-                  <th style="font-size: 18px;">
-                    Status
+                    location
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let log of noticeList">
+                <tr *ngFor="let i of alldetectiondata[0]">
                   <td class="font-weight-medium" style="font-size: 15px;">
-                    {{logs.indexOf(log) + 1}}
+                    {{i.deviceid}}
                   </td>
                   <td style="font-size: 15px;">
-                    {{log.event}}
+                    {{i.name}}
                   </td>
                   <td style="font-size: 15px;">
-                    {{sites[devices[log.deviceid].siteId].name}}
+                    {{i.time}}
                   </td>
                   <td style="font-size: 15px;">
-                    {{devices[log.deviceid].name}}
-                  </td>
-                  <td class="text-danger" style="font-size: 15px;">
-                    {{log.datetime}}
+                    {{i.type}}
                   </td>
                   <td style="font-size: 15px;">
-                    <label class="badge" [class.badge-primary]="!log.status" [class.badge-info]="log.status=='check'"
-                      [class.badge-danger]="log.status=='inspection'" [class.badge-success]="log.status=='reported'"
-                      [class.badge-warning]="log.status=='falseAlarm'" style="font-size: 15px;">{{!log.status?"감지됨":""}}
-                      {{log.status=='check'?"현장출동":""}}
-                      {{log.status=='inspection'?"확인중":""}}
-                      {{log.status=='reported'?"신고":""}}
-                      {{log.status=='falseAlarm'?"오작동":""}}
-                    </label>
+                    {{i.location}}
                   </td>
                 </tr>
               </tbody>

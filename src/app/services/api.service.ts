@@ -31,7 +31,7 @@ export class ApiService {
     /////////////
     detectiongraph(data:any):Observable<any>
     {
-      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections/graph/d');
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections/graph/m');
     }
 
     detectionstatus(data:any):Observable<any>
@@ -46,7 +46,7 @@ export class ApiService {
 
     alivecheck(data:any):Observable<any>
     {
-      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/devcie/abc/isConnection');
+      return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/device/abc/isConnection');
     }
 
     alldetection(data:any):Observable<any>

@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { l } from '@angular/core/src/render3';
 
 
 @Component({
@@ -34,7 +33,6 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
         this.service.login(king).subscribe({
           next:(res) => { 
-            console.log('kewkwkwk', res)
             localStorage.setItem('customer_code', res.customer_code);
             localStorage.setItem("token", res.access_token);
             this.loginForm.reset();
