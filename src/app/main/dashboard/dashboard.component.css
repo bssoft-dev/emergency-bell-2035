@@ -166,7 +166,7 @@ body{
     border-radius: 100px;
 }
 .circlecontainer{
-	overflow-x: scroll; 
+	overflow-x: auto; 
 	display: flex; 
 	align-items: center; 
 	height: 100%;
