@@ -31,10 +31,11 @@ body{
 
 }
 .fourthcard {
-	display: flex;
+	display: flexbox;
 	flex-direction: row;
 	align-items: space;
 	justify-content: space-around;
+	align-items: center;
 	width: 100%; height: 100%;
 	background-color: #282b30;
 

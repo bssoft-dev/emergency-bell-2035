@@ -53,4 +53,9 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/register']);
   }
 
+  godashboard(){
+    this.router.navigate(['/main/dashboard']);
+
+  }
+
 }
