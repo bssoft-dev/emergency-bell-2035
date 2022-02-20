@@ -165,8 +165,15 @@ body{
     border: 10px solid #ffffff;
     border-radius: 100px;
 }
-#outcircle{
-	
+.circlecontainer{
+	overflow-x: scroll; 
+	display: flex; 
+	align-items: center; 
+	height: 100%;
+}
+#circlebox{
+	display: block;
+	margin: 15px;
   }
   #incircle{
 	border: 10px solid #5151cc;
