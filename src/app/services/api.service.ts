@@ -54,6 +54,11 @@ export class ApiService {
       return this.http.get(`${this.apiUrl}`+'api/customers/'+`${data}`+'/detections');
     }
 
+    deviceenroll(data:any):Observable<any>
+    {
+      return this.http.post(`${this.apiUrl}`+'api/device', data);
+    }
+
     ///////////
     
 
