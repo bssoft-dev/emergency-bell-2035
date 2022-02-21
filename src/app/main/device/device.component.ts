@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device.component.css']
 })
 export class DeviceComponent implements OnInit {
-
+  public modal: boolean = false;
 
   constructor() {}
 
@@ -14,5 +14,10 @@ export class DeviceComponent implements OnInit {
   }
 
 
-
+  clickedModalClose(){
+    this.modal = false;
+  }
+  clickedModal(){
+    this.modal = true;
+  }
 }

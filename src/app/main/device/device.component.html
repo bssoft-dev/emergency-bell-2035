@@ -1,9 +1,18 @@
 <div class="content-wrapper">
   <div class="row">
     <div class="card" style="width: 100%; height: 100%; background-color: #282b30; padding: 50px;">
+      <h5 class="card-title" style="color: #ffffff;">기기관리</h5>
+
       <div class="table-responsive" style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
-        <h5 class="card-title" style="color: #ffffff;">기기관리</h5>
-        <table class="table table-dark table-striped" style="table-layout: fixed;">
+        <div class="devicetitle">
+          <div class="pt-4">
+            <button class="btn" (click)="clickedModal()">
+              <i class="menu-icon mdi mdi-plus" style="color: #ffffff; font-size: 30px;"></i>
+              기기 등록
+            </button>
+          </div>
+        </div>
+        <table class="table table-dark table-striped" style="table-layout: fixed; margin-top: 20px;">
           <thead>
             <tr style="background-color: #5156be;">
               <th style="font-size: 18px;">
@@ -56,6 +65,25 @@
 
               </td>
               <td style="font-size: 15px;">
+                <div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" (click)="clickedModalClose()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>body</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="clickedModalClose()">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </td>
               <td style="font-size: 15px;">
