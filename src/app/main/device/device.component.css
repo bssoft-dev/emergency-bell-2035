@@ -61,6 +61,10 @@ input{
 .inputDiv{
     position: flex;
 }
+.pictureinputtitle{
+	color: #ffffff;
+	margin-top: 40px;
+}
 .footerbutton{
     margin: 10px;
     margin-top: 60PX;

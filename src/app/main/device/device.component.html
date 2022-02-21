@@ -118,7 +118,10 @@
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="설치사진" formControlName="picture" tabindex="7" />
+            <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
+            <h4 class="pictureinputtitle">설치사진</h4>
+            <input placeholder="설치사진" type="file" accept="image/*" class="form-file" formControlName="picture"
+              (change)="onFileChange(fileInput.files)" #fileInput tabindex="7">
           </div>
 
           <div class="inputDiv">
