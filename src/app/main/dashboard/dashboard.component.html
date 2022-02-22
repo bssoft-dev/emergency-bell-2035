@@ -1,78 +1,70 @@
 <div class="content-wrapper">
 
-  <!--   
-  <div class="row" style="height: 20%;">
-    <h1>안녕하세요</h1>
-  </div> -->
+  <div class="row" id="backrow">
 
-
-  <div class="row" style="height: 100%;">
-
-    <div class="col" style="width: 50%; height: auto;">
-      <div class="row" style="width: 100%; height: 400px;">
-        <div class="col" style="width: 40%; height: 400px;">
-          <!-- <div style="background-color: aqua; height: 100%;">11</div> -->
+    <div class="col" id="halfcol">
+      <div class="row" id="onerow">
+        <div class="col" id="allbellcol">
           <div class="card firstcard">
             <h5 class="card-title">총 비상벨</h5>
 
 
-            <div class="innercard1" style="width: 95%; height: 40%; background-color: #5156be;">
-              <i class="menu-icon mdi mdi-alarm-light" style="color: #ffffff; font-size: 60px;"></i>
+            <div class="innercard1">
+              <i class="menu-icon mdi mdi-alarm-light"></i>
               <p class="innerfont1">39/50</p>
               <p class="innerfont2">정상작동중</p>
             </div>
 
-            <div class="innercardcon" style="width: 100%; height: 90%;">
-              <div class="innercard2" style="width: 45%; height: 90%; background-color: #1a1f71;">
+            <div class="innercardcon">
+              <div class="innercard2">
                 <p class="innerfont1">1</p>
-                <i class="menu-icon mdi mdi-alarm-light" style="color: #ffffff; font-size: 50px;"></i>
+                <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">비활성화</p>
               </div>
-              <div class="innercard2" style="width: 45%; height: 90%; background-color: #1a1f71;">
+              <div class="innercard2">
                 <p class="innerfont1">1</p>
-                <i class="menu-icon mdi mdi-alarm-light" style="color: #ffffff; font-size: 50px;"></i>
+                <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">기타</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col" style="width: 60%; height: 400px; ">
-
-          <div class="card secondcard" style="width: 100%; height: 100%; background-color: #282b30; padding: 15px;">
+        <div class="col" id="latelycol">
+          <div class="card secondcard">
             <h5 class="card-title">최근 감지 내역</h5>
-            <div class="table-responsive"
-              style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
-              <table class="table table-dark " style="table-layout: fixed;">
+            <div class="table-responsive">
+              <table class="table table-dark ">
                 <thead>
-                  <tr style="background-color: #5156be">
-                    <th style="font-size: 14px;">
+                  <tr class="tabletr">
+                    <th class="tableth">
                       위험등급
                     </th>
-                    <th style="font-size: 14px;">
+                    <th class="tableth">
                       위치
                     </th>
-                    <th style="font-size: 14px;">
+                    <th class="tableth">
                       시간
                     </th>
-                    <th style="font-size: 14px;">
+                    <th class="tableth">
                       처리상황
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let log of noticeList">
-                    <td class="font-weight-medium" style="font-size: 12px;">
-                      <div class="iconcircle1" id="fixing"><i class="menu-icon mdi mdi-shield-outline"
-                          style="font-size: 20px; color: #ffffff;"></i></div>
+                    <td class="tabletd font-weight-medium">
+                      <div class="iconcircle1" id="fixing">
+                        <i class="menu-icon mdi mdi-shield-outline"></i>
+                      </div>
                     </td>
-                    <td style="font-size: 12px;">
+                    <td class="tabletd">
                       {{sites[devices[log.deviceid].siteId].name}}
                     </td>
-                    <td class="text-danger" style="font-size: 12px;">
+                    <td class="tabletd text-danger">
                       {{log.datetime}}
                     </td>
-                    <td style="font-size: 12px;">
+                    <td class="tabletd">
                       ...
                     </td>
                   </tr>
@@ -80,14 +72,13 @@
               </table>
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="row" style="width: 100%; height: 500px; margin-top: 18px;">
-        <div class="card thirdcard" style="width: 150%; height: 100%; background-color: #282b30;">
+      <div class="row" id="tworow">
+        <div class="card thirdcard">
           <h4 class="card-title">스마트벨 설치 현황</h4>
-          <img src="http://api-2207.bs-soft.co.kr/api/images/bell.png" style="width: 95%;height: 75%;" />
+          <img src="http://api-2207.bs-soft.co.kr/api/images/bell.png" class="imgmap" />
           <!-- <ng-mapbox></ng-mapbox>
               <agm-map [latitude]="35.25228" [longitude]="126.8633" [zoom]="16" [disableDefaultUI]="false" [zoomControl]="false">
                 <agm-marker [latitude]="35.25228" [longitude]="126.8633">
@@ -97,16 +88,15 @@
         </div>
       </div>
 
-      <!-- 디바이스 넘버 -->
-      <div class="row" style="width: 100%; height: 300px; margin-top: 18px;">
+
+      <div class="row" id="threerow">
         <div class="card fourthcard">
           <div class="circlecontainer">
 
             <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
                 <p class="circlestatus">킹1</p>
               </div>
             </div>
@@ -114,8 +104,7 @@
             <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"></i></div>
                 <p class="circlestatus">킹2</p>
               </div>
             </div>
@@ -123,44 +112,39 @@
             <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"></i></div>
                 <p class="circlestatus">킹3</p>
               </div>
             </div>
 
-            <div id="circlebox" style="display: block;">
+            <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
                 <p class="circlestatus">킹4</p>
               </div>
             </div>
 
-            <div id="circlebox" style="display: block;">
+            <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
                 <p class="circlestatus">킹5</p>
               </div>
             </div>
 
-            <div id="circlebox" style="display: block;">
+            <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
                 <p class="circlestatus">킹6</p>
               </div>
             </div>
 
-            <div id="circlebox" style="display: block;">
+            <div id="circlebox">
               <div id="incircle">
                 <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"
-                    style="font-size: 50px; color: #ffffff;"></i></div>
+                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
                 <p class="circlestatus">킹7</p>
               </div>
             </div>
@@ -169,55 +153,52 @@
           </div>
         </div>
       </div>
-
-      <!-- 스마트벨 설치 현황 -->
     </div>
 
-    <div class="col" style="width: 50%;">
-      <div class="row" style=" height: 400px; background-color: #282b30; ">
+    <div class="col" id="halfcol">
+      <div class="row" id="chartrow">
         <div id="chartdiv"></div>
       </div>
 
-      <div class="row" style="width: 100%; height: 817px; margin-top: 18px; display: block !important;">
-        <div class="card" style="width: 100%; height: 100%; background-color: #282b30; padding: 50px;">
-          <div class="table-responsive"
-            style="width: 100%; overflow: auto; white-space:nowrap;border-collapse:collapse">
+      <div class="row" id="alldetectionrow">
+        <div class="card fifthcard">
+          <div class="table-responsive">
             <h5 class="card-title">전체 감지 내역</h5>
-            <table class="table table-dark table-striped" style="table-layout: fixed;">
+            <table class="table table-dark table-striped">
               <thead>
-                <tr style="background-color: #5156be">
-                  <th style="font-size: 18px;">
+                <tr class="tabletr">
+                  <th class="tableth2">
                     deviceid
                   </th>
-                  <th style="font-size: 18px;">
+                  <th class="tableth2">
                     name
                   </th>
-                  <th style="font-size: 18px;">
+                  <th class="tableth2">
                     time
                   </th>
-                  <th style="font-size: 18px;">
+                  <th class="tableth2">
                     type
                   </th>
-                  <th style="font-size: 18px;">
+                  <th class="tableth2">
                     location
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let i of alldetectiondata[0]">
-                  <td class="font-weight-medium" style="font-size: 15px;">
+                  <td class="font-weight-medium" class="tabletd2">
                     {{i.deviceid}}
                   </td>
-                  <td style="font-size: 15px;">
+                  <td class="tabletd2">
                     {{i.name}}
                   </td>
-                  <td style="font-size: 15px;">
+                  <td class="tabletd2">
                     {{i.time}}
                   </td>
-                  <td style="font-size: 15px;">
+                  <td class="tabletd2">
                     {{i.type}}
                   </td>
-                  <td style="font-size: 15px;">
+                  <td class="tabletd2">
                     {{i.location}}
                   </td>
                 </tr>

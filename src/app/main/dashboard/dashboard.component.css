@@ -18,6 +18,44 @@ div.card{
 body{
 	box-shadow: none !important;
 }
+#backrow{
+	height: 100%;
+}
+#halfcol{
+	width: 50%;
+}
+#onerow{
+	width: 100%; 
+	height: 400px;
+}
+#tworow{
+	width: 100%; 
+	height: 500px; 
+	margin-top: 18px;
+}
+#threerow{
+	width: 100%; 
+	height: 300px; 
+	margin-top: 18px;
+}
+#allbellcol{
+	width: 40%; 
+	height: 400px;
+}
+#latelycol{
+	width: 60%; 
+	height: 400px;
+}
+#chartrow{
+	height: 400px; 
+	background-color: #282b30;
+}
+#alldetectionrow{
+	width: 100%; 
+	height: 817px; 
+	margin-top: 18px; 
+	display: block !important;
+}
 
 .firstcard {
 	width: 100%; 
@@ -25,10 +63,48 @@ body{
 	background-color: #282b30;
 }
 .secondcard {
-
+	width: 100%; 
+	height: 100%; 
+	background-color: #282b30; 
+	padding: 15px;
 }
-.thirdcard {
+.table-responsive{
+	width: 100%; 
+	overflow: auto; 
+	white-space:nowrap;
+	border-collapse:collapse
+}
+.table-dark{
+	table-layout: fixed;
+}
+.tabletr{
+	background-color: #5156be
+}
+.tableth{
+	font-size: 14px;
+}
+.tabletd{
+	font-size: 12px;
+}
+.mdi-shield-outline{
+	font-size: 20px; 
+	color: #ffffff;
+}
+.tableth2{
+	font-size: 18px;
+}
+.tabletd2{
+	font-size: 15px;
+}
 
+.thirdcard {
+	width: 150%; 
+	height: 100%; 
+	background-color: #282b30;
+}
+.imgmap{
+	width: 95%;
+	height: 75%;
 }
 .fourthcard {
 	display: flexbox;
@@ -38,13 +114,12 @@ body{
 	align-items: center;
 	width: 100%; height: 100%;
 	background-color: #282b30;
-
 }
 .fifthcard {
-
-}
-.sixthcard {
-
+	width: 100%; 
+	height: 100%; 
+	background-color: #282b30; 
+	padding: 50px;
 }
 
 .fluid-container{
@@ -229,20 +304,26 @@ body{
 
   }
 .innercard1{
-margin: auto;
-width:100%;
-height:40%;
-border-radius: 10px;
-display: flex;
-flex-direction: row;
-text-align: center;
-align-items: center;
-justify-content: space-around;
-background-color: #5156be;
+	margin: auto;
+	width:95%;
+	height:40%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+	background-color: #5156be;
+}
+.menu-icon{
+	color: #ffffff; 
+	font-size: 60px;
 }
 .innercard2{
 	margin: auto;
-	width:100%;
+	width: 45%; 
+	height: 90%; 
+	background-color: #1a1f71;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -250,6 +331,8 @@ background-color: #5156be;
 	align-items: center;
 	justify-content: space-around;
 	background-color: #1a1f71;
+
+	
 	}
 .innerfont1{
 	font-size: 40px;
@@ -270,8 +353,10 @@ color: #ffffff;
 	display: flex;
 	flex-direction: row;
 	text-align: center;
-align-items: center;
-justify-content: space-around;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%; 
+	height: 90%;
 
 }
 #chartdiv {
