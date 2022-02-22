@@ -1,3 +1,7 @@
+.mdi-plus{
+	color: #ffffff; 
+	font-size: 30px;
+}
 .card{
     border-radius: 8px !important;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
@@ -6,6 +10,10 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+	width: 100%; 
+	height: 100%; 
+	background-color: #282b30; 
+	padding: 50px;
 }
 .card-title{
 	color: #ffffff;
@@ -25,6 +33,87 @@
 	align-items: center;
 }
 
+.table-responsive{
+	width: 100%; 
+	overflow: auto; 
+	white-space:nowrap; 
+	border-collapse:collapse
+}
+.table-dark{
+	table-layout: fixed;
+	margin-top: 20px;
+}
+.tabletr{
+	background-color: #5156be;
+}
+.tableth{
+	font-size: 18px;
+}
+.tabletd{
+	font-size: 15px;
+}
+
+
+label {
+	margin-left: 60px;
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 70px;
+	height: 25px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+
+
+label:active:after {
+	width: 30px;
+}
+td{
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+ul{
+	list-style: none;
+	text-align: center;
+}
+li{
+	display: inline-block;
+}
+.modifying{
+	background-color: #5156be;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+	border-radius: 3px;
+}
+.mdi-pencil-box-outline{
+	font-size: 20px; 
+	color: #ffffff; 
+	margin-top: 10px;
+}
+.mdi-delete{
+	font-size: 20px; 
+	color: #ffffff;
+}
 
 .modalcontainer{
 	background-color: rgba(0, 0, 0, 0.6);

@@ -6,13 +6,34 @@
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+	width: 100%; 
+	height: 100%; 
+	background-color: #282b30; 
+	padding: 50px;
 }
 .card-title{
 	color: #ffffff;
 	font-size: 25px;
 	font-weight: 600;
 }
-
+.table-responsive{
+	width: 100%; 
+	overflow: auto; 
+	white-space:nowrap; 
+	border-collapse:collapse
+}
+.table-dark{
+	table-layout: fixed;
+}
+.tabletr{
+	background-color: #5156be;
+}
+.tableth{
+	font-size: 18px;
+}
+.tabletd{
+	font-size: 15px;
+}
 
 input[type=checkbox]{
 	height: 0;
@@ -77,4 +98,13 @@ li{
 	align-items: center;
 	margin: 5px;
 	border-radius: 3px;
+}
+.mdi-pencil-box-outline{
+	font-size: 20px; 
+	color: #ffffff; 
+	margin-top: 10px;
+}
+.mdi-delete{
+	font-size: 20px; 
+	color: #ffffff;
 }
