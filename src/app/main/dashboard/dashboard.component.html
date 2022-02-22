@@ -11,18 +11,18 @@
 
             <div class="innercard1">
               <i class="menu-icon mdi mdi-alarm-light"></i>
-              <p class="innerfont1">39/50</p>
+              <p class="innerfont1">{{activatedevice}}/{{numdevice}}</p>
               <p class="innerfont2">정상작동중</p>
             </div>
 
             <div class="innercardcon">
               <div class="innercard2">
-                <p class="innerfont1">1</p>
+                <p class="innerfont1">{{deactivatedevice}}</p>
                 <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">비활성화</p>
               </div>
               <div class="innercard2">
-                <p class="innerfont1">1</p>
+                <p class="innerfont1">{{inspectiondevice}}</p>
                 <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">기타</p>
               </div>
@@ -41,31 +41,31 @@
                       위험등급
                     </th>
                     <th class="tableth">
-                      위치
+                      디바이스Id
                     </th>
                     <th class="tableth">
                       시간
                     </th>
                     <th class="tableth">
-                      처리상황
+                      타입
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let log of noticeList">
+                  <tr *ngFor="let i of detectionstatusdata[0]">
                     <td class="tabletd font-weight-medium">
                       <div class="iconcircle1" id="fixing">
                         <i class="menu-icon mdi mdi-shield-outline"></i>
                       </div>
                     </td>
                     <td class="tabletd">
-                      {{sites[devices[log.deviceid].siteId].name}}
+                      {{i.deviceId}}
                     </td>
                     <td class="tabletd text-danger">
-                      {{log.datetime}}
+                      {{i.time}}
                     </td>
                     <td class="tabletd">
-                      ...
+                      {{i.type}}
                     </td>
                   </tr>
                 </tbody>
@@ -93,62 +93,17 @@
         <div class="card fourthcard">
           <div class="circlecontainer">
 
-            <div id="circlebox">
+            <div id="circlebox" *ngFor="let i of alivecheckdata">
               <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
-                <p class="circlestatus">킹1</p>
+                <p class="circletitle">{{i[0]}}</p>
+                <div *ngIf="i[1] === 'Deactivate'" class="iconcircle" id="fixing">
+                  <i class="menu-icon mdi mdi-settings"></i>
+                </div>
+                <div *ngIf="i[1] === 'Activation'" class="iconcircle" id="normal"><i
+                    class="menu-icon mdi mdi-alarm-light"></i></div>
+                <p class="circlestatus">{{i[1]}}</p>
               </div>
             </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"></i></div>
-                <p class="circlestatus">킹2</p>
-              </div>
-            </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="normal"><i class="menu-icon mdi mdi-alarm-light"></i></div>
-                <p class="circlestatus">킹3</p>
-              </div>
-            </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
-                <p class="circlestatus">킹4</p>
-              </div>
-            </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
-                <p class="circlestatus">킹5</p>
-              </div>
-            </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
-                <p class="circlestatus">킹6</p>
-              </div>
-            </div>
-
-            <div id="circlebox">
-              <div id="incircle">
-                <p class="circletitle">디바이스넘버</p>
-                <div class="iconcircle" id="fixing"><i class="menu-icon mdi mdi-settings"></i></div>
-                <p class="circlestatus">킹7</p>
-              </div>
-            </div>
-
 
           </div>
         </div>
@@ -187,7 +142,7 @@
               <tbody>
                 <tr *ngFor="let i of alldetectiondata[0]">
                   <td class="font-weight-medium" class="tabletd2">
-                    {{i.deviceid}}
+                    {{i.deviceId}}
                   </td>
                   <td class="tabletd2">
                     {{i.name}}

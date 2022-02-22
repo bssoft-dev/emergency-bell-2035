@@ -10,85 +10,87 @@ import { ApiService } from '../../services/api.service';
 import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
+import { c } from '@angular/core/src/render3';
 
 
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.css']
 })
 
 
 export class DashboardComponent implements OnInit {
 
-    checktoken = ()=>{
-        if(!localStorage.getItem("token")){
+    checktoken = () => {
+        if (!localStorage.getItem("token")) {
             this.router.navigate(['/login']);
         }
     }
 
-    constructor( public router: Router, private service:ApiService) {
-     
+    constructor(public router: Router, private service: ApiService) {
+
     }
 
-    makechart = (dataset)=>{
+    makechart = (dataset) => {
         setTimeout(() => {
             var root = am5.Root.new("chartdiv");
 
             // Create chart
             // https://www.amcharts.com/docs/v5/charts/xy-chart/
             var chart = root.container.children.push(am5xy.XYChart.new(root, {
-            panX: false,
-            panY: false,
-            layout: root.verticalLayout
+                panX: false,
+                panY: false,
+                layout: root.verticalLayout
             }));
 
             // Add scrollbar
             // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
 
-            var data = dataset
-
+            var data =
+                // [{ Button: 0, Scream: 0, Time: '202021' }, { Button: 0, Scream: 0, Time: '202020' }, { Button: 0, Scream: 0, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
+                dataset;
 
 
 
             // Create axes
             // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
             var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-            categoryField: "Time",
-            renderer: am5xy.AxisRendererX.new(root, {}),
-            tooltip: am5.Tooltip.new(root, {})
+                categoryField: "Time",
+                renderer: am5xy.AxisRendererX.new(root, {}),
+                tooltip: am5.Tooltip.new(root, {})
             }));
 
             xAxis.data.setAll(data);
 
-            
-            
+
+
 
             var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-            min: 0,
-            max: 100,
-            numberFormat: "#'%'",
-            strictMinMax: true,
-            calculateTotals: true,
-            renderer: am5xy.AxisRendererY.new(root, {})
+                min: 0,
+                max: 100,
+                numberFormat: "#'%'",
+                strictMinMax: true,
+                calculateTotals: true,
+                renderer: am5xy.AxisRendererY.new(root, {})
             }));
 
             // Add legend
             // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
             var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.p50,
-            x: am5.p50
+                centerX: am5.p50,
+                x: am5.p50
             }));
 
             // set text,grid color white
             root.interfaceColors.set("grid", am5.color("#ffffff"));
             root.interfaceColors.set("text", am5.color("#ffffff"));
-            
+
             // Add series
             // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
             function makeSeries(name, fieldName) {
-                if(name==="Button"){
+                if (name === "Button") {
                     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
                         fill: am5.color("#6794dc"),
                         name: name,
@@ -99,7 +101,7 @@ export class DashboardComponent implements OnInit {
                         valueYShow: "valueYTotalPercent",
                         categoryXField: "Time"
                     }));
-                }else{
+                } else {
                     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
                         fill: am5.color("#a367dc"),
                         name: name,
@@ -114,7 +116,7 @@ export class DashboardComponent implements OnInit {
                 series.columns.template.setAll({
                     tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
                     tooltipY: am5.percent(10),
-                    
+
                 });
                 series.data.setAll(data);
 
@@ -124,13 +126,13 @@ export class DashboardComponent implements OnInit {
 
                 series.bullets.push(function () {
                     return am5.Bullet.new(root, {
-                    sprite: am5.Label.new(root, {
-                        text: "{valueYTotalPercent.formatNumber('#.#')}%",
-                        fill: root.interfaceColors.get("alternativeText"),
-                        centerY: am5.p50,
-                        centerX: am5.p50,
-                        populateText: true
-                    })
+                        sprite: am5.Label.new(root, {
+                            text: "{valueYTotalPercent.formatNumber('#.#')}%",
+                            fill: root.interfaceColors.get("alternativeText"),
+                            centerY: am5.p50,
+                            centerX: am5.p50,
+                            populateText: true
+                        })
                     });
                 });
                 legend.data.push(series);
@@ -143,82 +145,103 @@ export class DashboardComponent implements OnInit {
             xAxis.get("renderer").labels.template.setAll({
                 fill: root.interfaceColors.get("alternativeText")
             });
-            
+
             // Make stuff animate on load
             // https://www.amcharts.com/docs/v5/concepts/animations/
         }, 100);
     }
 
-    detectiongraph(){
+    detectiongraph() {
         let detectiongraphdata = [];
         let dataset = [];
         this.service.detectiongraph(localStorage.getItem('customer_code')).subscribe({
-            next:(res) => { 
+            next: (res) => {
                 detectiongraphdata.push(res)
-                const {Button, Scream, Time} = detectiongraphdata[0];
+                const { Button, Scream, Time } = detectiongraphdata[0];
                 for (let i = 0; i < Button.length; i++) {
-                    dataset.push({Button:Button[i], Scream:Scream[i], Time:Time[i]})
+                    dataset.push({ Button: Button[i], Scream: Scream[i], Time: Time[i] })
                 }
                 this.makechart(dataset)
             },
-            error:(err)=>{
-                
-             },
-            complete:()=> { 
+            error: (err) => {
+
+            },
+            complete: () => {
             }
-          });
+        });
     }
 
-    detectionstatus(){
+    detectionstatusdata = [];
+    detectionstatus() {
         this.service.detectionstatus(localStorage.getItem('customer_code')).subscribe({
-            next:(res) => { 
+            next: (res) => {
+                this.detectionstatusdata.push(res)
+            },
+            error: (err) => {
 
-             },
-            error:(err)=>{
-              
-             },
-            complete:()=> { 
+            },
+            complete: () => {
             }
-          });
+        });
     }
 
-    alldevice(){
+    numdevice;
+    deactivatedevice;
+    inspectiondevice;
+    activatedevice;
+    alldevice() {
         this.service.alldevice(localStorage.getItem('customer_code')).subscribe({
-            next:(res) => { 
+            next: (res) => {
+                this.numdevice = res.numDevice
+                this.deactivatedevice = res.deactivateDevice
+                this.inspectiondevice = res.inspectionDevice
+                this.activatedevice = (this.numdevice - this.deactivatedevice - this.inspectiondevice)
+            },
+            error: (err) => {
 
-             },
-            error:(err)=>{
-              
-             },
-            complete:()=> { 
+            },
+            complete: () => {
             }
-          });
+        });
     }
 
-    alivecheck(){
+    alivecheckdata = [];
+    alivecheckdatakey = [];
+    alivecheckdatavalue = [];
+    tempdata = [];
+    alivecheck() {
         this.service.alivecheck(localStorage.getItem('customer_code')).subscribe({
-            next:(res) => { 
-             },
-            error:(err)=>{
-             },
-            complete:()=> {
+            next: (res) => {
+                this.alivecheckdatakey = Object.keys(res);
+                this.alivecheckdatavalue = Object.values(res);
+                for (let i = 0; i < this.alivecheckdatakey.length; i++) {
+                    this.tempdata.push(this.alivecheckdatakey[i])
+                    this.tempdata.push(this.alivecheckdatavalue[i])
+                    this.alivecheckdata.push(this.tempdata);
+                    this.tempdata = [];
+                }
+                console.log(this.alivecheckdata, '기이이잉')
+            },
+            error: (err) => {
+            },
+            complete: () => {
             }
-          });
+        });
     }
 
 
     alldetectiondata = [];
-    alldetection(){
+    alldetection() {
         this.service.alldetection(localStorage.getItem('customer_code')).subscribe({
-            next:(res) => { 
-              this.alldetectiondata.push(res)
-             },
-            error:(err)=>{
-                
-             },
-            complete:()=> { 
+            next: (res) => {
+                this.alldetectiondata.push(res)
+            },
+            error: (err) => {
+
+            },
+            complete: () => {
             }
-          });
+        });
     }
 
     ngOnInit() {
@@ -235,9 +258,9 @@ export class DashboardComponent implements OnInit {
 }
 
 
-    
-    
 
-    
+
+
+
 
 

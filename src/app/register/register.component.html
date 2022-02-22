@@ -6,7 +6,7 @@
 
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div class="inputDiv">
-          <input class="requirefield" type="text" placeholder="Id" formControlName="userId" tabindex="1" />
+          <input type="text" placeholder="Id" formControlName="userId" tabindex="1" />
         </div>
 
         <div class="inputDiv">
@@ -14,8 +14,7 @@
         </div>
 
         <div class="inputDiv">
-          <input class="requirefield" type="text" placeholder="customerCode" formControlName="customerCode"
-            tabindex="3" />
+          <input type="text" placeholder="customerCode" formControlName="customerCode" tabindex="3" />
         </div>
 
         <div class="inputDiv">
@@ -23,11 +22,10 @@
         </div>
 
         <div class="inputDiv">
-          <input class="requirefield" type="password" placeholder="Password" formControlName="password" tabindex="5" />
+          <input type="password" placeholder="Password" formControlName="password" tabindex="5" />
         </div>
         <div class="inputDiv">
-          <input class="requirefield" type="password" placeholder="Password확인" formControlName="confirmpassword"
-            tabindex="6" />
+          <input type="password" placeholder="Password확인" formControlName="confirmpassword" tabindex="6" />
         </div>
 
         <button class="singin" tabindex="7" type="submit">회원가입</button>
