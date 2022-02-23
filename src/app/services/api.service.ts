@@ -28,27 +28,39 @@ export class ApiService {
 
   /////////////
   detectiongraph(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/graph/d?limit=5');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/graph/d?limit=5', { headers });
   }
 
   detectionstatus(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/text/30');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/text/30', { headers });
   }
 
   alldevice(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices/deviceNum');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices/deviceNum', { headers });
   }
 
   alivecheck(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices/isConnection');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices/isConnection', { headers });
   }
 
   alldetection(data: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections');
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections', { headers });
   }
 
   deviceenroll(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}` + 'api/device', data);
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.post(`${this.apiUrl}` + 'api/device', data, { headers });
   }
 
   ///////////

@@ -77,10 +77,6 @@ export class DashboardComponent implements OnInit {
 
             var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
                 min: 0,
-                // max: 100,
-                // numberFormat: "#'%'",
-                // strictMinMax: true,
-                // calculateTotals: true,
                 renderer: am5xy.AxisRendererY.new(root, {})
             }));
 
@@ -164,6 +160,7 @@ export class DashboardComponent implements OnInit {
         let dataset = [];
         this.service.detectiongraph(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
+                console.log('영스으으응', res)
                 detectiongraphdata.push(res)
                 const { Button, Scream, Time } = detectiongraphdata[0];
                 for (let i = 0; i < Button.length; i++) {
