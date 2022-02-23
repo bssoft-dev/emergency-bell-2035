@@ -37,20 +37,28 @@ export class DashboardComponent implements OnInit {
         setTimeout(() => {
             var root = am5.Root.new("chartdiv");
 
+
+            root.setThemes([
+                am5themes_Animated.new(root)
+            ]);
+
+            root.dateFormatter.setAll({
+                dateFormat: "yyyy-MM-dd",
+                dateFields: ["valueX"]
+            });
+
             // Create chart
             // https://www.amcharts.com/docs/v5/charts/xy-chart/
             var chart = root.container.children.push(am5xy.XYChart.new(root, {
                 panX: false,
                 panY: false,
+                wheelY: "zoomX",
                 layout: root.verticalLayout
             }));
 
-            // Add scrollbar
-            // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-
             var data =
-                // [{ Button: 0, Scream: 0, Time: '202021' }, { Button: 0, Scream: 0, Time: '202020' }, { Button: 0, Scream: 0, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
-                dataset;
+                [{ Button: 14, Scream: 15, Time: '2020-02-01' }, { Button: 20, Scream: 15, Time: '2020-02-02' }, { Button: 7, Scream: 10, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
+            // dataset;
 
 
 
@@ -69,10 +77,10 @@ export class DashboardComponent implements OnInit {
 
             var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
                 min: 0,
-                max: 100,
-                numberFormat: "#'%'",
-                strictMinMax: true,
-                calculateTotals: true,
+                // max: 100,
+                // numberFormat: "#'%'",
+                // strictMinMax: true,
+                // calculateTotals: true,
                 renderer: am5xy.AxisRendererY.new(root, {})
             }));
 
@@ -98,7 +106,7 @@ export class DashboardComponent implements OnInit {
                         xAxis: xAxis,
                         yAxis: yAxis,
                         valueYField: fieldName,
-                        valueYShow: "valueYTotalPercent",
+                        // valueYShow: "valueYTotalPercent",
                         categoryXField: "Time"
                     }));
                 } else {
@@ -109,12 +117,12 @@ export class DashboardComponent implements OnInit {
                         xAxis: xAxis,
                         yAxis: yAxis,
                         valueYField: fieldName,
-                        valueYShow: "valueYTotalPercent",
+                        // valueYShow: "valueYTotalPercent",
                         categoryXField: "Time"
                     }));
                 }
                 series.columns.template.setAll({
-                    tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+                    tooltipText: "{name}, {categoryX}:{valueY}",
                     tooltipY: am5.percent(10),
 
                 });
@@ -127,7 +135,7 @@ export class DashboardComponent implements OnInit {
                 series.bullets.push(function () {
                     return am5.Bullet.new(root, {
                         sprite: am5.Label.new(root, {
-                            text: "{valueYTotalPercent.formatNumber('#.#')}%",
+                            text: "{valueY}",
                             fill: root.interfaceColors.get("alternativeText"),
                             centerY: am5.p50,
                             centerX: am5.p50,
