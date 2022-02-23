@@ -50,6 +50,7 @@ export class DashboardComponent implements OnInit {
             // Create chart
             // https://www.amcharts.com/docs/v5/charts/xy-chart/
             var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                focusable: true,
                 panX: false,
                 panY: false,
                 wheelY: "zoomX",
@@ -118,9 +119,10 @@ export class DashboardComponent implements OnInit {
                     }));
                 }
                 series.columns.template.setAll({
+                    maxWidth: 50,
+                    strokeOpacity: 0,
                     tooltipText: "{name}, {categoryX}:{valueY}",
                     tooltipY: am5.percent(10),
-
                 });
                 series.data.setAll(data);
 
