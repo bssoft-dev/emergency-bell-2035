@@ -29,9 +29,7 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-    constructor(public router: Router, private service: ApiService) {
-
-    }
+    constructor(public router: Router, private service: ApiService) { }
 
     makechart = (dataset) => {
         setTimeout(() => {
@@ -58,8 +56,8 @@ export class DashboardComponent implements OnInit {
             }));
 
             var data =
-                [{ Button: 14, Scream: 15, Time: '2020-02-01' }, { Button: 20, Scream: 15, Time: '2020-02-02' }, { Button: 7, Scream: 10, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
-            // dataset;
+                // [{ Button: 14, Scream: 15, Time: '2020-02-01' }, { Button: 20, Scream: 15, Time: '2020-02-02' }, { Button: 7, Scream: 10, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
+                dataset;
 
 
 
@@ -227,7 +225,6 @@ export class DashboardComponent implements OnInit {
                     this.alivecheckdata.push(this.tempdata);
                     this.tempdata = [];
                 }
-                console.log(this.alivecheckdata, '기이이잉')
             },
             error: (err) => {
             },

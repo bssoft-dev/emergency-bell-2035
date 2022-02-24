@@ -12,7 +12,24 @@ export class DeviceComponent implements OnInit {
   deviceenrollForm: FormGroup;
   public modal: boolean = false;
 
-  constructor(public router: Router, private service:ApiService) {}
+  constructor(public router: Router, private service: ApiService) { }
+
+  getalldevicesdata = [];
+  getalldevices() {
+    this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
+      next: (res) => {
+        console.log(res, '김영승')
+        this.getalldevicesdata = res;
+        console.log(this.getalldevicesdata)
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
+  }
+
 
   ngOnInit() {
     this.deviceenrollForm = new FormGroup({
@@ -20,38 +37,40 @@ export class DeviceComponent implements OnInit {
       'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("", ),
+      'location': new FormControl("",),
       'installDate': new FormControl("",),
       'picture': new FormControl("",),
       'communicateMethod': new FormControl("",),
       'userMemo': new FormControl("",),
     });
+
+    this.getalldevices();
   }
 
 
-  clickedModalClose(){
+  clickedModalClose() {
     this.modal = false;
     this.deviceenrollForm.reset()
   }
-  clickedModal(){
+  clickedModal() {
     this.modal = true;
   }
-  deviceenroll(){
-    this.modal= false;
+  deviceenroll() {
+    this.modal = false;
     const data = this.deviceenrollForm.value;
-    if(this.deviceenrollForm.valid){
+    if (this.deviceenrollForm.valid) {
       this.service.deviceenroll(data).subscribe({
-        next:(res) => { 
+        next: (res) => {
           alert('디바이스 등록이 완료되었습니다')
           this.deviceenrollForm.reset()
-          },
-        error:(err)=>{
+        },
+        error: (err) => {
           alert('정보를 잘못 입력하셨습니다')
-          },
-        complete:()=> { 
+        },
+        complete: () => {
         }
       });
     }
   }
-  
+
 }

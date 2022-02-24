@@ -45,36 +45,35 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let devicedata of getalldevicesdata">
               <td class="tabletd font-weight-medium">
-                wwefwef
-              </td>
-              <td class="tabletd">
-                wefwefewf
-              </td>
-              <td class="tabletd">
-                wefwef
+                {{devicedata.customerCode}}
               </td>
               <td class="tabletd">
 
               </td>
               <td class="tabletd">
-
+                {{devicedata.name}}
               </td>
               <td class="tabletd">
 
               </td>
               <td class="tabletd">
-
+                {{devicedata.installDate}}
+              </td>
+              <td class="tabletd">
+                {{devicedata.picture}}
               </td>
               <td class="tabletd">
 
+              </td>
+              <td class="tabletd">
+                {{devicedata.userMemo}}
               </td>
               <td class="tabletd">
 
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>

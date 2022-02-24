@@ -26,11 +26,11 @@ export class ApiService {
   }
 
 
-  /////////////
+  // dashboard 페이지
   detectiongraph(data: any): Observable<any> {
     const token = localStorage.getItem("token")
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` })
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/graph/d?limit=5', { headers });
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/graph/m?limit=15', { headers });
   }
 
   detectionstatus(data: any): Observable<any> {
@@ -57,15 +57,19 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections', { headers });
   }
 
+
+
+  // device페이지
+  getalldevices(data: any): Observable<any> {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices', { headers });
+  }
+
   deviceenroll(data: any): Observable<any> {
     const token = localStorage.getItem("token")
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${token}` })
     return this.http.post(`${this.apiUrl}` + 'api/device', data, { headers });
   }
-
-  ///////////
-
-
-
 
 }
