@@ -11,6 +11,9 @@ import { ApiService } from '../../services/api.service';
 export class DeviceComponent implements OnInit {
   deviceenrollForm: FormGroup;
   public modal: boolean = false;
+  fileSelected?: Blob;
+  // imageUrl?: string;
+  imageSrc: any;
 
   constructor(public router: Router, private service: ApiService) { }
 
@@ -31,7 +34,7 @@ export class DeviceComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.deviceenrollForm = new FormGroup({
       'customerCode': new FormControl("", [Validators.required]),
       'deviceId': new FormControl("", [Validators.required]),
@@ -45,6 +48,18 @@ export class DeviceComponent implements OnInit {
     });
 
     this.getalldevices();
+  }
+
+  onFileChange(files: FileList): void {
+    this.fileSelected = files[0]
+    // this.imageUrl = this.sant.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileSelected)) as string;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.fileSelected);
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+      console.log()
+    }
   }
 
 

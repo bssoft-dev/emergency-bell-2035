@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 declare const am5: any;
 declare const am5xy: any;
 declare const am5themes_Animated: any;
-import * as mapboxgl from 'mapbox-gl';
+
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 
@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api.service';
 import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
-import { c } from '@angular/core/src/render3';
+
 
 
 
@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
     constructor(public router: Router, private service: ApiService) { }
 
-    makechart = (dataset) => {
+    makechart = (dataset: any) => {
         setTimeout(() => {
             var root = am5.Root.new("chartdiv");
 
@@ -92,7 +92,7 @@ export class DashboardComponent implements OnInit {
 
             // Add series
             // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-            function makeSeries(name, fieldName) {
+            function makeSeries(name: any, fieldName: any) {
                 if (name === "Button") {
                     var series = chart.series.push(am5xy.ColumnSeries.new(root, {
                         fill: am5.color("#6794dc"),
@@ -156,8 +156,8 @@ export class DashboardComponent implements OnInit {
     }
 
     detectiongraph() {
-        let detectiongraphdata = [];
-        let dataset = [];
+        let detectiongraphdata: any[] = [];
+        let dataset: any[] = [];
         this.service.detectiongraph(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
                 console.log('영스으으응', res)
@@ -190,10 +190,10 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    numdevice;
-    deactivatedevice;
-    inspectiondevice;
-    activatedevice;
+    numdevice: any;
+    deactivatedevice: any;
+    inspectiondevice: any;
+    activatedevice: any;
     alldevice() {
         this.service.alldevice(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
@@ -210,10 +210,10 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    alivecheckdata = [];
-    alivecheckdatakey = [];
-    alivecheckdatavalue = [];
-    tempdata = [];
+    alivecheckdata: any[] = [];
+    alivecheckdatakey: string[] = [];
+    alivecheckdatavalue: string[] = [];
+    tempdata: any[] = [];
     alivecheck() {
         this.service.alivecheck(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {

@@ -143,7 +143,7 @@
 /* === SCSS Compass Functions === */
 
 
-@import url("/assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css");
+/* @import url("/assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css"); */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @-moz-keyframes flash {
     0% {
