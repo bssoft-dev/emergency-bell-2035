@@ -160,7 +160,6 @@ export class DashboardComponent implements OnInit {
         let dataset: any[] = [];
         this.service.detectiongraph(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
-                console.log('영스으으응', res)
                 detectiongraphdata.push(res)
                 const { Button, Scream, Time } = detectiongraphdata[0];
                 for (let i = 0; i < Button.length; i++) {

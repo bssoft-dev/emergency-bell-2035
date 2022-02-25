@@ -72,4 +72,11 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}` + 'api/device', data, { headers });
   }
 
+  // customer페이지
+  getallcustomers(): Observable<any> {
+    const token = localStorage.getItem("token")
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers', { headers });
+  }
+
 }

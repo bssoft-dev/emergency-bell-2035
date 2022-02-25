@@ -95,15 +95,23 @@ ul{
 li{
 	display: inline-block;
 }
+
 .modifying{
 	background-color: #5156be;
-	width: 40px;
-	height: 40px;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	margin: 5px;
 	border-radius: 3px;
+	margin-left: 20px;
+}
+.mdi-pencil-box-outline{
+	font-size: 20px; 
+	color: #ffffff; 
+	margin-top: 10px;
+}
+.mdi-delete{
+	font-size: 20px; 
+	color: #ffffff;
 }
 .mdi-pencil-box-outline{
 	font-size: 20px; 

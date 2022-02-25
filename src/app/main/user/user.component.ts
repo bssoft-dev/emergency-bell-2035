@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  checking = ""
+  checking = "checked"
+  event: any;
 
 
   constructor() { }
@@ -15,16 +16,15 @@ export class UserComponent implements OnInit {
   }
 
 
-  getCheckboxValue(event) {
-    let result = '';
-    if (event.target.checked) {
-      result = event.target.value;
-      console.log(result)
-    } else {
-      result = 'unch';
-      console.log(result)
-    }
+  getCheckboxValue() {
+    if (this.checking === "") {
+      this.checking = "checked"
+      console.log(this.checking)
 
+    } else {
+      this.checking = ""
+      console.log(this.checking)
+    }
 
   }
 

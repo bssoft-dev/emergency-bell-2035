@@ -59,8 +59,8 @@
 
               </td>
               <td class="tabletd">
-                <input [checked]="checking" value="ch" type="checkbox" id="switch"
-                  onclick="getCheckboxValue(event)" /><label for="switch"></label>
+                <input [checked]="checking" value="ch" type="checkbox" id="switch" (click)="getCheckboxValue()" /><label
+                  for="switch"></label>
               </td>
               <td class="tabletd">
                 <ul class="modify">

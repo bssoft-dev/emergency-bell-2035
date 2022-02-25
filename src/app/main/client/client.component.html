@@ -28,7 +28,7 @@
                 등록일자
               </th>
               <th class="tableth">
-                관리자권한
+                특이사항
               </th>
               <th class="tableth">
                 변경
@@ -36,30 +36,37 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let customers of getcustomersdata[0]">
               <td class="tabletd font-weight-medium">
-                wwefwef
+                {{customers.name}}
               </td>
               <td class="tabletd">
-                wefwefewf
+                {{customers.staffName}}
+
               </td>
               <td class="tabletd">
-                wefwef
+                {{customers.phone}}
+
               </td>
               <td class="tabletd">
+                {{customers.numDevice}}
+
+              </td>
+              <td class="tabletd">
+                {{customers.status}}
+
+              </td>
+              <td class="tabletd">
+                {{customers.payMethod}}
+
+              </td>
+              <td class="tabletd">
+                {{customers.lastModify}}
 
               </td>
               <td class="tabletd">
 
-              </td>
-              <td class="tabletd">
 
-              </td>
-              <td class="tabletd">
-
-              </td>
-              <td class="tabletd">
-                <input type="checkbox" id="switch" /><label for="switch"></label>
               </td>
               <td class="tabletd">
                 <ul class="modify">
