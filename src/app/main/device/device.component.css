@@ -113,15 +113,7 @@ li{
 	font-size: 20px; 
 	color: #ffffff;
 }
-.mdi-pencil-box-outline{
-	font-size: 20px; 
-	color: #ffffff; 
-	margin-top: 10px;
-}
-.mdi-delete{
-	font-size: 20px; 
-	color: #ffffff;
-}
+
 
 .modalcontainer{
 	background-color: rgba(0, 0, 0, 0.6);

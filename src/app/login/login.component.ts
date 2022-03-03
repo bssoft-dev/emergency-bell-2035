@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
         next: (res) => {
           localStorage.setItem('customer_code', res.customer_code);
           localStorage.setItem("token", res.access_token);
-          console.log(res, '영승')
           this.loginForm.reset();
           this.router.navigate(['/main/dashboard']);
         },
