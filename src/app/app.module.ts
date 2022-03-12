@@ -21,6 +21,8 @@ import { UserComponent } from './main/user/user.component';
 import { ClientComponent } from './main/client/client.component';
 
 import { ApiService } from './services/api.service';
+import { WebsocketService } from './services/websocket.service';
+import { WebsocketComponent } from './websocket/websocket.component';
 
 
 
@@ -52,6 +54,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'ws', component: WebsocketComponent },
 
   {
     path: '',
@@ -71,6 +74,7 @@ const appRoutes: Routes = [
     UserComponent,
     ClientComponent,
     RegisterComponent,
+    WebsocketComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -83,7 +87,8 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    ApiService
+    ApiService,
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })
