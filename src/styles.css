@@ -20126,7 +20126,7 @@ input:focus {
   margin-top: 8px;
 }
 .navbar-menu-wrapper{
-  border: none;
+  border-bottom: 3px solid #282c2f;
 }
 @media (min-width: 1200px){
     .icon-menu.ti-close {

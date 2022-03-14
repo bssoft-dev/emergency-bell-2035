@@ -3,6 +3,20 @@
 	height		: 500px;
 	font-size	: 11px;
 }							
+.navbar-nav{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navtitle{
+	margin-left: 50px;
+}
+.navtitle p {
+	color: #ffffff;
+	font-size: 30px;
+	font-weight: 700;
+}
 
 #events {
 	width	: 100%;

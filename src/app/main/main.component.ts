@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  logout(){
+  }
+
+  logout() {
     localStorage.removeItem("token")
     localStorage.removeItem("customer_code")
     this.router.navigate(['/login'])
