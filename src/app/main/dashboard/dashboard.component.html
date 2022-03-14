@@ -141,28 +141,22 @@
               <thead>
                 <tr class="tabletr">
                   <th class="tableth2">
-                    deviceid
+                    디바이스명
                   </th>
                   <th class="tableth2">
-                    name
+                    시간
                   </th>
                   <th class="tableth2">
-                    time
+                    타입
                   </th>
                   <th class="tableth2">
-                    type
-                  </th>
-                  <th class="tableth2">
-                    location
+                    위치
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let i of alldetectiondata[0]">
                   <td class="font-weight-medium" class="tabletd2">
-                    {{i.deviceId}}
-                  </td>
-                  <td class="tabletd2">
                     {{i.name}}
                   </td>
                   <td class="tabletd2">

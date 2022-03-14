@@ -21,9 +21,7 @@ export class DeviceComponent implements OnInit {
   getalldevices() {
     this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
       next: (res) => {
-        console.log(res, '김영승')
         this.getalldevicesdata = res;
-        console.log(this.getalldevicesdata)
       },
       error: (err) => {
 
@@ -80,6 +78,7 @@ export class DeviceComponent implements OnInit {
           this.deviceenrollForm.reset()
         },
         error: (err) => {
+          console.log(err, '에러코드')
           alert('정보를 잘못 입력하셨습니다')
         },
         complete: () => {
