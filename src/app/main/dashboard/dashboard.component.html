@@ -70,6 +70,9 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <ul>
+                    <li *ngFor="let item of received">Source: {{item.source}} -> Content {{item.content}}</li>
+                  </ul>
                   <tr *ngFor="let i of detectionstatusdata[0]">
                     <td class="tabletd font-weight-medium">
                       <div class="iconcircle1" id="fixing">

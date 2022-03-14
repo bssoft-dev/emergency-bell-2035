@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from "../../services/websocket.service";
+
 declare const am5: any;
 declare const am5xy: any;
 declare const am5themes_Animated: any;
@@ -17,7 +19,8 @@ import '../../../assets/amchart/light.js';
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.css']
+    styleUrls: ['./dashboard.component.css'],
+    providers: [WebsocketService]
 })
 
 
@@ -29,7 +32,13 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-    constructor(public router: Router, private service: ApiService) { }
+    received = [];
+
+    constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
+        WebsocketService.messages.subscribe(msg => {
+            this.received.push(msg);
+        });
+    }
 
     makechart = (dataset: any) => {
         setTimeout(() => {
