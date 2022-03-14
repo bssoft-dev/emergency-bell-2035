@@ -16,7 +16,6 @@ export class ClientComponent implements OnInit {
     this.service.getallcustomers().subscribe({
       next: (res) => {
         this.getcustomersdata.push(res)
-        console.log(this.getcustomersdata, '영승')
       },
       error: (err) => {
 
