@@ -2,9 +2,11 @@
 	width		: 100%;
 	height		: 500px;
 	font-size	: 11px;
-}							
+}
+.navbar-menu-wrapper{
+	background-color: #121619 !important;
+}
 .navbar-nav{
-	margin-top: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -13,8 +15,9 @@
 	margin-left: 50px;
 }
 .navtitle p {
+	margin-top: 20px;
 	color: #ffffff;
-	font-size: 30px;
+	font-size: 37px;
 	font-weight: 700;
 }
 
