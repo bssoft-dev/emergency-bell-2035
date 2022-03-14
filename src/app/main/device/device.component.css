@@ -2,6 +2,23 @@
 	color: #ffffff; 
 	font-size: 30px;
 }
+.navbar-menu-wrapper{
+	background-color: #121619 !important;
+}
+.navbar-nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navtitle{
+	margin-left: 50px;
+}
+.navtitle p {
+	margin-top: 20px;
+	color: #ffffff;
+	font-size: 37px;
+	font-weight: 700;
+}
 .card{
     border-radius: 8px !important;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
@@ -135,7 +152,7 @@ li{
     padding: 30px;
 }
 
-input{
+.enrolldevice{
     margin-top: 30px;
     background: transparent;
     width: 100%;

@@ -1,3 +1,20 @@
+.navbar-menu-wrapper{
+	background-color: #121619 !important;
+}
+.navbar-nav{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navtitle{
+	margin-left: 50px;
+}
+.navtitle p {
+	margin-top: 20px;
+	color: #ffffff;
+	font-size: 37px;
+	font-weight: 700;
+}
 .card{
     border-radius: 8px !important;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
@@ -35,13 +52,13 @@
 	font-size: 15px;
 }
 
-input[type=checkbox]{
+.toggleinput[type=checkbox]{
 	height: 0;
 	width: 0;
 	visibility: hidden;
 }
 
-label {
+.togglelabel {
 	margin-left: 60px;
 	cursor: pointer;
 	text-indent: -9999px;
@@ -53,7 +70,7 @@ label {
 	position: relative;
 }
 
-label:after {
+.togglelabel:after {
 	content: '';
 	position: absolute;
 	top: 5px;
@@ -65,18 +82,19 @@ label:after {
 	transition: 0.3s;
 }
 
-input:checked + label {
+.toggleinput:checked + label {
 	background: #5156be;
 }
 
-input:checked + label:after {
+.toggleinput:checked + label:after {
 	left: calc(100% - 5px);
 	transform: translateX(-100%);
 }
 
-label:active:after {
+.togglelabel:active:after {
 	width: 30px;
 }
+
 td{
 	text-align: center;
 	align-items: center;

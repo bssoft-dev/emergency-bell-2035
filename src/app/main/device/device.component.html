@@ -1,4 +1,23 @@
 <div class="content-wrapper">
+  <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top">
+    <div class="navbar-menu-wrapper align-items-center">
+      <ul class="navbar-nav " style="height: 50px;">
+        <li class="navtitle">
+          <p style="color: white;">기기관리</p>
+        </li>
+        <li>
+          <div class="form-search ">
+            <form action="form-action" class="d-none d-sm-block">
+              <div class="search__container">
+                <input class="search__input" type="text" placeholder="Search">
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="row">
     <div class="card">
       <h5 class="card-title">기기관리</h5>
@@ -104,42 +123,43 @@
 
         <form [formGroup]="deviceenrollForm" (ngSubmit)="deviceenroll()" novalidate>
           <div class="inputDiv">
-            <input type="text" placeholder="고객사코드" formControlName="customerCode" tabindex="1" />
+            <input class="enrolldevice" type="text" placeholder="고객사코드" formControlName="customerCode" tabindex="1" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="디바이스Id" formControlName="deviceId" tabindex="2" />
+            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" tabindex="2" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="기기명" formControlName="name" tabindex="3" />
+            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" tabindex="3" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="모델명" formControlName="model" tabindex="4" />
+            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" tabindex="4" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="설치장소" formControlName="location" tabindex="5" />
+            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" tabindex="5" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="설치일" formControlName="installDate" tabindex="6" />
+            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" tabindex="6" />
           </div>
 
           <div class="inputDiv">
             <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
             <h4 class="pictureinputtitle">설치사진</h4>
-            <input placeholder="설치사진" type="file" accept="image/*" class="form-file" formControlName="picture"
-              (change)="onFileChange(fileInput.files)" #fileInput tabindex="7">
+            <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" class="form-file"
+              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput tabindex="7">
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="통신방식" formControlName="communicateMethod" tabindex="8" />
+            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod"
+              tabindex="8" />
           </div>
 
           <div class="inputDiv">
-            <input type="text" placeholder="메모" formControlName="userMemo" tabindex="9" />
+            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" tabindex="9" />
           </div>
 
 
