@@ -10,6 +10,11 @@
     }
 }
 
+.navbar-menu-wrapper{
+    background-color: #121619 !important;
+}
+
+
 #sidebar{
     background-color: #005BA8;
     box-shadow: none;

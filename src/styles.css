@@ -20100,7 +20100,7 @@ input:focus {
     -webkit-transition: width 0.25s ease;
     -moz-transition: width 0.25s ease;
     -ms-transition: width 0.25s ease;
-    color: #252525;
+    color: #121619;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 5px;
@@ -20126,7 +20126,7 @@ input:focus {
   margin-top: 8px;
 }
 .navbar-menu-wrapper{
-  border: 1px solid #e4e4e4;
+  border: none;
 }
 @media (min-width: 1200px){
     .icon-menu.ti-close {
