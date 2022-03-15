@@ -20035,6 +20035,7 @@ input:focus {
 .navbar.default-layout > .navbar-menu-wrapper {
     position: relative;
     z-index: 9;
+    height: 80px !important;
 }
 
 .topbar-image-bg .navbar.default-layout .navbar-brand-wrapper{
