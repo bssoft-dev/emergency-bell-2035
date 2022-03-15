@@ -9,6 +9,7 @@ export class ApiService {
 
   token = localStorage.getItem("token")
   apiUrl = "http://api-2207.bs-soft.co.kr/"
+  customer_code = localStorage.getItem('customer_code')
 
   /////////////
   login(data: any): Observable<any> {
@@ -63,7 +64,11 @@ export class ApiService {
 
   deviceenroll(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.post(`${this.apiUrl}` + 'api/device', data, { headers });
+    return this.http.post(`${this.apiUrl}` + 'api/device?customerCode=' + `${this.customer_code}`, data, { headers });
+  }
+  modifyonedevice(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/device/' + `${data.deviceId}`, data, { headers });
   }
 
   // customer페이지

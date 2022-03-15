@@ -11,6 +11,8 @@ import { ApiService } from '../../services/api.service';
 export class DeviceComponent implements OnInit {
   deviceenrollForm: FormGroup;
   public modal: boolean = false;
+  public modal2: boolean = false;
+
   fileSelected?: Blob;
   // imageUrl?: string;
   imageSrc: any;
@@ -18,6 +20,8 @@ export class DeviceComponent implements OnInit {
   constructor(public router: Router, private service: ApiService) { }
 
   getalldevicesdata = [];
+  getonedevicedata = [];
+
   getalldevices() {
     this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
       next: (res) => {
@@ -35,7 +39,6 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceenrollForm = new FormGroup({
-      'customerCode': new FormControl("", [Validators.required]),
       'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
@@ -69,14 +72,23 @@ export class DeviceComponent implements OnInit {
   clickedModal() {
     this.modal = true;
   }
+
+  clickedModal2Close() {
+    this.deviceenrollForm.reset()
+    this.modal2 = false;
+  }
+  clickedModal2() {
+    this.modal2 = true;
+  }
+
   deviceenroll() {
-    this.modal = false;
     const data = this.deviceenrollForm.value;
     if (this.deviceenrollForm.valid) {
       this.service.deviceenroll(data).subscribe({
         next: (res) => {
           alert('디바이스 등록이 완료되었습니다')
           this.deviceenrollForm.reset()
+          this.modal = false;
         },
         error: (err) => {
           console.log(err, '에러코드')
@@ -85,7 +97,47 @@ export class DeviceComponent implements OnInit {
         complete: () => {
         }
       });
+    } else {
+      alert('정보를 입력해주세요')
+    }
+
+  }
+
+  getOneDevice(index) {
+    this.modal2 = true;
+    this.getonedevicedata = this.getalldevicesdata[index]
+
+    this.deviceenrollForm.patchValue({
+      deviceId: this.getonedevicedata["deviceId"],
+      name: this.getonedevicedata["name"],
+      model: this.getonedevicedata["model"],
+      location: this.getonedevicedata["location"],
+      installDate: this.getonedevicedata["installDate"],
+      communicateMethod: this.getonedevicedata["communicateMethod"],
+      userMemo: this.getonedevicedata["userMemo"],
+    })
+  }
+
+  modifyonedevice() {
+    const data = this.deviceenrollForm.value;
+    if (this.deviceenrollForm.valid) {
+      this.service.modifyonedevice(data).subscribe({
+        next: (res) => {
+          alert('디바이스 수정이 완료되었습니다')
+          this.deviceenrollForm.reset()
+          this.modal2 = false;
+        },
+        error: (err) => {
+          console.log(err, '에러코드')
+          alert('정보를 잘못 입력하셨습니다')
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('정보를 입력해주세요')
     }
   }
+
 
 }

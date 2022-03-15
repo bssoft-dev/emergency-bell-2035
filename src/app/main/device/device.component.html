@@ -64,7 +64,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let devicedata of getalldevicesdata">
+            <tr *ngFor="let devicedata of getalldevicesdata; let i = index">
               <td class="tabletd font-weight-medium">
                 {{devicedata.customerCode}}
               </td>
@@ -92,7 +92,7 @@
               <td class="tabletd">
                 <ul class="modify">
                   <li>
-                    <button class="modifying" (click)="getOneDevice()">
+                    <button class="modifying" (click)="getOneDevice(i)">
                       <i class="menu-icon mdi mdi-pencil-box-outline"></i>
                     </button>
                   </li>
@@ -113,7 +113,7 @@
   </div>
 </div>
 
-<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog"
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
   aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
   <div class="modal-dialog" role="document">
 
@@ -123,34 +123,30 @@
 
         <form [formGroup]="deviceenrollForm" (ngSubmit)="deviceenroll()" novalidate>
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="고객사코드" formControlName="customerCode" tabindex="1" />
+            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" tabindex="2" />
+            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" tabindex="3" />
+            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" tabindex="4" />
+            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" tabindex="5" />
-          </div>
-
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" tabindex="6" />
+            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
           </div>
 
           <div class="inputDiv">
             <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
             <h4 class="pictureinputtitle">설치사진</h4>
             <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" class="form-file"
-              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput tabindex="7">
+              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput>
           </div>
 
           <div class="inputDiv">
@@ -159,13 +155,74 @@
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" tabindex="9" />
+            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" />
           </div>
 
 
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+            <button class="footerbutton" tabindex="11" type="submit">기기등록</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div [ngClass]="modal2 ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="deviceenrollcard">
+        <h5 class="modal-title" id="exampleModalLabel">기기수정</h5>
+
+        <form [formGroup]="deviceenrollForm" (ngSubmit)="modifyonedevice()" novalidate>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
+          </div>
+
+          <div class="inputDiv">
+            <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
+            <h4 class="pictureinputtitle">설치사진</h4>
+            <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" class="form-file"
+              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" />
+          </div>
+
+
+
+          <div class="modal_footer">
+            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
             <button class="footerbutton" tabindex="11" type="submit">기기등록</button>
           </div>
         </form>
