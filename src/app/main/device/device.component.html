@@ -69,13 +69,13 @@
                 {{devicedata.customerCode}}
               </td>
               <td class="tabletd">
-
+                {{devicedata.model}}
               </td>
               <td class="tabletd">
                 {{devicedata.name}}
               </td>
               <td class="tabletd">
-
+                {{devicedata.location}}
               </td>
               <td class="tabletd">
                 {{devicedata.installDate}}
@@ -205,10 +205,18 @@
           </div>
 
           <div class="inputDiv">
-            <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
-            <h4 class="pictureinputtitle">설치사진</h4>
-            <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" class="form-file"
-              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput />
+            <div style="display: flex; align-items: center; justify-content: space-around; ">
+              <div>
+                <h4 class="pictureinputtitle">설치사진</h4>
+
+                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" style="width: 30%; height: 30%;">
+                <img *ngIf="imageSrc" [src]="imageSrc" style="width: 30%; height: 30%;">
+              </div>
+              <div>
+                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" formControlName="picture"
+                  (change)="onFileChange($event)" />
+              </div>
+            </div>
           </div>
 
           <div class="inputDiv">

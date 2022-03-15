@@ -22,8 +22,10 @@ export class ApiService {
   }
 
   register(data: any): Observable<any> {
+    const jsondata = JSON.stringify(data)
+    console.log(jsondata, '회원가입데이터')
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
-    return this.http.post(`${this.apiUrl}` + 'auth/register', data, { headers });
+    return this.http.post(`${this.apiUrl}` + 'auth/register', jsondata, { headers });
   }
 
 
@@ -63,13 +65,18 @@ export class ApiService {
   }
 
   deviceenroll(data: any): Observable<any> {
+    const jsondata = JSON.stringify(data)
+    console.log(jsondata, '디바이스등록데이터')
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.post(`${this.apiUrl}` + 'api/device?customerCode=' + `${this.customer_code}`, data, { headers });
+    return this.http.post(`${this.apiUrl}` + 'api/device?customerCode=' + `${this.customer_code}`, jsondata, { headers });
   }
   modifyonedevice(data: any): Observable<any> {
+    const jsondata = JSON.stringify(data)
+    console.log(jsondata, '디바이스수정데이터')
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/device/' + `${data.deviceId}`, data, { headers });
+    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/device/' + `${data.deviceId}`, jsondata, { headers });
   }
+
 
   // customer페이지
   getallcustomers(): Observable<any> {

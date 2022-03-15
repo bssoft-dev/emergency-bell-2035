@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -14,19 +15,19 @@ export class DeviceComponent implements OnInit {
   public modal2: boolean = false;
 
   fileSelected?: Blob;
-  // imageUrl?: string;
+  imageUrl?: string;
   imageSrc: any;
 
-  constructor(public router: Router, private service: ApiService) { }
+  constructor(public router: Router, private service: ApiService, private sant: DomSanitizer) { }
 
   getalldevicesdata = [];
   getonedevicedata = [];
+  picturesource = "";
 
   getalldevices() {
     this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
-        console.log(this.getalldevicesdata, 'dkdkdk')
       },
       error: (err) => {
 
@@ -52,16 +53,19 @@ export class DeviceComponent implements OnInit {
     this.getalldevices();
   }
 
-  onFileChange(files: FileList): void {
-    this.fileSelected = files[0]
+  onFileChange(event): void {
+    this.fileSelected = event.target.files[0]
     // this.imageUrl = this.sant.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileSelected)) as string;
 
     const reader = new FileReader();
     reader.readAsDataURL(this.fileSelected);
     reader.onload = () => {
       this.imageSrc = reader.result;
-      console.log()
+      console.log(this.imageSrc, 'dkdkdk')
     }
+  }
+  onChange(evt) {
+    console.log(evt.target.files)
   }
 
 
@@ -106,6 +110,7 @@ export class DeviceComponent implements OnInit {
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
+    this.picturesource = this.getonedevicedata["picture"]
 
     this.deviceenrollForm.patchValue({
       deviceId: this.getonedevicedata["deviceId"],
@@ -124,6 +129,7 @@ export class DeviceComponent implements OnInit {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
           alert('디바이스 수정이 완료되었습니다')
+          this.getalldevices()
           this.deviceenrollForm.reset()
           this.modal2 = false;
         },
