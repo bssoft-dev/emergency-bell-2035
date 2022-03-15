@@ -3,6 +3,7 @@ import { DeviceComponent } from './main/device/device.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
       appRoutes
     ),
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
