@@ -68,27 +68,35 @@
               <td class="tabletd font-weight-medium">
                 {{devicedata.customerCode}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.model}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.name}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.location}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.installDate}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.picture}}
               </td>
-              <td class="tabletd">
 
+              <td class="tabletd">
+                {{devicedata.communicateMethod}}
               </td>
+
               <td class="tabletd">
                 {{devicedata.userMemo}}
               </td>
+
               <td class="tabletd">
                 <ul class="modify">
                   <li>
@@ -103,6 +111,7 @@
                   </li>
                 </ul>
               </td>
+
             </tr>
           </tbody>
         </table>
@@ -143,10 +152,17 @@
           </div>
 
           <div class="inputDiv">
-            <!-- <img [src]="imageSrc" style="width: 10%; height: 10%;"> -->
             <h4 class="pictureinputtitle">설치사진</h4>
-            <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" class="form-file"
-              formControlName="picture" (change)="onFileChange(fileInput.files)" #fileInput>
+            <div class="imgdiv">
+              <div>
+                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
+                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
+              </div>
+              <div>
+                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" formControlName="picture"
+                  (change)="onFileChange($event)" />
+              </div>
+            </div>
           </div>
 
           <div class="inputDiv">
@@ -205,12 +221,11 @@
           </div>
 
           <div class="inputDiv">
-            <div style="display: flex; align-items: center; justify-content: space-around; ">
+            <h4 class="pictureinputtitle">설치사진</h4>
+            <div class="imgdiv">
               <div>
-                <h4 class="pictureinputtitle">설치사진</h4>
-
-                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" style="width: 30%; height: 30%;">
-                <img *ngIf="imageSrc" [src]="imageSrc" style="width: 30%; height: 30%;">
+                <img *ngIf="!picturesource" src="../../../assets/images/noimages.png" class="locationpicture">
+                <img *ngIf="picturesource" [src]="picturesource" class="locationpicture">
               </div>
               <div>
                 <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" formControlName="picture"
@@ -231,7 +246,7 @@
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">기기등록</button>
+            <button class="footerbutton" tabindex="11" type="submit">기기수정</button>
           </div>
         </form>
 

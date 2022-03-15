@@ -15,7 +15,6 @@ export class DeviceComponent implements OnInit {
   public modal2: boolean = false;
 
   fileSelected?: Blob;
-  imageUrl?: string;
   imageSrc: any;
 
   constructor(public router: Router, private service: ApiService, private sant: DomSanitizer) { }
@@ -55,31 +54,27 @@ export class DeviceComponent implements OnInit {
 
   onFileChange(event): void {
     this.fileSelected = event.target.files[0]
-    // this.imageUrl = this.sant.bypassSecurityTrustUrl(window.URL.createObjectURL(this.fileSelected)) as string;
 
     const reader = new FileReader();
     reader.readAsDataURL(this.fileSelected);
     reader.onload = () => {
       this.imageSrc = reader.result;
-      console.log(this.imageSrc, 'dkdkdk')
     }
   }
-  onChange(evt) {
-    console.log(evt.target.files)
-  }
-
 
   clickedModalClose() {
     this.modal = false;
     this.deviceenrollForm.reset()
+    this.picturesource = "";
   }
   clickedModal() {
     this.modal = true;
   }
-
   clickedModal2Close() {
     this.deviceenrollForm.reset()
     this.modal2 = false;
+    this.picturesource = "";
+
   }
   clickedModal2() {
     this.modal2 = true;

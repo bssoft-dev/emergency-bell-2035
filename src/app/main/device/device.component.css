@@ -168,6 +168,15 @@ li{
 .inputDiv{
     position: flex;
 }
+.imgdiv{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.locationpicture{
+	width: 30%;
+	height: 30%;
+}
 .pictureinputtitle{
 	color: #ffffff;
 	margin-top: 40px;
