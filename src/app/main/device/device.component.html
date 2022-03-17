@@ -212,7 +212,7 @@
             <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
           </div>
 
-          <div class="inputDiv">
+          <div class="inputDiv" style="display: flex;">
             <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
           </div>
 
@@ -221,13 +221,11 @@
           </div>
 
           <div class="inputDiv">
-            <h4 class="pictureinputtitle">설치사진</h4>
             <div class="imgdiv">
-              <!-- <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture"> -->
-              <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
+              <img [src]="imageSrc" class="locationpicture">
               <div>
                 <input class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" />
+                  (change)="onFileChange($event)" style="margin-left: 50px;" />
               </div>
             </div>
           </div>

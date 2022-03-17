@@ -169,17 +169,22 @@ li{
     position: flex;
 }
 .imgdiv{
+	margin-top: 50px;
+	margin-bottom: 30px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 }
 .locationpicture{
-	width: 20%;
-	height: 20%;
+	
+	width: 100px;
+	height: 100px;
 }
 .pictureinputtitle{
+	margin-left: 120px;
 	color: #ffffff;
 	margin-top: 40px;
+	margin-bottom: 40px;
 }
 .footerbutton{
     margin: 10px;
