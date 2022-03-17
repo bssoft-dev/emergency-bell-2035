@@ -27891,7 +27891,7 @@ ul li {
 .jsgrid .jsgrid-table td img,
 .table th img,
 .jsgrid .jsgrid-table th img {
-    border-radius: 100%;
+    /* border-radius: 100%; */
 }
 
 .table td .badge,
