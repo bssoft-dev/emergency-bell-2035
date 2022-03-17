@@ -52,7 +52,6 @@ export class DeviceComponent implements OnInit {
   }
 
   onFileChange(event): void {
-    console.log('김영승1', this.deviceenrollForm.value)
     this.fileSelected = event.target.files[0]
     const formData = new FormData();
     formData.append(
@@ -64,12 +63,11 @@ export class DeviceComponent implements OnInit {
       next: (res) => {
         alert('사진 업로드 완료')
         this.imageSrc = res.url;
-
-        // this.deviceenrollForm.patchValue({
-        //   picture: this.imageSrc
-        // })
-
-        console.log('김영승2', this.deviceenrollForm.value)
+        console.log('김영승3', this.deviceenrollForm.value)
+        this.deviceenrollForm.patchValue({
+          picture: this.imageSrc
+        })
+        console.log('김영승4', this.deviceenrollForm.value)
       },
       error: (err) => {
         alert('서버 에러메세지')
@@ -77,6 +75,7 @@ export class DeviceComponent implements OnInit {
       complete: () => {
       }
     });
+
 
 
   }
@@ -124,7 +123,9 @@ export class DeviceComponent implements OnInit {
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
+    console.log(this.getonedevicedata, '가져오는데이터')
     this.imageSrc = this.getonedevicedata["picture"]
+    console.log('김영승1', this.deviceenrollForm.value)
 
     this.deviceenrollForm.patchValue({
       deviceId: this.getonedevicedata["deviceId"],
@@ -132,13 +133,16 @@ export class DeviceComponent implements OnInit {
       model: this.getonedevicedata["model"],
       location: this.getonedevicedata["location"],
       installDate: this.getonedevicedata["installDate"],
-      picture: this.getonedevicedata["picture"],
       communicateMethod: this.getonedevicedata["communicateMethod"],
       userMemo: this.getonedevicedata["userMemo"],
     })
+
+    console.log('김영승2', this.deviceenrollForm.value)
+
   }
 
   modifyonedevice() {
+
     const data = this.deviceenrollForm.value;
     if (this.deviceenrollForm.valid) {
       this.service.modifyonedevice(data).subscribe({

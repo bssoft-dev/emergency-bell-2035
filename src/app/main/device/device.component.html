@@ -86,7 +86,8 @@
               </td>
 
               <td class="tabletd">
-                <!-- <img [src]="devicedata.picture" class="locationpicture"> -->
+                <img *ngIf="devicedata.picture.length" [src]="devicedata.picture">
+
               </td>
 
               <td class="tabletd">
@@ -155,19 +156,18 @@
             <h4 class="pictureinputtitle">설치사진</h4>
             <div class="imgdiv">
               <div>
-                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
-                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
+                <!-- <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
+                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture"> -->
               </div>
               <div>
-                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" formControlName="picture"
+                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*"
                   (change)="onFileChange($event)" />
               </div>
             </div>
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod"
-              tabindex="8" />
+            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
           </div>
 
           <div class="inputDiv">
@@ -223,16 +223,19 @@
           <div class="inputDiv">
             <h4 class="pictureinputtitle">설치사진</h4>
             <div class="imgdiv">
-              <div>
-                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
-                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
-              </div>
+              <!-- <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture"> -->
+              <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
               <div>
                 <input class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  formControlName="picture" (change)="onFileChange($event)" />
+                  (change)="onFileChange($event)" />
               </div>
             </div>
           </div>
+
+          <!-- <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="사진" formControlName="picture"
+              style="visibility: hidden;" />
+          </div> -->
 
           <div class="inputDiv">
             <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
