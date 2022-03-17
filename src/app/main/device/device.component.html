@@ -133,6 +133,22 @@
 
         <form [formGroup]="deviceenrollForm" (ngSubmit)="deviceenroll()" novalidate>
           <div class="inputDiv">
+            <div class="imgdiv">
+              <img [src]="imageSrc" class="locationpicture">
+              <div class="labelbox">
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputDiv">
             <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
           </div>
 
@@ -152,21 +168,7 @@
             <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
           </div>
 
-          <div class="inputDiv">
-            <div class="imgdiv">
-              <img [src]="imageSrc" class="locationpicture">
-              <div class="labelbox">
-                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
-                  <div>
-                    <i class="menu-icon mdi mdi-cloud-upload"></i>
-                  </div>
-                  <h4 class="uploadlabeltext">사진 업로드</h4>
-                </label>
-              </div>
-            </div>
-          </div>
+
 
           <div class="inputDiv">
             <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
@@ -203,6 +205,22 @@
         <form [formGroup]="deviceenrollForm" (ngSubmit)="modifyonedevice()" novalidate>
 
           <div class="inputDiv">
+            <div class="imgdiv">
+              <img [src]="imageSrc" class="locationpicture">
+              <div>
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputDiv">
             <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
           </div>
 
@@ -222,21 +240,7 @@
             <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
           </div>
 
-          <div class="inputDiv">
-            <div class="imgdiv">
-              <img [src]="imageSrc" class="locationpicture">
-              <div>
-                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
-                  <div>
-                    <i class="menu-icon mdi mdi-cloud-upload"></i>
-                  </div>
-                  <h4 class="uploadlabeltext">사진 업로드</h4>
-                </label>
-              </div>
-            </div>
-          </div>
+
 
 
 
