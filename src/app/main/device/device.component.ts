@@ -15,13 +15,12 @@ export class DeviceComponent implements OnInit {
   public modal2: boolean = false;
 
   fileSelected?: Blob;
-  imageSrc: any;
+  imageSrc: string;
 
   constructor(public router: Router, private service: ApiService, private sant: DomSanitizer) { }
 
   getalldevicesdata = [];
   getonedevicedata = [];
-  picturesource = "";
 
   getalldevices() {
     this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
@@ -53,41 +52,39 @@ export class DeviceComponent implements OnInit {
   }
 
   onFileChange(event): void {
+    console.log('김영승1', this.deviceenrollForm.value)
     this.fileSelected = event.target.files[0]
-
     const formData = new FormData();
-
-    const reader = new FileReader();
-    reader.readAsBinaryString(this.fileSelected);
-    reader.onload = () => {
-      this.imageSrc = reader.result
-
-    }
-
     formData.append(
       "file",
-      event.target.files[0]
+      this.fileSelected
     );
-
 
     this.service.uploadanal(formData).subscribe({
       next: (res) => {
         alert('사진 업로드 완료')
-        console.log(res, '성공')
+        this.imageSrc = res.url;
+
+        // this.deviceenrollForm.patchValue({
+        //   picture: this.imageSrc
+        // })
+
+        console.log('김영승2', this.deviceenrollForm.value)
       },
       error: (err) => {
         alert('서버 에러메세지')
-        console.log(err, '에러')
       },
       complete: () => {
       }
     });
+
+
   }
 
   clickedModalClose() {
     this.modal = false;
     this.deviceenrollForm.reset()
-    this.picturesource = "";
+    this.imageSrc = "";
   }
   clickedModal() {
     this.modal = true;
@@ -95,7 +92,7 @@ export class DeviceComponent implements OnInit {
   clickedModal2Close() {
     this.deviceenrollForm.reset()
     this.modal2 = false;
-    this.picturesource = "";
+    this.imageSrc = "";
 
   }
   clickedModal2() {
@@ -127,7 +124,7 @@ export class DeviceComponent implements OnInit {
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
-    this.picturesource = this.getonedevicedata["picture"]
+    this.imageSrc = this.getonedevicedata["picture"]
 
     this.deviceenrollForm.patchValue({
       deviceId: this.getonedevicedata["deviceId"],
@@ -135,6 +132,7 @@ export class DeviceComponent implements OnInit {
       model: this.getonedevicedata["model"],
       location: this.getonedevicedata["location"],
       installDate: this.getonedevicedata["installDate"],
+      picture: this.getonedevicedata["picture"],
       communicateMethod: this.getonedevicedata["communicateMethod"],
       userMemo: this.getonedevicedata["userMemo"],
     })

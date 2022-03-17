@@ -84,7 +84,6 @@ export class ApiService {
 
   // image업로드
   uploadanal(data: any): Observable<any> {
-    // const jsondata = JSON.stringify(data)
     const headers = new HttpHeaders({ "Authorization": `Bearer ${this.token}` })
     return this.http.post(`${this.apiUrl}` + 'api/upload', data, { headers });
 

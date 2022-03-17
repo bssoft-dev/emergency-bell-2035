@@ -86,7 +86,7 @@
               </td>
 
               <td class="tabletd">
-                {{devicedata.picture}}
+                <!-- <img [src]="devicedata.picture" class="locationpicture"> -->
               </td>
 
               <td class="tabletd">
@@ -228,7 +228,7 @@
                 <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
               </div>
               <div>
-                <input id="file input" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                <input class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
                   formControlName="picture" (change)="onFileChange($event)" />
               </div>
             </div>
