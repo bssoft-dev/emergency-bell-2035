@@ -17485,11 +17485,11 @@ button.bg-dark:focus,
 }
 
 .fixed-top {
-  left: 255px;
+
   position: fixed;
   right: 0;
   top: 0;
-  width: calc(100% - 255px);
+  width: 88%;
   z-index: 1030;
   transition: 0.3s all;
   -webkit-transition: 0.3s all;
@@ -19661,11 +19661,11 @@ input:focus {
 /* Sidebar */
 
 .sidebar {
-    min-height: calc(100vh - 63px);
+    height: calc(100vh - 63px);
     background-color: #252525;
     font-family: "Roboto", sans-serif;
     padding: 0;
-    width: 255px;
+    width: 12%;
     z-index: 99999;
     transition: width 0.25s ease, background 0.25s ease;
     -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -20821,7 +20821,7 @@ html {
   background-color: #121619;
   min-height: calc(100vh - 63px);
   transition: width 0.25s ease 0s, margin 0.25s ease 0s;
-  width: calc(100% - 255px);
+  width: 88%;
 }
 @media (min-width: 1200px){
     .menu-open .main-panel {

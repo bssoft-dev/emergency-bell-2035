@@ -189,6 +189,7 @@ export class DashboardComponent implements OnInit {
         this.service.detectionstatus(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
                 this.detectionstatusdata.push(res)
+                console.log(this.detectionstatusdata, '아아아')
             },
             error: (err) => {
 

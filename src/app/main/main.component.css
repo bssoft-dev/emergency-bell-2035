@@ -13,7 +13,14 @@
 .navbar-menu-wrapper{
     background-color: #121619 !important;
 }
-
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logoutbox{
+    margin-bottom: 50px;
+}
 
 #sidebar{
     background-color: #005BA8;
