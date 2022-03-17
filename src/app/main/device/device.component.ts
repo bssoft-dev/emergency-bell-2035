@@ -61,13 +61,10 @@ export class DeviceComponent implements OnInit {
 
     this.service.uploadanal(formData).subscribe({
       next: (res) => {
-        alert('사진 업로드 완료')
         this.imageSrc = res.url;
-        console.log('김영승3', this.deviceenrollForm.value)
         this.deviceenrollForm.patchValue({
           picture: this.imageSrc
         })
-        console.log('김영승4', this.deviceenrollForm.value)
       },
       error: (err) => {
         alert('서버 에러메세지')
