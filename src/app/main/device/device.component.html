@@ -224,12 +224,12 @@
             <h4 class="pictureinputtitle">설치사진</h4>
             <div class="imgdiv">
               <div>
-                <img *ngIf="!picturesource" src="../../../assets/images/noimages.png" class="locationpicture">
-                <img *ngIf="picturesource" [src]="picturesource" class="locationpicture">
+                <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
+                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture">
               </div>
               <div>
-                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*" formControlName="picture"
-                  (change)="onFileChange($event)" />
+                <input id="file input" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  formControlName="picture" (change)="onFileChange($event)" />
               </div>
             </div>
           </div>

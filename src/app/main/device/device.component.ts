@@ -55,11 +55,33 @@ export class DeviceComponent implements OnInit {
   onFileChange(event): void {
     this.fileSelected = event.target.files[0]
 
+    const formData = new FormData();
+
     const reader = new FileReader();
-    reader.readAsDataURL(this.fileSelected);
+    reader.readAsBinaryString(this.fileSelected);
     reader.onload = () => {
-      this.imageSrc = reader.result;
+      this.imageSrc = reader.result
+
     }
+
+    formData.append(
+      "file",
+      event.target.files[0]
+    );
+
+
+    this.service.uploadanal(formData).subscribe({
+      next: (res) => {
+        alert('사진 업로드 완료')
+        console.log(res, '성공')
+      },
+      error: (err) => {
+        alert('서버 에러메세지')
+        console.log(err, '에러')
+      },
+      complete: () => {
+      }
+    });
   }
 
   clickedModalClose() {
