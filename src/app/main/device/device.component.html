@@ -153,15 +153,17 @@
           </div>
 
           <div class="inputDiv">
-            <h4 class="pictureinputtitle">설치사진</h4>
             <div class="imgdiv">
-              <div>
-                <!-- <img *ngIf="!imageSrc" src="../../../assets/images/noimages.png" class="locationpicture">
-                <img *ngIf="imageSrc" [src]="imageSrc" class="locationpicture"> -->
-              </div>
-              <div>
-                <input class="enrolldevice" placeholder="설치사진" type="file" accept="image/*"
-                  (change)="onFileChange($event)" />
+              <img [src]="imageSrc" class="locationpicture">
+              <div class="labelbox">
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
               </div>
             </div>
           </div>
@@ -236,10 +238,7 @@
             </div>
           </div>
 
-          <!-- <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="사진" formControlName="picture"
-              style="visibility: hidden;" />
-          </div> -->
+
 
           <div class="inputDiv">
             <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
