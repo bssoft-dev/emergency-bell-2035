@@ -224,8 +224,14 @@
             <div class="imgdiv">
               <img [src]="imageSrc" class="locationpicture">
               <div>
-                <input class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" style="margin-left: 50px;" />
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
               </div>
             </div>
           </div>

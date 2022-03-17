@@ -123,9 +123,7 @@ export class DeviceComponent implements OnInit {
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
-    console.log(this.getonedevicedata, '가져오는데이터')
     this.imageSrc = this.getonedevicedata["picture"]
-    console.log('김영승1', this.deviceenrollForm.value)
 
     this.deviceenrollForm.patchValue({
       deviceId: this.getonedevicedata["deviceId"],
@@ -136,8 +134,6 @@ export class DeviceComponent implements OnInit {
       communicateMethod: this.getonedevicedata["communicateMethod"],
       userMemo: this.getonedevicedata["userMemo"],
     })
-
-    console.log('김영승2', this.deviceenrollForm.value)
 
   }
 
