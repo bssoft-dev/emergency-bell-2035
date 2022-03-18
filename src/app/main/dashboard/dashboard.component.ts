@@ -25,6 +25,7 @@ import '../../../assets/amchart/light.js';
 
 
 export class DashboardComponent implements OnInit {
+    public modal: boolean = false;
 
     checktoken = () => {
         if (!localStorage.getItem("token")) {
@@ -33,11 +34,25 @@ export class DashboardComponent implements OnInit {
     }
 
     received = [];
+    recentdata = [];
+    historydata = [];
+    popupdata = [];
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
             this.received.push(msg);
-            console.log(...this.received, '안녕')
+            for (let i of this.received) {
+                if (i.title === "recent") {
+                    this.recentdata = i.content;
+                } else if (i.title === "history") {
+                    this.historydata = i.content;
+                } else {
+                    this.popupdata = i.content;
+                    if (this.popupdata.length > 0) {
+                        this.modal = true;
+                    }
+                }
+            }
         });
     }
 
@@ -264,9 +279,11 @@ export class DashboardComponent implements OnInit {
         this.alldevice()
         this.alivecheck()
         this.alldetection()
+    }
 
 
-
+    clickedModalClose() {
+        this.modal = false;
     }
 }
 
