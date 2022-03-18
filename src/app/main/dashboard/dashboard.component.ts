@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
             this.received.push(msg);
+            console.log(...this.received, '안녕')
         });
     }
 
