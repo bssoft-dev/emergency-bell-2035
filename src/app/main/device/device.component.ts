@@ -135,7 +135,6 @@ export class DeviceComponent implements OnInit {
   }
 
   modifyonedevice() {
-
     const data = this.deviceenrollForm.value;
     if (this.deviceenrollForm.valid) {
       this.service.modifyonedevice(data).subscribe({

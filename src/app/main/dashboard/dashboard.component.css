@@ -86,6 +86,7 @@ body{
 	padding: 15px;
 }
 .table-responsive{
+	
 	width: 100%; 
 	overflow: auto; 
 	white-space:nowrap;
@@ -133,6 +134,7 @@ body{
 	background-color: #282b30;
 }
 .fifthcard {
+	
 	width: 100%; 
 	height: 100%; 
 	background-color: #282b30; 
@@ -241,8 +243,8 @@ body{
 }
 
 .card{
+	display: flexbox;
 	text-align: center;
-	justify-content: center;
 	align-items: center;
 }
 .card > * {
@@ -379,3 +381,41 @@ color: #ffffff;
 #chartdiv {
 	width: 100%;
   }
+
+.modalcontainer{
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
+	overflow: auto;
+}
+.modal-title{
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 20px;
+}
+.modal-content{
+	background-color: #282b30;
+	border: none !important;
+}
+.deviceenrollcard{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 140%;
+    background-color: #282b30;
+    border-radius: 10px;
+    padding: 30px;
+}
+.footerbutton{
+    margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    border-bottom: medium none;
+    color: white;
+    background-color: #505dff;
+    border-radius: 7px;
+}
