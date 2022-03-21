@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
     }
 
     received = [];
+    requestreceived = [];
     recentdata = [];
     historydata = [];
     popupdata = [];
@@ -54,6 +55,11 @@ export class DashboardComponent implements OnInit {
                 }
             }
         });
+
+        WebsocketService.requestmessages.subscribe(msg => {
+            this.requestreceived.push(msg);
+        });
+
     }
 
     makechart = (dataset: any) => {

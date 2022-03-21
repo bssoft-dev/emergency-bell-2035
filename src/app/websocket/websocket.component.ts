@@ -19,6 +19,7 @@ export class WebsocketComponent {
     WebsocketService.messages.subscribe(msg => {
       this.received.push(msg);
       console.log("Response from websocket: " + msg);
+      console.log(msg, 'dkdkdk')
     });
   }
 
@@ -32,5 +33,14 @@ export class WebsocketComponent {
 
     this.sent.push(message);
     this.WebsocketService.messages.next(message);
+  }
+
+
+  requestMsg() {
+    let requestmessage = { cmd: "main", args: ["test"] }
+
+    this.sent.push(requestmessage);
+    this.WebsocketService.requestmessages.next(requestmessage);
+
   }
 }
