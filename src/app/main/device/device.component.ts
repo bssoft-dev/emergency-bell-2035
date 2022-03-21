@@ -157,20 +157,27 @@ export class DeviceComponent implements OnInit {
   }
 
   deleteonedevice(index) {
-    const deviceid = this.getalldevicesdata[index]["deviceId"]
-    this.service.deleteonedevice(deviceid).subscribe({
-      next: (res) => {
-        alert('디바이스 삭제가 완료되었습니다')
-        this.getalldevices()
-      },
-      error: (err) => {
-        alert('디바이스 삭제 실패')
-        console.log('에러', err)
-      },
-      complete: () => {
-      }
-    });
+    const returnValue = confirm('디바이스를 삭제 하시겠습니까?')
+    console.log('기기기', returnValue);
+
+    if (returnValue) {
+      const deviceid = this.getalldevicesdata[index]["deviceId"]
+      this.service.deleteonedevice(deviceid).subscribe({
+        next: (res) => {
+          alert('디바이스 삭제가 완료되었습니다')
+          this.getalldevices()
+        },
+        error: (err) => {
+          alert('디바이스 삭제 실패')
+          console.log('에러', err)
+        },
+        complete: () => {
+        }
+      });
+    }
   }
+
+
 
 
 }
