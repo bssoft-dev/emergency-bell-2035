@@ -9,6 +9,12 @@ import { ApiService } from '../../services/api.service';
 })
 export class ClientComponent implements OnInit {
 
+  checktoken = () => {
+    if (!localStorage.getItem("token")) {
+      this.router.navigate(['/login']);
+    }
+  }
+
   constructor(public router: Router, private service: ApiService) { }
 
   getcustomersdata = []
@@ -18,7 +24,10 @@ export class ClientComponent implements OnInit {
         this.getcustomersdata.push(res)
       },
       error: (err) => {
-
+        localStorage.removeItem('customer_code')
+        localStorage.removeItem('token')
+        alert('로그인이 만료되었습니다. 로그인창으로 이동합니다')
+        this.router.navigate(['/login']);
       },
       complete: () => {
       }
@@ -26,7 +35,10 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getcustomers()
+    this.checktoken();
+    setTimeout(() => {
+      this.getcustomers()
+    }, 200)
   }
 
 }

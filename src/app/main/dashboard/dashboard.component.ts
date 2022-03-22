@@ -13,9 +13,6 @@ import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
 
-
-
-
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -89,16 +86,12 @@ export class DashboardComponent implements OnInit {
 
     }
 
-
-
     initrequest() {
         const customer_code = localStorage.getItem("customer_code")
         setTimeout(() => {
             let requestmessage = { cmd: "main", args: [customer_code] }
             this.WebsocketService.requestmessages.next(requestmessage);
         }, 100)
-
-        return
     }
 
     makechart = (socketgraphdata) => {
