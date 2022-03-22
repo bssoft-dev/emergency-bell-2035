@@ -36,10 +36,10 @@ export class DeviceComponent implements OnInit {
 
       },
       error: (err) => {
-        localStorage.removeItem('customer_code')
-        localStorage.removeItem('token')
-        alert('로그인이 만료되었습니다. 로그인창으로 이동합니다')
-        this.router.navigate(['/login']);
+        // localStorage.removeItem('customer_code')
+        // localStorage.removeItem('token')
+        // alert('로그인이 만료되었습니다. 로그인창으로 이동합니다')
+        // this.router.navigate(['/login']);
 
       },
       complete: () => {
@@ -63,8 +63,7 @@ export class DeviceComponent implements OnInit {
 
     setTimeout(() => {
       this.getalldevices();
-
-    }, 100)
+    }, 500)
   }
 
   onFileChange(event): void {
