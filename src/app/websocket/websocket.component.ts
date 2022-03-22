@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { WebsocketService } from "../services/websocket.service";
 
@@ -18,8 +17,7 @@ export class WebsocketComponent {
   constructor(private WebsocketService: WebsocketService) {
     WebsocketService.messages.subscribe(msg => {
       this.received.push(msg);
-      console.log("Response from websocket: " + msg);
-      console.log(msg, 'dkdkdk')
+      console.log("Response from websocket: ", msg);
     });
   }
 
@@ -38,9 +36,11 @@ export class WebsocketComponent {
 
   requestMsg() {
     let requestmessage = { cmd: "main", args: ["test"] }
-
     this.sent.push(requestmessage);
     this.WebsocketService.requestmessages.next(requestmessage);
+  }
+
+  ngOnInit() {
 
   }
 }

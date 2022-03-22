@@ -33,11 +33,37 @@ export class DashboardComponent implements OnInit {
         }
     }
 
+    //api 데이터
+    detectionstatusdata = [];
+    alldetectiondata = [];
+
+    //all디바이스
+    numdevice: any;
+    deactivatedevice: any;
+    inspectiondevice: any;
+    activatedevice: any;
+
+    //활성화체크
+    alivecheckdata: any[] = [];
+    alivecheckdatakey: string[] = [];
+    alivecheckdatavalue: string[] = [];
+    tempdata: any[] = [];
+
+
+
+    // websocket 템프 데이터
     received = [];
     requestreceived = [];
+    // websocket 알림 데이터
     recentdata = [];
     historydata = [];
     popupdata = [];
+    // websocket 토탈 데이터
+    socketconnectdata = [];
+    socketdevicesdata = [];
+    socketgraphdata = [];
+    sockethistorydata = [];
+    socketrecentdata = [];
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
@@ -56,13 +82,37 @@ export class DashboardComponent implements OnInit {
             }
         });
 
+
         WebsocketService.requestmessages.subscribe(msg => {
             this.requestreceived.push(msg);
-        });
+            this.socketconnectdata = this.requestreceived[0].connect.content;
+            this.socketdevicesdata = this.requestreceived[0].devices.content;
+            this.socketgraphdata = this.requestreceived[0].graph.content;
 
+            this.sockethistorydata = this.requestreceived[0].history.content;
+            this.socketrecentdata = this.requestreceived[0].recent.content;
+            console.log("Response from websocket: ", msg);
+        });
     }
 
-    makechart = (dataset: any) => {
+    sent = [];
+    initrequest() {
+        setTimeout(() => {
+            let requestmessage = { cmd: "main", args: ["test"] }
+            this.sent.push(requestmessage);
+            this.WebsocketService.requestmessages.next(requestmessage);
+        }, 100)
+    }
+
+
+
+    makechart = (socketgraphdata) => {
+        const dataset = []
+        for (let i = 0; i < this.socketgraphdata["Button"].length; i++) {
+            dataset.push({ Button: this.socketgraphdata["Button"][i], Scream: this.socketgraphdata["Scream"][i], Time: this.socketgraphdata["Time"][i] })
+        }
+
+
         setTimeout(() => {
             var root = am5.Root.new("chartdiv");
 
@@ -196,6 +246,7 @@ export class DashboardComponent implements OnInit {
                 for (let i = 0; i < Button.length; i++) {
                     dataset.push({ Button: Button[i], Scream: Scream[i], Time: Time[i] })
                 }
+                console.log(dataset, '그래프데이터')
                 this.makechart(dataset)
             },
             error: (err) => {
@@ -206,7 +257,6 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    detectionstatusdata = [];
     detectionstatus() {
         this.service.detectionstatus(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
@@ -220,10 +270,7 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    numdevice: any;
-    deactivatedevice: any;
-    inspectiondevice: any;
-    activatedevice: any;
+
     alldevice() {
         this.service.alldevice(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
@@ -240,10 +287,7 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    alivecheckdata: any[] = [];
-    alivecheckdatakey: string[] = [];
-    alivecheckdatavalue: string[] = [];
-    tempdata: any[] = [];
+
     alivecheck() {
         this.service.alivecheck(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
@@ -264,7 +308,6 @@ export class DashboardComponent implements OnInit {
     }
 
 
-    alldetectiondata = [];
     alldetection() {
         this.service.alldetection(localStorage.getItem('customer_code')).subscribe({
             next: (res) => {
@@ -278,14 +321,24 @@ export class DashboardComponent implements OnInit {
         });
     }
 
+
     ngOnInit() {
         this.checktoken()
-        this.detectiongraph()
-        this.detectionstatus()
-        this.alldevice()
-        this.alivecheck()
-        this.alldetection()
+        // this.detectiongraph()
+        // this.detectionstatus()
+        // this.alldevice()
+        // this.alivecheck()
+        // this.alldetection()
+        this.initrequest()
+
+        setTimeout(() => {
+            this.makechart(this.socketgraphdata)
+        }, 300)
+
     }
+
+
+
 
 
     clickedModalClose() {
