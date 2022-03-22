@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,10 +10,16 @@ export class UserComponent implements OnInit {
   checking = "checked"
   event: any;
 
+  checktoken = () => {
+    if (!localStorage.getItem("token")) {
+      this.router.navigate(['/login']);
+    }
+  }
 
-  constructor() { }
+  constructor(public router: Router,) { }
 
   ngOnInit() {
+    this.checktoken()
   }
 
 
