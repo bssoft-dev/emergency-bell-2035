@@ -18,6 +18,7 @@ export class WebsocketComponent {
     WebsocketService.messages.subscribe(msg => {
       this.received.push(msg);
       console.log("Response from websocket: ", msg);
+
     });
   }
 

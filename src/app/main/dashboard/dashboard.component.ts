@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit {
 
 
     // websocket 템프 데이터
-    received = [];
     requestreceived = [];
     // websocket 알림 데이터
     popupdata = [];
@@ -62,25 +61,27 @@ export class DashboardComponent implements OnInit {
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
 
-            this.received.push(msg);
-            console.log("Response from websocket: ", msg);
             this.requestreceived.push(msg);
-            this.socketconnectdata = this.requestreceived[0].connect.content;
-            this.socketdevicesdata = this.requestreceived[0].devices.content;
-            this.socketgraphdata = this.requestreceived[0].graph.content;
-            this.sockethistorydata = this.requestreceived[0].history.content;
-            this.socketrecentdata = this.requestreceived[0].recent.content;
+            console.log("Response from websocket: ", msg);
 
-
-            for (let i of this.received) {
-                if (i.title === "recent") {
-                    this.socketrecentdata = i.content;
-                } else if (i.title === "history") {
-                    this.sockethistorydata = i.content;
-                } else {
-                    this.popupdata = i.content;
-                    if (this.popupdata) {
-                        this.modal = true;
+            if (Object.keys(msg).length === 5) {
+                this.socketconnectdata = this.requestreceived[0].connect.content;
+                this.socketdevicesdata = this.requestreceived[0].devices.content;
+                this.socketgraphdata = this.requestreceived[0].graph.content;
+                this.sockethistorydata = this.requestreceived[0].history.content;
+                this.socketrecentdata = this.requestreceived[0].recent.content;
+                this.requestreceived = [];
+            } else {
+                for (let i of this.requestreceived) {
+                    if (i.title === "recent") {
+                        this.socketrecentdata = i.content;
+                    } else if (i.title === "history") {
+                        this.sockethistorydata = i.content;
+                    } else {
+                        this.popupdata = i.content;
+                        if (this.popupdata) {
+                            this.modal = true;
+                        }
                     }
                 }
             }
