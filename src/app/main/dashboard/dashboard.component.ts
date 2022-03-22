@@ -51,8 +51,6 @@ export class DashboardComponent implements OnInit {
     received = [];
     requestreceived = [];
     // websocket 알림 데이터
-    recentdata = [];
-    historydata = [];
     popupdata = [];
     // websocket 토탈 데이터
     socketconnectdata = [];
@@ -63,40 +61,43 @@ export class DashboardComponent implements OnInit {
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
+
             this.received.push(msg);
-            for (let i of this.received) {
-                if (i.title === "recent") {
-                    this.recentdata = i.content;
-                } else if (i.title === "history") {
-                    this.historydata = i.content;
-                } else {
-                    this.popupdata = i.content;
-                    if (this.popupdata.length > 0) {
-                        this.modal = true;
-                    }
-                }
-            }
-        });
-
-
-        WebsocketService.requestmessages.subscribe(msg => {
+            console.log("Response from websocket: ", msg);
             this.requestreceived.push(msg);
             this.socketconnectdata = this.requestreceived[0].connect.content;
             this.socketdevicesdata = this.requestreceived[0].devices.content;
             this.socketgraphdata = this.requestreceived[0].graph.content;
             this.sockethistorydata = this.requestreceived[0].history.content;
             this.socketrecentdata = this.requestreceived[0].recent.content;
+
+
+            for (let i of this.received) {
+                if (i.title === "recent") {
+                    this.socketrecentdata = i.content;
+                } else if (i.title === "history") {
+                    this.sockethistorydata = i.content;
+                } else {
+                    this.popupdata = i.content;
+                    if (this.popupdata) {
+                        this.modal = true;
+                    }
+                }
+            }
         });
+
     }
 
-    sent = [];
+
 
     initrequest() {
+        const customer_code = localStorage.getItem("customer_code")
         setTimeout(() => {
-            let requestmessage = { cmd: "main", args: ["test"] }
-            this.sent.push(requestmessage);
+            let requestmessage = { cmd: "main", args: [customer_code] }
             this.WebsocketService.requestmessages.next(requestmessage);
         }, 100)
+
+        return
     }
 
     makechart = (socketgraphdata) => {
