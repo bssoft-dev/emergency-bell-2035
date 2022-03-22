@@ -25952,6 +25952,9 @@ ul li {
 .gfont{
     font-family: 'IBM Plex Sans KR', sans-serif;
 }
+.whitefont{
+    color: #ffffff;
+}
 
 /* Circle loader */
 

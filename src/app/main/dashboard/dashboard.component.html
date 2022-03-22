@@ -1,9 +1,9 @@
 <div class="content-wrapper">
   <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top">
     <div class="navbar-menu-wrapper align-items-center">
-      <ul class="navbar-nav " style="height: 50px;">
+      <ul class="navbar-nav ">
         <li class="navtitle">
-          <p class="gfont" style="color: white;">전체현황</p>
+          <p class="gfont whitefont">전체현황</p>
         </li>
         <li>
           <div class="form-search ">
@@ -29,18 +29,19 @@
 
             <div class="innercard1">
               <i class="menu-icon mdi mdi-alarm-light"></i>
-              <p class="innerfont1">{{activatedevice}}/{{numdevice}}</p>
+              <p class="innerfont1">{{socketdevicesdata["numDevice"] - socketdevicesdata["deactivateDevice"] -
+                socketdevicesdata["inspectionDevice"]}}/{{socketdevicesdata["numDevice"]}}</p>
               <p class="innerfont2">정상작동중</p>
             </div>
 
             <div class="innercardcon">
               <div class="innercard2">
-                <p class="innerfont1">{{deactivatedevice}}</p>
+                <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
                 <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">비활성화</p>
               </div>
               <div class="innercard2">
-                <p class="innerfont1">{{inspectiondevice}}</p>
+                <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
                 <i class="menu-icon mdi mdi-alarm-light"></i>
                 <p class="innerfont2">기타</p>
               </div>
@@ -70,7 +71,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let i of recentdata; let index = index">
+                  <tr *ngFor="let i of socketrecentdata; let index = index">
                     <td class="tabletd font-weight-medium">
                       <!-- <div class="iconcircle1" id="fixing">
                         <i class="menu-icon mdi mdi-shield-outline"></i>
@@ -112,15 +113,15 @@
         <div class="card fourthcard">
           <div class="circlecontainer">
 
-            <div id="circlebox" *ngFor="let i of alivecheckdata">
+            <div id="circlebox" *ngFor="let i of socketconnectdata">
               <div id="incircle">
-                <p class="circletitle">{{i[0]}}</p>
-                <div *ngIf="i[1] === 'Deactivate'" class="iconcircle" id="fixing">
+                <p class="circletitle">{{i.name}}</p>
+                <div *ngIf="i.isconnect === 'Deactivate'" class="iconcircle" id="fixing">
                   <i class="menu-icon mdi mdi-settings"></i>
                 </div>
-                <div *ngIf="i[1] === 'Activation'" class="iconcircle" id="normal"><i
+                <div *ngIf="i.isconnect === 'Activation'" class="iconcircle" id="normal"><i
                     class="menu-icon mdi mdi-alarm-light"></i></div>
-                <p class="circlestatus">{{i[1]}}</p>
+                <p class="circlestatus">{{i.isconnect}}</p>
               </div>
             </div>
 
@@ -161,7 +162,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let i of historydata; let index = index">
+                <tr *ngFor="let i of sockethistorydata; let index = index">
                   <td class="font-weight-medium" class="tabletd2">
                     {{index + 1}}
                   </td>
