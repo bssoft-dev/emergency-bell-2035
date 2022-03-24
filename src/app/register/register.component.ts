@@ -10,6 +10,7 @@ import { ApiService } from '../services/api.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  overlapcheckstate = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
@@ -54,4 +55,9 @@ export class RegisterComponent implements OnInit {
   goforgotpassword() {
     this.router.navigate(['/forgotpassword'])
   }
+  overlapcheck() {
+    this.overlapcheckstate = !this.overlapcheckstate;
+  }
+
+
 }

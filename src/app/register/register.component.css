@@ -34,8 +34,23 @@ input{
     FONT-SIZE: 15px;
     color:#ffffff;
 }
+.custominput{
+    margin-top: 30px;
+    background: transparent;
+    width: 70%;
+    height: 50px;
+    border: #3a418e 2px solid;
+    FONT-SIZE: 15px;
+    color:#ffffff;
+}
+.overlapcheck{
+    width: 25% !important;
+    height: 40px !important;
+    margin-top: 30px !important;
+}
 .inputDiv{
     position: flex;
+    flex-direction: row;
 }
 .singin{
     margin: 10px;
@@ -50,9 +65,10 @@ input{
     background-color: #5156be;
     border-radius: 7px;
 }
+
 button:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
-    position: relative; 
+    position: relative;
     top:2px;
 }
 .another{

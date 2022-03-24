@@ -10,13 +10,13 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./forgotpassword.component.css']
 })
 export class ForgotpasswordComponent implements OnInit {
-  registerForm: FormGroup;
+  forgotpasswordForm: FormGroup;
 
   constructor(public router: Router, private service: ApiService) {
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
+    this.forgotpasswordForm = new FormGroup({
       'username': new FormControl("", [Validators.required]),
       'email': new FormControl("",),
       'customerCode': new FormControl("", [Validators.required]),
@@ -26,21 +26,21 @@ export class ForgotpasswordComponent implements OnInit {
     });
   }
 
-  register() {
-    const data = this.registerForm.value;
-    if (this.registerForm.valid) {
-      if (this.registerForm.value.password === this.registerForm.value.confirmpassword) {
-        this.service.register(data).subscribe({
-          next: (res) => {
-            alert('회원가입이 성공적으로 완료되었습니다. 로그인창으로 이동합니다')
-            this.router.navigate(['/login']);
-          },
-          error: (err) => {
-            alert('서버에서 에러메세지 전달')
-          },
-          complete: () => {
-          }
-        });
+  forgotpassword() {
+    const data = this.forgotpasswordForm.value;
+    if (this.forgotpasswordForm.valid) {
+      if (this.forgotpasswordForm.value.password === this.forgotpasswordForm.value.confirmpassword) {
+        // this.service.register(data).subscribe({
+        //   next: (res) => {
+        //     alert('회원가입이 성공적으로 완료되었습니다. 로그인창으로 이동합니다')
+        //     this.router.navigate(['/login']);
+        //   },
+        //   error: (err) => {
+        //     alert('서버에서 에러메세지 전달')
+        //   },
+        //   complete: () => {
+        //   }
+        // });
       } else {
         alert('비밀번호가 다릅니다')
       }
