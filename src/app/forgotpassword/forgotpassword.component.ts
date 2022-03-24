@@ -3,12 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 
+
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-forgotpassword',
+  templateUrl: './forgotpassword.component.html',
+  styleUrls: ['./forgotpassword.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class ForgotpasswordComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(public router: Router, private service: ApiService) {
@@ -54,4 +55,5 @@ export class RegisterComponent implements OnInit {
   goforgotpassword() {
     this.router.navigate(['/forgotpassword'])
   }
+
 }
