@@ -86,12 +86,12 @@
                 <ul class="modify">
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-pencil-box-outline"></i>
+                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneUser()"></i>
                     </button>
                   </li>
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-delete"></i>
+                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneUser()"></i>
                     </button>
                   </li>
                 </ul>
@@ -104,5 +104,61 @@
 
     </div>
 
+  </div>
+</div>
+
+<div [ngClass]="modal2 ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="deviceenrollcard">
+        <h5 class="modal-title" id="exampleModalLabel">회원수정</h5>
+
+        <form [formGroup]="deviceenrollForm" (ngSubmit)="modifyonedevice()" novalidate>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
+          </div>
+
+          <div class="inputDiv" style="display: flex;">
+            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
+          </div>
+
+
+
+
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" />
+          </div>
+
+
+
+          <div class="modal_footer">
+            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
+            <button class="footerbutton" tabindex="11" type="submit">기기수정</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
   </div>
 </div>

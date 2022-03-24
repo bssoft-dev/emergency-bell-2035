@@ -126,3 +126,62 @@ li{
 	color: #ffffff;
 }
 
+.modalcontainer{
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
+	overflow: auto;
+}
+.modal-title{
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 20px;
+}
+.modal-content{
+	background-color: #282b30;
+	border: none !important;
+}
+.deviceenrollcard{
+	width: 140%;
+    background-color: #282b30;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.enrolldevice{
+    margin-top: 30px;
+    background: transparent;
+    width: 100%;
+    height: 50px;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+    border-bottom: #39408a 2px solid;
+    FONT-SIZE: 15px;
+    color:#ffffff;
+}
+.inputDiv{
+    position: flex;
+}
+.footerbutton{
+    margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    border-bottom: medium none;
+    color: white;
+    background-color: #505dff;
+    border-radius: 7px;
+}
+button:active{
+    box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
+    position: relative; 
+    top:2px;
+}
+.modal_footer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

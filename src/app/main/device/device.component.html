@@ -35,7 +35,7 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                고객사코드
+                설치사진
               </th>
               <th class="tableth">
                 모델명
@@ -49,11 +49,12 @@
               <th class="tableth">
                 설치일
               </th>
-              <th class="tableth">
-                설치사진
-              </th>
+
               <th class="tableth">
                 통신방식
+              </th>
+              <th class="tableth">
+                점검여부
               </th>
               <th class="tableth">
                 메모
@@ -65,10 +66,10 @@
           </thead>
           <tbody>
             <tr *ngFor="let devicedata of getalldevicesdata; let i = index">
-              <td class="tabletd font-weight-medium">
-                {{devicedata.customerCode}}
-              </td>
+              <td class="tabletd">
+                <img *ngIf="devicedata.picture.length" [src]="devicedata.picture">
 
+              </td>
               <td class="tabletd">
                 {{devicedata.model}}
               </td>
@@ -85,13 +86,13 @@
                 {{devicedata.installDate}}
               </td>
 
-              <td class="tabletd">
-                <img *ngIf="devicedata.picture.length" [src]="devicedata.picture">
 
-              </td>
 
               <td class="tabletd">
                 {{devicedata.communicateMethod}}
+              </td>
+              <td class="tabletd">
+
               </td>
 
               <td class="tabletd">
