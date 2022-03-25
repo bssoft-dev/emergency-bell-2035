@@ -193,14 +193,17 @@
                   </td>
                   <td>
                     <div style="position: relative;">
-                      <app-popover buttonText="Click Me">
-                        <ul>
-                          <li style="color: black;">THIS</li>
-                          <li>IS</li>
-                          <li>MY POPOVER</li>
+                      <div class="btn-group">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                          aria-expanded="false">
+                          알림 확인 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li>sms true</li>
+                          <li>email true</li>
+                          <li>popup true</li>
                         </ul>
-                      </app-popover>
-
+                      </div>
                     </div>
                   </td>
                 </tr>

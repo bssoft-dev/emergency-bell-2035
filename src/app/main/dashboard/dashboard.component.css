@@ -432,3 +432,10 @@ color: #ffffff;
     background-color: #505dff;
     border-radius: 7px;
 }
+.btn-group{
+	border: none;
+}
+.dropdown-toggle{
+	background-color: #505dff;
+	color: white;
+}
