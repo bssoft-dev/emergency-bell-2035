@@ -65,7 +65,7 @@ body{
 	height: 400px;
 }
 #chartrow{
-	height: 400px; 
+	height: 350px; 
 	background-color: #282b30;
 }
 #alldetectionrow{
@@ -135,11 +135,21 @@ body{
 	background-color: #282b30;
 }
 .fifthcard {
-	
 	width: 100%; 
 	height: 100%; 
 	background-color: #282b30; 
 	padding: 50px;
+}
+.charttitlecard{
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: none;
+	width: 100%; 
+	height: 50px;
+	background-color: #282b30; 
+	color: white;
 }
 
 .fluid-container{
@@ -380,7 +390,9 @@ color: #ffffff;
 
 }
 #chartdiv {
+	padding-top: 15px;
 	width: 100%;
+	height: 95%;
   }
 
 .modalcontainer{

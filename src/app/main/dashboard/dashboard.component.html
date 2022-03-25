@@ -113,26 +113,34 @@
 
       <div class="row" id="threerow">
         <div class="card fourthcard">
-          <div class="circlecontainer">
+          <div style="display: flex; flex-direction: column;">
+            <h4 class="card-title">기기 연결 현황</h4>
 
-            <div id="circlebox" *ngFor="let i of socketconnectdata">
-              <div id="incircle">
-                <p class="circletitle">{{i.name}}</p>
-                <div *ngIf="i.isconnect === 'Deactivate'" class="iconcircle" id="fixing">
-                  <i class="menu-icon mdi mdi-settings"></i>
+            <div class="circlecontainer">
+
+              <div id="circlebox" *ngFor="let i of socketconnectdata">
+                <div id="incircle">
+                  <p class="circletitle">{{i.name}}</p>
+                  <div *ngIf="i.isconnect === 'Deactivate'" class="iconcircle" id="fixing">
+                    <i class="menu-icon mdi mdi-settings"></i>
+                  </div>
+                  <div *ngIf="i.isconnect === 'Activation'" class="iconcircle" id="normal"><i
+                      class="menu-icon mdi mdi-alarm-light"></i></div>
+                  <p class="circlestatus">{{i.isconnect}}</p>
                 </div>
-                <div *ngIf="i.isconnect === 'Activation'" class="iconcircle" id="normal"><i
-                    class="menu-icon mdi mdi-alarm-light"></i></div>
-                <p class="circlestatus">{{i.isconnect}}</p>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="col" id="halfcol">
+
+      <div class="charttitlecard" style="height: 50px;">
+        <h5 class="card-title">그래프</h5>
+      </div>
       <div class="row" id="chartrow">
         <div id="chartdiv"></div>
       </div>

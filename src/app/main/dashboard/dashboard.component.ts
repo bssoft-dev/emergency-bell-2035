@@ -116,6 +116,7 @@ export class DashboardComponent implements OnInit {
         // Create chart
         // https://www.amcharts.com/docs/v5/charts/xy-chart/
         var chart = root.container.children.push(am5xy.XYChart.new(root, {
+
             focusable: true,
             panX: false,
             panY: false,
