@@ -1,0 +1,8 @@
+<button (mouseenter)="toggle()" (mouseleave)="toggle()">{{ buttonText }}</button>
+
+<div class="popover" [class.active]="isActive">
+    <ng-content>
+
+    </ng-content>
+    <button></button>
+</div>

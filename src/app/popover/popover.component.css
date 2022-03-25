@@ -1,0 +1,14 @@
+.popover {
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  pointer-events: none;
+  opacity: 0;
+  float: left;
+  transition: all 500ms ease 0s;
+  z-index: 9999;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}

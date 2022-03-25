@@ -161,6 +161,9 @@
                   <th class="tableth2">
                     위치
                   </th>
+                  <th class="tableth2">
+                    알림현황
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -179,6 +182,18 @@
                   </td>
                   <td class="tabletd2">
                     {{i.location}}
+                  </td>
+                  <td>
+                    <div style="position: relative;">
+                      <app-popover buttonText="Click Me">
+                        <ul>
+                          <li style="color: black;">THIS</li>
+                          <li>IS</li>
+                          <li>MY POPOVER</li>
+                        </ul>
+                      </app-popover>
+
+                    </div>
                   </td>
                 </tr>
               </tbody>
