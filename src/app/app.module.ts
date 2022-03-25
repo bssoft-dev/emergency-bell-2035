@@ -25,7 +25,6 @@ import { ApiService } from './services/api.service';
 import { WebsocketService } from './services/websocket.service';
 import { WebsocketComponent } from './websocket/websocket.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { PopoverComponent } from './popover/popover.component';
 
 
 
@@ -80,7 +79,6 @@ const appRoutes: Routes = [
     RegisterComponent,
     WebsocketComponent,
     ForgotpasswordComponent,
-    PopoverComponent,
   ],
   imports: [
     RouterModule.forRoot(
