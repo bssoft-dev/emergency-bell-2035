@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
+
+
 
 
 @Component({
@@ -22,7 +25,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  constructor(public router: Router,) { }
+  constructor(public router: Router, private service: ApiService,) { }
 
   clickedModal2Close() {
     this.modal2 = false;
@@ -35,8 +38,24 @@ export class UserComponent implements OnInit {
 
   }
 
+  getallusersdata = [];
+  getallusers() {
+    this.service.getallusers().subscribe({
+      next: (res) => {
+        this.getallusersdata.push(res)
+        console.log(this.getallusersdata[0], 'dkdkdk')
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
+  }
+
   ngOnInit() {
     this.checktoken()
+    this.getallusers()
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),

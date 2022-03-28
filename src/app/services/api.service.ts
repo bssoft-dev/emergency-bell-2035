@@ -56,12 +56,18 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections', { headers });
   }
 
+  // 회원관리 페이지 
+  getallusers(): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${this.customer_code}`, { headers });
+  }
+
 
 
   // device페이지
   getalldevices(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/devices', { headers });
+    return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data}`, { headers });
   }
 
   deviceenroll(data: any): Observable<any> {
