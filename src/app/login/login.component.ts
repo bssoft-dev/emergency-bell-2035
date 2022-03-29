@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,8 +13,11 @@ import { ApiService } from '../services/api.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
+  message: any;
 
+  subscription: Subscription;
   constructor(public router: Router, private service: ApiService) {
+
   }
 
   ngOnInit(): void {
@@ -33,6 +37,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.service.login(king).subscribe({
         next: (res) => {
+          console.log('res', res)
+          localStorage.setItem('is_hyperuser', res['is_hyperuser'])
           localStorage.setItem('customer_code', res.customer_code);
           localStorage.setItem("token", res.access_token);
           this.loginForm.reset();
@@ -55,4 +61,6 @@ export class LoginComponent implements OnInit {
   goforgotpassword() {
     this.router.navigate(['/forgotpassword'])
   }
+
+
 }

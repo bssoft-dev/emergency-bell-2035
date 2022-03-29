@@ -20,9 +20,9 @@ import '../../../assets/amchart/light.js';
     providers: [WebsocketService]
 })
 
-
 export class DashboardComponent implements OnInit {
     public modal: boolean = false;
+
 
     checktoken = () => {
         if (!localStorage.getItem("token")) {
@@ -308,7 +308,6 @@ export class DashboardComponent implements OnInit {
     //         }
     //     });
     // }
-
 
     ngOnInit() {
         this.checktoken()

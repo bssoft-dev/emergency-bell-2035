@@ -11,11 +11,15 @@ export class MainComponent implements OnInit {
 
   constructor(public router: Router) { }
 
+  is_hyperuser: any;
   ngOnInit() {
+    this.is_hyperuser = localStorage.getItem('is_hyperuser');
+    console.log(this.is_hyperuser, 'dkdkdk')
 
   }
 
   logout() {
+    localStorage.removeItem('is_hyperuser');
     localStorage.removeItem("token")
     localStorage.removeItem("customer_code")
     this.router.navigate(['/login'])
