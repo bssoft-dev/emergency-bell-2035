@@ -40,21 +40,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let i of  getallusersdata[0]; let index = index">
               <td class="tabletd font-weight-medium">
-                wwefwef
+                {{i.username}}
               </td>
               <td class="tabletd">
-                wefwefewf
+                {{i.name}}
               </td>
               <td class="tabletd">
-                wefwef
-              </td>
-              <td class="tabletd">
+                {{i.phone}}
 
               </td>
               <td class="tabletd">
-
+                {{i.email}}
+              </td>
+              <td class="tabletd">
+                {{i.createTime}}
               </td>
 
               <td class="tabletd">
