@@ -57,9 +57,17 @@ export class ApiService {
   }
 
   // 회원관리 페이지 
-  getallusers(): Observable<any> {
+  getallusers(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${this.customer_code}`, { headers });
+    return this.http.get(`${this.apiUrl}` + 'users/all?username=' + `${data}` + '&customerCode=' + `${this.customer_code}`, { headers });
+  }
+  usersupergrant(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'users/superGrant/' + `${data[0]}`, data[1], { headers });
+  }
+  deleteoneuser(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.delete(`${this.apiUrl}` + 'users/' + `${data}?customerCode=` + `${this.customer_code}`, { headers });
   }
 
 
