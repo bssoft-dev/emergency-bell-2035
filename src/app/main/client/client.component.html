@@ -17,9 +17,6 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                회사로고
-              </th>
-              <th class="tableth">
                 커스터머코드
               </th>
               <th class="tableth">
@@ -56,9 +53,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let customers of getcustomersdata[0]; let i = index">
-              <td class="tabletd font-weight-medium">
-                <img src="{{customers.logo}}" alt="">
-              </td>
               <td class="tabletd">
                 {{customers.customerCode}}
               </td>

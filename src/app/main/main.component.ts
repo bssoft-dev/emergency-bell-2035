@@ -14,7 +14,6 @@ export class MainComponent implements OnInit {
   is_hyperuser: any;
   ngOnInit() {
     this.is_hyperuser = localStorage.getItem('is_hyperuser');
-    console.log(this.is_hyperuser, 'dkdkdk')
 
   }
 

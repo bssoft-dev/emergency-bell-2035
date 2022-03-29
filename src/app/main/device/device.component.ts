@@ -60,10 +60,8 @@ export class DeviceComponent implements OnInit {
       'communicateMethod': new FormControl("",),
       'userMemo': new FormControl("",),
     });
+    this.getalldevices();
 
-    setTimeout(() => {
-      this.getalldevices();
-    }, 500)
   }
 
   onFileChange(event): void {

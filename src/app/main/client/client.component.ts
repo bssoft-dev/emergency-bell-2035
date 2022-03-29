@@ -62,9 +62,7 @@ export class ClientComponent implements OnInit {
       'communicateMethod': new FormControl("",),
       'userMemo': new FormControl("",),
     });
-    setTimeout(() => {
-      this.getcustomers()
-    }, 500)
+    this.getcustomers()
   }
 
   getOneClient() {

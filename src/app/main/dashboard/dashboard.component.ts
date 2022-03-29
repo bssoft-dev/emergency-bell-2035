@@ -61,12 +61,12 @@ export class DashboardComponent implements OnInit {
             this.requestreceived.push(msg);
             console.log("Response from websocket: ", msg);
 
-            if (Object.keys(msg).length === 5) {
-                this.socketconnectdata = this.requestreceived[0].connect.content;
-                this.socketdevicesdata = this.requestreceived[0].devices.content;
-                this.socketgraphdata = this.requestreceived[0].graph.content;
-                this.sockethistorydata = this.requestreceived[0].history.content;
-                this.socketrecentdata = this.requestreceived[0].recent.content;
+            if (Object.keys(msg).length >= 3) {
+                this.socketconnectdata = this.requestreceived[0]?.connect?.content;
+                this.socketdevicesdata = this.requestreceived[0]?.devices?.content;
+                this.socketgraphdata = this.requestreceived[0]?.graph?.content;
+                this.sockethistorydata = this.requestreceived[0]?.history?.content;
+                this.socketrecentdata = this.requestreceived[0]?.recent?.content;
                 this.requestreceived = [];
             } else {
                 for (let i of this.requestreceived) {

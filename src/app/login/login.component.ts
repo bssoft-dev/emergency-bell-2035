@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.service.login(king).subscribe({
         next: (res) => {
-          console.log('res', res)
           localStorage.setItem('is_hyperuser', res['is_hyperuser'])
           localStorage.setItem('customer_code', res.customer_code);
           localStorage.setItem("token", res.access_token);
