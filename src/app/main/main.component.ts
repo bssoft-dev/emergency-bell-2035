@@ -23,4 +23,10 @@ export class MainComponent implements OnInit {
     localStorage.removeItem("customer_code")
     this.router.navigate(['/login'])
   }
+
+  active = [];
+
+  outputEvent(active: any) {
+    this.active = active;
+  }
 }

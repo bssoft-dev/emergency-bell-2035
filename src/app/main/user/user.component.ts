@@ -42,9 +42,11 @@ export class UserComponent implements OnInit {
 
   getallusersdata = [];
   getallusers() {
+    this.getallusersdata = [];
     const data = "ds"
     this.service.getallusers(data).subscribe({
       next: (res) => {
+        console.log(res, 'res')
         this.getallusersdata.push(res)
       },
       error: (err) => {
@@ -55,15 +57,29 @@ export class UserComponent implements OnInit {
     });
   }
 
+  equalValidator({ value }: FormGroup): { [key: string]: any } {
+    const [first, ...rest] = Object.keys(value || {});
+    if (first.length == 0 && rest.length == 0) {
+      return
+    } else {
+      const valid = rest.every(v => value[v] === value[first]);
+      return valid ? null : { equal: true };
+    }
+  }
+
+
   ngOnInit() {
     this.checktoken()
     this.getallusers()
     this.modifyuserForm = new FormGroup({
+      'username': new FormControl("",),
       'name': new FormControl("",),
       'phone': new FormControl("",),
       'email': new FormControl("",),
-      'password': new FormControl("", [Validators.required]),
-      'passwordconfirm': new FormControl("", [Validators.required]),
+      'passwordGroup': new FormGroup({
+        'password': new FormControl("", [Validators.required]),
+        'passwordconfirm': new FormControl("", [Validators.required,]),
+      }, this.equalValidator)
     });
   }
 
@@ -94,6 +110,7 @@ export class UserComponent implements OnInit {
     this.getoneuserdata = this.getallusersdata[0][index]
 
     this.modifyuserForm.patchValue({
+      username: this.getoneuserdata["username"],
       name: this.getoneuserdata["name"],
       phone: this.getoneuserdata["phone"],
       email: this.getoneuserdata["email"],
@@ -119,15 +136,14 @@ export class UserComponent implements OnInit {
 
 
 
-
+  cantmatch = ""
   modifyoneUser() {
-    console.log(this.modifyuserForm.value, 'modifyoneUser')
     if (this.modifyuserForm.value.password != this.modifyuserForm.value.passwordconfirm) {
-      alert('비밀번호가 일치하지 않습니다.')
-      return
+      this.cantmatch = "비밀번호가 일치하지 않습니다"
     } else {
       const temp = []
       const jsontemp = {
+        "username": this.modifyuserForm.value.username,
         "name": this.modifyuserForm.value.name,
         "phone": this.modifyuserForm.value.phone,
         "email": this.modifyuserForm.value.email,
@@ -135,11 +151,12 @@ export class UserComponent implements OnInit {
       }
       temp.push(this.getoneuserdata["username"])
       temp.push(jsontemp)
-      console.log(temp, 'temp')
       this.service.modifyoneuser(temp).subscribe({
         next: (res) => {
-          console.log(res, 'res')
+          alert('회원 수정이 완료되었습니다')
           this.getallusers()
+          this.modifyuserForm.reset()
+          this.modal2 = false;
         },
         error: (err) => {
 

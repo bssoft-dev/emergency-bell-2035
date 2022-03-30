@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from "../../services/websocket.service";
 
 declare const am5: any;
@@ -20,7 +20,7 @@ import '../../../assets/amchart/light.js';
     providers: [WebsocketService]
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
     public modal: boolean = false;
 
 
@@ -322,6 +322,18 @@ export class DashboardComponent implements OnInit {
             this.makechart(this.socketgraphdata)
         }, 300)
 
+    }
+
+    active = ["kim", "park", "lee"];
+    @Output('outputProperty') outputProperty = new EventEmitter();
+
+    updateParent(active: any) {
+        this.active = active;
+        this.outputProperty.emit(this.active);
+    }
+
+    ngOnDestroy(): void {
+        // this.WebsocketService.messages.disconnect();
     }
 
     clickedModalClose() {

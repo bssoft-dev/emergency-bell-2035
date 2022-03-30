@@ -70,9 +70,8 @@ export class ApiService {
     return this.http.delete(`${this.apiUrl}` + 'users/' + `${data}?customerCode=` + `${this.customer_code}`, { headers });
   }
   modifyoneuser(data: any): Observable<any> {
-    const jsondata = JSON.stringify(data)
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.put(`${this.apiUrl}` + 'users/' + `${data[0]}`, jsondata, { headers });
+    return this.http.put(`${this.apiUrl}` + 'users/' + `${data[0]}?customerCode=` + `${this.customer_code}`, data[1], { headers });
   }
 
 
