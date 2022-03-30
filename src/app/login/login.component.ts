@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem("token")) {
+    if (sessionStorage.getItem("token")) {
       this.router.navigate(['/main/dashboard']);
     }
     this.loginForm = new FormGroup({
@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.service.login(king).subscribe({
         next: (res) => {
-          localStorage.setItem('is_hyperuser', res['is_hyperuser'])
-          localStorage.setItem('customer_code', res.customer_code);
-          localStorage.setItem("token", res.access_token);
+          sessionStorage.setItem('is_hyperuser', res['is_hyperuser'])
+          sessionStorage.setItem('customer_code', res.customer_code);
+          sessionStorage.setItem("token", res.access_token);
           this.loginForm.reset();
           this.router.navigate(['/main/dashboard']);
         },

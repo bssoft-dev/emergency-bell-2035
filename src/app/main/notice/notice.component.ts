@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NoticeComponent implements OnInit {
   checktoken = () => {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       this.router.navigate(['/login']);
     }
   }

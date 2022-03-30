@@ -17,7 +17,7 @@ export class ClientComponent implements OnInit {
   modifyclientForm: FormGroup;
 
   checktoken = () => {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       this.router.navigate(['/login']);
     }
   }
@@ -30,13 +30,9 @@ export class ClientComponent implements OnInit {
     this.service.getallcustomers().subscribe({
       next: (res) => {
         this.getcustomersdata = res;
-        console.log(this.getcustomersdata, '얼데이타')
       },
       error: (err) => {
-        // localStorage.removeItem('customer_code')
-        // localStorage.removeItem('token')
-        // alert('로그인이 만료되었습니다. 로그인창으로 이동합니다')
-        // this.router.navigate(['/login']);
+
       },
       complete: () => {
       }
@@ -137,7 +133,6 @@ export class ClientComponent implements OnInit {
 
   deleteonecustomer(i) {
     const returnValue = confirm('고객사를 삭제 하시겠습니까?')
-    console.log('기기기', returnValue);
     if (returnValue) {
       const temp = this.getcustomersdata[0][i]['customerCode']
       this.service.deleteonecustomer(temp).subscribe({

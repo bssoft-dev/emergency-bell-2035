@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     checktoken = () => {
-        if (!localStorage.getItem("token")) {
+        if (!sessionStorage.getItem("token")) {
             this.router.navigate(['/login']);
         }
     }
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.socketgraphdata = this.requestreceived[0]?.graph?.content;
                 this.sockethistorydata = this.requestreceived[0]?.history?.content;
                 this.socketrecentdata = this.requestreceived[0]?.recent?.content;
-                localStorage.setItem('corplogo', this.requestreceived[0]?.map?.content["installMap"]);
+                sessionStorage.setItem('corplogo', this.requestreceived[0]?.map?.content["installMap"]);
                 this.requestreceived = [];
             } else {
                 for (let i of this.requestreceived) {
@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     initrequest() {
-        const customer_code = localStorage.getItem("customer_code")
+        const customer_code = sessionStorage.getItem("customer_code")
         setTimeout(() => {
             let requestmessage = { cmd: "main", args: [customer_code] }
             this.WebsocketService.requestmessages.next(requestmessage);
@@ -228,7 +228,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // detectiongraph() {
     //     let detectiongraphdata: any[] = [];
     //     let dataset: any[] = [];
-    //     this.service.detectiongraph(localStorage.getItem('customer_code')).subscribe({
+    //     this.service.detectiongraph(sessionStorage.getItem('customer_code')).subscribe({
     //         next: (res) => {
     //             detectiongraphdata.push(res)
     //             const { Button, Scream, Time } = detectiongraphdata[0];
@@ -247,7 +247,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // }
 
     // detectionstatus() {
-    //     this.service.detectionstatus(localStorage.getItem('customer_code')).subscribe({
+    //     this.service.detectionstatus(sessionStorage.getItem('customer_code')).subscribe({
     //         next: (res) => {
     //             this.detectionstatusdata.push(res)
     //         },
@@ -261,7 +261,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     // alldevice() {
-    //     this.service.alldevice(localStorage.getItem('customer_code')).subscribe({
+    //     this.service.alldevice(sessionStorage.getItem('customer_code')).subscribe({
     //         next: (res) => {
     //             this.numdevice = res.numDevice
     //             this.deactivatedevice = res.deactivateDevice
@@ -278,7 +278,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     // alivecheck() {
-    //     this.service.alivecheck(localStorage.getItem('customer_code')).subscribe({
+    //     this.service.alivecheck(sessionStorage.getItem('customer_code')).subscribe({
     //         next: (res) => {
     //             this.alivecheckdatakey = Object.keys(res);
     //             this.alivecheckdatavalue = Object.values(res);
@@ -298,7 +298,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     // alldetection() {
-    //     this.service.alldetection(localStorage.getItem('customer_code')).subscribe({
+    //     this.service.alldetection(sessionStorage.getItem('customer_code')).subscribe({
     //         next: (res) => {
     //             this.alldetectiondata.push(res)
     //         },

@@ -7,9 +7,9 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  token = localStorage.getItem("token")
+  token = sessionStorage.getItem("token")
   apiUrl = "http://api-2207.bs-soft.co.kr/"
-  customer_code = localStorage.getItem('customer_code')
+  customer_code = sessionStorage.getItem('customer_code')
 
   /////////////
   login(data: any): Observable<any> {
@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
   }
 
   register(data: any): Observable<any> {
@@ -57,9 +57,9 @@ export class ApiService {
   }
 
   // 회원관리 페이지 
-  getallusers(data: any): Observable<any> {
+  getallusers(): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'users/all?username=' + `${data}` + '&customerCode=' + `${this.customer_code}`, { headers });
+    return this.http.get(`${this.apiUrl}` + 'users/all?username=' + `${this.customer_code}` + '&customerCode=' + `${this.customer_code}`, { headers });
   }
   usersupergrant(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })

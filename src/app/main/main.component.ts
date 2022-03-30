@@ -14,15 +14,15 @@ export class MainComponent implements OnInit {
   is_hyperuser: any;
   corplogo: any;
   ngOnInit() {
-    this.is_hyperuser = localStorage.getItem('is_hyperuser');
-    this.corplogo = localStorage.getItem('corplogo');
+    this.is_hyperuser = sessionStorage.getItem('is_hyperuser');
+    this.corplogo = sessionStorage.getItem('corplogo');
   }
 
   logout() {
-    localStorage.removeItem('is_hyperuser');
-    localStorage.removeItem("token")
-    localStorage.removeItem("customer_code")
-    localStorage.removeItem("corplogo")
+    sessionStorage.removeItem('is_hyperuser');
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("customer_code")
+    sessionStorage.removeItem("corplogo")
     this.router.navigate(['/login'])
   }
 

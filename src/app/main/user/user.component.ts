@@ -16,12 +16,12 @@ export class UserComponent implements OnInit {
   modifyuserForm: FormGroup;
 
 
-  checking = [true, false]
+
   ids = ['switch1', 'switch2']
   event: any;
 
   checktoken = () => {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       this.router.navigate(['/login']);
     }
   }
@@ -43,8 +43,8 @@ export class UserComponent implements OnInit {
   getallusersdata = [];
   getallusers() {
     this.getallusersdata = [];
-    const data = "ds"
-    this.service.getallusers(data).subscribe({
+    console.log(this.getallusersdata, 'dkdkdk')
+    this.service.getallusers().subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
       },
@@ -84,23 +84,27 @@ export class UserComponent implements OnInit {
 
 
   getCheckboxValue(index) {
-    this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
-    const temp = []
-    const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
-    temp.push(this.getallusersdata[0][index].username)
-    temp.push(jsontemp)
-    console.log(temp, 'temp')
-    this.service.usersupergrant(temp).subscribe({
-      next: (res) => {
+    if (this.getallusersdata[0][index].is_superuser === true) {
+      this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
+      const temp = []
+      const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
+      temp.push(this.getallusersdata[0][index].username)
+      temp.push(jsontemp)
+      console.log(temp, 'temp')
+      this.service.usersupergrant(temp).subscribe({
+        next: (res) => {
 
-      },
-      error: (err) => {
+        },
+        error: (err) => {
 
-      },
-      complete: () => {
-      }
-    });
-
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('회원님은 관리자 권한이 없습니다')
+      this.getallusers();
+    }
   }
 
   getoneuserdata = [];

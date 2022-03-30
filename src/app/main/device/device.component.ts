@@ -156,7 +156,6 @@ export class DeviceComponent implements OnInit {
 
   deleteonedevice(index) {
     const returnValue = confirm('디바이스를 삭제 하시겠습니까?')
-    console.log('기기기', returnValue);
 
     if (returnValue) {
       const deviceid = this.getalldevicesdata[index]["deviceId"]
