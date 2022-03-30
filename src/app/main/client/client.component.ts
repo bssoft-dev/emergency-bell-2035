@@ -29,8 +29,8 @@ export class ClientComponent implements OnInit {
     this.getcustomersdata = [];
     this.service.getallcustomers().subscribe({
       next: (res) => {
-        this.getcustomersdata.push(res)
-        console.log(this.getcustomersdata[0]);
+        this.getcustomersdata = res;
+        console.log(this.getcustomersdata, '얼데이타')
       },
       error: (err) => {
         // localStorage.removeItem('customer_code')
@@ -60,7 +60,7 @@ export class ClientComponent implements OnInit {
 
     this.checktoken();
     this.modifyclientForm = new FormGroup({
-      'name': new FormControl("", [Validators.required]),
+      'customerName': new FormControl("", [Validators.required]),
       'staffName': new FormControl("", [Validators.required]),
       'phone': new FormControl("",),
       'status': new FormControl("",),
@@ -70,19 +70,20 @@ export class ClientComponent implements OnInit {
     this.getcustomers()
   }
 
-  getoneclientdata = []
-  getOneClient(index) {
+  getonecustomerdata = []
+  getOnecustomers(index) {
     this.modal2 = true;
-    this.getoneclientdata = this.getcustomersdata[index]
-    console.log(this.getoneclientdata, 'dkdkdk')
+    this.getonecustomerdata.push(this.getcustomersdata[index])
+
+    this.imageSrc = this.getonecustomerdata[0]["installMap"]
 
     this.modifyclientForm.patchValue({
-      name: this.getoneclientdata["name"],
-      staffName: this.getoneclientdata["staffName"],
-      phone: this.getoneclientdata["phone"],
-      status: this.getoneclientdata["status"],
-      payMethod: this.getoneclientdata["payMethod"],
-      installMap: this.getoneclientdata["installMap"],
+      customerName: this.getonecustomerdata[0]["customerName"],
+      staffName: this.getonecustomerdata[0]["staffName"],
+      phone: this.getonecustomerdata[0]["phone"],
+      status: this.getonecustomerdata[0]["status"],
+      payMethod: this.getonecustomerdata[0]["payMethod"],
+      installMap: this.getonecustomerdata[0]["installMap"],
     })
 
   }
@@ -110,8 +111,31 @@ export class ClientComponent implements OnInit {
     });
   }
 
+  modifonecustomer() {
+    const data = this.modifyclientForm.value;
+    console.log(data, '체크')
+    if (this.modifyclientForm.valid) {
+      this.service.modifyonecustomer(data).subscribe({
+        next: (res) => {
+          alert('디바이스 수정이 완료되었습니다')
+          this.getcustomersdata = [];
+          this.getcustomers()
+          this.modifyclientForm.reset()
+          this.modal2 = false;
+        },
+        error: (err) => {
+          console.log(err, '에러코드')
+          alert('정보를 잘못 입력하셨습니다')
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('정보를 입력해주세요')
+    }
+  }
 
-  deleteoneClient(i) {
+  deleteonecustomer(i) {
     const returnValue = confirm('고객사를 삭제 하시겠습니까?')
     console.log('기기기', returnValue);
     if (returnValue) {

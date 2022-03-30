@@ -49,7 +49,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let customers of getcustomersdata[0]; let index = index">
+            <tr *ngFor="let customers of getcustomersdata; let index = index">
               <td class="tabletd">
                 {{customers.customerCode}}
               </td>
@@ -86,12 +86,12 @@
                 <ul class="modify">
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneClient(index)"></i>
+                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOnecustomers(index)"></i>
                     </button>
                   </li>
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneClient(index)"></i>
+                      <i class="menu-icon mdi mdi-delete" (click)="deleteonecustomer(index)"></i>
                     </button>
                   </li>
                 </ul>
@@ -115,7 +115,7 @@
       <div class="deviceenrollcard">
         <h5 class="modal-title" id="exampleModalLabel">고객사수정</h5>
 
-        <form [formGroup]="modifyclientForm" (ngSubmit)="modifyonedevice()" novalidate>
+        <form [formGroup]="modifyclientForm" (ngSubmit)="modifonecustomer()" novalidate>
 
           <div class="inputDiv">
             <div class="imgdiv">
@@ -134,23 +134,23 @@
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="name" />
+            <input class="enrolldevice" type="text" placeholder="고객사명" formControlName="customerName" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="staffName" />
+            <input class="enrolldevice" type="text" placeholder="담당자" formControlName="staffName" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="phone" />
+            <input class="enrolldevice" type="text" placeholder="연락처" formControlName="phone" />
           </div>
 
           <div class="inputDiv" style="display: flex;">
-            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="status" />
+            <input class="enrolldevice" type="text" placeholder="상태" formControlName="status" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="payMethod" />
+            <input class="enrolldevice" type="text" placeholder="결제방법" formControlName="payMethod" />
           </div>
 
           <div class="modal_footer">

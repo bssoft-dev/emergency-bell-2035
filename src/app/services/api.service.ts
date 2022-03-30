@@ -107,6 +107,11 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.delete(`${this.apiUrl}` + 'api/customers/' + `${temp}`, { headers });
   }
+  modifyonecustomer(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}`, data, { headers });
+  }
+
 
   // image업로드
   uploadanal(data: any): Observable<any> {
