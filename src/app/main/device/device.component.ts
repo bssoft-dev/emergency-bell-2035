@@ -30,7 +30,7 @@ export class DeviceComponent implements OnInit {
   getonedevicedata = [];
 
   getalldevices() {
-    this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
+    this.service.getalldevices().subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
       },

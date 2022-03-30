@@ -77,9 +77,9 @@ export class ApiService {
 
 
   // device페이지
-  getalldevices(data: any): Observable<any> {
+  getalldevices(): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data}`, { headers });
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/devices', { headers });
   }
 
   deviceenroll(data: any): Observable<any> {

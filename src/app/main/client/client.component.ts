@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientComponent implements OnInit {
   public modal2: boolean = false;
-  deviceenrollForm: FormGroup;
+  modifyclientForm: FormGroup;
 
   checktoken = () => {
     if (!localStorage.getItem("token")) {
@@ -54,7 +54,7 @@ export class ClientComponent implements OnInit {
   ngOnInit() {
 
     this.checktoken();
-    this.deviceenrollForm = new FormGroup({
+    this.modifyclientForm = new FormGroup({
       'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
@@ -67,8 +67,21 @@ export class ClientComponent implements OnInit {
     this.getcustomers()
   }
 
-  getOneClient() {
-    this.clickedModal2()
+  getoneclientdata = []
+  getOneClient(index) {
+    this.modal2 = true;
+    this.getoneclientdata = this.getcustomersdata[index]
+    console.log(this.getoneclientdata, 'dkdkdk')
+
+    this.modifyclientForm.patchValue({
+      deviceId: this.getoneclientdata["deviceId"],
+      name: this.getoneclientdata["name"],
+      model: this.getoneclientdata["model"],
+      location: this.getoneclientdata["location"],
+      installDate: this.getoneclientdata["installDate"],
+      communicateMethod: this.getoneclientdata["communicateMethod"],
+      userMemo: this.getoneclientdata["userMemo"],
+    })
 
   }
 
