@@ -16,7 +16,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.is_hyperuser = localStorage.getItem('is_hyperuser');
     this.corplogo = localStorage.getItem('corplogo');
-    console.log(localStorage.getItem('corplogo'), 'wkwkwk')
   }
 
   logout() {

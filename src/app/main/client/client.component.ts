@@ -11,6 +11,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientComponent implements OnInit {
   public modal2: boolean = false;
+  fileSelected?: Blob;
+  imageSrc: string;
+
   modifyclientForm: FormGroup;
 
   checktoken = () => {
@@ -41,12 +44,14 @@ export class ClientComponent implements OnInit {
   }
 
   clickedModal2Close() {
+    this.modifyclientForm.reset()
     this.modal2 = false;
-
+    this.imageSrc = "";
   }
   clickedModal2() {
     this.modal2 = true;
   }
+
   modifyonedevice() {
 
   }
@@ -55,14 +60,12 @@ export class ClientComponent implements OnInit {
 
     this.checktoken();
     this.modifyclientForm = new FormGroup({
-      'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
-      'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("",),
-      'installDate': new FormControl("",),
-      'picture': new FormControl("",),
-      'communicateMethod': new FormControl("",),
-      'userMemo': new FormControl("",),
+      'staffName': new FormControl("", [Validators.required]),
+      'phone': new FormControl("",),
+      'status': new FormControl("",),
+      'payMethod': new FormControl("",),
+      'installMap': new FormControl("",),
     });
     this.getcustomers()
   }
@@ -74,16 +77,39 @@ export class ClientComponent implements OnInit {
     console.log(this.getoneclientdata, 'dkdkdk')
 
     this.modifyclientForm.patchValue({
-      deviceId: this.getoneclientdata["deviceId"],
       name: this.getoneclientdata["name"],
-      model: this.getoneclientdata["model"],
-      location: this.getoneclientdata["location"],
-      installDate: this.getoneclientdata["installDate"],
-      communicateMethod: this.getoneclientdata["communicateMethod"],
-      userMemo: this.getoneclientdata["userMemo"],
+      staffName: this.getoneclientdata["staffName"],
+      phone: this.getoneclientdata["phone"],
+      status: this.getoneclientdata["status"],
+      payMethod: this.getoneclientdata["payMethod"],
+      installMap: this.getoneclientdata["installMap"],
     })
 
   }
+
+  onFileChange(event): void {
+    this.fileSelected = event.target.files[0]
+    const formData = new FormData();
+    formData.append(
+      "file",
+      this.fileSelected
+    );
+
+    this.service.uploadanal(formData).subscribe({
+      next: (res) => {
+        this.imageSrc = res.url;
+        this.modifyclientForm.patchValue({
+          installMap: this.imageSrc
+        })
+      },
+      error: (err) => {
+        alert('서버 에러메세지')
+      },
+      complete: () => {
+      }
+    });
+  }
+
 
   deleteoneClient(i) {
     const returnValue = confirm('고객사를 삭제 하시겠습니까?')

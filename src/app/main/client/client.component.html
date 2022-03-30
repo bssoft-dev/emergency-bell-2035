@@ -43,21 +43,18 @@
               <th class="tableth">
                 알람설정
               </th>
-              <th class="tableth">
-                특이사항
-              </th>
               <th class="tableth modifyth">
                 변경
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let customers of getcustomersdata[0]; let i = index">
+            <tr *ngFor="let customers of getcustomersdata[0]; let index = index">
               <td class="tabletd">
                 {{customers.customerCode}}
               </td>
               <td class="tabletd font-weight-medium">
-                {{customers.name}}
+                {{customers.customerName}}
               </td>
               <td class="tabletd">
                 {{customers.staffName}}
@@ -81,11 +78,6 @@
               </td>
               <td class="tabletd">
                 {{customers.lastModify}}
-
-              </td>
-              <td class="tabletd">
-
-
               </td>
               <td class="tabletd">
 
@@ -94,12 +86,12 @@
                 <ul class="modify">
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneClient(i)"></i>
+                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneClient(index)"></i>
                     </button>
                   </li>
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneClient(i)"></i>
+                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneClient(index)"></i>
                     </button>
                   </li>
                 </ul>
@@ -126,38 +118,40 @@
         <form [formGroup]="modifyclientForm" (ngSubmit)="modifyonedevice()" novalidate>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
+            <div class="imgdiv">
+              <img [src]="imageSrc" class="locationpicture">
+              <div class="labelbox">
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
+              </div>
+            </div>
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" />
+            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="name" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
+            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="staffName" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="phone" />
           </div>
 
           <div class="inputDiv" style="display: flex;">
-            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
+            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="status" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
+            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="payMethod" />
           </div>
-
-
-
-
-
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
-          </div>
-
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" />
-          </div>
-
-
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>

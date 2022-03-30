@@ -58,8 +58,7 @@
           <tbody>
             <tr *ngFor="let devicedata of getalldevicesdata; let i = index">
               <td class="tabletd">
-                <img *ngIf="devicedata.picture.length" [src]="devicedata.picture">
-
+                <img *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture">
               </td>
               <td class="tabletd">
                 {{devicedata.model}}

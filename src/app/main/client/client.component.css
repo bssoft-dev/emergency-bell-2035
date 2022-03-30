@@ -56,48 +56,9 @@
 	font-size: 15px;
 }
 
-input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
 
-label {
-	margin-left: 60px;
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 70px;
-	height: 25px;
-	background: grey;
-	display: block;
-	border-radius: 100px;
-	position: relative;
-}
 
-label:after {
-	content: '';
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 30px;
-	height: 15px;
-	background: #fff;
-	border-radius: 90px;
-	transition: 0.3s;
-}
 
-input:checked + label {
-	background: #5156be;
-}
-
-input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
-}
-
-label:active:after {
-	width: 30px;
-}
 td{
 	text-align: center;
 	align-items: center;
@@ -109,6 +70,32 @@ ul{
 }
 li{
 	display: inline-block;
+}
+.btn{
+	background-color: #505eff;
+	color: #ffffff;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.uploadlabel{
+	margin-top: 20px;
+	background-color: #505eff;
+	color: #ffffff;
+	width: 180px;
+	height: 50px;
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.mdi-cloud-upload{
+	font-size: 40px;
+}
+.uploadlabeltext{
+	margin-left: 20px; 
+	margin-top: 10px;
 }
 
 .modifying{
@@ -162,8 +149,27 @@ li{
     FONT-SIZE: 15px;
     color:#ffffff;
 }
+
 .inputDiv{
     position: flex;
+}
+.imgdiv{
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+.locationpicture{
+	width: 170px;
+	height: 150px;
+	border-radius: 8px;
+}
+.pictureinputtitle{
+	margin-left: 120px;
+	color: #ffffff;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 .footerbutton{
     margin: 10px;

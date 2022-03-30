@@ -12,11 +12,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class DeviceComponent implements OnInit {
 
-  checktoken = () => {
-    if (!localStorage.getItem("token")) {
-      this.router.navigate(['/login']);
-    }
-  }
+
   deviceenrollForm: FormGroup;
   public modal: boolean = false;
   public modal2: boolean = false;
@@ -28,17 +24,12 @@ export class DeviceComponent implements OnInit {
 
   getalldevicesdata = [];
   getonedevicedata = [];
-
   getalldevices() {
     this.service.getalldevices().subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
       },
       error: (err) => {
-        // localStorage.removeItem('customer_code')
-        // localStorage.removeItem('token')
-        // alert('로그인이 만료되었습니다. 로그인창으로 이동합니다')
-        // this.router.navigate(['/login']);
 
       },
       complete: () => {
@@ -48,7 +39,6 @@ export class DeviceComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.checktoken()
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
@@ -84,9 +74,6 @@ export class DeviceComponent implements OnInit {
       complete: () => {
       }
     });
-
-
-
   }
 
   clickedModalClose() {
@@ -101,7 +88,6 @@ export class DeviceComponent implements OnInit {
     this.deviceenrollForm.reset()
     this.modal2 = false;
     this.imageSrc = "";
-
   }
   clickedModal2() {
     this.modal2 = true;
