@@ -58,6 +58,13 @@
 	width: 0;
 	visibility: hidden;
 }
+.fontdiv{
+	margin-top: 50px;
+}
+.gfont{
+	color: #ffffff;
+	font-size: 30px;
+}
 
 .togglelabel {
 	margin-left: 60px;
@@ -174,6 +181,26 @@ li{
     color: white;
     background-color: #505dff;
     border-radius: 7px;
+}
+.nonactivebutton{
+	border: none;
+	margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.452);
+    background-color: #7c84fa;
+    border-radius: 7px;
+}
+.confirmpasswordbox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.confirmpasswordbox p{
+	font-size: 14px;
+	color: 	#dd1e1e;
 }
 button:active{
     box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 

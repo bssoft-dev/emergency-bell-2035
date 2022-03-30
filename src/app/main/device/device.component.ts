@@ -33,7 +33,6 @@ export class DeviceComponent implements OnInit {
     this.service.getalldevices(localStorage.getItem('customer_code')).subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
-        console.log('dkdkdkdk', this.getalldevicesdata)
       },
       error: (err) => {
         // localStorage.removeItem('customer_code')

@@ -13,10 +13,11 @@ import { ApiService } from '../../services/api.service';
 })
 export class UserComponent implements OnInit {
   public modal2: boolean = false;
-  deviceenrollForm: FormGroup;
+  modifyuserForm: FormGroup;
 
 
-  checking = "checked"
+  checking = [true, false]
+  ids = ['switch1', 'switch2']
   event: any;
 
   checktoken = () => {
@@ -28,6 +29,7 @@ export class UserComponent implements OnInit {
   constructor(public router: Router, private service: ApiService,) { }
 
   clickedModal2Close() {
+    this.modifyuserForm.reset()
     this.modal2 = false;
 
   }
@@ -40,13 +42,12 @@ export class UserComponent implements OnInit {
 
   getallusersdata = [];
   getallusers() {
-    this.service.getallusers().subscribe({
+    const data = "ds"
+    this.service.getallusers(data).subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
-        console.log(this.getallusersdata[0], 'dkdkdk')
       },
       error: (err) => {
-
 
       },
       complete: () => {
@@ -57,39 +58,96 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.checktoken()
     this.getallusers()
-    this.deviceenrollForm = new FormGroup({
-      'deviceId': new FormControl("", [Validators.required]),
-      'name': new FormControl("", [Validators.required]),
-      'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("",),
-      'installDate': new FormControl("",),
-      'picture': new FormControl("",),
-      'communicateMethod': new FormControl("",),
-      'userMemo': new FormControl("",),
+    this.modifyuserForm = new FormGroup({
+      'name': new FormControl("",),
+      'phone': new FormControl("",),
+      'email': new FormControl("",),
+      'password': new FormControl("", [Validators.required]),
+      'passwordconfirm': new FormControl("", [Validators.required]),
     });
   }
 
 
-  getCheckboxValue() {
-    if (this.checking === "") {
-      this.checking = "checked"
-      console.log(this.checking)
+  getCheckboxValue(index) {
+    this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
+    const temp = []
+    const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
+    temp.push(this.getallusersdata[0][index].username)
+    temp.push(jsontemp)
+    console.log(temp, 'temp')
+    this.service.usersupergrant(temp).subscribe({
+      next: (res) => {
 
-    } else {
-      this.checking = ""
-      console.log(this.checking)
-    }
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
 
   }
 
-  getOneUser() {
-    this.clickedModal2()
+  getoneuserdata = [];
+  getOneUser(index) {
+    this.modal2 = true;
+    this.getoneuserdata = this.getallusersdata[0][index]
+
+    this.modifyuserForm.patchValue({
+      name: this.getoneuserdata["name"],
+      phone: this.getoneuserdata["phone"],
+      email: this.getoneuserdata["email"],
+    })
   }
 
   deleteoneUser() {
     const returnValue = confirm('회원을 삭제 하시겠습니까?')
-    console.log('기기기', returnValue);
+    if (returnValue) {
+      this.service.deleteoneuser(this.getoneuserdata["username"]).subscribe({
+        next: (res) => {
+          console.log(res, 'res')
+          this.getallusers()
+        },
+        error: (err) => {
 
+        },
+        complete: () => {
+        }
+      });
+    }
+  }
+
+
+
+
+  modifyoneUser() {
+    console.log(this.modifyuserForm.value, 'modifyoneUser')
+    if (this.modifyuserForm.value.password != this.modifyuserForm.value.passwordconfirm) {
+      alert('비밀번호가 일치하지 않습니다.')
+      return
+    } else {
+      const temp = []
+      const jsontemp = {
+        "name": this.modifyuserForm.value.name,
+        "phone": this.modifyuserForm.value.phone,
+        "email": this.modifyuserForm.value.email,
+        "password": this.modifyuserForm.value.password,
+      }
+      temp.push(this.getoneuserdata["username"])
+      temp.push(jsontemp)
+      console.log(temp, 'temp')
+      this.service.modifyoneuser(temp).subscribe({
+        next: (res) => {
+          console.log(res, 'res')
+          this.getallusers()
+        },
+        error: (err) => {
+
+        },
+        complete: () => {
+        }
+      });
+    }
   }
 
 

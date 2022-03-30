@@ -40,38 +40,34 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let i of getallusersdata[0]">
-              <td class="tabletd">
+            <tr *ngFor="let i of getallusersdata[0];let index = index">
+              <td class="tabletd font-weight-medium">
                 {{i.username}}
               </td>
-
               <td class="tabletd">
                 {{i.name}}
               </td>
-
               <td class="tabletd">
                 {{i.phone}}
               </td>
-
               <td class="tabletd">
                 {{i.email}}
               </td>
-
               <td class="tabletd">
                 {{i.createTime}}
               </td>
 
               <td class="tabletd">
-                <input class="toggleinput" [checked]="checking" value="ch" type="checkbox" id="switch"
-                  (click)="getCheckboxValue()" />
-                <label class="togglelabel" for="switch"></label>
+                <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}"
+                  (click)="getCheckboxValue(index)" />
+                <label class="togglelabel" for="{{index}}"></label>
               </td>
 
               <td class="tabletd">
                 <ul class="modify">
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneUser()"></i>
+                      <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneUser(index)"></i>
                     </button>
                   </li>
                   <li>
@@ -100,45 +96,41 @@
       <div class="deviceenrollcard">
         <h5 class="modal-title" id="exampleModalLabel">회원수정</h5>
 
-        <form [formGroup]="deviceenrollForm" (ngSubmit)="modifyonedevice()" novalidate>
+        <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="디바이스Id" formControlName="deviceId" />
+          <div class="fontdiv">
+            <p class="gfont">{{getoneuserdata["username"]}}</p>
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="기기명" formControlName="name" />
+            <input class="enrolldevice" type="text" placeholder="이름" formControlName="name" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="모델명" formControlName="model" />
+            <input class="enrolldevice" type="text" placeholder="연락처" formControlName="phone" />
           </div>
 
           <div class="inputDiv" style="display: flex;">
-            <input class="enrolldevice" type="text" placeholder="설치장소" formControlName="location" />
+            <input class="enrolldevice" type="text" placeholder="이메일" formControlName="email" />
           </div>
 
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="설치일" formControlName="installDate" />
+          <div class="inputDiv" style="display: flex;">
+            <input class="enrolldevice" type="password" placeholder="패스워드" formControlName="password"
+              autocomplete="off" />
           </div>
 
-
-
-
-
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="통신방식" formControlName="communicateMethod" />
+          <div class="inputDiv" style="display: flex;">
+            <input class="enrolldevice" type="password" placeholder="패스워드확인" formControlName="passwordconfirm"
+              autocomplete="off" />
           </div>
-
-          <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="메모" formControlName="userMemo" />
-          </div>
-
-
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">기기수정</button>
+            <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11" type="submit"
+              [disabled]="!modifyuserForm.valid">회원수정</button>
+          </div>
+          <div class="confirmpasswordbox" *ngIf="!modifyuserForm.valid">
+            <p>패스워드를 입력해주세요</p>
           </div>
         </form>
 
