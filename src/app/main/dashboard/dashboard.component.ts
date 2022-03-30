@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.socketgraphdata = this.requestreceived[0]?.graph?.content;
                 this.sockethistorydata = this.requestreceived[0]?.history?.content;
                 this.socketrecentdata = this.requestreceived[0]?.recent?.content;
+                localStorage.setItem('corplogo', this.requestreceived[0]?.map?.content["installMap"]);
                 this.requestreceived = [];
             } else {
                 for (let i of this.requestreceived) {

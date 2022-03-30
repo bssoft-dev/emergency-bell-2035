@@ -46,7 +46,6 @@ export class UserComponent implements OnInit {
     const data = "ds"
     this.service.getallusers(data).subscribe({
       next: (res) => {
-        console.log(res, 'res')
         this.getallusersdata.push(res)
       },
       error: (err) => {

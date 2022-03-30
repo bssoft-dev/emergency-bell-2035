@@ -23,9 +23,11 @@ export class ClientComponent implements OnInit {
 
   getcustomersdata = []
   getcustomers() {
+    this.getcustomersdata = [];
     this.service.getallcustomers().subscribe({
       next: (res) => {
         this.getcustomersdata.push(res)
+        console.log(this.getcustomersdata[0]);
       },
       error: (err) => {
         // localStorage.removeItem('customer_code')
@@ -67,11 +69,26 @@ export class ClientComponent implements OnInit {
 
   getOneClient() {
     this.clickedModal2()
+
   }
 
-  deleteoneClient() {
+  deleteoneClient(i) {
     const returnValue = confirm('고객사를 삭제 하시겠습니까?')
     console.log('기기기', returnValue);
+    if (returnValue) {
+      const temp = this.getcustomersdata[0][i]['customerCode']
+      this.service.deleteonecustomer(temp).subscribe({
+        next: (res) => {
+          console.log('삭제', res);
+          this.getcustomers()
+        },
+        error: (err) => {
+          console.log('삭제', err);
+        },
+        complete: () => {
+        }
+      });
+    }
 
   }
 
