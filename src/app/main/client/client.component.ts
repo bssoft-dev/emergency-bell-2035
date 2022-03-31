@@ -107,7 +107,7 @@ export class ClientComponent implements OnInit {
     });
   }
 
-  modifonecustomer() {
+  modifyonecustomer() {
     const data = this.modifyclientForm.value;
     console.log(data, '체크')
     if (this.modifyclientForm.valid) {

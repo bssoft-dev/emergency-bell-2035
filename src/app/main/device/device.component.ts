@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ApiService } from '../../services/api.service';
@@ -41,7 +41,6 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit(): void {
     this.deviceenrollForm = new FormGroup({
-      'deviceId': new FormControl("", [Validators.required]),
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
       'location': new FormControl("",),
@@ -52,6 +51,11 @@ export class DeviceComponent implements OnInit {
     });
     this.getalldevices();
 
+  }
+
+  ngOnDestroy() {
+    this.getalldevicesdata = [];
+    this.getonedevicedata = [];
   }
 
   onFileChange(event): void {
@@ -116,15 +120,17 @@ export class DeviceComponent implements OnInit {
 
   }
 
+  getonedeviceId;
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
+    this.getonedeviceId = this.getonedevicedata['deviceId']
     this.imageSrc = this.getonedevicedata["picture"]
 
     this.deviceenrollForm.patchValue({
-      deviceId: this.getonedevicedata["deviceId"],
       name: this.getonedevicedata["name"],
       model: this.getonedevicedata["model"],
+      picture: this.getonedevicedata['picture'],
       location: this.getonedevicedata["location"],
       installDate: this.getonedevicedata["installDate"],
       communicateMethod: this.getonedevicedata["communicateMethod"],
@@ -134,7 +140,9 @@ export class DeviceComponent implements OnInit {
   }
 
   modifyonedevice() {
-    const data = this.deviceenrollForm.value;
+    const temp = this.deviceenrollForm.value;
+    const data = [this.getonedeviceId, temp];
+
     if (this.deviceenrollForm.valid) {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
