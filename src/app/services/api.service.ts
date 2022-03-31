@@ -7,9 +7,9 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  token = sessionStorage.getItem("token")
   apiUrl = "http://api-2207.bs-soft.co.kr/"
-  customer_code = sessionStorage.getItem('customer_code')
+  token = ""
+  customer_code = ""
 
   /////////////
   login(data: any): Observable<any> {
@@ -36,7 +36,6 @@ export class ApiService {
   }
 
   detectionstatus(data: any): Observable<any> {
-
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/detections/text/30', { headers });
   }
@@ -58,6 +57,8 @@ export class ApiService {
 
   // 회원관리 페이지 
   getallusers(data): Observable<any> {
+    this.token = data[0]
+    this.customer_code = data[1]
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data[1]}`, { headers });
   }
@@ -78,6 +79,8 @@ export class ApiService {
 
   // device페이지
   getalldevices(data): Observable<any> {
+    this.token = data[0]
+    this.customer_code = data[1]
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data[1]}` + '/devices', { headers });
   }
@@ -99,6 +102,8 @@ export class ApiService {
 
   // customer페이지
   getallcustomers(data: any): Observable<any> {
+    this.token = data[0]
+    this.customer_code = data[1]
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers', { headers });
   }
@@ -116,7 +121,6 @@ export class ApiService {
   uploadanal(data: any): Observable<any> {
     const headers = new HttpHeaders({ "Authorization": `Bearer ${this.token}` })
     return this.http.post(`${this.apiUrl}` + 'api/upload', data, { headers });
-
   }
 
 }

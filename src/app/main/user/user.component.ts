@@ -95,10 +95,14 @@ export class UserComponent implements OnInit {
 
   checkauthority() {
     const myname = sessionStorage.getItem('myname')
-    for (let i of this.getallusersdata[0]) {
-      if (i.username === myname) {
-        if (i.is_superuser == true || i.is_hyperuser == true) {
-          this.authority = true;
+    if (myname == 'hyper') {
+      this.authority = true;
+    } else {
+      for (let i of this.getallusersdata[0]) {
+        if (i.username === myname) {
+          if (i.is_superuser == true || i.is_hyperuser == true) {
+            this.authority = true;
+          }
         }
       }
     }
@@ -115,7 +119,7 @@ export class UserComponent implements OnInit {
       temp.push(jsontemp)
       this.service.usersupergrant(temp).subscribe({
         next: (res) => {
-
+          console.log(res, 'res')
         },
         error: (err) => {
 
@@ -124,7 +128,8 @@ export class UserComponent implements OnInit {
         }
       });
     } else {
-
+      alert('관리자 권한이 없습니다')
+      this.getallusers();
     }
   }
 
