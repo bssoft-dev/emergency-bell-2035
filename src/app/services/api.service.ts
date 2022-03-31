@@ -57,9 +57,9 @@ export class ApiService {
   }
 
   // 회원관리 페이지 
-  getallusers(): Observable<any> {
-    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'users/all?username=' + `${this.customer_code}` + '&customerCode=' + `${this.customer_code}`, { headers });
+  getallusers(data): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
+    return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data[1]}`, { headers });
   }
   usersupergrant(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
@@ -77,9 +77,9 @@ export class ApiService {
 
 
   // device페이지
-  getalldevices(): Observable<any> {
-    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/devices', { headers });
+  getalldevices(data): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data[1]}` + '/devices', { headers });
   }
 
   deviceenroll(data: any): Observable<any> {
@@ -98,8 +98,8 @@ export class ApiService {
 
 
   // customer페이지
-  getallcustomers(): Observable<any> {
-    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+  getallcustomers(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers', { headers });
   }
   deleteonecustomer(temp): Observable<any> {

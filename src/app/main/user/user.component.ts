@@ -12,7 +12,8 @@ export class UserComponent implements OnInit {
   public modal2: boolean = false;
   modifyuserForm: FormGroup;
   authority = false;
-
+  token = "";
+  customer_code = "";
 
 
 
@@ -40,9 +41,13 @@ export class UserComponent implements OnInit {
 
   getallusersdata = [];
   getallusers() {
+    const temp = [this.token, this.customer_code]
+
     this.getallusersdata = [];
     console.log(this.getallusersdata, 'dkdkdk')
-    this.service.getallusers().subscribe({
+
+
+    this.service.getallusers(temp).subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
       },
@@ -66,6 +71,8 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
+    this.token = sessionStorage.getItem('token')
+    this.customer_code = sessionStorage.getItem('customer_code')
     this.checktoken()
     this.getallusers()
     this.modifyuserForm = new FormGroup({

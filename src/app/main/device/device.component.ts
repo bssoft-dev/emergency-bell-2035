@@ -16,6 +16,8 @@ export class DeviceComponent implements OnInit {
   deviceenrollForm: FormGroup;
   public modal: boolean = false;
   public modal2: boolean = false;
+  token = "";
+  customer_code = "";
 
   fileSelected?: Blob;
   imageSrc: string;
@@ -25,7 +27,9 @@ export class DeviceComponent implements OnInit {
   getalldevicesdata = [];
   getonedevicedata = [];
   getalldevices() {
-    this.service.getalldevices().subscribe({
+    const temp = [this.token, this.customer_code]
+
+    this.service.getalldevices(temp).subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
         console.log(this.getalldevicesdata, '얼데이타')
@@ -40,6 +44,8 @@ export class DeviceComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.token = sessionStorage.getItem('token')
+    this.customer_code = sessionStorage.getItem('customer_code')
     this.deviceenrollForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),

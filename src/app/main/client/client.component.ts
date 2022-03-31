@@ -13,6 +13,8 @@ export class ClientComponent implements OnInit {
   public modal2: boolean = false;
   fileSelected?: Blob;
   imageSrc: string;
+  token = "";
+  customer_code = "";
 
   modifyclientForm: FormGroup;
 
@@ -26,8 +28,10 @@ export class ClientComponent implements OnInit {
 
   getcustomersdata = []
   getcustomers() {
+    const temp = [this.token, this.customer_code]
+
     this.getcustomersdata = [];
-    this.service.getallcustomers().subscribe({
+    this.service.getallcustomers(temp).subscribe({
       next: (res) => {
         this.getcustomersdata = res;
       },
@@ -53,7 +57,8 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.token = sessionStorage.getItem('token')
+    this.customer_code = sessionStorage.getItem('customer_code')
     this.checktoken();
     this.modifyclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
