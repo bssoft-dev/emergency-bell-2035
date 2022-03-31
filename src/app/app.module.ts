@@ -57,6 +57,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'editprofile', component: EditprofileComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'ws', component: WebsocketComponent },
 

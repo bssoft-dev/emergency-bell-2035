@@ -3,9 +3,6 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 
-
-
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,6 +11,8 @@ import { ApiService } from '../../services/api.service';
 export class UserComponent implements OnInit {
   public modal2: boolean = false;
   modifyuserForm: FormGroup;
+  authority = false;
+
 
 
 
@@ -31,7 +30,6 @@ export class UserComponent implements OnInit {
   clickedModal2Close() {
     this.modifyuserForm.reset()
     this.modal2 = false;
-
   }
   clickedModal2() {
     this.modal2 = true;
@@ -83,8 +81,7 @@ export class UserComponent implements OnInit {
   }
 
 
-  authority = false;
-  getCheckboxValue(index) {
+  checkauthority() {
     const myname = sessionStorage.getItem('myname')
     for (let i of this.getallusersdata[0]) {
       if (i.username === myname) {
@@ -93,6 +90,10 @@ export class UserComponent implements OnInit {
         }
       }
     }
+  }
+
+  getCheckboxValue(index) {
+    this.checkauthority();
 
     if (this.authority) {
       this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
@@ -100,7 +101,6 @@ export class UserComponent implements OnInit {
       const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
       temp.push(this.getallusersdata[0][index].username)
       temp.push(jsontemp)
-      console.log(temp, 'temp')
       this.service.usersupergrant(temp).subscribe({
         next: (res) => {
 
@@ -112,39 +112,51 @@ export class UserComponent implements OnInit {
         }
       });
     } else {
-      alert('회원님은 관리자 권한이 없습니다')
-      this.getallusers();
+
     }
   }
 
 
   getoneuserdata = [];
   getOneUser(index) {
-    this.modal2 = true;
-    this.getoneuserdata = this.getallusersdata[0][index]
+    this.checkauthority();
 
-    this.modifyuserForm.patchValue({
-      username: this.getoneuserdata["username"],
-      name: this.getoneuserdata["name"],
-      phone: this.getoneuserdata["phone"],
-      email: this.getoneuserdata["email"],
-    })
+    if (this.authority) {
+      this.modal2 = true;
+      this.getoneuserdata = this.getallusersdata[0][index]
+
+      this.modifyuserForm.patchValue({
+        username: this.getoneuserdata["username"],
+        name: this.getoneuserdata["name"],
+        phone: this.getoneuserdata["phone"],
+        email: this.getoneuserdata["email"],
+      })
+    } else {
+      alert('회원님은 관리자 권한이 없습니다')
+      this.getallusers();
+    }
   }
 
   deleteoneUser() {
-    const returnValue = confirm('회원을 삭제 하시겠습니까?')
-    if (returnValue) {
-      this.service.deleteoneuser(this.getoneuserdata["username"]).subscribe({
-        next: (res) => {
-          console.log(res, 'res')
-          this.getallusers()
-        },
-        error: (err) => {
+    this.checkauthority();
+    if (this.authority) {
+      const returnValue = confirm('회원을 삭제 하시겠습니까?')
+      if (returnValue) {
+        this.service.deleteoneuser(this.getoneuserdata["username"]).subscribe({
+          next: (res) => {
+            console.log(res, 'res')
+            this.getallusers()
+          },
+          error: (err) => {
 
-        },
-        complete: () => {
-        }
-      });
+          },
+          complete: () => {
+          }
+        });
+      }
+    } else {
+      alert('회원님은 관리자 권한이 없습니다')
+      this.getallusers();
     }
   }
 

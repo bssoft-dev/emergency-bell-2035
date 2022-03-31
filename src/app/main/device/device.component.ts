@@ -28,6 +28,7 @@ export class DeviceComponent implements OnInit {
     this.service.getalldevices().subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
+        console.log(this.getalldevicesdata, '얼데이타')
       },
       error: (err) => {
 
