@@ -83,8 +83,18 @@ export class UserComponent implements OnInit {
   }
 
 
+  authority = false;
   getCheckboxValue(index) {
-    if (this.getallusersdata[0][index].is_superuser === true) {
+    const myname = sessionStorage.getItem('myname')
+    for (let i of this.getallusersdata[0]) {
+      if (i.username === myname) {
+        if (i.is_superuser == true || i.is_hyperuser == true) {
+          this.authority = true;
+        }
+      }
+    }
+
+    if (this.authority) {
       this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
       const temp = []
       const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
@@ -106,6 +116,7 @@ export class UserComponent implements OnInit {
       this.getallusers();
     }
   }
+
 
   getoneuserdata = [];
   getOneUser(index) {

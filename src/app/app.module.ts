@@ -25,6 +25,7 @@ import { ApiService } from './services/api.service';
 import { WebsocketService } from './services/websocket.service';
 import { WebsocketComponent } from './websocket/websocket.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 
 
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     WebsocketComponent,
     ForgotpasswordComponent,
+    EditprofileComponent,
   ],
   imports: [
     RouterModule.forRoot(

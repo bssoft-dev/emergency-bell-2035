@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
 
   logout() {
     sessionStorage.removeItem('is_hyperuser');
+    sessionStorage.removeItem('myname');
     sessionStorage.removeItem("token")
     sessionStorage.removeItem("customer_code")
     sessionStorage.removeItem("corplogo")
