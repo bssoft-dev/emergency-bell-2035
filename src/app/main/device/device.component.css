@@ -1,7 +1,4 @@
-.mdi-plus{
-	color: #ffffff; 
-	font-size: 30px;
-}
+
 .navbar-menu-wrapper{
 	background-color: #121619 !important;
 }
@@ -42,6 +39,10 @@
 	display: flex;
 	flex-direction: row-reverse;
 }
+.mdi-plus{
+	color: #ffffff; 
+	font-size: 30px;
+}
 .btn{
 	background-color: #505eff;
 	color: #ffffff;
@@ -49,6 +50,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.table-dark{
+	table-layout: fixed;
+	margin-top: 20px;
 }
 .uploadlabel{
 	margin-top: 20px;
@@ -75,10 +80,7 @@
 	white-space:nowrap; 
 	border-collapse:collapse
 }
-.table-dark{
-	table-layout: fixed;
-	margin-top: 20px;
-}
+
 .tabletr{
 	background-color: #5156be;
 }

@@ -11,8 +11,17 @@
 
   <div class="row">
     <div class="card">
+      <h5 class="card-title">고객사관리</h5>
+
       <div class="table-responsive">
-        <h5 class="card-title">고객사관리</h5>
+        <div class="devicetitle">
+          <div class="pt-1">
+            <button class="btn" (click)="clickedModal()">
+              <i class="menu-icon mdi mdi-plus"></i>
+              고객사 등록
+            </button>
+          </div>
+        </div>
         <table class="table table-dark table-striped">
           <thead>
             <tr class="tabletr">
@@ -97,13 +106,70 @@
                 </ul>
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>
 
     </div>
 
+  </div>
+</div>
+
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+      <div class="deviceenrollcard">
+        <h5 class="modal-title" id="exampleModalLabel">고객사등록</h5>
+
+        <form [formGroup]="modifyclientForm" (ngSubmit)="enrollonecustomer()" novalidate>
+
+          <div class="inputDiv">
+            <div class="imgdiv">
+              <img [src]="imageSrc" class="locationpicture">
+              <div class="labelbox">
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="고객사명" formControlName="customerName" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="담당자" formControlName="staffName" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="연락처" formControlName="phone" />
+          </div>
+
+          <div class="inputDiv" style="display: flex;">
+            <input class="enrolldevice" type="text" placeholder="상태" formControlName="status" />
+          </div>
+
+          <div class="inputDiv">
+            <input class="enrolldevice" type="text" placeholder="결제방법" formControlName="payMethod" />
+          </div>
+
+          <div class="modal_footer">
+            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+            <button class="footerbutton" tabindex="11" type="submit">고객사등록</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
   </div>
 </div>
 

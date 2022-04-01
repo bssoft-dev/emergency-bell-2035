@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
+  public modal: boolean = false;
   public modal2: boolean = false;
   fileSelected?: Blob;
   imageSrc: string;
@@ -41,6 +42,14 @@ export class ClientComponent implements OnInit {
       complete: () => {
       }
     });
+  }
+
+
+  clickedModal() {
+    this.modal = true;
+  }
+  clickedModalClose() {
+    this.modal = false;
   }
 
   clickedModal2Close() {
@@ -138,6 +147,10 @@ export class ClientComponent implements OnInit {
     } else {
       alert('정보를 입력해주세요')
     }
+  }
+
+  enrollonecustomer() {
+
   }
 
   deleteonecustomer(i) {

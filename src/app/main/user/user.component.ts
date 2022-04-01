@@ -9,6 +9,7 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public modal: boolean = false;
   public modal2: boolean = false;
   modifyuserForm: FormGroup;
   authority = false;
@@ -28,6 +29,13 @@ export class UserComponent implements OnInit {
 
   constructor(public router: Router, private service: ApiService,) { }
 
+  clickedModalClose() {
+    this.modifyuserForm.reset()
+    this.modal = false;
+  }
+  clickedModal() {
+    this.modal = true;
+  }
   clickedModal2Close() {
     this.modifyuserForm.reset()
     this.modal2 = false;

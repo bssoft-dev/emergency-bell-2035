@@ -71,6 +71,14 @@ ul{
 li{
 	display: inline-block;
 }
+.devicetitle{
+	display: flex;
+	flex-direction: row-reverse;
+}
+.mdi-plus{
+	color: #ffffff; 
+	font-size: 30px;
+}
 .btn{
 	background-color: #505eff;
 	color: #ffffff;
@@ -79,6 +87,12 @@ li{
 	justify-content: center;
 	align-items: center;
 }
+.table-dark{
+	table-layout: fixed;
+	margin-top: 20px;
+}
+
+
 .uploadlabel{
 	margin-top: 20px;
 	background-color: #505eff;
