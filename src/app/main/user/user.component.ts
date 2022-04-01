@@ -52,7 +52,7 @@ export class UserComponent implements OnInit {
         this.getallusersdata.push(res)
       },
       error: (err) => {
-
+        console.log(err, 'err')
       },
       complete: () => {
       }

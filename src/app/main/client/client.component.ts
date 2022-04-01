@@ -28,8 +28,8 @@ export class ClientComponent implements OnInit {
 
   getcustomersdata = []
   getcustomers() {
+    this.getcustomersdata = [];
     const temp = [this.token, this.customer_code]
-
     this.getcustomersdata = [];
     this.service.getallcustomers(temp).subscribe({
       next: (res) => {
@@ -66,17 +66,19 @@ export class ClientComponent implements OnInit {
       'phone': new FormControl("",),
       'status': new FormControl("",),
       'payMethod': new FormControl("",),
-      'installMap': new FormControl("",),
+      'logo': new FormControl("",),
     });
     this.getcustomers()
   }
 
   getonecustomerdata = []
   getOnecustomers(index) {
+    this.getonecustomerdata = [];
     this.modal2 = true;
     this.getonecustomerdata.push(this.getcustomersdata[index])
+    console.log('겟원', this.getonecustomerdata[0]['customerCode'])
 
-    this.imageSrc = this.getonecustomerdata[0]["installMap"]
+    this.imageSrc = this.getonecustomerdata[0]["logo"]
 
     this.modifyclientForm.patchValue({
       customerName: this.getonecustomerdata[0]["customerName"],
@@ -84,7 +86,7 @@ export class ClientComponent implements OnInit {
       phone: this.getonecustomerdata[0]["phone"],
       status: this.getonecustomerdata[0]["status"],
       payMethod: this.getonecustomerdata[0]["payMethod"],
-      installMap: this.getonecustomerdata[0]["installMap"],
+      logo: this.getonecustomerdata[0]["logo"],
     })
 
   }
@@ -101,7 +103,7 @@ export class ClientComponent implements OnInit {
       next: (res) => {
         this.imageSrc = res.url;
         this.modifyclientForm.patchValue({
-          installMap: this.imageSrc
+          logo: this.imageSrc
         })
       },
       error: (err) => {
@@ -113,13 +115,15 @@ export class ClientComponent implements OnInit {
   }
 
   modifyonecustomer() {
+    const temp = [];
+    temp.push(this.getonecustomerdata[0]["customerCode"])
     const data = this.modifyclientForm.value;
-    console.log(data, '체크')
+    temp.push(data)
+    console.log(temp, '체크')
     if (this.modifyclientForm.valid) {
-      this.service.modifyonecustomer(data).subscribe({
+      this.service.modifyonecustomer(temp).subscribe({
         next: (res) => {
           alert('디바이스 수정이 완료되었습니다')
-          this.getcustomersdata = [];
           this.getcustomers()
           this.modifyclientForm.reset()
           this.modal2 = false;

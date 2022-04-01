@@ -121,7 +121,7 @@ export class ApiService {
   }
   modifyonecustomer(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}`, data, { headers });
+    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${data[0]}`, data[1], { headers });
   }
 
 
