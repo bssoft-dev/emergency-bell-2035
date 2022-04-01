@@ -28,6 +28,14 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}` + 'auth/register', jsondata, { headers });
   }
 
+  // main 페이지
+  getoncustomerslogo(data: any): Observable<any> {
+    this.token = data[0]
+    this.customer_code = data[1]
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data[1]}`, { headers });
+  }
+
 
   // dashboard 페이지
   detectiongraph(data: any): Observable<any> {

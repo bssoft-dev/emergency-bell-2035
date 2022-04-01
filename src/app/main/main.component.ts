@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
+
 
 
 @Component({
@@ -9,13 +11,32 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  token = "";
+  customer_code = "";
+
+  constructor(public router: Router, private service: ApiService) { }
 
   is_hyperuser: any;
   corplogo: any;
+
+  getonecustomerslogo() {
+    const temp = [this.token, this.customer_code]
+    this.service.getoncustomerslogo(temp).subscribe({
+      next: (res) => {
+        this.corplogo = res['logo']
+      },
+      error: (err) => {
+      },
+      complete: () => {
+      }
+    });
+  }
+
   ngOnInit() {
+    this.token = sessionStorage.getItem('token')
+    this.customer_code = sessionStorage.getItem('customer_code')
     this.is_hyperuser = sessionStorage.getItem('is_hyperuser');
-    this.corplogo = sessionStorage.getItem('corplogo');
+    this.getonecustomerslogo();
   }
 
   logout() {

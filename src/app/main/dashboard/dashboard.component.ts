@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.socketgraphdata = this.requestreceived[0]?.graph?.content;
                 this.sockethistorydata = this.requestreceived[0]?.history?.content;
                 this.socketrecentdata = this.requestreceived[0]?.recent?.content;
-                sessionStorage.setItem('corplogo', this.requestreceived[0]?.map?.content["installMap"]);
                 this.requestreceived = [];
             } else {
                 for (let i of this.requestreceived) {
@@ -325,16 +324,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    active = ["kim", "park", "lee"];
-    @Output('outputProperty') outputProperty = new EventEmitter();
-
-    updateParent(active: any) {
-        this.active = active;
-        this.outputProperty.emit(this.active);
-    }
-
     ngOnDestroy(): void {
-        // this.WebsocketService.messages.disconnect();
+        this.WebsocketService.messages.unsubscribe();
     }
 
     clickedModalClose() {
