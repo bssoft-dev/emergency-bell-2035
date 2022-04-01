@@ -10,7 +10,6 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   token = "";
   customer_code = "";
 
@@ -23,12 +22,9 @@ export class MainComponent implements OnInit {
     const temp = [this.token, this.customer_code]
     this.service.getoncustomerslogo(temp).subscribe({
       next: (res) => {
-        console.log(res, '로고')
         this.corplogo = res['logo']
       },
       error: (err) => {
-        console.log(err, '로고실패')
-
       },
       complete: () => {
       }
