@@ -68,7 +68,7 @@
 
               <td class="tabletd">
                 <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}"
-                  (click)="getCheckboxValue(index)" />
+                  (click)="modifymanager(index)" />
                 <label class="togglelabel" for="{{index}}"></label>
               </td>
 
@@ -108,30 +108,34 @@
         <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="아이디" formControlName="username" />
+            <p class="inputtitle">[아이디]</p>
+            <input class="enrolldevice" type="text" formControlName="username" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="이름" formControlName="name" />
+            <p class="inputtitle">[이름]</p>
+            <input class="enrolldevice" type="text" formControlName="name" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="연락처" formControlName="phone" />
+            <p class="inputtitle">[연락처]</p>
+            <input class="enrolldevice" type="text" formControlName="phone" />
           </div>
 
-          <div class="inputDiv" style="display: flex;">
-            <input class="enrolldevice" type="text" placeholder="이메일" formControlName="email" />
+          <div class="inputDiv">
+            <p class="inputtitle">[이메일]</p>
+            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
-            <div class="inputDiv" style="display: flex;">
-              <input class="enrolldevice" type="password" placeholder="패스워드" formControlName="password"
-                autocomplete="off" />
+            <div class="inputDiv">
+              <p class="inputtitle">[패스워드]</p>
+              <input class="enrolldevice" type="password" formControlName="password" autocomplete="off" />
             </div>
 
-            <div class="inputDiv" style="display: flex;">
-              <input class="enrolldevice" type="password" placeholder="패스워드확인" formControlName="passwordconfirm"
-                autocomplete="off" />
+            <div class="inputDiv">
+              <p class="inputtitle">[패스워드확인]</p>
+              <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
             <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">
@@ -167,30 +171,34 @@
         <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="아이디" formControlName="username" />
+            <p class="inputtitle">[아이디]</p>
+            <input class="enrolldevice" type="text" formControlName="username" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="이름" formControlName="name" />
+            <p class="inputtitle">[이름]</p>
+            <input class="enrolldevice" type="text" formControlName="name" />
           </div>
 
           <div class="inputDiv">
-            <input class="enrolldevice" type="text" placeholder="연락처" formControlName="phone" />
+            <p class="inputtitle">[연락처]</p>
+            <input class="enrolldevice" type="text" formControlName="phone" />
           </div>
 
-          <div class="inputDiv" style="display: flex;">
-            <input class="enrolldevice" type="text" placeholder="이메일" formControlName="email" />
+          <div class="inputDiv">
+            <p class="inputtitle">[이메일]</p>
+            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
-            <div class="inputDiv" style="display: flex;">
-              <input class="enrolldevice" type="password" placeholder="패스워드" formControlName="password"
-                autocomplete="off" />
+            <div class="inputDiv">
+              <p class="inputtitle">[패스워드]</p>
+              <input class="enrolldevice" type="password" formControlName="password" autocomplete="off" />
             </div>
 
-            <div class="inputDiv" style="display: flex;">
-              <input class="enrolldevice" type="password" placeholder="패스워드확인" formControlName="passwordconfirm"
-                autocomplete="off" />
+            <div class="inputDiv">
+              <p class="inputtitle">[패스워드확인]</p>
+              <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
             <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">

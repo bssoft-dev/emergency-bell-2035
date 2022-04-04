@@ -116,7 +116,7 @@ export class UserComponent implements OnInit {
     }
   }
 
-  getCheckboxValue(index) {
+  modifymanager(index) {
     this.checkauthority();
 
     if (this.authority) {

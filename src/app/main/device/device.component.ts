@@ -105,7 +105,11 @@ export class DeviceComponent implements OnInit {
   }
 
   deviceenroll() {
+    if (this.customer_code === "bssoft") {
+
+    }
     const data = this.deviceenrollForm.value;
+    console.log(data, 'dkdkdk')
     if (this.deviceenrollForm.valid) {
       this.service.deviceenroll(data).subscribe({
         next: (res) => {
