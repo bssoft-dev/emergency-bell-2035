@@ -123,7 +123,7 @@
       <div class="deviceenrollcard">
         <h5 class="modal-title" id="exampleModalLabel">고객사등록</h5>
 
-        <form [formGroup]="modifyclientForm" (ngSubmit)="enrollonecustomer()" novalidate>
+        <form [formGroup]="registerclientForm" (ngSubmit)="registeronecustomer()" novalidate>
 
           <div class="inputDiv">
             <div class="imgdiv">
@@ -144,6 +144,11 @@
           <div class="inputDiv">
             <p class="inputtitle">[고객사명]</p>
             <input class="enrolldevice" type="text" formControlName="customerName" />
+          </div>
+
+          <div class="inputDiv">
+            <p class="inputtitle">[고객사코드]</p>
+            <input class="enrolldevice" type="text" formControlName="customerCode" />
           </div>
 
           <div class="inputDiv">

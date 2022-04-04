@@ -18,6 +18,7 @@ export class ClientComponent implements OnInit {
   customer_code = "";
 
   modifyclientForm: FormGroup;
+  registerclientForm: FormGroup;
 
   checktoken = () => {
     if (!sessionStorage.getItem("token")) {
@@ -61,9 +62,6 @@ export class ClientComponent implements OnInit {
     this.modal2 = true;
   }
 
-  modifyonedevice() {
-
-  }
 
   ngOnInit() {
     this.token = sessionStorage.getItem('token')
@@ -77,6 +75,16 @@ export class ClientComponent implements OnInit {
       'payMethod': new FormControl("",),
       'logo': new FormControl("",),
     });
+    this.registerclientForm = new FormGroup({
+      'customerName': new FormControl("", [Validators.required]),
+      'customerCode': new FormControl("", [Validators.required]),
+      'staffName': new FormControl("", [Validators.required]),
+      'phone': new FormControl("",),
+      'status': new FormControl("",),
+      'payMethod': new FormControl("",),
+      'logo': new FormControl("",),
+    });
+
     this.getcustomers()
   }
 
@@ -114,6 +122,9 @@ export class ClientComponent implements OnInit {
         this.modifyclientForm.patchValue({
           logo: this.imageSrc
         })
+        this.registerclientForm.patchValue({
+          logo: this.imageSrc
+        })
       },
       error: (err) => {
         alert('서버 에러메세지')
@@ -121,6 +132,32 @@ export class ClientComponent implements OnInit {
       complete: () => {
       }
     });
+  }
+
+  registeronecustomer() {
+    const data = this.registerclientForm.value;
+    if (data['logo'].length < 1) {
+      data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/bell.png"
+    }
+    console.log(data, '데이타체크')
+    if (this.registerclientForm.valid) {
+      this.service.registeronecustomer(data).subscribe({
+        next: (res) => {
+          alert('디바이스 등록이 완료되었습니다')
+          this.getcustomers()
+          this.registerclientForm.reset()
+          this.modal = false;
+        },
+        error: (err) => {
+          console.log(err, '에러코드')
+          alert('정보를 잘못 입력하셨습니다')
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('정보를 입력해주세요')
+    }
   }
 
   modifyonecustomer() {
@@ -149,21 +186,15 @@ export class ClientComponent implements OnInit {
     }
   }
 
-  enrollonecustomer() {
-
-  }
-
   deleteonecustomer(i) {
     const returnValue = confirm('고객사를 삭제 하시겠습니까?')
     if (returnValue) {
-      const temp = this.getcustomersdata[0][i]['customerCode']
+      const temp = this.getcustomersdata[i]['customerCode']
       this.service.deleteonecustomer(temp).subscribe({
         next: (res) => {
-          console.log('삭제', res);
           this.getcustomers()
         },
         error: (err) => {
-          console.log('삭제', err);
         },
         complete: () => {
         }
