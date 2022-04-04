@@ -14,6 +14,7 @@ export class DeviceComponent implements OnInit {
 
 
   deviceenrollForm: FormGroup;
+  devicemodifyForm: FormGroup;
   public modal: boolean = false;
   public modal2: boolean = false;
   token = "";
@@ -27,6 +28,7 @@ export class DeviceComponent implements OnInit {
   getalldevicesdata = [];
   getonedevicedata = [];
   getalldevices() {
+    this.getalldevicesdata = [];
     const temp = [this.token, this.customer_code]
 
     this.service.getalldevices(temp).subscribe({
@@ -47,6 +49,16 @@ export class DeviceComponent implements OnInit {
     this.token = sessionStorage.getItem('token')
     this.customer_code = sessionStorage.getItem('customer_code')
     this.deviceenrollForm = new FormGroup({
+      'deviceId': new FormControl(null, [Validators.required]),
+      'name': new FormControl("", [Validators.required]),
+      'model': new FormControl("", [Validators.required]),
+      'location': new FormControl("",),
+      'installDate': new FormControl("",),
+      'picture': new FormControl("",),
+      'communicateMethod': new FormControl("",),
+      'userMemo': new FormControl("",),
+    });
+    this.devicemodifyForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
       'location': new FormControl("",),
@@ -78,6 +90,9 @@ export class DeviceComponent implements OnInit {
         this.deviceenrollForm.patchValue({
           picture: this.imageSrc
         })
+        this.devicemodifyForm.patchValue({
+          picture: this.imageSrc
+        })
       },
       error: (err) => {
         alert('서버 에러메세지')
@@ -106,7 +121,6 @@ export class DeviceComponent implements OnInit {
 
   deviceenroll() {
     if (this.customer_code === "bssoft") {
-
     }
     const data = this.deviceenrollForm.value;
     console.log(data, 'dkdkdk')
@@ -115,6 +129,7 @@ export class DeviceComponent implements OnInit {
         next: (res) => {
           alert('디바이스 등록이 완료되었습니다')
           this.deviceenrollForm.reset()
+          this.getalldevices();
           this.modal = false;
         },
         error: (err) => {
@@ -137,7 +152,7 @@ export class DeviceComponent implements OnInit {
     this.getonedeviceId = this.getonedevicedata['deviceId']
     this.imageSrc = this.getonedevicedata["picture"]
 
-    this.deviceenrollForm.patchValue({
+    this.devicemodifyForm.patchValue({
       name: this.getonedevicedata["name"],
       model: this.getonedevicedata["model"],
       picture: this.getonedevicedata['picture'],
@@ -150,15 +165,15 @@ export class DeviceComponent implements OnInit {
   }
 
   modifyonedevice() {
-    const temp = this.deviceenrollForm.value;
+    const temp = this.devicemodifyForm.value;
     const data = [this.getonedeviceId, temp];
-
-    if (this.deviceenrollForm.valid) {
+    console.log(data, '데이터')
+    if (this.devicemodifyForm.valid) {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
           alert('디바이스 수정이 완료되었습니다')
           this.getalldevices()
-          this.deviceenrollForm.reset()
+          this.devicemodifyForm.reset()
           this.modal2 = false;
         },
         error: (err) => {

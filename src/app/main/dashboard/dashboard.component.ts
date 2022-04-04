@@ -31,18 +31,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
 
-    // detectionstatusdata = [];
-    // alldetectiondata = [];
-    // numdevice: any;
-    // deactivatedevice: any;
-    // inspectiondevice: any;
-    // activatedevice: any;
-    // alivecheckdata: any[] = [];
-    // alivecheckdatakey: string[] = [];
-    // alivecheckdatavalue: string[] = [];
-    // tempdata: any[] = [];
-
-
 
     // websocket 템프 데이터
     requestreceived = [];
@@ -224,90 +212,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    // detectiongraph() {
-    //     let detectiongraphdata: any[] = [];
-    //     let dataset: any[] = [];
-    //     this.service.detectiongraph(sessionStorage.getItem('customer_code')).subscribe({
-    //         next: (res) => {
-    //             detectiongraphdata.push(res)
-    //             const { Button, Scream, Time } = detectiongraphdata[0];
-    //             for (let i = 0; i < Button.length; i++) {
-    //                 dataset.push({ Button: Button[i], Scream: Scream[i], Time: Time[i] })
-    //             }
-    //             console.log(dataset, '그래프데이터')
-    //             this.makechart(dataset)
-    //         },
-    //         error: (err) => {
-
-    //         },
-    //         complete: () => {
-    //         }
-    //     });
-    // }
-
-    // detectionstatus() {
-    //     this.service.detectionstatus(sessionStorage.getItem('customer_code')).subscribe({
-    //         next: (res) => {
-    //             this.detectionstatusdata.push(res)
-    //         },
-    //         error: (err) => {
-
-    //         },
-    //         complete: () => {
-    //         }
-    //     });
-    // }
-
-
-    // alldevice() {
-    //     this.service.alldevice(sessionStorage.getItem('customer_code')).subscribe({
-    //         next: (res) => {
-    //             this.numdevice = res.numDevice
-    //             this.deactivatedevice = res.deactivateDevice
-    //             this.inspectiondevice = res.inspectionDevice
-    //             this.activatedevice = (this.numdevice - this.deactivatedevice - this.inspectiondevice)
-    //         },
-    //         error: (err) => {
-
-    //         },
-    //         complete: () => {
-    //         }
-    //     });
-    // }
-
-
-    // alivecheck() {
-    //     this.service.alivecheck(sessionStorage.getItem('customer_code')).subscribe({
-    //         next: (res) => {
-    //             this.alivecheckdatakey = Object.keys(res);
-    //             this.alivecheckdatavalue = Object.values(res);
-    //             for (let i = 0; i < this.alivecheckdatakey.length; i++) {
-    //                 this.tempdata.push(this.alivecheckdatakey[i])
-    //                 this.tempdata.push(this.alivecheckdatavalue[i])
-    //                 this.alivecheckdata.push(this.tempdata);
-    //                 this.tempdata = [];
-    //             }
-    //         },
-    //         error: (err) => {
-    //         },
-    //         complete: () => {
-    //         }
-    //     });
-    // }
-
-
-    // alldetection() {
-    //     this.service.alldetection(sessionStorage.getItem('customer_code')).subscribe({
-    //         next: (res) => {
-    //             this.alldetectiondata.push(res)
-    //         },
-    //         error: (err) => {
-
-    //         },
-    //         complete: () => {
-    //         }
-    //     });
-    // }
 
     ngOnInit() {
         this.checktoken()
