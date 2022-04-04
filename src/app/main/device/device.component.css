@@ -41,6 +41,12 @@
 	font-weight: 600;
 }
 
+.deviceId {
+	color: #ffffff;
+
+	font-weight: 600;
+}
+
 .devicetitle {
 	display: flex;
 	flex-direction: row-reverse;
