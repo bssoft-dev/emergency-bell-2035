@@ -15,7 +15,7 @@
 
       <div class="table-responsive">
         <div class="devicetitle">
-          <div class="pt-1">
+          <div *ngIf="customer_code ==='bssoft' " class="pt-1">
             <button class="btn" (click)="clickedModal()">
               <i class="menu-icon mdi mdi-plus"></i>
               고객사 등록
@@ -48,9 +48,6 @@
               </th>
               <th class="tableth">
                 등록일자
-              </th>
-              <th class="tableth">
-                알람설정
               </th>
               <th class="tableth modifyth">
                 변경
@@ -88,9 +85,7 @@
               <td class="tabletd">
                 {{customers.lastModify}}
               </td>
-              <td class="tabletd">
 
-              </td>
               <td class="tabletd">
                 <ul class="modify">
                   <li>

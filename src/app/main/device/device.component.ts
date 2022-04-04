@@ -35,6 +35,14 @@ export class DeviceComponent implements OnInit {
       next: (res) => {
         this.getalldevicesdata = res;
         console.log(this.getalldevicesdata, '얼데이타')
+        this.getalldevicesdata.forEach((el, i) => {
+          if (el['inspection'] == false) {
+            el['inspection'] = '미점검'
+          } else {
+            el['inspection'] = '점검완료'
+          }
+        })
+        console.log('aaaaaa', this.getalldevicesdata)
       },
       error: (err) => {
 
