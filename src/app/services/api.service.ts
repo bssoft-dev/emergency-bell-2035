@@ -70,6 +70,10 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data[1]}`, { headers });
   }
+  registeruser(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
+    return this.http.post(`${this.apiUrl}` + 'auth/register', data, { headers });
+  }
   usersupergrant(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.put(`${this.apiUrl}` + 'users/superGrant/' + `${data[0]}`, data[1], { headers });

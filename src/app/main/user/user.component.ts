@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
+import { JsonFormatter } from 'tslint/lib/formatters';
 
 @Component({
   selector: 'app-user',
@@ -11,6 +12,7 @@ import { ApiService } from '../../services/api.service';
 export class UserComponent implements OnInit {
   public modal: boolean = false;
   public modal2: boolean = false;
+  registeruserForm: FormGroup;
   modifyuserForm: FormGroup;
   authority = false;
   token = "";
@@ -67,6 +69,29 @@ export class UserComponent implements OnInit {
     });
   }
 
+  registerUser() {
+    const data = this.registeruserForm.value
+    data.password = data.passwordGroup.password
+    delete data.passwordGroup;
+    console.log(data, 'dkdkdk')
+    if (this.registeruserForm.valid) {
+      this.service.registeruser(data).subscribe({
+        next: (res) => {
+          console.log(res, 'res')
+          this.getallusers();
+        },
+        error: (err) => {
+
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('입력을 확인해주세요')
+      this.getallusers();
+    }
+  }
+
   equalValidator({ value }: FormGroup): { [key: string]: any } {
     const [first, ...rest] = Object.keys(value || {});
     if (first.length == 0 && rest.length == 0) {
@@ -84,6 +109,17 @@ export class UserComponent implements OnInit {
     this.checktoken()
     this.getallusers()
     this.modifyuserForm = new FormGroup({
+      'username': new FormControl("",),
+      'name': new FormControl("",),
+      'phone': new FormControl("",),
+      'email': new FormControl("",),
+      'passwordGroup': new FormGroup({
+        'password': new FormControl("", [Validators.required]),
+        'passwordconfirm': new FormControl("", [Validators.required,]),
+      }, this.equalValidator)
+    });
+    this.registeruserForm = new FormGroup({
+      'customerCode': new FormControl("",),
       'username': new FormControl("",),
       'name': new FormControl("",),
       'phone': new FormControl("",),
@@ -162,18 +198,19 @@ export class UserComponent implements OnInit {
     }
   }
 
-  deleteoneUser() {
+  deleteoneUser(index) {
     this.checkauthority();
     if (this.authority) {
       const returnValue = confirm('회원을 삭제 하시겠습니까?')
       if (returnValue) {
-        this.service.deleteoneuser(this.getoneuserdata["username"]).subscribe({
+        console.log('쳌쳌', this.getallusersdata[0][index]['username'])
+        this.service.deleteoneuser(this.getallusersdata[0][index]['username']).subscribe({
           next: (res) => {
-            console.log(res, 'res')
-            this.getallusers()
+            alert('삭제 완료')
+            this.getallusers();
           },
           error: (err) => {
-
+            alert('서버 에러')
           },
           complete: () => {
           }

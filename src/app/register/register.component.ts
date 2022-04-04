@@ -9,43 +9,54 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
+  registeruserForm: FormGroup;
   overlapcheckstate = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
 
+  equalValidator({ value }: FormGroup): { [key: string]: any } {
+    const [first, ...rest] = Object.keys(value || {});
+    if (first.length == 0 && rest.length == 0) {
+      return
+    } else {
+      const valid = rest.every(v => value[v] === value[first]);
+      return valid ? null : { equal: true };
+    }
+  }
+
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      'username': new FormControl("", [Validators.required]),
+    this.registeruserForm = new FormGroup({
+      'customerCode': new FormControl("",),
+      'username': new FormControl("",),
+      'name': new FormControl("",),
+      'phone': new FormControl("",),
       'email': new FormControl("",),
-      'customerCode': new FormControl("", [Validators.required]),
-      'name': new FormControl(""),
-      'password': new FormControl("", [Validators.required, Validators.minLength(2),]),
-      'confirmpassword': new FormControl("", [Validators.required, Validators.minLength(2),]),
+      'passwordGroup': new FormGroup({
+        'password': new FormControl("", [Validators.required]),
+        'passwordconfirm': new FormControl("", [Validators.required,]),
+      }, this.equalValidator)
     });
   }
 
-  register() {
-    const data = this.registerForm.value;
-    if (this.registerForm.valid) {
-      if (this.registerForm.value.password === this.registerForm.value.confirmpassword) {
-        this.service.register(data).subscribe({
-          next: (res) => {
-            alert('회원가입이 성공적으로 완료되었습니다. 로그인창으로 이동합니다')
-            this.router.navigate(['/login']);
-          },
-          error: (err) => {
-            alert('서버에서 에러메세지 전달')
-          },
-          complete: () => {
-          }
-        });
-      } else {
-        alert('비밀번호가 다릅니다')
-      }
+  registerUser() {
+    const data = this.registeruserForm.value
+    data.password = data.passwordGroup.password
+    delete data.passwordGroup;
+    if (this.registeruserForm.valid) {
+      this.service.registeruser(data).subscribe({
+        next: (res) => {
+          alert('회원가입이 성공적으로 완료되었습니다 로그인 창으로 이동합니다.')
+          this.gologin()
+        },
+        error: (err) => {
+          alert('서버 에러')
+        },
+        complete: () => {
+        }
+      });
     } else {
-      alert('필수 항목을 입력해 주세요')
+      alert('입력을 확인해주세요')
     }
   }
 

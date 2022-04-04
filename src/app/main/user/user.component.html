@@ -81,7 +81,7 @@
                   </li>
                   <li>
                     <button class="modifying">
-                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneUser()"></i>
+                      <i class="menu-icon mdi mdi-delete" (click)="deleteoneUser(index)"></i>
                     </button>
                   </li>
                 </ul>
@@ -105,8 +105,12 @@
       <div class="deviceenrollcard">
         <h5 class="modal-title" id="exampleModalLabel">회원등록</h5>
 
-        <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
+        <form [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
 
+          <div class="inputDiv">
+            <p class="inputtitle">[커스터머코드]</p>
+            <input class="enrolldevice" type="text" formControlName="customerCode" />
+          </div>
           <div class="inputDiv">
             <p class="inputtitle">[아이디]</p>
             <input class="enrolldevice" type="text" formControlName="username" />
@@ -138,18 +142,18 @@
               <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
-            <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">
+            <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('equal','passwordGroup')">
               <p>패스워드가 다릅니다</p>
             </div>
           </div>
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-            <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11" type="submit"
-              [disabled]="!modifyuserForm.valid">회원등록</button>
+            <button [ngClass]="!registeruserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
+              type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
           </div>
           <div class="confirmpasswordbox"
-            [hidden]="!modifyuserForm.hasError('required',['passwordGroup','password']) && !modifyuserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
+            [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) && !registeruserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
             <p>패스워드를 입력해주세요</p>
           </div>
         </form>
