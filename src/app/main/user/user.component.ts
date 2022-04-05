@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
   constructor(public router: Router, private service: ApiService,) { }
 
   clickedModalClose() {
-    this.modifyuserForm.reset()
+    this.registeruserForm.reset()
     this.modal = false;
   }
   clickedModal() {
@@ -45,9 +45,7 @@ export class UserComponent implements OnInit {
   clickedModal2() {
     this.modal2 = true;
   }
-  modifyonedevice() {
 
-  }
 
   getallusersdata = [];
   getallusers() {
@@ -77,8 +75,10 @@ export class UserComponent implements OnInit {
     if (this.registeruserForm.valid) {
       this.service.registeruser(data).subscribe({
         next: (res) => {
-          console.log(res, 'res')
-          this.getallusers();
+          alert('회원 등록이 완료되었습니다')
+          this.getallusers()
+          this.registeruserForm.reset()
+          this.modal = false;
         },
         error: (err) => {
 
@@ -109,10 +109,9 @@ export class UserComponent implements OnInit {
     this.checktoken()
     this.getallusers()
     this.modifyuserForm = new FormGroup({
-      'username': new FormControl("",),
+      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
-      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
@@ -120,10 +119,9 @@ export class UserComponent implements OnInit {
     });
     this.registeruserForm = new FormGroup({
       'customerCode': new FormControl("",),
-      'username': new FormControl("",),
+      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
-      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
@@ -139,7 +137,7 @@ export class UserComponent implements OnInit {
 
   checkauthority() {
     const myname = sessionStorage.getItem('myname')
-    if (myname == 'hyper') {
+    if (myname == 'hyper@example.com') {
       this.authority = true;
     } else {
       for (let i of this.getallusersdata[0]) {

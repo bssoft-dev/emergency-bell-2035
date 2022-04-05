@@ -11,8 +11,12 @@
           <input class="enrolldevice" type="text" formControlName="customerCode" />
         </div>
         <div class="inputDiv">
-          <p class="inputtitle">[아이디]</p>
+          <p class="inputtitle">[이메일]</p>
           <input class="enrolldevice" type="text" formControlName="username" />
+        </div>
+
+        <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('pattern','username')">
+          <p>이메일 형식이 아닙니다.</p>
         </div>
 
         <div class="inputDiv">
@@ -23,11 +27,6 @@
         <div class="inputDiv">
           <p class="inputtitle">[연락처]</p>
           <input class="enrolldevice" type="text" formControlName="phone" />
-        </div>
-
-        <div class="inputDiv">
-          <p class="inputtitle">[이메일]</p>
-          <input class="enrolldevice" type="text" formControlName="email" />
         </div>
 
         <div formGroupName="passwordGroup">
@@ -53,6 +52,9 @@
         <div class="confirmpasswordbox"
           [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) && !registeruserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
           <p>패스워드를 입력해주세요</p>
+        </div>
+        <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('required', 'username') ">
+          <p>이메일을 입력해주세요</p>
         </div>
       </form>
     </div>

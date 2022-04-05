@@ -26,7 +26,7 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                회원아이디
+                회원이메일
               </th>
               <th class="tableth">
                 이름
@@ -112,8 +112,15 @@
             <input class="enrolldevice" type="text" formControlName="customerCode" />
           </div>
           <div class="inputDiv">
-            <p class="inputtitle">[아이디]</p>
+            <p class="inputtitle">[이메일]</p>
             <input class="enrolldevice" type="text" formControlName="username" />
+          </div>
+          <div class="confirmpasswordbox" *ngIf="registeruserForm.touched"
+            [hidden]="!registeruserForm.hasError('required', 'username') ">
+            <p>이메일을 입력해주세요</p>
+          </div>
+          <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('pattern','username')">
+            <p>이메일 형식이 아닙니다.</p>
           </div>
 
           <div class="inputDiv">
@@ -124,11 +131,6 @@
           <div class="inputDiv">
             <p class="inputtitle">[연락처]</p>
             <input class="enrolldevice" type="text" formControlName="phone" />
-          </div>
-
-          <div class="inputDiv">
-            <p class="inputtitle">[이메일]</p>
-            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
@@ -152,6 +154,7 @@
             <button [ngClass]="!registeruserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
               type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
           </div>
+
           <div class="confirmpasswordbox"
             [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) && !registeruserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
             <p>패스워드를 입력해주세요</p>
@@ -175,9 +178,13 @@
         <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
           <div class="inputDiv">
-            <p class="inputtitle">[아이디]</p>
+            <p class="inputtitle">[이메일]</p>
             <input class="enrolldevice" type="text" formControlName="username" />
           </div>
+          <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('pattern','username')">
+            <p>이메일 형식이 아닙니다.</p>
+          </div>
+
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>
@@ -187,11 +194,6 @@
           <div class="inputDiv">
             <p class="inputtitle">[연락처]</p>
             <input class="enrolldevice" type="text" formControlName="phone" />
-          </div>
-
-          <div class="inputDiv">
-            <p class="inputtitle">[이메일]</p>
-            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
@@ -215,6 +217,7 @@
             <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11" type="submit"
               [disabled]="!modifyuserForm.valid">회원수정</button>
           </div>
+
           <div class="confirmpasswordbox"
             [hidden]="!modifyuserForm.hasError('required',['passwordGroup','password']) && !modifyuserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
             <p>패스워드를 입력해주세요</p>

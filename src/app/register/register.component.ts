@@ -11,6 +11,7 @@ import { ApiService } from '../services/api.service';
 export class RegisterComponent implements OnInit {
   registeruserForm: FormGroup;
   overlapcheckstate = false;
+  submitted = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registeruserForm = new FormGroup({
       'customerCode': new FormControl("",),
-      'username': new FormControl("",),
+      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
       'email': new FormControl("",),
@@ -39,7 +40,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  get f() { return this.registeruserForm.controls; }
+
   registerUser() {
+    this.submitted = true;
     const data = this.registeruserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;
