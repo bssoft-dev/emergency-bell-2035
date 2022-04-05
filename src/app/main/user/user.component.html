@@ -115,7 +115,7 @@
             <p class="inputtitle">[이메일]</p>
             <input class="enrolldevice" type="text" formControlName="username" />
           </div>
-          <div class="confirmpasswordbox" *ngIf="registeruserForm.touched"
+          <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.username.touched"
             [hidden]="!registeruserForm.hasError('required', 'username') ">
             <p>이메일을 입력해주세요</p>
           </div>
@@ -144,6 +144,10 @@
               <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
+            <div class="confirmpasswordbox"
+              [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) ">
+              <p>패스워드를 입력해주세요</p>
+            </div>
             <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('equal','passwordGroup')">
               <p>패스워드가 다릅니다</p>
             </div>
@@ -155,10 +159,7 @@
               type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
           </div>
 
-          <div class="confirmpasswordbox"
-            [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) && !registeruserForm.hasError('required',['passwordGroup','passwordconfirm']) ">
-            <p>패스워드를 입력해주세요</p>
-          </div>
+
         </form>
 
 
