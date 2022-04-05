@@ -1,3 +1,9 @@
+.registertitle {
+    display: flex;
+    justify-content: center;
+
+}
+
 .cardbox {
     width: 24%;
 }
@@ -52,7 +58,7 @@ input {
 }
 
 .custominput {
-    margin-top: 30px;
+    margin-top: 20px;
     background: transparent;
     width: 70%;
     height: 50px;
@@ -70,7 +76,7 @@ input {
 .inputDiv {
     position: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .singin {

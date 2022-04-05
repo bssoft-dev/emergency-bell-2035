@@ -182,6 +182,12 @@ li {
 	font-weight: 700;
 }
 
+.pictitle {
+	font-size: 22px;
+	color: rgb(153, 153, 153);
+	margin-bottom: 10px;
+}
+
 .enrolldevice {
 	background: transparent;
 	width: 100%;

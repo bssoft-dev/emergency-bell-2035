@@ -120,8 +120,23 @@
 
         <form [formGroup]="registerclientForm" (ngSubmit)="registeronecustomer()" novalidate>
 
-          <div class="inputDiv">
+          <div class="inputDiv" style="display: flex; flex-direction: row; justify-content: space-around;">
             <div class="imgdiv">
+              <p class="inputtitle pictitle">[설치사진]</p>
+              <img [src]="imageSrc" class="locationpicture">
+              <div class="labelbox">
+                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                  (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile" class="uploadlabel">
+                  <div>
+                    <i class="menu-icon mdi mdi-cloud-upload"></i>
+                  </div>
+                  <h4 class="uploadlabeltext">사진 업로드</h4>
+                </label>
+              </div>
+            </div>
+            <div class="imgdiv">
+              <p class="inputtitle pictitle">[로고사진]</p>
               <img [src]="imageSrc" class="locationpicture">
               <div class="labelbox">
                 <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
