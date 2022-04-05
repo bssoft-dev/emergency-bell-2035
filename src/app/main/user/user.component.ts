@@ -109,9 +109,10 @@ export class UserComponent implements OnInit {
     this.checktoken()
     this.getallusers()
     this.modifyuserForm = new FormGroup({
-      'email': new FormControl("",),
+      'username': new FormControl("",),
       'name': new FormControl("",),
       'phone': new FormControl("",),
+      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
@@ -119,9 +120,10 @@ export class UserComponent implements OnInit {
     });
     this.registeruserForm = new FormGroup({
       'customerCode': new FormControl("",),
-      'email': new FormControl("",),
+      'username': new FormControl("",),
       'name': new FormControl("",),
       'phone': new FormControl("",),
+      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
@@ -136,12 +138,12 @@ export class UserComponent implements OnInit {
 
 
   checkauthority() {
-    const email = sessionStorage.getItem('email')
-    if (email == 'hyper') {
+    const myname = sessionStorage.getItem('myname')
+    if (myname == 'hyper') {
       this.authority = true;
     } else {
       for (let i of this.getallusersdata[0]) {
-        if (i.email === email) {
+        if (i.username === myname) {
           if (i.is_superuser == true || i.is_hyperuser == true) {
             this.authority = true;
           }
@@ -157,7 +159,7 @@ export class UserComponent implements OnInit {
       this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
       const temp = []
       const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
-      temp.push(this.getallusersdata[0][index].email)
+      temp.push(this.getallusersdata[0][index].username)
       temp.push(jsontemp)
       this.service.usersupergrant(temp).subscribe({
         next: (res) => {
@@ -185,9 +187,10 @@ export class UserComponent implements OnInit {
       this.getoneuserdata = this.getallusersdata[0][index]
 
       this.modifyuserForm.patchValue({
-        email: this.getoneuserdata["email"],
+        username: this.getoneuserdata["username"],
         name: this.getoneuserdata["name"],
         phone: this.getoneuserdata["phone"],
+        email: this.getoneuserdata["email"],
       })
     } else {
       alert('회원님은 관리자 권한이 없습니다')
@@ -200,7 +203,8 @@ export class UserComponent implements OnInit {
     if (this.authority) {
       const returnValue = confirm('회원을 삭제 하시겠습니까?')
       if (returnValue) {
-        this.service.deleteoneuser(this.getallusersdata[0][index]['email']).subscribe({
+        console.log('쳌쳌', this.getallusersdata[0][index]['username'])
+        this.service.deleteoneuser(this.getallusersdata[0][index]['username']).subscribe({
           next: (res) => {
             alert('삭제 완료')
             this.getallusers();
@@ -227,12 +231,13 @@ export class UserComponent implements OnInit {
     } else {
       const temp = []
       const jsontemp = {
-        "email": this.modifyuserForm.value.email,
+        "username": this.modifyuserForm.value.username,
         "name": this.modifyuserForm.value.name,
         "phone": this.modifyuserForm.value.phone,
+        "email": this.modifyuserForm.value.email,
         "password": this.modifyuserForm.value.password,
       }
-      temp.push(this.getoneuserdata["email"])
+      temp.push(this.getoneuserdata["username"])
       temp.push(jsontemp)
       this.service.modifyoneuser(temp).subscribe({
         next: (res) => {
