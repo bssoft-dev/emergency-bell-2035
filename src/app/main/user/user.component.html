@@ -26,16 +26,13 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                회원아이디
+                이메일
               </th>
               <th class="tableth">
                 이름
               </th>
               <th class="tableth">
                 연락처
-              </th>
-              <th class="tableth">
-                이메일
               </th>
               <th class="tableth">
                 등록일자
@@ -51,16 +48,13 @@
           <tbody>
             <tr *ngFor="let i of getallusersdata[0];let index = index">
               <td class="tabletd font-weight-medium">
-                {{i.username}}
+                {{i.email}}
               </td>
               <td class="tabletd">
                 {{i.name}}
               </td>
               <td class="tabletd">
                 {{i.phone}}
-              </td>
-              <td class="tabletd">
-                {{i.email}}
               </td>
               <td class="tabletd">
                 {{i.createTime}}
@@ -111,9 +105,10 @@
             <p class="inputtitle">[커스터머코드]</p>
             <input class="enrolldevice" type="text" formControlName="customerCode" />
           </div>
+
           <div class="inputDiv">
-            <p class="inputtitle">[아이디]</p>
-            <input class="enrolldevice" type="text" formControlName="username" />
+            <p class="inputtitle">[이메일]</p>
+            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div class="inputDiv">
@@ -126,10 +121,6 @@
             <input class="enrolldevice" type="text" formControlName="phone" />
           </div>
 
-          <div class="inputDiv">
-            <p class="inputtitle">[이메일]</p>
-            <input class="enrolldevice" type="text" formControlName="email" />
-          </div>
 
           <div formGroupName="passwordGroup">
             <div class="inputDiv">

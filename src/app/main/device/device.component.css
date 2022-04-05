@@ -243,3 +243,13 @@ button:active {
 	justify-content: center;
 	align-items: center;
 }
+
+.inp {
+	position: absolute;
+	left: -1000%;
+}
+
+.lbl {
+	width: 100px;
+	height: 100px;
+}

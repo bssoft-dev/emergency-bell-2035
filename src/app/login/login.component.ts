@@ -25,19 +25,19 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main/dashboard']);
     }
     this.loginForm = new FormGroup({
-      'username': new FormControl("", [Validators.required]),
+      'email': new FormControl("", [Validators.required]),
       'password': new FormControl("", [Validators.required, Validators.minLength(2),]),
     });
   }
 
   login() {
-    const change = this.loginForm.value.username.replace('@', '%40')
-    let king = `username=${change}&password=${this.loginForm.value.password}`
-    sessionStorage.setItem('myname', this.loginForm.value.username)
+    const change = this.loginForm.value.email.replace('@', '%40')
+    let loggquery = `email=${change}&password=${this.loginForm.value.password}`
+    sessionStorage.setItem('email', this.loginForm.value.email)
 
 
     if (this.loginForm.valid) {
-      this.service.login(king).subscribe({
+      this.service.login(loggquery).subscribe({
         next: (res) => {
           sessionStorage.setItem('is_hyperuser', res['is_hyperuser'])
           sessionStorage.setItem('customer_code', res.customer_code);

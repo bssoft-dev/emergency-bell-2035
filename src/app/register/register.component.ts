@@ -28,10 +28,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registeruserForm = new FormGroup({
       'customerCode': new FormControl("",),
-      'username': new FormControl("",),
+      'email': new FormControl("",),
       'name': new FormControl("",),
       'phone': new FormControl("",),
-      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
