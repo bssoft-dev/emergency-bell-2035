@@ -94,7 +94,7 @@ export class ApiService {
     this.token = data[0]
     this.customer_code = data[1]
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data[1]}` + '/devices', { headers });
+    return this.http.get(`${this.apiUrl}` + 'api/devices?customerCode=' + `${data[1]}`, { headers });
   }
 
   deviceenroll(data: any): Observable<any> {

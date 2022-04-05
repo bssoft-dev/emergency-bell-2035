@@ -26,16 +26,13 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                회원아이디
+                이메일
               </th>
               <th class="tableth">
                 이름
               </th>
               <th class="tableth">
                 연락처
-              </th>
-              <th class="tableth">
-                이메일
               </th>
               <th class="tableth">
                 등록일자
@@ -50,8 +47,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let i of getallusersdata[0];let index = index">
-              <td class="tabletd font-weight-medium">
-                {{i.username}}
+              <td class="tabletd">
+                {{i.email}}
               </td>
               <td class="tabletd">
                 {{i.name}}
@@ -59,9 +56,7 @@
               <td class="tabletd">
                 {{i.phone}}
               </td>
-              <td class="tabletd">
-                {{i.email}}
-              </td>
+
               <td class="tabletd">
                 {{i.createTime}}
               </td>
