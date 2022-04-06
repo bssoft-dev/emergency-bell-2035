@@ -25,6 +25,43 @@ export class DeviceComponent implements OnInit {
 
   constructor(public router: Router, private service: ApiService, private sant: DomSanitizer) { }
 
+  currentusercheckdata = [];
+  currentusercheck() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          resolve(res);
+          this.token = sessionStorage.getItem('token');
+          this.customer_code = res.customerCode;
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {
+        }
+      })
+    })
+  }
+
+  initgetalldevices(res) {
+    this.getalldevicesdata = [];
+    const temp = [sessionStorage.getItem('token'), res.customerCode]
+
+    this.service.getalldevices(temp).subscribe({
+      next: (res) => {
+        this.getalldevicesdata = res;
+        console.log(this.getalldevicesdata, '얼데이타')
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
+  }
+
+
   getalldevicesdata = [];
   getonedevicedata = [];
   getalldevices() {
@@ -46,8 +83,9 @@ export class DeviceComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.token = sessionStorage.getItem('token')
-    this.customer_code = sessionStorage.getItem('customer_code')
+    this.currentusercheck().then((res) => {
+      this.initgetalldevices(res)
+    })
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl(null, [Validators.required]),
       'customerCode': new FormControl(null, [Validators.required]),
@@ -68,7 +106,6 @@ export class DeviceComponent implements OnInit {
       'communicateMethod': new FormControl("",),
       'userMemo': new FormControl("",),
     });
-    this.getalldevices();
 
   }
 

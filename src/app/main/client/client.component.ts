@@ -28,7 +28,42 @@ export class ClientComponent implements OnInit {
 
   constructor(public router: Router, private service: ApiService) { }
 
+  currentusercheckdata = [];
+  currentusercheck() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          resolve(res);
+          this.token = sessionStorage.getItem('token');
+          this.customer_code = res.customerCode;
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {
+        }
+      })
+    })
+  }
+
   getcustomersdata = []
+  initgetcustomers(res) {
+    this.getcustomersdata = [];
+    const temp = [sessionStorage.getItem('token'), res.customerCode]
+    this.getcustomersdata = [];
+    this.service.getallcustomers(temp).subscribe({
+      next: (res) => {
+        this.getcustomersdata = res;
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
+  }
+
   getcustomers() {
     this.getcustomersdata = [];
     const temp = [this.token, this.customer_code]
@@ -64,9 +99,10 @@ export class ClientComponent implements OnInit {
 
 
   ngOnInit() {
-    this.token = sessionStorage.getItem('token')
-    this.customer_code = sessionStorage.getItem('customer_code')
     this.checktoken();
+    this.currentusercheck().then(res => {
+      this.initgetcustomers(res)
+    })
     this.modifyclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
       'staffName': new FormControl("", [Validators.required]),
@@ -85,7 +121,6 @@ export class ClientComponent implements OnInit {
       'logo': new FormControl("",),
     });
 
-    this.getcustomers()
   }
 
   getonecustomerdata = []

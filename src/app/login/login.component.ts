@@ -33,14 +33,10 @@ export class LoginComponent implements OnInit {
   login() {
     const change = this.loginForm.value.username.replace('@', '%40')
     let king = `username=${change}&password=${this.loginForm.value.password}`
-    sessionStorage.setItem('myname', this.loginForm.value.username)
-
 
     if (this.loginForm.valid) {
       this.service.login(king).subscribe({
         next: (res) => {
-          sessionStorage.setItem('is_hyperuser', res['is_hyperuser'])
-          sessionStorage.setItem('customer_code', res.customer_code);
           sessionStorage.setItem("token", res.access_token);
           this.loginForm.reset();
           this.router.navigate(['/main/dashboard']);

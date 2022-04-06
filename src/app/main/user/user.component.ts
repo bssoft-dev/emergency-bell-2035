@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { JsonFormatter } from 'tslint/lib/formatters';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,8 @@ export class UserComponent implements OnInit {
   public modal2: boolean = false;
   registeruserForm: FormGroup;
   modifyuserForm: FormGroup;
-  authority = false;
+  is_hyperuser = false;
+  is_superuser = false;
   token = "";
   customer_code = "";
 
@@ -30,6 +32,27 @@ export class UserComponent implements OnInit {
   }
 
   constructor(public router: Router, private service: ApiService,) { }
+
+  currentusercheckdata = [];
+  currentusercheck() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          resolve(res);
+          this.token = sessionStorage.getItem('token');
+          this.customer_code = res.customerCode;
+          this.is_superuser = res.is_superuser;
+          this.is_hyperuser = res.is_hyperuser;
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {
+        }
+      })
+    })
+  }
 
   clickedModalClose() {
     this.registeruserForm.reset()
@@ -48,13 +71,25 @@ export class UserComponent implements OnInit {
 
 
   getallusersdata = [];
+  initgetallusers(res) {
+    const temp = [sessionStorage.getItem('token'), res.customerCode]
+    this.getallusersdata = [];
+    this.service.getallusers(temp).subscribe({
+      next: (res) => {
+        this.getallusersdata.push(res)
+      },
+      error: (err) => {
+        console.log(err, 'err')
+      },
+      complete: () => {
+      }
+    });
+  }
+
   getallusers() {
     const temp = [this.token, this.customer_code]
 
     this.getallusersdata = [];
-    console.log(this.getallusersdata, 'dkdkdk')
-
-
     this.service.getallusers(temp).subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
@@ -103,10 +138,12 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
-    this.token = sessionStorage.getItem('token')
-    this.customer_code = sessionStorage.getItem('customer_code')
     this.checktoken()
-    this.getallusers()
+    this.currentusercheck().then(res => {
+      this.initgetallusers(res)
+    })
+
+
     this.modifyuserForm = new FormGroup({
       'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
@@ -134,26 +171,10 @@ export class UserComponent implements OnInit {
   }
 
 
-  checkauthority() {
-    const myname = sessionStorage.getItem('myname')
-    if (myname == 'hyper@example.com') {
-      this.authority = true;
-    } else {
-      for (let i of this.getallusersdata[0]) {
-        if (i.username === myname) {
-          if (i.is_superuser == true || i.is_hyperuser == true) {
-            this.authority = true;
-          }
-        }
-      }
-    }
-  }
 
 
   modifymanager(index) {
-    this.checkauthority();
-
-    if (this.authority) {
+    if (this.is_hyperuser || this.is_superuser) {
       this.getallusersdata[0][index].is_superuser = !this.getallusersdata[0][index].is_superuser
       const temp = []
       const jsontemp = { "is_superuser": this.getallusersdata[0][index].is_superuser }
@@ -178,9 +199,7 @@ export class UserComponent implements OnInit {
 
   getoneuserdata = [];
   getOneUser(index) {
-    this.checkauthority();
-
-    if (this.authority) {
+    if (this.is_hyperuser || this.is_superuser) {
       this.modal2 = true;
       this.getoneuserdata = this.getallusersdata[0][index]
 
@@ -197,8 +216,7 @@ export class UserComponent implements OnInit {
   }
 
   deleteoneUser(index) {
-    this.checkauthority();
-    if (this.authority) {
+    if (this.is_hyperuser || this.is_superuser) {
       const returnValue = confirm('회원을 삭제 하시겠습니까?')
       if (returnValue) {
         console.log('쳌쳌', this.getallusersdata[0][index]['username'])

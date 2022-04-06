@@ -12,14 +12,35 @@ import { ApiService } from '../services/api.service';
 export class MainComponent implements OnInit {
   token = "";
   customer_code = "";
+  is_hyperuser;
+  corplogo;
 
   constructor(public router: Router, private service: ApiService) { }
 
-  is_hyperuser: any;
-  corplogo: any;
 
-  getonecustomerslogo() {
-    const temp = [this.token, this.customer_code]
+
+  currentusercheckdata = [];
+  currentusercheck() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          resolve(res);
+          this.token = sessionStorage.getItem('token');
+          this.customer_code = res.customerCode;
+          this.is_hyperuser = res.is_hyperuser;
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {
+        }
+      })
+    })
+  }
+
+  getonecustomerslogo(res) {
+    const temp = [sessionStorage.getItem('token'), res.customerCode]
     this.service.getoncustomerslogo(temp).subscribe({
       next: (res) => {
         this.corplogo = res['logo']
@@ -33,17 +54,13 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.token = sessionStorage.getItem('token')
-    this.customer_code = sessionStorage.getItem('customer_code')
-    this.is_hyperuser = sessionStorage.getItem('is_hyperuser');
-    this.getonecustomerslogo();
+    this.currentusercheck().then((res) => {
+      this.getonecustomerslogo(res)
+    })
   }
 
   logout() {
-    sessionStorage.removeItem('is_hyperuser');
-    sessionStorage.removeItem('myname');
     sessionStorage.removeItem("token")
-    sessionStorage.removeItem("customer_code")
-    sessionStorage.removeItem("corplogo")
     this.router.navigate(['/login'])
   }
 
