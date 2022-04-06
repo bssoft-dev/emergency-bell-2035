@@ -12,6 +12,11 @@ export class ApiService {
   customer_code = ""
 
   /////////////
+  getcurrentuser(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data}` })
+    return this.http.get(`${this.apiUrl}` + 'users/me', { headers });
+  }
+
   login(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/x-www-form-urlencoded" })
     return this.http.post(`${this.apiUrl}` + 'auth/jwt/login', data, { headers });

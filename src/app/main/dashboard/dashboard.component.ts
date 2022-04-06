@@ -74,13 +74,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    initrequest() {
-        const customer_code = sessionStorage.getItem("customer_code")
-        setTimeout(() => {
-            let requestmessage = { cmd: "main", args: [customer_code] }
-            this.WebsocketService.requestmessages.next(requestmessage);
-        }, 100)
-    }
+
 
     makechart = (socketgraphdata) => {
         const dataset = []
@@ -212,15 +206,30 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
+    currentuserdata;
+    getcurrentuser() {
+        const token = sessionStorage.getItem('token');
+        this.service.getcurrentuser(token).subscribe({
+            next: (res) => {
+                this.currentuserdata = res;
+
+                setTimeout(() => {
+                    let requestmessage = { cmd: "main", args: [this.currentuserdata.customerCode] }
+                    this.WebsocketService.requestmessages.next(requestmessage);
+                }, 100)
+            },
+            error: (err) => {
+
+            },
+            complete: () => {
+            }
+        })
+    }
+
 
     ngOnInit() {
         this.checktoken()
-        // this.detectiongraph()
-        // this.detectionstatus()
-        // this.alldevice()
-        // this.alivecheck()
-        // this.alldetection()
-        this.initrequest()
+        this.getcurrentuser()
 
         setTimeout(() => {
             this.makechart(this.socketgraphdata)
