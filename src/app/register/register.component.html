@@ -49,7 +49,7 @@
               type="password" formControlName="passwordconfirm" autocomplete="off" />
           </div>
 
-          <div class="confirmpasswordbox"
+          <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.passwordGroup.touched"
             [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) ">
             <p>패스워드를 입력해주세요</p>
           </div>
