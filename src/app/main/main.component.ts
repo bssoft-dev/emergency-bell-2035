@@ -21,14 +21,14 @@ export class MainComponent implements OnInit {
 
   currentusercheckdata = [];
   currentusercheck() {
-    const token = sessionStorage.getItem('token');
+    this.token = sessionStorage.getItem('token');
     return new Promise((resolve, reject) => {
-      this.service.getcurrentuser(token).subscribe({
+      this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          resolve(res);
           this.token = sessionStorage.getItem('token');
           this.customer_code = res.customerCode;
           this.is_hyperuser = res.is_hyperuser;
+          resolve(res);
         },
         error: (err) => {
           reject(new Error(err));
@@ -57,6 +57,7 @@ export class MainComponent implements OnInit {
     this.currentusercheck().then((res) => {
       this.getonecustomerslogo(res)
     })
+
   }
 
   logout() {
