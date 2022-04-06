@@ -74,13 +74,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    initrequest() {
-        const customer_code = sessionStorage.getItem("customer_code")
-        setTimeout(() => {
-            let requestmessage = { cmd: "main", args: [customer_code] }
-            this.WebsocketService.requestmessages.next(requestmessage);
-        }, 100)
-    }
+
 
     makechart = (socketgraphdata) => {
         const dataset = []
@@ -212,32 +206,35 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    currentuserdata;
+    initrequest(res) {
+        const customer_code = res.customerCode;
+        let requestmessage = { cmd: "main", args: [res.customerCode] }
+        this.WebsocketService.requestmessages.next(requestmessage);
+    }
+
+    getcurrentuserdata = [];
     getcurrentuser() {
         const token = sessionStorage.getItem('token');
-        this.service.getcurrentuser(token).subscribe({
-            next: (res) => {
-                this.currentuserdata = res;
-                console.log(this.currentuserdata.customerCode, '현재유저')
-            },
-            error: (err) => {
-
-            },
-            complete: () => {
-            }
+        return new Promise((resolve, reject) => {
+            this.service.getcurrentuser(token).subscribe({
+                next: (res) => {
+                    resolve(res);
+                },
+                error: (err) => {
+                    reject(new Error(err));
+                },
+                complete: () => {
+                }
+            })
         })
     }
 
 
     ngOnInit() {
         this.checktoken()
-        this.getcurrentuser()
-        // this.detectiongraph()
-        // this.detectionstatus()
-        // this.alldevice()
-        // this.alivecheck()
-        // this.alldetection()
-        this.initrequest()
+        this.getcurrentuser().then(res => {
+            this.initrequest(res)
+        })
 
         setTimeout(() => {
             this.makechart(this.socketgraphdata)
