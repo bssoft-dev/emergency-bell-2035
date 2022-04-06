@@ -108,7 +108,7 @@ export class ApiService {
   }
   deleteonedevice(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.delete(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/device/' + `${data}`, { headers });
+    return this.http.delete(`${this.apiUrl}` + 'api/device/' + `${data}?customerCode=` + `${this.customer_code}`, { headers });
   }
 
 

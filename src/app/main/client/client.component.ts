@@ -143,7 +143,7 @@ export class ClientComponent implements OnInit {
     if (this.registerclientForm.valid) {
       this.service.registeronecustomer(data).subscribe({
         next: (res) => {
-          alert('디바이스 등록이 완료되었습니다')
+          alert('고객사 등록이 완료되었습니다')
           this.getcustomers()
           this.registerclientForm.reset()
           this.modal = false;
@@ -169,7 +169,7 @@ export class ClientComponent implements OnInit {
     if (this.modifyclientForm.valid) {
       this.service.modifyonecustomer(temp).subscribe({
         next: (res) => {
-          alert('디바이스 수정이 완료되었습니다')
+          alert('고객사 수정이 완료되었습니다')
           this.getcustomers()
           this.modifyclientForm.reset()
           this.modal2 = false;
