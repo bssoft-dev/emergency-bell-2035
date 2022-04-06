@@ -113,7 +113,9 @@
           </div>
           <div class="inputDiv">
             <p class="inputtitle">[이메일]</p>
-            <input class="enrolldevice" type="text" formControlName="username" />
+            <input
+              [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+              type="text" formControlName="username" />
           </div>
           <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.username.touched"
             [hidden]="!registeruserForm.hasError('required', 'username') ">
@@ -136,12 +138,16 @@
           <div formGroupName="passwordGroup">
             <div class="inputDiv">
               <p class="inputtitle">[패스워드]</p>
-              <input class="enrolldevice" type="password" formControlName="password" autocomplete="off" />
+              <input
+                [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+                type="password" formControlName="password" autocomplete="off" />
             </div>
 
             <div class="inputDiv">
               <p class="inputtitle">[패스워드확인]</p>
-              <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
+              <input
+                [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+                type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
             <div class="confirmpasswordbox"

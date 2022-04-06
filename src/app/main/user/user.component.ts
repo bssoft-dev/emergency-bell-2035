@@ -71,7 +71,6 @@ export class UserComponent implements OnInit {
     const data = this.registeruserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;
-    console.log(data, 'dkdkdk')
     if (this.registeruserForm.valid) {
       this.service.registeruser(data).subscribe({
         next: (res) => {
@@ -149,6 +148,7 @@ export class UserComponent implements OnInit {
       }
     }
   }
+
 
   modifymanager(index) {
     this.checkauthority();
