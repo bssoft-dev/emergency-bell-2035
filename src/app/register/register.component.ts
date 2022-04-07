@@ -10,8 +10,8 @@ import { ApiService } from '../services/api.service';
 })
 export class RegisterComponent implements OnInit {
   registeruserForm: FormGroup;
-  overlapcheckstate = false;
   submitted = false;
+  overlapcheck = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
@@ -29,18 +29,47 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registeruserForm = new FormGroup({
       'customerCode': new FormControl("",),
-      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'username': new FormControl("", [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
       'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
-      }, this.equalValidator)
+      }, this.equalValidator),
     });
   }
 
+  usernamechange(e) {
+    this.overlapcheck = false;
+  }
+
+
+
   get f() { return this.registeruserForm.controls; }
+
+
+  duplicatecheck() {
+    const data = this.registeruserForm.controls.username.value
+    if (data.length > 0) {
+      this.service.duplicatecheck(data).subscribe({
+        next: (res) => {
+          if (res == '생성 가능한 아이디 입니다') {
+            this.overlapcheck = true;
+          } else {
+            this.overlapcheck = false;
+          }
+        },
+        error: (err) => {
+          alert('서버 에러')
+        },
+        complete: () => {
+        }
+      });
+    }
+  }
+
+
 
   registerUser() {
     this.submitted = true;
@@ -70,9 +99,5 @@ export class RegisterComponent implements OnInit {
   goforgotpassword() {
     this.router.navigate(['/forgotpassword'])
   }
-  overlapcheck() {
-    this.overlapcheckstate = !this.overlapcheckstate;
-  }
-
 
 }

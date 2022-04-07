@@ -12,9 +12,17 @@
         </div>
         <div class="inputDiv">
           <p class="inputtitle">[이메일]</p>
-          <input
-            [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
-            type="text" formControlName="username" />
+          <div class="sectiondiv">
+            <input (focus)="usernamechange($event)"
+              [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+              type="text" formControlName="username" />
+            <button (click)="duplicatecheck()" type="button"
+              [ngClass]="registeruserForm.controls.username.valid ? 'duplicatebutton' : 'nonduplicatebutton' "
+              [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">중복확인</button>
+          </div>
+        </div>
+        <div class="confirmidbox" [hidden]="!overlapcheck">
+          <p>회원가입이 가능한 아이디 입니다.</p>
         </div>
         <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.username.touched"
           [hidden]="!registeruserForm.hasError('required', 'username') ">
@@ -48,6 +56,7 @@
               [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
               type="password" formControlName="passwordconfirm" autocomplete="off" />
           </div>
+
 
           <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.passwordGroup.touched"
             [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) ">

@@ -10,10 +10,26 @@
 
 }
 
+.sectiondiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title {
     color: #ffffff;
     font-size: 32px;
     font-weight: 500;
+}
+
+.confirmidbox {
+    width: 20%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(89, 112, 247);
 }
 
 .confirmpasswordbox {
@@ -135,12 +151,29 @@ button:active {
     margin: 5px;
     width: 30%;
     height: 50px;
-    BORDER-LEFT: medium none;
-    BORDER-RIGHT: medium none;
-    BORDER-TOP: medium none;
-    border-bottom: medium none;
+    border: none;
     color: white;
     background-color: #5156be;
+    border-radius: 7px;
+}
+
+.duplicatebutton {
+    margin: 5px;
+    width: 40%;
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: #5156be;
+    border-radius: 7px;
+}
+
+.nonduplicatebutton {
+    margin: 5px;
+    width: 40%;
+    height: 50px;
+    border: none;
+    color: rgba(0, 0, 0, 0.452);
+    background-color: #7c84fa;
     border-radius: 7px;
 }
 

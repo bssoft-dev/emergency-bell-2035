@@ -32,6 +32,10 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
     return this.http.post(`${this.apiUrl}` + 'auth/register', jsondata, { headers });
   }
+  duplicatecheck(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", })
+    return this.http.get(`${this.apiUrl}` + 'users/duplicate/' + `${data}`, { headers });
+  }
 
   forgotpassword(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
