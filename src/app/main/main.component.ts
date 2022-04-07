@@ -52,9 +52,11 @@ export class MainComponent implements OnInit {
     });
   }
 
+  myname = "";
   ngOnInit() {
     this.token = sessionStorage.getItem('token')
     this.currentusercheck().then((res) => {
+      this.myname = res['name'];
       this.getonecustomerslogo(res)
     })
 

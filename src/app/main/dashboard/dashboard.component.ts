@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 this.socketrecentdata = this.requestreceived[0]?.recent?.content;
                 this.socketmapdata = this.requestreceived[0]?.map?.content;
                 this.requestreceived = [];
-                console.log(this.socketmapdata['installMap'], 'dkdwlwlw')
             } else {
                 for (let i of this.requestreceived) {
                     if (i.title === "recent") {

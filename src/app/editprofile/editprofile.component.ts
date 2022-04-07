@@ -10,12 +10,42 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./editprofile.component.css']
 })
 export class EditprofileComponent implements OnInit {
-  registeruserForm: FormGroup;
+  modifyuserForm: FormGroup;
   overlapcheckstate = false;
   submitted = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
+
+  getoneuserdata;
+  currentusercheck() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          this.getoneuserdata = res;
+          resolve(res);
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {
+        }
+      })
+    })
+  }
+
+  patchvalue(res) {
+    this.modifyuserForm.patchValue({
+      username: res.username,
+      name: res.name,
+      phone: res.phone,
+    })
+  }
+
+
+
+
 
   equalValidator({ value }: FormGroup): { [key: string]: any } {
     const [first, ...rest] = Object.keys(value || {});
@@ -28,42 +58,51 @@ export class EditprofileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.registeruserForm = new FormGroup({
-      'customerCode': new FormControl("",),
+    this.modifyuserForm = new FormGroup({
       'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
-      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
       }, this.equalValidator)
     });
+
+    this.currentusercheck().then(res => {
+      this.patchvalue(res)
+    })
   }
 
-  get f() { return this.registeruserForm.controls; }
+  modifyoneUser() {
+    const temp = []
 
-  registerUser() {
-    this.submitted = true;
-    const data = this.registeruserForm.value
+    const data = this.modifyuserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;
-    if (this.registeruserForm.valid) {
-      this.service.registeruser(data).subscribe({
-        next: (res) => {
-          alert('회원가입이 성공적으로 완료되었습니다 로그인 창으로 이동합니다.')
-          this.gologin()
-        },
-        error: (err) => {
-          alert('서버 에러')
-        },
-        complete: () => {
-        }
-      });
-    } else {
-      alert('입력을 확인해주세요')
-    }
+
+    temp.push(data.username)
+    temp.push(data)
+
+    this.service.modifyoneuser(temp).subscribe({
+      next: (res) => {
+        alert('정보 수정이 완료되었습니다 전체현황 페이지로 이동합니다')
+        this.modifyuserForm.reset()
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        alert('내부 서버 에러. 전체현황 페이지로 돌아갑니다.')
+        this.modifyuserForm.reset()
+        this.router.navigate(['/login']);
+      },
+      complete: () => {
+      }
+    });
+
   }
+
+  get f() { return this.modifyuserForm.controls; }
+
+
 
   gologin() {
     this.router.navigate(['/login']);
