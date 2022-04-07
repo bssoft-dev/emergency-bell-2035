@@ -1,43 +1,70 @@
-<div class="full-page-wrapper page-body-wrapper contain" style="background-color: black;">
-    <div style="width: 20%;">
+<div class="full-page-wrapper page-body-wrapper contain">
+    <div class="cardbox">
 
         <div class="registercard">
             <p class="title">회원가입</p>
 
-            <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
-
-                <div class="inputDiv" style="display: flex; align-items: center; justify-content: center;">
-                    <input type="text" placeholder="Id" formControlName="username" tabindex="1" />
-                    <button type="button" class="anotherbutton overlapcheck" (click)="overlapcheck()"
-                        tabindex="2">중복확인</button>
-                </div>
-                <p *ngIf="overlapcheckstate" class="requirefield">중복된 아이디 입니다.</p>
-
-
+            <form [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
 
                 <div class="inputDiv">
-                    <input type="text" placeholder="Email" formControlName="email" tabindex="3" />
+                    <p class="inputtitle">[커스터머코드]</p>
+                    <input class="enrolldevice" type="text" formControlName="customerCode" />
                 </div>
-
                 <div class="inputDiv">
-                    <input type="text" placeholder="customerCode" formControlName="customerCode" tabindex="4" />
+                    <p class="inputtitle">[이메일]</p>
+                    <input
+                        [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+                        type="text" formControlName="username" />
                 </div>
-
-                <div class="inputDiv">
-                    <input type="text" placeholder="name" formControlName="name" tabindex="5" />
+                <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.username.touched"
+                    [hidden]="!registeruserForm.hasError('required', 'username') ">
+                    <p>이메일을 입력해주세요</p>
+                </div>
+                <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('pattern','username')">
+                    <p>이메일 형식이 아닙니다.</p>
                 </div>
 
                 <div class="inputDiv">
-                    <input type="password" placeholder="Password" formControlName="password" tabindex="6" />
-                </div>
-                <div class="inputDiv">
-                    <input type="password" placeholder="Password확인" formControlName="confirmpassword" tabindex="7" />
+                    <p class="inputtitle">[이름]</p>
+                    <input class="enrolldevice" type="text" formControlName="name" />
                 </div>
 
-                <button class="singin" tabindex="8" type="submit">회원가입</button>
+                <div class="inputDiv">
+                    <p class="inputtitle">[연락처]</p>
+                    <input class="enrolldevice" type="text" formControlName="phone" />
+                </div>
+
+                <div formGroupName="passwordGroup">
+                    <div class="inputDiv">
+                        <p class="inputtitle">[패스워드]</p>
+                        <input
+                            [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+                            type="password" formControlName="password" autocomplete="off" />
+                    </div>
+
+                    <div class="inputDiv">
+                        <p class="inputtitle">[패스워드확인]</p>
+                        <input
+                            [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
+                            type="password" formControlName="passwordconfirm" autocomplete="off" />
+                    </div>
+
+                    <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.passwordGroup.touched"
+                        [hidden]="!registeruserForm.hasError('required',['passwordGroup','password']) ">
+                        <p>패스워드를 입력해주세요</p>
+                    </div>
+                    <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('equal','passwordGroup')">
+                        <p>패스워드가 다릅니다</p>
+                    </div>
+                </div>
+
+                <div class="modal_footer">
+                    <button [ngClass]="!registeruserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
+                        type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
+                </div>
+
+
             </form>
-            <p class="requirefield">Id customerCode password는 필수항목 입니다.</p>
-
         </div>
 
         <div class="another">

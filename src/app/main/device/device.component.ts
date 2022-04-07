@@ -209,7 +209,7 @@ export class DeviceComponent implements OnInit {
     if (this.devicemodifyForm.valid) {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
-          alert('디바이스 수정이 완료되었습니다')
+          alert('기기 정보 수정이 완료되었습니다')
           this.getalldevices()
           this.devicemodifyForm.reset()
           this.modal2 = false;
@@ -227,17 +227,17 @@ export class DeviceComponent implements OnInit {
   }
 
   deleteonedevice(index) {
-    const returnValue = confirm('디바이스를 삭제 하시겠습니까?')
+    const returnValue = confirm('기기 정보를 삭제 하시겠습니까?')
 
     if (returnValue) {
       const deviceid = this.getalldevicesdata[index]["deviceId"]
       this.service.deleteonedevice(deviceid).subscribe({
         next: (res) => {
-          alert('디바이스 삭제가 완료되었습니다')
+          alert('기기 정보 삭제가 완료되었습니다')
           this.getalldevices()
         },
         error: (err) => {
-          alert('디바이스 삭제 실패')
+          alert('기기 정보 삭제 실패')
           console.log('에러', err)
         },
         complete: () => {

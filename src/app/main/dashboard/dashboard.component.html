@@ -15,21 +15,21 @@
       <div class="row" id="onerow">
         <div class="col" id="allbellcol">
           <div class="card firstcard">
-            <h5 class="card-title">총 비상벨</h5>
+            <h5 class="card-title">스마트벨 작동 현황</h5>
 
 
             <div class="innercard1">
               <i class="menu-icon mdi mdi-alarm-light"></i>
               <p class="innerfont1">{{socketdevicesdata["numDevice"] - socketdevicesdata["deactivateDevice"] -
                 socketdevicesdata["inspectionDevice"]}}/{{socketdevicesdata["numDevice"]}}</p>
-              <p class="innerfont2">정상작동중</p>
+              <p class="innerfont2">설치</p>
             </div>
 
             <div class="innercardcon">
               <div class="innercard2">
                 <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
                 <i class="menu-icon mdi mdi-alarm-light"></i>
-                <p class="innerfont2">비활성화</p>
+                <p class="innerfont2">작동중</p>
               </div>
               <div class="innercard2">
                 <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
@@ -50,13 +50,10 @@
                 <thead>
                   <tr class="tabletr">
                     <th class="tableth">
-                      순번
-                    </th>
-                    <th class="tableth">
-                      기기명
-                    </th>
-                    <th class="tableth">
                       시간
+                    </th>
+                    <th class="tableth">
+                      설치장소
                     </th>
                     <th class="tableth">
                       타입
@@ -72,10 +69,10 @@
                       <h5>{{index + 1}}</h5>
                     </td>
                     <td class="tabletd">
-                      {{i.name}}
+                      {{i.time}}
                     </td>
                     <td class="tabletd text-danger">
-                      {{i.time}}
+                      {{i.location}}
                     </td>
                     <td class="tabletd">
                       {{i.type}}
@@ -90,7 +87,7 @@
 
       <div class="row" id="tworow">
         <div class="card thirdcard">
-          <h4 class="card-title">스마트벨 설치 현황</h4>
+          <h4 class="card-title">스마트벨 설치 장소</h4>
           <!-- <img src="{{socketmapdata['installMap']}}" class="imgmap" /> -->
           <img src="http://api-2207.bs-soft.co.kr/api/images/bell.png" class="imgmap" />
           <!-- <ng-mapbox></ng-mapbox>
@@ -130,7 +127,7 @@
     <div class="col" id="halfcol">
 
       <div class="charttitlecard" style="height: 50px;">
-        <h5 class="card-title">그래프</h5>
+        <h5 class="card-title">통계</h5>
       </div>
       <div class="row" id="chartrow">
         <div id="chartdiv"></div>
