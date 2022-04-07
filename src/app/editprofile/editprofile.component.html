@@ -2,7 +2,7 @@
     <div class="cardbox">
 
         <div class="registercard">
-            <p class="title">내정보 수정</p>
+            <p class="title">내 정보 수정</p>
 
             <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
                 <div class="inputDiv">
@@ -52,7 +52,7 @@
 
                 <div class="modal_footer">
                     <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
-                        type="submit" [disabled]="!modifyuserForm.valid">회원등록</button>
+                        type="submit" [disabled]="!modifyuserForm.valid">수정</button>
                 </div>
                 <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.passwordGroup.touched"
                     [hidden]="!modifyuserForm.hasError('required',['passwordGroup','password']) ">
@@ -65,8 +65,7 @@
         </div>
 
         <div class="another">
-            <button class="anotherbutton" (click)="gologin()">로그인</button>
-            <button class="anotherbutton" (click)="goforgotpassword()">비밀번호찾기</button>
+            <button class="anotherbutton" (click)="gologin()">돌아가기</button>
         </div>
 
     </div>

@@ -86,8 +86,9 @@ export class EditprofileComponent implements OnInit {
 
     this.service.modifyoneuser(temp).subscribe({
       next: (res) => {
-        alert('회원 수정이 완료되었습니다')
+        alert('정보 수정이 완료되었습니다 전체현황 페이지로 이동합니다')
         this.modifyuserForm.reset()
+        this.router.navigate(['/login']);
       },
       error: (err) => {
 
