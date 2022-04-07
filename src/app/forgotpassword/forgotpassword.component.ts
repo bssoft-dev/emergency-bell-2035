@@ -18,32 +18,23 @@ export class ForgotpasswordComponent implements OnInit {
   ngOnInit() {
     this.forgotpasswordForm = new FormGroup({
       'username': new FormControl("", [Validators.required]),
-      'email': new FormControl("",),
-      'customerCode': new FormControl("", [Validators.required]),
-      'name': new FormControl(""),
-      'password': new FormControl("", [Validators.required, Validators.minLength(2),]),
-      'confirmpassword': new FormControl("", [Validators.required, Validators.minLength(2),]),
     });
   }
 
   forgotpassword() {
     const data = this.forgotpasswordForm.value;
     if (this.forgotpasswordForm.valid) {
-      if (this.forgotpasswordForm.value.password === this.forgotpasswordForm.value.confirmpassword) {
-        // this.service.register(data).subscribe({
-        //   next: (res) => {
-        //     alert('회원가입이 성공적으로 완료되었습니다. 로그인창으로 이동합니다')
-        //     this.router.navigate(['/login']);
-        //   },
-        //   error: (err) => {
-        //     alert('서버에서 에러메세지 전달')
-        //   },
-        //   complete: () => {
-        //   }
-        // });
-      } else {
-        alert('비밀번호가 다릅니다')
-      }
+      this.service.forgotpassword(data).subscribe({
+        next: (res) => {
+          alert('비밀번호 초기화 URL이 문자로 발송되었습니다. 문자를 확인해주세요')
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          alert('서버 에러')
+        },
+        complete: () => {
+        }
+      });
     } else {
       alert('필수 항목을 입력해 주세요')
     }
@@ -51,9 +42,6 @@ export class ForgotpasswordComponent implements OnInit {
 
   gologin() {
     this.router.navigate(['/login']);
-  }
-  goforgotpassword() {
-    this.router.navigate(['/forgotpassword'])
   }
 
 }

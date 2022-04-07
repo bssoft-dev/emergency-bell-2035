@@ -33,6 +33,12 @@ export class ApiService {
     return this.http.post(`${this.apiUrl}` + 'auth/register', jsondata, { headers });
   }
 
+  forgotpassword(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
+    return this.http.post(`${this.apiUrl}` + 'auth/forgot-password?username=' + `${data}`, { headers });
+  }
+
+
   // main 페이지
   getoncustomerslogo(data: any): Observable<any> {
     this.token = data[0]
