@@ -82,7 +82,6 @@ export class EditprofileComponent implements OnInit {
 
     temp.push(data.username)
     temp.push(data)
-    console.log(temp, 'slslls')
 
     this.service.modifyoneuser(temp).subscribe({
       next: (res) => {
@@ -91,7 +90,9 @@ export class EditprofileComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error: (err) => {
-
+        alert('내부 서버 에러. 전체현황 페이지로 돌아갑니다.')
+        this.modifyuserForm.reset()
+        this.router.navigate(['/login']);
       },
       complete: () => {
       }

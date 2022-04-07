@@ -56,7 +56,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.token = sessionStorage.getItem('token')
     this.currentusercheck().then((res) => {
-      this.myname = res['username'];
+      this.myname = res['name'];
       this.getonecustomerslogo(res)
     })
 
