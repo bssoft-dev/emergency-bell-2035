@@ -12,7 +12,7 @@
                         type="text" formControlName="username" />
                 </div>
                 <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.username.touched"
-                    [hidden]="!registeruserForm.hasError('required', 'username') ">
+                    [hidden]="!modifyuserForm.hasError('required', 'username') ">
                     <p>이메일을 입력해주세요</p>
                 </div>
                 <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('pattern','username')">
