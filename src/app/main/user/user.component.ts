@@ -171,6 +171,30 @@ export class UserComponent implements OnInit {
   }
 
 
+  overlapcheck = false;
+  usernamechange(e) {
+    this.overlapcheck = false;
+  }
+
+  duplicatecheck() {
+    const data = this.registeruserForm.controls.username.value
+    if (data.length > 0) {
+      this.service.duplicatecheck(data).subscribe({
+        next: (res) => {
+          if (res == '생성 가능한 아이디 입니다') {
+            this.overlapcheck = true;
+          } else {
+            this.overlapcheck = false;
+          }
+        },
+        error: (err) => {
+          alert('서버 에러')
+        },
+        complete: () => {
+        }
+      });
+    }
+  }
 
 
   modifymanager(index) {

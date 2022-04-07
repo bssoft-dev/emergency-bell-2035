@@ -11,7 +11,6 @@ import { ApiService } from '../services/api.service';
 export class RegisterComponent implements OnInit {
   registeruserForm: FormGroup;
   submitted = false;
-  overlapcheck = false;
 
   constructor(public router: Router, private service: ApiService) {
   }
@@ -40,14 +39,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  overlapcheck = false;
   usernamechange(e) {
     this.overlapcheck = false;
   }
-
-
-
-  get f() { return this.registeruserForm.controls; }
-
 
   duplicatecheck() {
     const data = this.registeruserForm.controls.username.value
@@ -68,6 +63,11 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+
+  get f() { return this.registeruserForm.controls; }
+
+
+
 
 
 
