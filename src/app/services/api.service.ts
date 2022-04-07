@@ -43,6 +43,7 @@ export class ApiService {
   }
 
 
+
   // main 페이지
   getoncustomerslogo(data: any): Observable<any> {
     this.token = data[0]
