@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
+
 
 
 import { AppComponent } from './app.component';
@@ -92,7 +94,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    MdbTabsModule
   ],
   providers: [
     ApiService,
