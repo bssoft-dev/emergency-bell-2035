@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { ApiService } from '../services/api.service';
-
 
 
 
@@ -18,39 +15,8 @@ export class MainComponent implements OnInit {
   is_hyperuser;
   corplogo;
 
-  alarmForm
-  public modal: boolean = false;
-  fileSelected
-
   constructor(public router: Router, private service: ApiService) { }
 
-
-  onFileChange(event): void {
-    this.fileSelected = event.target.files[0]
-    const formData = new FormData();
-    formData.append(
-      "file",
-      this.fileSelected
-    );
-
-    this.service.uploadanal(formData).subscribe({
-      next: (res) => {
-
-      },
-      error: (err) => {
-        alert('서버 에러메세지')
-      },
-      complete: () => {
-      }
-    });
-  }
-
-  clickedModalClose() {
-    this.modal = false;
-  }
-  clickedModal() {
-    this.modal = true;
-  }
 
 
   currentusercheckdata = [];
@@ -88,17 +54,6 @@ export class MainComponent implements OnInit {
 
   myname = "";
   ngOnInit() {
-    this.alarmForm = new FormGroup({
-      'deviceId': new FormControl(null, [Validators.required]),
-      'customerCode': new FormControl(null, [Validators.required]),
-      'name': new FormControl("", [Validators.required]),
-      'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("",),
-      'installDate': new FormControl("",),
-      'picture': new FormControl("",),
-      'communicateMethod': new FormControl("",),
-      'userMemo': new FormControl("",),
-    });
     this.token = sessionStorage.getItem('token')
     this.currentusercheck().then((res) => {
       this.myname = res['name'];
