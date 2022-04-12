@@ -81,4 +81,6 @@ export class MainComponent implements OnInit {
   clickedModal() {
     this.modal = true;
   }
+
+
 }
