@@ -143,7 +143,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" routerLink="notice">
+						<a class="nav-link" (click)="clickedModal()">
 							<i class="menu-icon mdi mdi-alarm-light" style="font-size: 60px;"></i><span
 								class="menu-title">
 								<h6 class="gfont">알람설정</h6>
@@ -173,4 +173,26 @@
 	</div>
 
 
+</div>
+
+
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+			<div class="deviceenrollcard">
+				<h5 class="modal-title" id="exampleModalLabel">기기등록</h5>
+
+
+				<div class="modal_footer">
+					<button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+					<button class="footerbutton" tabindex="11" type="submit">기기등록</button>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
 </div>

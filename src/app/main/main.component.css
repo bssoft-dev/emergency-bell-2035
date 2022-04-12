@@ -1,41 +1,45 @@
-.media{
+.media {
     display: none;
 }
 
-@media screen and (max-width: 768px) { 
-    .media { 
+@media screen and (max-width: 768px) {
+    .media {
         display: inline-block;
     }
-    .search__input{
+
+    .search__input {
         display: none;
     }
 }
 
-.navbar-menu-wrapper{
+.navbar-menu-wrapper {
     background-color: #121619 !important;
 }
-.sidebar{
+
+.sidebar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.logoutbox{
+
+.logoutbox {
     margin-bottom: 50px;
 }
 
-#sidebar{
+#sidebar {
     background-color: #005BA8;
     box-shadow: none;
 }
 
-#nav-link:hover{
-    background-color: #0278BB;
-}
-#nav-link:active{
+#nav-link:hover {
     background-color: #0278BB;
 }
 
-#nav_top{
+#nav-link:active {
+    background-color: #0278BB;
+}
+
+#nav_top {
     z-index: 200;
     width: 100vw;
     position: fixed;
@@ -47,25 +51,71 @@
 
 .footer {
     z-index: 200;
-    width:100%;
-    height:2.5rem;
-    position:fixed;
+    width: 100%;
+    height: 2.5rem;
+    position: fixed;
     left: 0;
-    bottom:0;
-   text-align: center;
-   background-color: #F5F4F2;
- }
+    bottom: 0;
+    text-align: center;
+    background-color: #F5F4F2;
+}
 
-.search__container{
+.search__container {
     border-radius: 15px;
 }
 
-.card:active{
+.card:active {
     background-color: #0278BB;
 }
-.card.card.card-statistics .card-body .text-muted:active{
-    color:white;
+
+.card.card.card-statistics .card-body .text-muted:active {
+    color: white;
 }
-.nav-item{
+
+.nav-item {
     margin-top: 30px;
+}
+
+.modalcontainer {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    overflow: auto;
+}
+
+.modal-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.modal-content {
+    background-color: #282b30;
+    border: none !important;
+}
+
+.deviceenrollcard {
+    width: 140%;
+    background-color: #282b30;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.modal_footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerbutton {
+    margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    border-bottom: medium none;
+    color: white;
+    background-color: #505dff;
+    border-radius: 7px;
 }

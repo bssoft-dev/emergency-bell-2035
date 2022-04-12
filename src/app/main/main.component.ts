@@ -10,6 +10,8 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  public modal: boolean = false;
+
   token = "";
   customer_code = "";
   is_hyperuser;
@@ -71,5 +73,12 @@ export class MainComponent implements OnInit {
 
   outputEvent(active: any) {
     this.active = active;
+  }
+
+  clickedModalClose() {
+    this.modal = false;
+  }
+  clickedModal() {
+    this.modal = true;
   }
 }
