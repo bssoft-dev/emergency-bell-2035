@@ -181,7 +181,7 @@
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 40px;
+    height: 66px;
     background-color: #32383e;
 }
 
@@ -193,10 +193,12 @@
 
 .td {
     width: 20%;
+
     color: #ffffff;
     font-size: 14px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .modifying {
