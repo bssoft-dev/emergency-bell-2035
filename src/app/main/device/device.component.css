@@ -67,10 +67,7 @@
 	align-items: center;
 }
 
-.table-dark {
-	table-layout: fixed;
-	margin-top: 20px;
-}
+
 
 .uploadlabel {
 	margin-top: 20px;
@@ -91,6 +88,11 @@
 .uploadlabeltext {
 	margin-left: 20px;
 	margin-top: 10px;
+}
+
+.table-dark {
+	table-layout: fixed;
+	margin-top: 20px;
 }
 
 .table-responsive {

@@ -98,6 +98,7 @@
     background-color: #282b30;
     border-radius: 10px;
     padding: 30px;
+    text-align: center;
 }
 
 .modal_footer {
@@ -118,4 +119,72 @@
     color: white;
     background-color: #505dff;
     border-radius: 7px;
+}
+
+.tabtitle {
+    list-style-type: none;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    color: #616060;
+}
+
+.tabtitlebox {
+    cursor: pointer;
+    width: 40%;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #4c4e50;
+}
+
+.tabtitlebox.selected {
+    border-bottom: 2px solid #505dff;
+    color: #ffffff;
+}
+
+.tabtitlebox :hover {
+    color: #ffffff;
+    left: .2rem;
+}
+
+.tabfont {
+    font-size: 18px;
+}
+
+.tabcontents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    padding: 30px;
+}
+
+
+.table-dark {
+    table-layout: fixed;
+    margin-top: 20px;
+    border-top-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    border-collapse: collapse
+}
+
+.tabletr {
+    background-color: #5156be;
+}
+
+.tableth {
+    font-size: 18px;
+}
+
+.tabletd {}
+
+.checkbox {
+    width: 100%;
 }

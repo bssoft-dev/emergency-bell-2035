@@ -17,6 +17,11 @@ export class MainComponent implements OnInit {
   is_hyperuser;
   corplogo;
 
+  tabtitle = ['휴대폰', '이메일']
+  tab1 = true;
+  tab2 = false;
+  selectedtab = '휴대폰';
+
   constructor(public router: Router, private service: ApiService) { }
 
 
@@ -80,6 +85,17 @@ export class MainComponent implements OnInit {
   }
   clickedModal() {
     this.modal = true;
+  }
+
+  selecttab(title) {
+    this.selectedtab = title;
+    if (title === '휴대폰') {
+      this.tab1 = true;
+      this.tab2 = false;
+    } else {
+      this.tab1 = false;
+      this.tab2 = true;
+    }
   }
 
 

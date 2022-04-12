@@ -185,6 +185,66 @@
 				<h5 class="modal-title" id="exampleModalLabel">기기등록</h5>
 
 
+
+				<ul class="tabtitle">
+					<li class="tabtitlebox" [class.selected]="title === selectedtab" *ngFor="let title of tabtitle;"
+						(click)="selecttab(title)">
+						<p class="gfont tabfont">{{title}}</p>
+					</li>
+				</ul>
+
+
+				<div class="tabcontents">
+					<div *ngIf="tab1">
+						<div class="tablebox">
+							<table class="table table-dark table-striped">
+								<thead>
+									<tr class="tabletr">
+										<th class="tableth">
+											체크
+										</th>
+										<th class="tableth">
+											이름
+										</th>
+										<th class="tableth">
+											번호
+										</th>
+										<th class="tableth">
+											발신설정
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="tabletd">
+											<input type="checkbox" class="checkbox ">
+										</td>
+
+										<td class="tabletd">
+											ㄴㄴㄴ
+										</td>
+
+										<td class="tabletd">
+											ㄴㄴㄴ
+										</td>
+
+										<td class="tabletd">
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div *ngIf="tab2">
+						탭2콘텐츠
+
+					</div>
+				</div>
+
+
+
 				<div class="modal_footer">
 					<button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
 					<button class="footerbutton" tabindex="11" type="submit">기기등록</button>
