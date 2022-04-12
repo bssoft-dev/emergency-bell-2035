@@ -19,13 +19,13 @@
 					<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
 						data-toggle="dropdown">
 						<i class="mdi mdi-bell-outline"></i>
-						<span class="count bg-success">4</span>
+						<div class="count bg-success">4</div>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
 						aria-labelledby="notificationDropdown">
 						<a class="dropdown-item py-3 border-bottom">
 							<p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-							<span class="badge badge-pill badge-primary float-right">View all</span>
+							<div class="badge badge-pill badge-primary float-right">View all</div>
 						</a>
 						<a class="dropdown-item preview-item py-3">
 							<div class="preview-thumbnail">
@@ -60,7 +60,7 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
 						aria-expanded="false">
-						<span class="profile-text d-none d-md-inline-block">BS소프트</span>
+						<div class="profile-text d-none d-md-inline-block">BS소프트</div>
 						<img class="img-xs rounded-circle" src="../assets/images/faces/face1.jpg" alt="Profile image">
 					</a>
 					<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -122,32 +122,34 @@
 
 					<li class="nav-item">
 						<a class="nav-link" routerLink="user">
-							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i><span class="menu-title">
+							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i>
+							<div class="menu-title">
 								<h6 class="gfont">회원관리</h6>
-							</span>
+							</div>
 						</a>
 					</li>
 					<li class="nav-item" *ngIf="is_hyperuser">
 						<a class="nav-link" routerLink="client">
-							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i><span class="menu-title">
+							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i>
+							<div class="menu-title">
 								<h6 class="gfont">고객사관리</h6>
-							</span>
+							</div>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" routerLink="device">
-							<i class="menu-icon mdi mdi-cellphone" style="font-size: 60px;"></i><span
-								class="menu-title">
+							<i class="menu-icon mdi mdi-cellphone" style="font-size: 60px;"></i>
+							<div class="menu-title">
 								<h6 class="gfont">기기관리</h6>
-							</span>
+							</div>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" (click)="clickedModal()">
-							<i class="menu-icon mdi mdi-alarm-light" style="font-size: 60px;"></i><span
-								class="menu-title">
+							<i class="menu-icon mdi mdi-alarm-light" style="font-size: 60px;"></i>
+							<div class="menu-title">
 								<h6 class="gfont">알람설정</h6>
-							</span>
+							</div>
 						</a>
 					</li>
 				</ul>
@@ -156,9 +158,10 @@
 				<ul class="nav">
 					<li class="nav-item" style=>
 						<a class="nav-link" (click)="logout()" routerLink="">
-							<i class="menu-icon mdi mdi-logout" style="font-size: 60px;"></i><span class="menu-title">
+							<i class="menu-icon mdi mdi-logout" style="font-size: 60px;"></i>
+							<div class="menu-title">
 								<h6 class="gfont">로그아웃</h6>
-							</span>
+							</div>
 						</a>
 					</li>
 				</ul>
@@ -182,7 +185,7 @@
 
 		<div class="modal-content">
 			<div class="deviceenrollcard">
-				<h5 class="modal-title" id="exampleModalLabel">기기등록</h5>
+				<h5 class="modal-title" id="exampleModalLabel">알림설정</h5>
 
 
 
@@ -195,49 +198,36 @@
 
 
 				<div class="tabcontents">
-					<div *ngIf="tab1">
-						<div class="tablebox">
-							<table class="table table-dark table-striped">
-								<thead>
-									<tr class="tabletr">
-										<th class="tableth">
-											체크
-										</th>
-										<th class="tableth">
-											이름
-										</th>
-										<th class="tableth">
-											번호
-										</th>
-										<th class="tableth">
-											발신설정
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="tabletd">
-											<input type="checkbox" class="checkbox ">
-										</td>
+					<div class="contentbox" *ngIf="tab1">
 
-										<td class="tabletd">
-											ㄴㄴㄴ
-										</td>
-
-										<td class="tabletd">
-											ㄴㄴㄴ
-										</td>
-
-										<td class="tabletd">
-
-										</td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="tblth">
+							<div class="th">이름</div>
+							<div class="th">번호</div>
+							<div class="th">발신설정</div>
+							<div class="th">삭제</div>
 						</div>
+
+						<div class="tbltd">
+							<div class="td">
+								ㅇㄴㅇㄹ
+							</div>
+							<div class="td">ㅇㄴㅇㄹ</div>
+							<div class="td">
+								<input class="toggleinput" type="checkbox" id="toggleinput" (click)="changetoggle()" />
+								<label class="togglelabel" for="toggleinput"></label>
+							</div>
+							<div class="td">
+								<button class="modifying">
+									<i class="menu-icon mdi mdi-delete"></i>
+								</button>
+							</div>
+						</div>
+
+
+
 					</div>
 
-					<div *ngIf="tab2">
+					<div class="contentbox" *ngIf="tab2">
 						탭2콘텐츠
 
 					</div>

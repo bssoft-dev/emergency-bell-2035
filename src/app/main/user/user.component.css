@@ -84,11 +84,7 @@
 	font-size: 15px;
 }
 
-.toggleinput[type=checkbox] {
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
+
 
 .fontdiv {
 	margin-top: 50px;
@@ -97,6 +93,12 @@
 .gfont {
 	color: #ffffff;
 	font-size: 30px;
+}
+
+.toggleinput[type=checkbox] {
+	height: 0;
+	width: 0;
+	visibility: hidden;
 }
 
 .togglelabel {

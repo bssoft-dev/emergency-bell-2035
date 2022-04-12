@@ -98,5 +98,9 @@ export class MainComponent implements OnInit {
     }
   }
 
+  changetoggle() {
+
+  }
+
 
 }
