@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { WebsocketService } from "../../services/websocket.service";
 
 declare const am5: any;
@@ -20,7 +20,7 @@ import '../../../assets/amchart/light.js';
     providers: [WebsocketService]
 })
 
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
     public modal: boolean = false;
 
 
@@ -244,9 +244,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    ngOnDestroy(): void {
-        this.WebsocketService.messages.unsubscribe();
-    }
 
     clickedModalClose() {
         this.modal = false;
