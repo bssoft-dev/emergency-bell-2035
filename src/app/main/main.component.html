@@ -95,9 +95,9 @@
 
 	<div class="container-fluid page-body-wrapper">
 		<nav class="sidebar sidebar-offcanvas" id="sidebar"
-			style="position:fixed; z-index: 350; padding-top: 74px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f;">
+			style="position:fixed; z-index: 350; padding-top: 30px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f;">
 			<div>
-				<div class="avatarcon" style="height: 200px; text-align: center; margin-top: 30px;">
+				<div class="avatarcon" style="height: 150px; text-align: center; margin-top: 30px;">
 					<img class="avatar bg-light rounded-circle text-white p-1" [src]="corplogo"
 						style="width: 80px; height: 80px;">
 					<p class="gfont" style="color: white;
@@ -113,7 +113,7 @@
 				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link" routerLink="dashboard">
-							<i class="menu-icon mdi mdi-television" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-television" style="font-size: 46px;"></i>
 							<div class="menu-title" style="display: block;">
 								<h6 class="gfont">전체현황</h6>
 							</div>
@@ -122,7 +122,7 @@
 
 					<li class="nav-item">
 						<a class="nav-link" routerLink="user">
-							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-account" style="font-size: 46px;"></i>
 							<div class="menu-title">
 								<h6 class="gfont">회원관리</h6>
 							</div>
@@ -130,7 +130,7 @@
 					</li>
 					<li class="nav-item" *ngIf="is_hyperuser">
 						<a class="nav-link" routerLink="client">
-							<i class="menu-icon mdi mdi-account" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-account" style="font-size: 46px;"></i>
 							<div class="menu-title">
 								<h6 class="gfont">고객사관리</h6>
 							</div>
@@ -138,7 +138,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" routerLink="device">
-							<i class="menu-icon mdi mdi-cellphone" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-cellphone" style="font-size: 46px;"></i>
 							<div class="menu-title">
 								<h6 class="gfont">기기관리</h6>
 							</div>
@@ -151,7 +151,7 @@
 				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link" (click)="clickedModal()">
-							<i class="menu-icon mdi mdi-alarm-light" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-alarm-light" style="font-size: 46px;"></i>
 							<div class="menu-title">
 								<h6 class="gfont">알람설정</h6>
 							</div>
@@ -159,7 +159,7 @@
 					</li>
 					<li class="nav-item" style=>
 						<a class="nav-link" (click)="logout()" routerLink="">
-							<i class="menu-icon mdi mdi-logout" style="font-size: 60px;"></i>
+							<i class="menu-icon mdi mdi-logout" style="font-size: 46px;"></i>
 							<div class="menu-title">
 								<h6 class="gfont">로그아웃</h6>
 							</div>

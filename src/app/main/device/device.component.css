@@ -112,6 +112,7 @@
 
 .tabletd {
 	font-size: 15px;
+	white-space: normal;
 }
 
 
@@ -120,6 +121,9 @@ td {
 	text-align: center;
 	align-items: center;
 	justify-content: center;
+
+	white-space: normal;
+
 }
 
 ul {
