@@ -109,6 +109,7 @@ body {
 	grid-column-start: 2;
 	grid-column-end: 4;
 
+	margin-left: 15px;
 	width: 90%;
 	height: 90%;
 	background-color: #1a1f71;
@@ -126,6 +127,7 @@ body {
 	grid-column-start: 5;
 	grid-column-end: 7;
 
+	margin-left: 5px;
 	width: 90%;
 	height: 90%;
 	background-color: #1a1f71;
@@ -443,7 +445,7 @@ body {
 
 .innercard1 {
 	margin: auto;
-	width: 85%;
+	width: 70%;
 	height: 80%;
 	border-radius: 10px;
 	display: flex;
