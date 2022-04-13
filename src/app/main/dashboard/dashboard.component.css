@@ -55,6 +55,7 @@ body {
 #onerow {
 	width: 100%;
 	height: 35vh;
+	max-height: 470px;
 }
 
 #tworow {
@@ -66,6 +67,7 @@ body {
 #alldetectionrow {
 	width: 100%;
 	height: 35vh;
+	max-height: 470px;
 	display: block !important;
 }
 
@@ -86,20 +88,20 @@ body {
 	background-color: #282b30;
 	display: grid;
 	grid-template-rows: repeat(6, 1fr);
-	grid-template-columns: repeat(7, 1fr);
+	grid-template-columns: repeat(8, 1fr);
 }
 
 .card-title {
 	grid-row-start: 1;
 	grid-row-end: 2;
-	grid-column-start: 1;
+	grid-column-start: 2;
 	grid-column-end: 8;
 }
 
 .innercard1 {
 	grid-row-start: 2;
 	grid-row-end: 4;
-	grid-column-start: 1;
+	grid-column-start: 2;
 	grid-column-end: 8;
 }
 
@@ -109,14 +111,15 @@ body {
 	grid-column-start: 2;
 	grid-column-end: 4;
 
-	margin-left: 15px;
+	margin-left: 10px;
 	width: 90%;
 	height: 90%;
 	background-color: #1a1f71;
 	border-radius: 10px;
-	text-align: center;
-	background-color: #1a1f71;
-	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 	white-space: nowrap;
 	text-overflow: auto;
 }
@@ -124,21 +127,40 @@ body {
 .innercard2item2 {
 	grid-row-start: 4;
 	grid-row-end: 7;
-	grid-column-start: 5;
-	grid-column-end: 7;
+	grid-column-start: 4;
+	grid-column-end: 6;
 
-	margin-left: 5px;
+	margin-left: 10px;
 	width: 90%;
 	height: 90%;
 	background-color: #1a1f71;
 	border-radius: 10px;
-	text-align: center;
-	background-color: #1a1f71;
-	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
 	white-space: nowrap;
 	text-overflow: auto;
+}
 
+.innercard2item3 {
+	grid-row-start: 4;
+	grid-row-end: 7;
+	grid-column-start: 6;
+	grid-column-end: 8;
 
+	margin-left: 10px;
+
+	width: 90%;
+	height: 90%;
+	background-color: #1a1f71;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	white-space: nowrap;
+	text-overflow: auto;
 }
 
 
@@ -445,7 +467,7 @@ body {
 
 .innercard1 {
 	margin: auto;
-	width: 70%;
+	width: 100%;
 	height: 80%;
 	border-radius: 10px;
 	display: flex;

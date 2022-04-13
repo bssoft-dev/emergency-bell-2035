@@ -21,21 +21,26 @@
 
           <div class="innercard1">
             <i class="menu-icon mdi mdi-alarm-light"></i>
-            <p class="innerfont1">{{socketdevicesdata["numDevice"] - socketdevicesdata["deactivateDevice"] -
-              socketdevicesdata["inspectionDevice"]}}/{{socketdevicesdata["numDevice"]}}</p>
-            <p class="innerfont2">설치</p>
+            <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+            <p class="innerfont2">총 설치</p>
           </div>
 
 
           <div class="innercard2item1">
-            <p class="innerfont1 gfont">{{socketdevicesdata["deactivateDevice"]}}</p>
+            <p class="innerfont1 gfont">{{socketdevicesdata["activationDevice"]}}</p>
             <i class="menu-icon mdi mdi-alarm-light"></i>
             <p class="innerfont1 gfont">작동중</p>
           </div>
+
           <div class="innercard2item2">
             <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
             <i class="menu-icon mdi mdi-alarm-light"></i>
             <p class="innerfont1 gfont">점검중</p>
+          </div>
+          <div class="innercard2item3">
+            <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
+            <i class="menu-icon mdi mdi-alarm-light"></i>
+            <p class="innerfont1 gfont">기타</p>
           </div>
 
         </div>
