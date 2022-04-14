@@ -126,6 +126,10 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.delete(`${this.apiUrl}` + 'api/device/' + `${data}?customerCode=` + `${this.customer_code}`, { headers });
   }
+  modifyinspection(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/device/' + `${data[0]}` + '/inspection', data[1], { headers });
+  }
 
 
   // customer페이지

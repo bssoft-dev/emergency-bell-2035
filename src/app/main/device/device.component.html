@@ -57,7 +57,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let devicedata of getalldevicesdata; let i = index">
+            <tr *ngFor="let devicedata of getalldevicesdata; let index = index">
               <td class="tabletd">
                 <img *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture">
               </td>
@@ -77,14 +77,14 @@
                 {{devicedata.installDate}}
               </td>
 
-
-
               <td class="tabletd">
                 {{devicedata.communicateMethod}}
               </td>
               <td class="tabletd">
-                <input class="toggleinput" type="checkbox" id="tog" />
-                <label class="togglelabel" for="tog"></label>
+                <input class="toggleinput" [checked]="devicedata.inspection" type="checkbox" id="{{index}}"
+                  (click)="chkinspection(index)" />
+                <label class="togglelabel" for="{{index}}"></label>
+
               </td>
 
               <td class="tabletd">

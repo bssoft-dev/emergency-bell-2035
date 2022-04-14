@@ -245,6 +245,22 @@ export class DeviceComponent implements OnInit {
     }
   }
 
+  chkinspection(index) {
+    const data = [this.getalldevicesdata[index].deviceId, { "inspection": !this.getalldevicesdata[index].inspection }];
+    console.log(data)
+
+    this.service.modifyinspection(data).subscribe({
+      next: (res) => {
+        this.getalldevices();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    });
+  }
+
 
 
 
