@@ -42,6 +42,7 @@
 }
 
 .table-responsive {
+    margin-top: 60px;
     width: 100%;
     overflow: auto;
     white-space: nowrap;
@@ -112,6 +113,10 @@ li {
 .table-dark {
     table-layout: fixed;
     margin-top: 20px;
+}
+
+.tableth {
+    font-size: 18px;
 }
 
 

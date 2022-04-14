@@ -188,6 +188,7 @@ export class DeviceComponent implements OnInit {
     this.getonedevicedata = this.getalldevicesdata[index]
     this.getonedeviceId = this.getonedevicedata['deviceId']
     this.imageSrc = this.getonedevicedata["picture"]
+    console.log('ㅣㅣ', this.getonedevicedata)
 
     this.devicemodifyForm.patchValue({
       name: this.getonedevicedata["name"],
