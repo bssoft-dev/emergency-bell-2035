@@ -20,27 +20,27 @@
 
 
           <div class="innercard1">
-            <i class="menu-icon mdi mdi-alarm-light"></i>
+            <img src="../../../assets/images/dashboardicons/총갯수.png" style="width: 34px;" />
             <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
-            <p class="innerfont2">총 설치</p>
+            <p class="innerfont2 gfont">총 설치</p>
           </div>
 
 
           <div class="innercard2item1">
             <p class="innerfont1 gfont">{{socketdevicesdata["activationDevice"]}}</p>
-            <i class="menu-icon mdi mdi-alarm-light"></i>
+            <img src="../../../assets/images/dashboardicons/작동중.png" style="width: 34px;" />
             <p class="innerfont1 gfont">작동중</p>
           </div>
 
           <div class="innercard2item2">
             <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
-            <i class="menu-icon mdi mdi-alarm-light"></i>
+            <img src="../../../assets/images/dashboardicons/점검중.png" style="width: 34px;" />
             <p class="innerfont1 gfont">점검중</p>
           </div>
           <div class="innercard2item3">
             <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
-            <i class="menu-icon mdi mdi-alarm-light"></i>
-            <p class="innerfont1 gfont">기타</p>
+            <img src="../../../assets/images/dashboardicons/연결끊김.png" style="width: 34px;" />
+            <p class="innerfont1 gfont" style="font-weight: 500;">기타</p>
           </div>
 
         </div>
@@ -70,7 +70,7 @@
           <h5 class="card-title gfont">최근 감지 내역</h5>
           <div class="table-responsive">
 
-            <div class="nodata" *ngIf="socketrecentdata.length === 0">데이터가 없습니다.
+            <div class="nodata" *ngIf="socketrecentdata.length === 0">감지 내역 없음
             </div>
 
             <table class="table table-dark ">

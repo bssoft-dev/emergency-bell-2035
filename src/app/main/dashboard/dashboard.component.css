@@ -200,6 +200,8 @@ body {
 .tabletd {
 	font-size: 12px;
 	white-space: normal;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+
 }
 
 .mdi-shield-outline {
@@ -495,7 +497,7 @@ body {
 
 .innerfont1 {
 	font-size: 23px;
-	font-weight: 600;
+	font-weight: 400;
 	color: #ffffff;
 	white-space: nowrap;
 	text-overflow: auto;
