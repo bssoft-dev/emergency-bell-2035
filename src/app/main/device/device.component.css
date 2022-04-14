@@ -256,3 +256,47 @@ button:active {
 	justify-content: center;
 	align-items: center;
 }
+
+
+.toggleinput[type=checkbox] {
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.togglelabel {
+	margin-left: 5px;
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 70px;
+	height: 25px;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.togglelabel:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 30px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.toggleinput:checked+label {
+	background: #5156be;
+}
+
+.toggleinput:checked+label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+.togglelabel:active:after {
+	width: 30px;
+}

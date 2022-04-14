@@ -33,7 +33,7 @@
                 모델명
               </th>
               <th class="tableth">
-                기기명
+                별칭
               </th>
               <th class="tableth">
                 설치장소
@@ -83,7 +83,8 @@
                 {{devicedata.communicateMethod}}
               </td>
               <td class="tabletd">
-
+                <input class="toggleinput" type="checkbox" id="tog" />
+                <label class="togglelabel" for="tog"></label>
               </td>
 
               <td class="tabletd">
@@ -146,12 +147,7 @@
           </div>
 
           <div class="inputDiv">
-            <p class="inputtitle">[고객사 코드]</p>
-            <input class="enrolldevice" type="text" formControlName="customerCode" />
-          </div>
-
-          <div class="inputDiv">
-            <p class="inputtitle">[기기명]</p>
+            <p class="inputtitle">[별칭]</p>
             <input class="enrolldevice" type="text" formControlName="name" />
           </div>
 
@@ -230,7 +226,7 @@
           </div>
 
           <div class="inputDiv">
-            <p class="inputtitle">[기기명]</p>
+            <p class="inputtitle">[별칭]</p>
             <input class="enrolldevice" type="text" formControlName="name" />
           </div>
 

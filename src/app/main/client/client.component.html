@@ -26,9 +26,6 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                고객사코드
-              </th>
-              <th class="tableth">
                 고객사명
               </th>
               <th class="tableth">
@@ -47,10 +44,7 @@
                 결제방식
               </th>
               <th class="tableth">
-                등록일자
-              </th>
-              <th class="tableth">
-                알람설정
+                알람
               </th>
               <th class="tableth modifyth">
                 변경
@@ -59,9 +53,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let customers of getcustomersdata; let index = index">
-              <td class="tabletd">
-                {{customers.customerCode}}
-              </td>
               <td class="tabletd font-weight-medium">
                 {{customers.customerName}}
               </td>
@@ -84,9 +75,6 @@
               <td class="tabletd">
                 {{customers.payMethod}}
 
-              </td>
-              <td class="tabletd">
-                {{customers.lastModify}}
               </td>
               <td class="tabletd">
 
@@ -144,11 +132,6 @@
           <div class="inputDiv">
             <p class="inputtitle">[고객사명]</p>
             <input class="enrolldevice" type="text" formControlName="customerName" />
-          </div>
-
-          <div class="inputDiv">
-            <p class="inputtitle">[고객사코드]</p>
-            <input class="enrolldevice" type="text" formControlName="customerCode" />
           </div>
 
           <div class="inputDiv">

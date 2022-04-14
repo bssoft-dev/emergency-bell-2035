@@ -20,9 +20,6 @@ export class UserComponent implements OnInit {
   token = "";
   customer_code = "";
 
-
-
-  ids = ['switch1', 'switch2']
   event: any;
 
   checktoken = () => {
@@ -145,19 +142,20 @@ export class UserComponent implements OnInit {
 
 
     this.modifyuserForm = new FormGroup({
-      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
+      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),
       }, this.equalValidator)
     });
     this.registeruserForm = new FormGroup({
-      'customerCode': new FormControl("",),
-      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
+      'email': new FormControl("",),
       'passwordGroup': new FormGroup({
         'password': new FormControl("", [Validators.required]),
         'passwordconfirm': new FormControl("", [Validators.required,]),

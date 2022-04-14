@@ -1,16 +1,18 @@
-.contain{
+.contain {
     display: flex;
-    background: linear-gradient(to right bottom, #054779,  #2a1234);
+    background: linear-gradient(to right bottom, #054779, #2a1234);
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-.title{
+
+.title {
     color: #ffffff;
     font-size: 32px;
     font-weight: 500;
 }
-input{
+
+input {
     margin-top: 100px;
     background: transparent;
     width: 250px;
@@ -19,17 +21,20 @@ input{
     BORDER-RIGHT: medium none;
     BORDER-TOP: medium none;
     FONT-SIZE: 15px;
-    color:#ffffff;
+    color: #ffffff;
 }
-.inputDiv{
+
+.inputDiv {
     position: flex;
 }
-.icon{
+
+.icon {
     color: #ffffff;
     margin-right: 20px;
     font-size: 30px;
 }
-.singin{
+
+.singin {
     margin: 10px;
     margin-top: 60PX;
     width: 300px;
@@ -42,12 +47,14 @@ input{
     background-color: #5156be;
     border-radius: 7px;
 }
-button:active{
-    box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
-    position: relative; 
-    top:2px;
+
+button:active {
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
 }
-.another{
+
+.another {
     margin-top: 60px;
     display: flex;
     flex-direction: row;
@@ -55,9 +62,10 @@ button:active{
     justify-content: center;
     text-align: center;
 }
-.anotherbutton{
+
+.anotherbutton {
     margin: 5px;
-    width: 39%;
+    width: 80%;
     height: 50px;
     BORDER-LEFT: medium none;
     BORDER-RIGHT: medium none;
@@ -66,4 +74,6 @@ button:active{
     color: white;
     background-color: #5156be;
     border-radius: 7px;
+
+
 }

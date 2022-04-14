@@ -113,7 +113,6 @@ export class ClientComponent implements OnInit {
     });
     this.registerclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
-      'customerCode': new FormControl("", [Validators.required]),
       'staffName': new FormControl("", [Validators.required]),
       'phone': new FormControl("",),
       'status': new FormControl("",),
@@ -129,9 +128,7 @@ export class ClientComponent implements OnInit {
     this.modal2 = true;
     this.getonecustomerdata.push(this.getcustomersdata[index])
     console.log('겟원', this.getonecustomerdata[0]['customerCode'])
-
     this.imageSrc = this.getonecustomerdata[0]["logo"]
-
     this.modifyclientForm.patchValue({
       customerName: this.getonecustomerdata[0]["customerName"],
       staffName: this.getonecustomerdata[0]["staffName"],

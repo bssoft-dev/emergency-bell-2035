@@ -26,13 +26,19 @@
           <thead>
             <tr class="tabletr">
               <th class="tableth">
-                회원이메일
+                아이디
               </th>
               <th class="tableth">
-                이름
+                고객사명
+              </th>
+              <th class="tableth">
+                담당자명
               </th>
               <th class="tableth">
                 연락처
+              </th>
+              <th class="tableth">
+                이메일
               </th>
               <th class="tableth">
                 등록일자
@@ -51,10 +57,16 @@
                 {{i.username}}
               </td>
               <td class="tabletd">
+
+              </td>
+              <td class="tabletd">
                 {{i.name}}
               </td>
               <td class="tabletd">
                 {{i.phone}}
+              </td>
+              <td class="tabletd">
+                {{i.email}}
               </td>
               <td class="tabletd">
                 {{i.createTime}}
@@ -101,12 +113,7 @@
         <form [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
 
           <div class="inputDiv">
-            <p class="inputtitle">[커스터머코드]</p>
-            <input class="enrolldevice" type="text" formControlName="customerCode" />
-          </div>
-
-          <div class="inputDiv">
-            <p class="inputtitle">[이메일]</p>
+            <p class="inputtitle">[아이디]</p>
             <div class="sectiondiv">
               <input (focus)="usernamechange($event)"
                 [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
@@ -119,13 +126,6 @@
           <div class="confirmidbox" [hidden]="!overlapcheck">
             <p>회원가입이 가능한 아이디 입니다.</p>
           </div>
-          <div class="confirmpasswordbox" *ngIf="registeruserForm.controls.username.touched"
-            [hidden]="!registeruserForm.hasError('required', 'username') ">
-            <p>이메일을 입력해주세요</p>
-          </div>
-          <div class="confirmpasswordbox" [hidden]="!registeruserForm.hasError('pattern','username')">
-            <p>이메일 형식이 아닙니다.</p>
-          </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>
@@ -135,6 +135,11 @@
           <div class="inputDiv">
             <p class="inputtitle">[연락처]</p>
             <input class="enrolldevice" type="text" formControlName="phone" />
+          </div>
+
+          <div class="inputDiv">
+            <p class="inputtitle">[이메일]</p>
+            <input class="enrolldevice" type="text" formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
@@ -185,13 +190,9 @@
         <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
           <div class="inputDiv">
-            <p class="inputtitle">[이메일]</p>
+            <p class="inputtitle">[아이디]</p>
             <input class="enrolldevice" type="text" formControlName="username" />
           </div>
-          <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('pattern','username')">
-            <p>이메일 형식이 아닙니다.</p>
-          </div>
-
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>

@@ -88,7 +88,6 @@ export class DeviceComponent implements OnInit {
     })
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl(null, [Validators.required]),
-      'customerCode': new FormControl(null, [Validators.required]),
       'name': new FormControl("", [Validators.required]),
       'model': new FormControl("", [Validators.required]),
       'location': new FormControl("",),
