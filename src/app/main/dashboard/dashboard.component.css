@@ -112,6 +112,11 @@ body {
 	grid-column-end: 8;
 }
 
+.innercard1 :hover {
+	left: .2rem;
+	cursor: pointer;
+}
+
 .innercard2item1 {
 	grid-row-start: 4;
 	grid-row-end: 7;

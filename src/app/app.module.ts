@@ -26,6 +26,7 @@ import { WebsocketService } from './services/websocket.service';
 import { WebsocketComponent } from './websocket/websocket.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { AlldetectionComponent } from './main/alldetection/alldetection.component';
 
 
 
@@ -49,6 +50,10 @@ const appRoutes: Routes = [
       {
         path: 'device',
         component: DeviceComponent
+      },
+      {
+        path: 'alldetection',
+        component: AlldetectionComponent
       },
       {
         path: 'notice',
@@ -82,6 +87,7 @@ const appRoutes: Routes = [
     WebsocketComponent,
     ForgotpasswordComponent,
     EditprofileComponent,
+    AlldetectionComponent,
   ],
   imports: [
     RouterModule.forRoot(

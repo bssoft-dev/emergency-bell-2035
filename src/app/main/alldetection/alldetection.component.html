@@ -1,0 +1,80 @@
+<div class="content-wrapper">
+    <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top">
+        <div class="navbar-menu-wrapper align-items-center">
+            <ul class="navbar-nav ">
+                <li class="navtitle">
+                    <p class="gfont whitefont">전체감지</p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" id="alldetectionrow">
+        <div class="card fifthcard">
+            <div>
+                <h5 class="card-title">전체 감지 내역</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr class="tabletr">
+                            <th class="tableth2">
+                                순번
+                            </th>
+                            <th class="tableth2">
+                                디바이스명
+                            </th>
+                            <th class="tableth2">
+                                시간
+                            </th>
+                            <th class="tableth2">
+                                타입
+                            </th>
+                            <th class="tableth2">
+                                위치
+                            </th>
+                            <th class="tableth2">
+                                알림현황
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of alldetectiondata[0];let index = index">
+                            <td class="font-weight-medium" class="tabletd2">
+                                {{index + 1}}
+                            </td>
+                            <td class="font-weight-medium" class="tabletd2">
+                                {{i.name}}
+                            </td>
+                            <td class="tabletd2">
+                                {{i.time}}
+                            </td>
+                            <td class="tabletd2">
+                                {{i.type}}
+                            </td>
+                            <td class="tabletd2">
+                                {{i.location}}
+                            </td>
+                            <td>
+                                <div style="position: relative;">
+                                    <div class="btn-group">
+                                        <button class="btn btn-default btn-sm dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-expanded="false">
+                                            알림 확인 <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>sms true</li>
+                                            <li>email true</li>
+                                            <li>popup true</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
