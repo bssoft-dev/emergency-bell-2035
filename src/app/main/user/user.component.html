@@ -115,7 +115,7 @@
           <div class="inputDiv">
             <p class="inputtitle">[아이디]</p>
             <div class="sectiondiv">
-              <input (focus)="usernamechange($event)"
+              <input placeholder="(필수) 아이디를 입력해주세요" (focus)="usernamechange($event)"
                 [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
                 type="text" formControlName="username" />
               <button (click)="duplicatecheck()" type="button"
@@ -129,30 +129,31 @@
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>
-            <input class="enrolldevice" type="text" formControlName="name" />
+            <input placeholder="(필수) 이름을 입력해주세요" class="enrolldevice" type="text" formControlName="name" />
           </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[연락처]</p>
-            <input class="enrolldevice" type="text" formControlName="phone" />
+            <input placeholder="연락처를 입력해주세요" class="enrolldevice" type="text" formControlName="phone" />
           </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[이메일]</p>
-            <input class="enrolldevice" type="text" formControlName="email" />
+            <input placeholder="이메일을 입력해주세요 (비밀번호 분실시 이용됩니다)" class="enrolldevice" type="text"
+              formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
             <div class="inputDiv">
               <p class="inputtitle">[패스워드]</p>
-              <input
+              <input placeholder="(필수) 패스워드를 입력해주세요"
                 [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
                 type="password" formControlName="password" autocomplete="off" />
             </div>
 
             <div class="inputDiv">
               <p class="inputtitle">[패스워드확인]</p>
-              <input
+              <input placeholder="(필수) 패스워드를 입력해주세요"
                 [ngClass]="(registeruserForm.controls.passwordGroup.valid || !registeruserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'"
                 type="password" formControlName="passwordconfirm" autocomplete="off" />
             </div>
@@ -168,8 +169,8 @@
 
           <div class="modal_footer">
             <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-            <button [ngClass]="!registeruserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
-              type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
+            <button [ngClass]="!registeruserForm.valid || !overlapcheck ? 'nonactivebutton' : 'footerbutton' "
+              tabindex="11" type="submit" [disabled]="!registeruserForm.valid || overlapcheck">회원등록</button>
           </div>
         </form>
 
@@ -191,28 +192,36 @@
 
           <div class="inputDiv">
             <p class="inputtitle">[아이디]</p>
-            <input class="enrolldevice" type="text" formControlName="username" />
+            <input placeholder="(필수) 아이디를 입력해 주세요" class="enrolldevice" type="text" formControlName="username" />
           </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>
-            <input class="enrolldevice" type="text" formControlName="name" />
+            <input placeholder="(필수) 이름을 입력해 주세요" class="enrolldevice" type="text" formControlName="name" />
           </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[연락처]</p>
-            <input class="enrolldevice" type="text" formControlName="phone" />
+            <input placeholder="연락처를 입력해 주세요" class="enrolldevice" type="text" formControlName="phone" />
+          </div>
+
+          <div class="inputDiv">
+            <p class="inputtitle">[이메일]</p>
+            <input placeholder="이메일을 입력해 주세요 (비밀번호 분실시 이용됩니다)" class="enrolldevice" type="text"
+              formControlName="email" />
           </div>
 
           <div formGroupName="passwordGroup">
             <div class="inputDiv">
               <p class="inputtitle">[패스워드]</p>
-              <input class="enrolldevice" type="password" formControlName="password" autocomplete="off" />
+              <input placeholder="(필수) 패스워드를 입력해 주세요" class="enrolldevice" type="password" formControlName="password"
+                autocomplete="off" />
             </div>
 
             <div class="inputDiv">
               <p class="inputtitle">[패스워드확인]</p>
-              <input class="enrolldevice" type="password" formControlName="passwordconfirm" autocomplete="off" />
+              <input placeholder="(필수) 패스워드를 입력해 주세요" class="enrolldevice" type="password"
+                formControlName="passwordconfirm" autocomplete="off" />
             </div>
 
             <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">
