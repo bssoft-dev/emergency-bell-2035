@@ -148,6 +148,7 @@ export class MainComponent implements OnInit {
 
       },
       error: (err) => {
+        console.log(err, 'dll')
       },
       complete: () => {
       }
@@ -155,26 +156,31 @@ export class MainComponent implements OnInit {
   }
 
   registeremailuser() {
-    this.service.registersmsalarm(this.registeremailForm).subscribe({
+    console.log(this.registeremailForm.value)
+    this.service.registersmsalarm(this.registeremailForm.value).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
         this.registeremailForm.reset();
       },
       error: (err) => {
         alert('서버 에러')
+        console.log(err)
       },
       complete: () => {
       }
     });
   }
   registersmsuser() {
-    this.service.registersmsalarm(this.registersmsForm).subscribe({
+    console.log(this.registersmsForm.value)
+    this.service.registersmsalarm(this.registersmsForm.value).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
         this.registersmsForm.reset();
       },
       error: (err) => {
         alert('서버 에러')
+        console.log(err, 'dll')
+
       },
       complete: () => {
       }

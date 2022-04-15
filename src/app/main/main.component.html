@@ -256,6 +256,23 @@
 					</div>
 
 					<div class="contentbox" *ngIf="tab2">
+						<div class="flexbox">
+							<form [formGroup]="registeremailForm" (ngSubmit)="registeremailuser()" novalidate>
+								<div class="inputDiv">
+									<input placeholder="이름" class="enrolldevice1" type="text" formControlName="name" />
+									<input placeholder="이메일" class="enrolldevice2" type="text"
+										formControlName="email" />
+									<button class="imgbutton">
+										<img src="../../assets/images/dashboardicons/더하기.png " />
+									</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="buttonbox">
+							<input (click)="changetoggle()" class="toggleinput" type="checkbox" id="toggleinput" />
+							<label class="togglelabel customlabel" for="toggleinput"></label>
+						</div>
 
 						<div class="tblth">
 							<div class="th">이름</div>
