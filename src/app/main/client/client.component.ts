@@ -14,6 +14,7 @@ export class ClientComponent implements OnInit {
   public modal2: boolean = false;
   fileSelected?: Blob;
   imageSrc: string;
+  mapSrc: string;
   token = "";
   customer_code = "";
 
@@ -85,11 +86,14 @@ export class ClientComponent implements OnInit {
     this.modal = true;
   }
   clickedModalClose() {
+    this.modifyclientForm.reset()
+    this.registerclientForm.reset()
     this.modal = false;
   }
 
   clickedModal2Close() {
     this.modifyclientForm.reset()
+    this.registerclientForm.reset()
     this.modal2 = false;
     this.imageSrc = "";
   }
@@ -110,6 +114,8 @@ export class ClientComponent implements OnInit {
       'status': new FormControl("",),
       'payMethod': new FormControl("",),
       'logo': new FormControl("",),
+      'map': new FormControl("",),
+
     });
     this.registerclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
@@ -118,6 +124,7 @@ export class ClientComponent implements OnInit {
       'status': new FormControl("",),
       'payMethod': new FormControl("",),
       'logo': new FormControl("",),
+      'map': new FormControl("",),
     });
 
   }
@@ -136,11 +143,12 @@ export class ClientComponent implements OnInit {
       status: this.getonecustomerdata[0]["status"],
       payMethod: this.getonecustomerdata[0]["payMethod"],
       logo: this.getonecustomerdata[0]["logo"],
+      map: this.getonecustomerdata[0]["map"],
     })
 
   }
 
-  onFileChange(event): void {
+  onFileChange(event, index): void {
     this.fileSelected = event.target.files[0]
     const formData = new FormData();
     formData.append(
@@ -150,13 +158,24 @@ export class ClientComponent implements OnInit {
 
     this.service.uploadanal(formData).subscribe({
       next: (res) => {
-        this.imageSrc = res.url;
-        this.modifyclientForm.patchValue({
-          logo: this.imageSrc
-        })
-        this.registerclientForm.patchValue({
-          logo: this.imageSrc
-        })
+        if (index === 1) {
+          this.imageSrc = res.url;
+          this.modifyclientForm.patchValue({
+            logo: this.imageSrc
+          })
+          this.registerclientForm.patchValue({
+            logo: this.imageSrc
+          })
+        } else {
+          this.mapSrc = res.url;
+          this.modifyclientForm.patchValue({
+            map: this.mapSrc
+          })
+          this.registerclientForm.patchValue({
+            map: this.mapSrc
+          })
+        }
+
       },
       error: (err) => {
         alert('서버 에러메세지')
@@ -166,30 +185,31 @@ export class ClientComponent implements OnInit {
     });
   }
 
+
   registeronecustomer() {
     const data = this.registerclientForm.value;
     if (data['logo'].length < 1) {
       data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/bell.png"
     }
     console.log(data, '데이타체크')
-    if (this.registerclientForm.valid) {
-      this.service.registeronecustomer(data).subscribe({
-        next: (res) => {
-          alert('고객사 등록이 완료되었습니다')
-          this.getcustomers()
-          this.registerclientForm.reset()
-          this.modal = false;
-        },
-        error: (err) => {
-          console.log(err, '에러코드')
-          alert('정보를 잘못 입력하셨습니다')
-        },
-        complete: () => {
-        }
-      });
-    } else {
-      alert('정보를 입력해주세요')
-    }
+    // if (this.registerclientForm.valid) {
+    //   this.service.registeronecustomer(data).subscribe({
+    //     next: (res) => {
+    //       alert('고객사 등록이 완료되었습니다')
+    //       this.getcustomers()
+    //       this.registerclientForm.reset()
+    //       this.modal = false;
+    //     },
+    //     error: (err) => {
+    //       console.log(err, '에러코드')
+    //       alert('정보를 잘못 입력하셨습니다')
+    //     },
+    //     complete: () => {
+    //     }
+    //   });
+    // } else {
+    //   alert('정보를 입력해주세요')
+    // }
   }
 
   modifyonecustomer() {

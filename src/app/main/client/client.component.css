@@ -224,6 +224,12 @@ li {
 	margin-bottom: 40px;
 }
 
+.flexbox {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .footerbutton {
 	cursor: pointer;
 	margin: 10px;

@@ -113,21 +113,40 @@
 
         <form [formGroup]="registerclientForm" (ngSubmit)="registeronecustomer()" novalidate>
 
-          <div class="inputDiv">
-            <div class="imgdiv">
-              <img [src]="imageSrc" class="locationpicture">
-              <div class="labelbox">
-                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
-                  <div>
-                    <i class="menu-icon mdi mdi-cloud-upload"></i>
-                  </div>
-                  <h4 class="uploadlabeltext">로고 업로드</h4>
-                </label>
+          <div class="flexbox">
+            <div class="inputDiv">
+              <div class="imgdiv">
+                <img [src]="imageSrc" class="locationpicture">
+                <div class="labelbox">
+                  <input id="bizFile1" class="enrolldevice" placeholder="로고사진" type="file" accept=".jpg, .jpeg, .png"
+                    (change)="onFileChange($event,1)" style="display: none;" />
+                  <label for="bizFile1" class="uploadlabel">
+                    <div>
+                      <i class="menu-icon mdi mdi-cloud-upload"></i>
+                    </div>
+                    <h4 class="uploadlabeltext">로고 업로드</h4>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="inputDiv">
+              <div class="imgdiv">
+                <img [src]="mapSrc" class="locationpicture">
+                <div class="labelbox">
+                  <input id="bizFile2" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                    (change)="onFileChange($event,2)" style="display: none;" />
+                  <label for="bizFile2" class="uploadlabel">
+                    <div>
+                      <i class="menu-icon mdi mdi-cloud-upload"></i>
+                    </div>
+                    <h4 class="uploadlabeltext">맵사진 업로드</h4>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
+
 
           <div class="inputDiv">
             <p class="inputtitle">[고객사명]</p>
@@ -176,18 +195,36 @@
 
         <form [formGroup]="modifyclientForm" (ngSubmit)="modifyonecustomer()" novalidate>
 
-          <div class="inputDiv">
-            <div class="imgdiv">
-              <img [src]="imageSrc" class="locationpicture">
-              <div class="labelbox">
-                <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
-                  (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
-                  <div>
-                    <i class="menu-icon mdi mdi-cloud-upload"></i>
-                  </div>
-                  <h4 class="uploadlabeltext">사진 업로드</h4>
-                </label>
+          <div class="flexbox">
+            <div class="inputDiv">
+              <div class="imgdiv">
+                <img [src]="imageSrc" class="locationpicture">
+                <div class="labelbox">
+                  <input id="bizFile1" class="enrolldevice" placeholder="로고사진" type="file" accept=".jpg, .jpeg, .png"
+                    (change)="onFileChange($event,1)" style="display: none;" />
+                  <label for="bizFile1" class="uploadlabel">
+                    <div>
+                      <i class="menu-icon mdi mdi-cloud-upload"></i>
+                    </div>
+                    <h4 class="uploadlabeltext">로고 업로드</h4>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="inputDiv">
+              <div class="imgdiv">
+                <img [src]="mapSrc" class="locationpicture">
+                <div class="labelbox">
+                  <input id="bizFile2" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
+                    (change)="onFileChange($event,2)" style="display: none;" />
+                  <label for="bizFile2" class="uploadlabel">
+                    <div>
+                      <i class="menu-icon mdi mdi-cloud-upload"></i>
+                    </div>
+                    <h4 class="uploadlabeltext">맵사진 업로드</h4>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
