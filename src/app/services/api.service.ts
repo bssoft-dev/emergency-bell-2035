@@ -105,6 +105,11 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'users/all?customerCode=' + `${data[1]}`, { headers });
   }
+  getCustomerNames(data): Observable<any> {
+    this.token = data
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/customers/name', { headers });
+  }
   registeruser(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
     return this.http.post(`${this.apiUrl}` + 'auth/register', data, { headers });

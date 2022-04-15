@@ -129,7 +129,16 @@
 
           <div class="inputDiv">
             <p class="inputtitle">[이름]</p>
-            <input placeholder="(필수) 이름을 입력해주세요" class="enrolldevice" type="text" formControlName="name" />
+            <input placeholder="이름을 입력해주세요" class="enrolldevice" type="text" formControlName="name" />
+          </div>
+
+          <div class="inputDiv">
+            <p class="inputtitle">[고객사명]</p>
+            <select name="customerName" formControlName="customerName">
+              <option value="">선택해주세요</option>
+              <option *ngFor="let i of customerNames" value="{{i}}">{{i}}</option>
+            <!-- <input placeholder="고객사명을 입력해주세요" class="enrolldevice" type="text" formControlName="customerName" /> -->
+            </select>
           </div>
 
           <div class="inputDiv">
