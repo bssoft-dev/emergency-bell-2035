@@ -72,11 +72,12 @@ body {
 .charttitlecard {
 	width: 100%;
 	height: 5vh;
+	margin-top: 18px;
 }
 
 #chartrow {
 	width: 100%;
-	height: 45vh;
+	height: 45.6vh;
 	background-color: #282b30;
 }
 
@@ -119,17 +120,36 @@ body {
 	justify-content: space-around;
 }
 
+.innercard1-total {
+	position: relative;
+	margin: auto;
+	background-color: #2b2fa0;
+	box-shadow: #4b4a50;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+	border-top-left-radius: 9px;
+}
+
 .rightborder {
 	border-right: 3px solid #3d41a1;
 }
 
 
-.innercard1 :hover {
+/* .innercard1 :hover {
 	position: relative;
 	right: .3rem;
 	cursor: pointer;
-}
+} */
 
+.gfont{
+	/* width: 90px; */
+	align-items: center;
+}
 .secondcard {
 	width: 100%;
 	height: 100%;
@@ -137,6 +157,9 @@ body {
 	padding: 15px;
 }
 
+.table-type{
+	width: 120px;
+}
 .table-responsive {
 	width: 100%;
 	overflow: auto;
@@ -153,11 +176,11 @@ body {
 }
 
 .tableth {
-	font-size: 14px;
+	font-size: 17px;
 }
 
 .tabletd {
-	font-size: 12px;
+	font-size: 15px;
 	white-space: normal;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 
@@ -350,16 +373,19 @@ body {
 	display: flexbox;
 	text-align: center;
 	align-items: center;
+	padding-bottom: 20px;
 }
 
 
 .card-title {
+	text-align: center;
 	margin-top: 15px;
 	color: #ffffff;
 	font-size: 25px;
 	font-weight: 600;
 	white-space: nowrap;
 	text-overflow: auto;
+	width: 70% !important;
 }
 
 .doughnut {

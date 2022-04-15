@@ -42,7 +42,7 @@
 }
 
 .table-responsive {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     width: 100%;
     overflow: auto;
     white-space: nowrap;
@@ -112,7 +112,7 @@ li {
 
 .table-dark {
     table-layout: fixed;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .tableth {
@@ -255,3 +255,4 @@ button:active {
     justify-content: center;
     align-items: center;
 }
+

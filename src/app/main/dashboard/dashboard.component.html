@@ -19,26 +19,26 @@
           <h5 class="card-title gfont">스마트벨 작동 현황</h5>
 
           <div class="flexbox1">
-            <div class="innercard1 rightborder">
+            <div class="innercard1-total rightborder">
               <img src="../../../assets/images/dashboardicons/총갯수.png" style="width: 34px;" />
               <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
               <p class="innerfont2 gfont">총 갯수</p>
             </div>
             <div class="innercard1">
               <img src="../../../assets/images/dashboardicons/작동중.png" style="width: 34px;" />
-              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont1">{{socketdevicesdata["activationDevice"]}}</p>
               <p class="innerfont2 gfont">작동중</p>
             </div>
           </div>
           <div class="flexbox2">
             <div class="innercard1 rightborder">
               <img src="../../../assets/images/dashboardicons/점검중.png" style="width: 34px;" />
-              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
               <p class="innerfont2 gfont">점검중</p>
             </div>
             <div class="innercard1">
               <img src="../../../assets/images/dashboardicons/연결끊김.png" style="width: 34px;" />
-              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
               <p class="innerfont2 gfont">연결끊김</p>
             </div>
           </div>
@@ -46,10 +46,10 @@
       </div>
 
       <div class="row" id="tworow">
-        <div class="card thirdcard">
+        <div class="card firstcard">
           <h4 class="card-title gfont">스마트벨 설치 장소</h4>
           <!-- <img src="{{socketmapdata['installMap']}}" class="imgmap" /> -->
-          <img src="http://api-2207.bs-soft.co.kr/api/images/bell.png" class="imgmap" />
+          <img src="http://api-2207.bs-soft.co.kr/api/images/map.png" class="imgmap" />
           <!-- <ng-mapbox></ng-mapbox>
               <agm-map [latitude]="35.25228" [longitude]="126.8633" [zoom]="16" [disableDefaultUI]="false" [zoomControl]="false">
                 <agm-marker [latitude]="35.25228" [longitude]="126.8633">
@@ -63,7 +63,7 @@
     <div class="col halfcol2">
 
       <div class="row" id="alldetectionrow">
-        <div class="card secondcard">
+        <div class="card firstcard">
           <h5 class="card-title gfont">최근 감지 내역</h5>
           <div class="table-responsive">
 
@@ -71,7 +71,7 @@
               감지 내역 없음
             </div>
 
-            <table class="table table-dark ">
+            <table class="table table-dark table-striped">
               <!-- <li *ngFor="let item of received">Source: {{item.source}} -> Content {{item.content}}</li> -->
 
               <thead>
@@ -82,7 +82,7 @@
                   <th class="tableth">
                     설치장소
                   </th>
-                  <th class="tableth">
+                  <th class="tableth table-type">
                     타입
                   </th>
                 </tr>
@@ -95,7 +95,7 @@
                   <td class="tabletd text-danger">
                     {{i.location}}
                   </td>
-                  <td class="tabletd">
+                  <td class="tabletd ">
                     {{i.type}}
                   </td>
                 </tr>
@@ -106,7 +106,7 @@
       </div>
 
 
-      <div class="charttitlecard">
+      <div class="charttitlecard firstcard">
         <h5 class="card-title gfont">통계</h5>
       </div>
       <div class="row" id="chartrow">
