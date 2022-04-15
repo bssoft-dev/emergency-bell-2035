@@ -117,6 +117,7 @@ export class UserComponent implements OnInit {
   }
 
   registerUser() {
+    console.log('registerUser')
     const data = this.registeruserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;

@@ -88,18 +88,20 @@ export class DeviceComponent implements OnInit {
     })
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl(null, [Validators.required]),
-      'name': new FormControl("", [Validators.required]),
-      'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("",),
-      'installDate': new FormControl("",),
+      'name': new FormControl("",),
+      'customerName': new FormControl(null, [Validators.required]),
+      'model': new FormControl("",),
+      'location': new FormControl("", [Validators.required]),
+      'installDate': new FormControl("", [Validators.required]),
       'picture': new FormControl("",),
       'communicateMethod': new FormControl("",),
       'userMemo': new FormControl("",),
     });
     this.devicemodifyForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
-      'model': new FormControl("", [Validators.required]),
-      'location': new FormControl("",),
+      'customerName': new FormControl(null, [Validators.required]),
+      'model': new FormControl("",),
+      'location': new FormControl("", [Validators.required]),
       'installDate': new FormControl("",),
       'picture': new FormControl("",),
       'communicateMethod': new FormControl("",),

@@ -192,24 +192,24 @@ export class ClientComponent implements OnInit {
       data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/bell.png"
     }
     console.log(data, '데이타체크')
-    // if (this.registerclientForm.valid) {
-    //   this.service.registeronecustomer(data).subscribe({
-    //     next: (res) => {
-    //       alert('고객사 등록이 완료되었습니다')
-    //       this.getcustomers()
-    //       this.registerclientForm.reset()
-    //       this.modal = false;
-    //     },
-    //     error: (err) => {
-    //       console.log(err, '에러코드')
-    //       alert('정보를 잘못 입력하셨습니다')
-    //     },
-    //     complete: () => {
-    //     }
-    //   });
-    // } else {
-    //   alert('정보를 입력해주세요')
-    // }
+    if (this.registerclientForm.valid) {
+      this.service.registeronecustomer(data).subscribe({
+        next: (res) => {
+          alert('고객사 등록이 완료되었습니다')
+          this.getcustomers()
+          this.registerclientForm.reset()
+          this.modal = false;
+        },
+        error: (err) => {
+          console.log(err, '에러코드')
+          alert('정보를 잘못 입력하셨습니다')
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('정보를 입력해주세요')
+    }
   }
 
   modifyonecustomer() {
