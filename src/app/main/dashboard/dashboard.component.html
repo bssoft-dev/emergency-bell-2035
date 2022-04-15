@@ -10,7 +10,7 @@
   </nav>
 
 
-  <div class="row">
+  <div class="row" id="backrow">
 
     <div class="halfcol1">
 
@@ -18,34 +18,31 @@
         <div class="card firstcard">
           <h5 class="card-title gfont">스마트벨 작동 현황</h5>
 
-
-          <div class="innercard1">
-            <img src="../../../assets/images/dashboardicons/총갯수.png" style="width: 34px;" />
-            <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
-            <p class="innerfont2 gfont">총 설치</p>
+          <div class="flexbox1">
+            <div class="innercard1 rightborder">
+              <img src="../../../assets/images/dashboardicons/총갯수.png" style="width: 34px;" />
+              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont2 gfont">총 갯수</p>
+            </div>
+            <div class="innercard1">
+              <img src="../../../assets/images/dashboardicons/작동중.png" style="width: 34px;" />
+              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont2 gfont">작동중</p>
+            </div>
           </div>
-
-
-          <div class="innercard2item1">
-            <p class="innerfont1 gfont">{{socketdevicesdata["activationDevice"]}}</p>
-            <img src="../../../assets/images/dashboardicons/작동중.png" style="width: 34px;" />
-            <p class="innerfont1 gfont">작동중</p>
+          <div class="flexbox2">
+            <div class="innercard1 rightborder">
+              <img src="../../../assets/images/dashboardicons/점검중.png" style="width: 34px;" />
+              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont2 gfont">점검중</p>
+            </div>
+            <div class="innercard1">
+              <img src="../../../assets/images/dashboardicons/연결끊김.png" style="width: 34px;" />
+              <p class="innerfont1">{{socketdevicesdata["numDevice"]}}</p>
+              <p class="innerfont2 gfont">연결끊김</p>
+            </div>
           </div>
-
-          <div class="innercard2item2">
-            <p class="innerfont1">{{socketdevicesdata["inspectionDevice"]}}</p>
-            <img src="../../../assets/images/dashboardicons/점검중.png" style="width: 34px;" />
-            <p class="innerfont1 gfont">점검중</p>
-          </div>
-          <div class="innercard2item3">
-            <p class="innerfont1">{{socketdevicesdata["deactivateDevice"]}}</p>
-            <img src="../../../assets/images/dashboardicons/연결끊김.png" style="width: 34px;" />
-            <p class="innerfont1 gfont" style="font-weight: 500;">기타</p>
-          </div>
-
         </div>
-
-
       </div>
 
       <div class="row" id="tworow">
@@ -63,7 +60,7 @@
       </div>
     </div>
 
-    <div class="halfcol2">
+    <div class="col halfcol2">
 
       <div class="row" id="alldetectionrow">
         <div class="card secondcard">
