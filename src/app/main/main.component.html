@@ -209,21 +209,42 @@
 				<div class="tabcontents">
 					<div class="contentbox" *ngIf="tab1">
 
+						<div class="flexbox">
+							<form [formGroup]="registersmsForm" (ngSubmit)="registersmsuser()" novalidate>
+								<div class="inputDiv">
+									<input placeholder="이름" class="enrolldevice1" type="text" formControlName="name" />
+									<input placeholder="연락처" class="enrolldevice2" type="text"
+										formControlName="phone" />
+									<button class="imgbutton">
+										<img src="../../assets/images/dashboardicons/더하기.png " />
+									</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="buttonbox">
+							<input (click)="changetoggle()" class="toggleinput" type="checkbox" id="toggleinput" />
+							<label class="togglelabel customlabel" for="toggleinput"></label>
+						</div>
+
+
 						<div class="tblth">
 							<div class="th">이름</div>
 							<div class="th">번호</div>
 							<div class="th">발신설정</div>
 							<div class="th">삭제</div>
 						</div>
-
-						<div class="tbltd">
+						<div class="tbltd" *ngFor="let user of getalarmsmsdata; let index = index;">
 							<div class="td">
-								ㅇㄴㅇㄹ
+								{{user.name}}
 							</div>
-							<div class="td">ㅇㄴㅇㄹ</div>
 							<div class="td">
-								<input class="toggleinput" type="checkbox" id="toggleinput" (click)="changetoggle()" />
-								<label class="togglelabel" for="toggleinput"></label>
+								{{user.phone}}
+							</div>
+							<div class="td">
+								<input [checked]="user.setting" id="{{index}}" class="toggleinput" type="checkbox"
+									(click)="changetoggle()" />
+								<label class="togglelabel" for="{{index}}"></label>
 							</div>
 							<div class="td">
 								<button class="modifying">
@@ -232,12 +253,35 @@
 							</div>
 						</div>
 
-
-
 					</div>
 
 					<div class="contentbox" *ngIf="tab2">
-						탭2콘텐츠
+
+						<div class="tblth">
+							<div class="th">이름</div>
+							<div class="th">번호</div>`
+							<div class="th">발신설정</div>
+							<div class="th">삭제</div>
+						</div>
+
+						<div class="tbltd" *ngFor="let user of getalarmemaildata; let index = index;">
+							<div class="td">
+								{{user.name}}
+							</div>
+							<div class="td">
+								{{user.email}}
+							</div>
+							<div class="td">
+								<input [checked]="user.setting" id="{{index}}" class="toggleinput" type="checkbox"
+									(click)="changetoggle()" />
+								<label class="togglelabel" for="{{index}}"></label>
+							</div>
+							<div class="td">
+								<button class="modifying">
+									<i class="menu-icon mdi mdi-delete"></i>
+								</button>
+							</div>
+						</div>
 
 					</div>
 				</div>

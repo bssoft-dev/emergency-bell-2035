@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 
 
@@ -10,8 +12,10 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  public modal: boolean = false;
+  registeremailForm: FormGroup;
+  registersmsForm: FormGroup;
 
+  public modal: boolean = false;
   token = "";
   customer_code = "";
   is_hyperuser;
@@ -60,7 +64,18 @@ export class MainComponent implements OnInit {
   }
 
   myname = "";
+
   ngOnInit() {
+    this.registersmsForm = new FormGroup({
+      'name': new FormControl("", [Validators.required]),
+      'phone': new FormControl("", [Validators.required]),
+      'setting': new FormControl("",),
+    });
+    this.registeremailForm = new FormGroup({
+      'name': new FormControl("", [Validators.required]),
+      'email': new FormControl("", [Validators.required]),
+      'setting': new FormControl("",),
+    });
     this.token = sessionStorage.getItem('token')
     this.currentusercheck().then((res) => {
       this.myname = res['name'];
@@ -85,6 +100,8 @@ export class MainComponent implements OnInit {
   }
   clickedModal() {
     this.modal = true;
+    this.getalarmsmsuser();
+    this.getalaremailuser();
   }
 
   selecttab(title) {
@@ -100,6 +117,68 @@ export class MainComponent implements OnInit {
 
   changetoggle() {
 
+  }
+
+  challtoggle() {
+
+  }
+
+  getalarmsmsdata = [];
+  getalarmsmsuser() {
+    this.getalarmsmsdata = [];
+    this.service.getalarmsmsuser().subscribe({
+      next: (res) => {
+        this.getalarmsmsdata = res;
+        console.log(this.getalarmsmsdata)
+      },
+      error: (err) => {
+      },
+      complete: () => {
+      }
+    });
+  }
+
+  getalarmemaildata = [];
+  getalaremailuser() {
+    this.getalarmemaildata = [];
+    this.service.getalarmemailuser().subscribe({
+      next: (res) => {
+        this.getalarmemaildata = res;
+        console.log(this.getalarmemaildata)
+
+      },
+      error: (err) => {
+      },
+      complete: () => {
+      }
+    });
+  }
+
+  registeremailuser() {
+    this.service.registersmsalarm(this.registeremailForm).subscribe({
+      next: (res) => {
+        this.getalarmsmsuser();
+        this.registeremailForm.reset();
+      },
+      error: (err) => {
+        alert('서버 에러')
+      },
+      complete: () => {
+      }
+    });
+  }
+  registersmsuser() {
+    this.service.registersmsalarm(this.registersmsForm).subscribe({
+      next: (res) => {
+        this.getalarmsmsuser();
+        this.registersmsForm.reset();
+      },
+      error: (err) => {
+        alert('서버 에러')
+      },
+      complete: () => {
+      }
+    });
   }
 
 

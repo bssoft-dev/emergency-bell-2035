@@ -51,6 +51,23 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data[1]}/logo`, { headers });
   }
+  getalarmsmsuser(): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/smsList', { headers });
+  }
+  getalarmemailuser(): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/emailList', { headers });
+  }
+  registeremailalarm(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.post(`${this.apiUrl}` + 'api/email/setting', `${data}`, { headers });
+
+  }
+  registersmsalarm(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.post(`${this.apiUrl}` + 'api/sms/setting', `${data}`, { headers });
+  }
 
 
   // dashboard 페이지

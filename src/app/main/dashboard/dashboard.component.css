@@ -125,8 +125,8 @@ body {
 
 
 .innercard1 :hover {
-	position: absolute;
-	right: .2rem;
+	position: relative;
+	right: .3rem;
 	cursor: pointer;
 }
 
