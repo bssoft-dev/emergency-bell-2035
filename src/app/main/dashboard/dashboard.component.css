@@ -50,15 +50,6 @@ body {
 	box-shadow: none !important;
 }
 
-#backrow {
-	height: 98%;
-}
-
-.halfcol {
-	width: 50%;
-	height: 100%;
-}
-
 #onerow {
 	width: 100%;
 	height: 35vh;
@@ -611,4 +602,36 @@ body {
 .cardbox {
 	width: 50%;
 	height: 50%;
+}
+
+
+.halfcol1 {
+	width: 49%;
+	height: 100%;
+}
+
+.halfcol2 {
+	width: 49%;
+	height: 100%;
+
+}
+
+.row {
+	padding: none;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+
+@media screen and (max-width: 1200px) {
+	.halfcol1 {
+		width: 100vw;
+		display: block;
+	}
+
+	.halfcol2 {
+		margin-top: 20px;
+		width: 100vw;
+		display: block;
+	}
 }
