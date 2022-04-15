@@ -56,6 +56,7 @@ export class UserComponent implements OnInit {
     this.modal = false;
   }
   clickedModal() {
+    console.log(this.customerNames)
     this.modal = true;
   }
   clickedModal2Close() {
@@ -64,6 +65,22 @@ export class UserComponent implements OnInit {
   }
   clickedModal2() {
     this.modal2 = true;
+  }
+
+  customerNames = [];
+  initGetCustomerNames() {
+    const temp = sessionStorage.getItem('token')
+    this.customerNames = [];
+    this.service.getCustomerNames(temp).subscribe({
+      next: (res) => {
+        this.customerNames = res
+      },
+      error: (err) => {
+        console.log(err, 'err')
+      },
+      complete: () => {
+      }
+    });
   }
 
 
@@ -139,11 +156,12 @@ export class UserComponent implements OnInit {
     this.currentusercheck().then(res => {
       this.initgetallusers(res)
     })
-
+    this.initGetCustomerNames()
 
     this.modifyuserForm = new FormGroup({
       'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
+      'customerName': new FormControl("",),
       'phone': new FormControl("",),
       'email': new FormControl("",),
       'passwordGroup': new FormGroup({
@@ -154,6 +172,7 @@ export class UserComponent implements OnInit {
     this.registeruserForm = new FormGroup({
       'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
+      'customerName': new FormControl("",),
       'phone': new FormControl("",),
       'email': new FormControl("",),
       'passwordGroup': new FormGroup({
@@ -228,6 +247,7 @@ export class UserComponent implements OnInit {
       this.modifyuserForm.patchValue({
         username: this.getoneuserdata["username"],
         name: this.getoneuserdata["name"],
+        customerName: this.getoneuserdata["customerName"],
         phone: this.getoneuserdata["phone"],
         email: this.getoneuserdata["email"],
       })
@@ -271,6 +291,7 @@ export class UserComponent implements OnInit {
       const jsontemp = {
         "username": this.modifyuserForm.value.username,
         "name": this.modifyuserForm.value.name,
+        "customerName": this.modifyuserForm.value.customerName,
         "phone": this.modifyuserForm.value.phone,
         "email": this.modifyuserForm.value.email,
         "password": this.modifyuserForm.value.password,
