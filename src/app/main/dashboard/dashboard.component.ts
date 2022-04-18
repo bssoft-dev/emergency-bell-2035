@@ -231,6 +231,21 @@ export class DashboardComponent implements OnInit {
         })
     }
 
+    getcustomermapdata = {};
+    getcustomermap() {
+        this.service.getcustomermap().subscribe({
+            next: (res) => {
+                this.getcustomermapdata = res;
+                console.log(this.getcustomermapdata, 'ldldldl')
+            },
+            error: (err) => {
+
+            },
+            complete: () => {
+            }
+        })
+    }
+
 
     ngOnInit() {
         this.checktoken()
@@ -241,6 +256,7 @@ export class DashboardComponent implements OnInit {
         setTimeout(() => {
             this.makechart(this.socketgraphdata)
         }, 300)
+        this.getcustomermap()
 
     }
 

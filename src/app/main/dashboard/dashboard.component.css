@@ -140,16 +140,12 @@ body {
 }
 
 
-/* .innercard1 :hover {
-	position: relative;
-	right: .3rem;
-	cursor: pointer;
-} */
 
-.gfont{
+.gfont {
 	/* width: 90px; */
 	align-items: center;
 }
+
 .secondcard {
 	width: 100%;
 	height: 100%;
@@ -157,9 +153,10 @@ body {
 	padding: 15px;
 }
 
-.table-type{
+.table-type {
 	width: 120px;
 }
+
 .table-responsive {
 	width: 100%;
 	overflow: auto;
@@ -206,12 +203,12 @@ body {
 }
 
 .imgmap {
-	width: 95%;
-	height: 85%;
+	width: 70%;
+	height: 80%;
 }
 
 .fourthcard {
-	display: flexbox;
+	display: flex;
 	flex-direction: row;
 	align-items: space;
 	justify-content: space-around;
@@ -602,6 +599,8 @@ body {
 }
 
 
+
+
 @media screen and (max-width: 1200px) {
 	.halfcol1 {
 		width: 100vw;
@@ -609,7 +608,7 @@ body {
 	}
 
 	.halfcol2 {
-		margin-top: 20px;
+		margin-top: 30px;
 		width: 100vw;
 		display: block;
 	}
