@@ -247,7 +247,7 @@
 								<label class="togglelabel" for="{{index}}"></label>
 							</div>
 							<div class="td">
-								<button class="modifying">
+								<button class="modifying" (click)="deletesmsalarm(index)">
 									<i class="menu-icon mdi mdi-delete"></i>
 								</button>
 							</div>
@@ -294,7 +294,7 @@
 								<label class="togglelabel" for="{{index}}"></label>
 							</div>
 							<div class="td">
-								<button class="modifying">
+								<button class="modifying" (click)="deleteemailalarm(index)">
 									<i class="menu-icon mdi mdi-delete"></i>
 								</button>
 							</div>

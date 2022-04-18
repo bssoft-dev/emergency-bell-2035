@@ -70,7 +70,14 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.post(`${this.apiUrl}` + 'api/sms/setting', `${Jsondata}`, { headers });
   }
-
+  deletesmsalarm(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.delete(`${this.apiUrl}` + 'api/sms/setting?phone=' + `${data}`, { headers });
+  }
+  deleteemailalarm(data: any): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.delete(`${this.apiUrl}` + 'api/email/setting?email=' + `${data}`, { headers });
+  }
 
   // dashboard 페이지
   detectiongraph(data: any): Observable<any> {
@@ -101,6 +108,7 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/map', { headers });
   }
+
 
   // 회원관리 페이지 
   getallusers(data): Observable<any> {

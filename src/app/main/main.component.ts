@@ -168,6 +168,7 @@ export class MainComponent implements OnInit {
       }
     });
   }
+
   registersmsuser() {
     console.log(this.registersmsForm.value)
     this.service.registersmsalarm(this.registersmsForm.value).subscribe({
@@ -183,6 +184,42 @@ export class MainComponent implements OnInit {
       complete: () => {
       }
     });
+  }
+
+  deletesmsalarm(index) {
+    console.log(index)
+    const data = this.getalarmsmsdata[index];
+    console.log(data.phone)
+
+    this.service.deletesmsalarm(data.phone).subscribe({
+      next: (res) => {
+        alert('삭제 완료 되었습니다.')
+        this.getalarmsmsuser();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+
+    })
+  }
+  deleteemailalarm(index) {
+    const data = this.getalarmemaildata[index];
+    console.log(data.email)
+
+    this.service.deleteemailalarm(data.email).subscribe({
+      next: (res) => {
+        alert('삭제 완료 되었습니다.')
+        this.getalaremailuser();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+
+    })
   }
 
 
