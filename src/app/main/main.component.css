@@ -332,9 +332,7 @@
 }
 
 .imgbutton :hover {
-    position: relative;
-    left: .2rem;
-    top: .1rem;
+    transform: scale(0.87);
 }
 
 .buttonbox {

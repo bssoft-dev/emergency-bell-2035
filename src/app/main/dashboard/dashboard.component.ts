@@ -232,11 +232,10 @@ export class DashboardComponent implements OnInit {
     }
 
     getcustomermapdata = {};
-    getcustomermap() {
-        this.service.getcustomermap().subscribe({
+    getcustomermap(customer_code) {
+        this.service.getcustomermap(customer_code).subscribe({
             next: (res) => {
                 this.getcustomermapdata = res;
-                console.log(this.getcustomermapdata, 'ldldldl')
             },
             error: (err) => {
 
@@ -251,12 +250,12 @@ export class DashboardComponent implements OnInit {
         this.checktoken()
         this.getcurrentuser().then(res => {
             this.initrequest(res)
+            this.getcustomermap(res['customerCode']);
         })
 
         setTimeout(() => {
             this.makechart(this.socketgraphdata)
         }, 300)
-        this.getcustomermap()
 
     }
 

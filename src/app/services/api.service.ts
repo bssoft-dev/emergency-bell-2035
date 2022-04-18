@@ -97,9 +97,9 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.get(`${this.apiUrl}` + 'api/record/detections?customerCode=' + `${data}` + '&limit=30', { headers });
   }
-  getcustomermap(): Observable<any> {
+  getcustomermap(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
-    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${this.customer_code}` + '/map', { headers });
+    return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/map', { headers });
   }
 
   // 회원관리 페이지 
