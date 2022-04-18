@@ -61,13 +61,13 @@ export class ApiService {
   }
   registeremailalarm(data: any): Observable<any> {
     const Jsondata = JSON.stringify(data)
-    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.post(`${this.apiUrl}` + 'api/email/setting', `${Jsondata}`, { headers });
 
   }
   registersmsalarm(data: any): Observable<any> {
     const Jsondata = JSON.stringify(data)
-    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.post(`${this.apiUrl}` + 'api/sms/setting', `${Jsondata}`, { headers });
   }
 

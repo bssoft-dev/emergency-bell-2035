@@ -69,12 +69,10 @@ export class MainComponent implements OnInit {
     this.registersmsForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'phone': new FormControl("", [Validators.required]),
-      'setting': new FormControl("",),
     });
     this.registeremailForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'email': new FormControl("", [Validators.required]),
-      'setting': new FormControl("",),
     });
     this.token = sessionStorage.getItem('token')
     this.currentusercheck().then((res) => {
@@ -157,9 +155,9 @@ export class MainComponent implements OnInit {
 
   registeremailuser() {
     console.log(this.registeremailForm.value)
-    this.service.registersmsalarm(this.registeremailForm.value).subscribe({
+    this.service.registeremailalarm(this.registeremailForm.value).subscribe({
       next: (res) => {
-        this.getalarmsmsuser();
+        this.getalaremailuser();
         this.registeremailForm.reset();
       },
       error: (err) => {
