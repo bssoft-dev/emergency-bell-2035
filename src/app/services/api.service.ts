@@ -169,7 +169,7 @@ export class ApiService {
     this.token = data[0]
     this.customer_code = data[1]
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${data[0]} ` })
-    return this.http.get(`${this.apiUrl} ` + 'api/customers', { headers });
+    return this.http.get(`${this.apiUrl}` + 'api/customers', { headers });
   }
   deleteonecustomer(temp): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token} ` })

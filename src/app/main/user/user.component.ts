@@ -177,7 +177,7 @@ export class UserComponent implements OnInit {
     this.registeruserForm = new FormGroup({
       'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
-      'customerName': new FormControl(null,),
+      'customerName': new FormControl(null, [Validators.required,]),
       'phone': new FormControl("",),
       'email': new FormControl("",),
       'passwordGroup': new FormGroup({
