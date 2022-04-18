@@ -76,7 +76,19 @@
 
               </td>
               <td class="tabletd">
-
+                <div style="position: relative;">
+                  <div class="btn-group">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                      aria-expanded="false">
+                      알람 확인 <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <div>SMS {{customers?.alarm?.sms}}</div>
+                      <div>Email {{customers?.alarm?.email}}</div>
+                      <div>Popup {{customers?.alarm?.popup}}</div>
+                    </div>
+                  </div>
+                </div>
               </td>
               <td class="tabletd">
                 <ul class="modify">

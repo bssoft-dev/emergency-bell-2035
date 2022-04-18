@@ -114,6 +114,26 @@ li {
 	margin-top: 20px;
 }
 
+.dropdown-menu {
+	height: auto;
+	font-size: 1.0rem;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: 600;
+}
+
+.dropdown-menu.show {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.dropdown-menu div {
+	margin-bottom: 0.5rem;
+}
+
+
 
 .uploadlabel {
 	margin-top: 20px;
