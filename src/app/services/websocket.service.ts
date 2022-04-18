@@ -23,8 +23,10 @@ export class WebsocketService {
     private subject: AnonymousSubject<MessageEvent>;
     public messages: Subject<Message>;
     public requestmessages: Subject<requestMessage>;
+    public ws: WebSocket;
 
     constructor() {
+        this.ws = null
         this.messages = <Subject<Message>>this.connect(WS_URL).pipe(
             map(
                 (response: MessageEvent): Message => {
@@ -55,23 +57,36 @@ export class WebsocketService {
     }
 
     private create(url): AnonymousSubject<MessageEvent> {
-        let ws = new WebSocket(url);
+        this.ws = new WebSocket(url)
         let observable = new Observable((obs: Observer<MessageEvent>) => {
-            ws.onmessage = obs.next.bind(obs);
-            ws.onerror = obs.error.bind(obs);
-            ws.onclose = obs.complete.bind(obs);
-            return ws.close.bind(ws);
+            this.ws.onmessage = obs.next.bind(obs);
+            // this.ws.onerror = obs.error.bind(obs);
+            this.ws.onerror= () => {
+                console.log("websocket error");
+                this.ws.close();
+            }
+            // ws.onclose = obs.complete.bind(obs);
+            // return ws.close.bind(ws);
+            this.ws.onclose = () => {
+                console.log("websocket closed");
+                setTimeout(() => {
+                    this.subject = this.create(url);
+                }, 2000);
+            }
         });
         let observer = {
             error: null,
             complete: null,
             next: (data: Object) => {
                 // console.log('Message sent to websocket: ', data);
-                if (ws.readyState === WebSocket.OPEN) {
-                    ws.send(JSON.stringify(data));
+                if (this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(data));
                 }
             }
         };
         return new AnonymousSubject<MessageEvent>(observer, observable);
     }
+
 }
+
+
