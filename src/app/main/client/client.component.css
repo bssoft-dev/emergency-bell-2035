@@ -32,7 +32,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: #282b30;
-	padding: 50px;
+	padding: 20px;
 }
 
 .card-title {
@@ -107,12 +107,11 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 22px;
 }
 
 .table-dark {
 	table-layout: fixed;
-	/* margin-top: 20px; */
+	margin-top: 20px;
 }
 
 
