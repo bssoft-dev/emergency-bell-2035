@@ -142,12 +142,20 @@
 
           <div class="inputDiv">
             <p class="inputtitle">[기기아이디]</p>
-            <input placeholder="기기 아이디를 입력 해주세요" class="enrolldevice" type="text" formControlName="deviceId" />
+            <select formControlName="deviceId">
+              <option selected [ngValue]="null">기기 아이디를 선택해 주세요</option>
+              <option *ngFor="let i of unregidevices" value="{{i}}">{{i}}</option>
+              <!-- <input placeholder="고객사명을 입력해주세요" class="enrolldevice" type="text" formControlName="customerName" /> -->
+            </select>
           </div>
 
           <div class="inputDiv">
             <p class="inputtitle">[고객사명]</p>
-            <input class="enrolldevice" type="text" formControlName="customerName" />
+            <select formControlName="customerName">
+              <option [ngValue]="null">고객사명을 선택해 주세요</option>
+              <option *ngFor="let i of customerNames" value="{{i}}">{{i}}</option>
+              <!-- <input placeholder="고객사명을 입력해주세요" class="enrolldevice" type="text" formControlName="customerName" /> -->
+            </select>
           </div>
 
           <div class="inputDiv">
@@ -230,10 +238,11 @@
           </div>
 
           <div class="inputDiv">
-            <p class="inputtitle">[고객사명]</p>
-            <input class="enrolldevice" type="text" formControlName="customerName" />
+            <p class="inputtitle">[고객사명] 수정 불가능</p>
+            <input class="enrolldevice" type="text" formControlName="customerName" readonly />
 
           </div>
+
 
           <div class="inputDiv">
             <p class="inputtitle">[별칭]</p>

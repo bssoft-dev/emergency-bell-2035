@@ -56,7 +56,7 @@
                 {{i.username}}
               </td>
               <td class="tabletd">
-
+                {{i.customerName}}
               </td>
               <td class="tabletd">
                 {{i.name}}
@@ -134,7 +134,7 @@
           <div class="inputDiv">
             <p class="inputtitle">[고객사명]</p>
             <select ng-model="selected" formControlName="customerName">
-              <option value="">고객사명을 선택해 주세요</option>
+              <option [ngValue]="null">고객사명을 선택해 주세요</option>
               <option *ngFor="let i of customerNames" value="{{i}}">{{i}}</option>
               <!-- <input placeholder="고객사명을 입력해주세요" class="enrolldevice" type="text" formControlName="customerName" /> -->
             </select>

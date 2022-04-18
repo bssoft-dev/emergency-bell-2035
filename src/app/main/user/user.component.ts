@@ -91,6 +91,7 @@ export class UserComponent implements OnInit {
     this.service.getallusers(temp).subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
+        console.log(this.getallusersdata, 'getallusersdata')
       },
       error: (err) => {
         console.log(err, 'err')
@@ -117,11 +118,13 @@ export class UserComponent implements OnInit {
   }
 
   registerUser() {
-
-    console.log('registerUser', this.registeruserForm.value)
     const data = this.registeruserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;
+    if (data.customerName === null) {
+      delete data.customerName;
+      data.customerName = "";
+    }
     if (this.registeruserForm.valid) {
       this.service.registeruser(data).subscribe({
         next: (res) => {
@@ -174,7 +177,7 @@ export class UserComponent implements OnInit {
     this.registeruserForm = new FormGroup({
       'username': new FormControl("", [Validators.required,]),
       'name': new FormControl("",),
-      'customerName': new FormControl("",),
+      'customerName': new FormControl(null,),
       'phone': new FormControl("",),
       'email': new FormControl("",),
       'passwordGroup': new FormGroup({

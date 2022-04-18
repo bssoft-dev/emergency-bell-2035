@@ -56,8 +56,6 @@ export class ClientComponent implements OnInit {
     this.service.getallcustomers(temp).subscribe({
       next: (res) => {
         this.getcustomersdata = res;
-        console.log(this.getcustomersdata, 'ㅁ')
-
       },
       error: (err) => {
 

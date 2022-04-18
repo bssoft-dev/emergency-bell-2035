@@ -35,6 +35,10 @@
 	padding: 20px;
 }
 
+select {
+	width: 40%;
+}
+
 .card-title {
 	color: #ffffff;
 	font-size: 25px;

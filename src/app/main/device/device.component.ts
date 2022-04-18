@@ -61,6 +61,37 @@ export class DeviceComponent implements OnInit {
     });
   }
 
+  customerNames = [];
+  initGetCustomerNames() {
+    const temp = sessionStorage.getItem('token')
+    this.customerNames = [];
+    this.service.getCustomerNames(temp).subscribe({
+      next: (res) => {
+        this.customerNames = res
+        console.log(this.customerNames, 'www')
+      },
+      error: (err) => {
+        console.log(err, 'err')
+      },
+      complete: () => {
+      }
+    });
+  }
+
+  unregidevices = [];
+  initgetunregidevices() {
+    this.service.getunregidevices().subscribe({
+      next: (res) => {
+        this.unregidevices = res
+      },
+      error: (err) => {
+        console.log(err, 'err')
+      },
+      complete: () => {
+      }
+    })
+  }
+
 
   getalldevicesdata = [];
   getonedevicedata = [];
@@ -85,7 +116,10 @@ export class DeviceComponent implements OnInit {
   ngOnInit(): void {
     this.currentusercheck().then((res) => {
       this.initgetalldevices(res)
+      this.initGetCustomerNames();
+      this.initgetunregidevices();
     })
+
     this.deviceenrollForm = new FormGroup({
       'deviceId': new FormControl(null, [Validators.required]),
       'name': new FormControl("",),
@@ -159,10 +193,17 @@ export class DeviceComponent implements OnInit {
   }
 
   deviceenroll() {
-    if (this.customer_code === "bssoft") {
-    }
     const data = this.deviceenrollForm.value;
     console.log(data, 'dkdkdk')
+    if (data.customerName === null) {
+      delete data.customerName
+      data.customerName = "";
+    }
+    if (data.deviceId === null) {
+      delete data.deviceId
+      data.deviceId = "";
+    }
+
     if (this.deviceenrollForm.valid) {
       this.service.deviceenroll(data).subscribe({
         next: (res) => {
@@ -190,11 +231,11 @@ export class DeviceComponent implements OnInit {
     this.getonedevicedata = this.getalldevicesdata[index]
     this.getonedeviceId = this.getonedevicedata['deviceId']
     this.imageSrc = this.getonedevicedata["picture"]
-    console.log('ㅣㅣ', this.getonedevicedata)
 
     this.devicemodifyForm.patchValue({
       name: this.getonedevicedata["name"],
       model: this.getonedevicedata["model"],
+      customerName: this.getonedevicedata["customerName"],
       picture: this.getonedevicedata['picture'],
       location: this.getonedevicedata["location"],
       installDate: this.getonedevicedata["installDate"],
