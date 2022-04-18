@@ -122,24 +122,24 @@ export class UserComponent implements OnInit {
     const data = this.registeruserForm.value
     data.password = data.passwordGroup.password
     delete data.passwordGroup;
-    // if (this.registeruserForm.valid) {
-    //   this.service.registeruser(data).subscribe({
-    //     next: (res) => {
-    //       alert('회원 등록이 완료되었습니다')
-    //       this.getallusers()
-    //       this.registeruserForm.reset()
-    //       this.modal = false;
-    //     },
-    //     error: (err) => {
+    if (this.registeruserForm.valid) {
+      this.service.registeruser(data).subscribe({
+        next: (res) => {
+          alert('회원 등록이 완료되었습니다')
+          this.getallusers()
+          this.registeruserForm.reset()
+          this.modal = false;
+        },
+        error: (err) => {
 
-    //     },
-    //     complete: () => {
-    //     }
-    //   });
-    // } else {
-    //   alert('입력을 확인해주세요')
-    //   this.getallusers();
-    // }
+        },
+        complete: () => {
+        }
+      });
+    } else {
+      alert('입력을 확인해주세요')
+      this.getallusers();
+    }
   }
 
   equalValidator({ value }: FormGroup): { [key: string]: any } {
