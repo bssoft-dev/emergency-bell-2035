@@ -58,7 +58,8 @@
           <tbody>
             <tr *ngFor="let devicedata of getalldevicesdata; let index = index">
               <td class="tabletd">
-                <img *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture">
+                <img (click)="picturemodalopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0"
+                  [src]="devicedata.picture">
               </td>
               <td class="tabletd">
                 {{devicedata.model}}
@@ -288,6 +289,16 @@
 
 
       </div>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="picturemodal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="picmodalcon">
+      <img class="bigpicture" [src]="bigpicturesrc">
+      <button (click)="picturemodalclose()" class="footerbutton">닫기</button>
     </div>
   </div>
 </div>

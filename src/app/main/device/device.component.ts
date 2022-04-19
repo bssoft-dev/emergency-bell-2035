@@ -17,11 +17,13 @@ export class DeviceComponent implements OnInit {
   devicemodifyForm: FormGroup;
   public modal: boolean = false;
   public modal2: boolean = false;
+  public picturemodal: boolean = false;
   token = "";
   customer_code = "";
 
   fileSelected?: Blob;
   imageSrc: string;
+  bigpicturesrc: string;
 
   constructor(public router: Router, private service: ApiService, private sant: DomSanitizer) { }
 
@@ -190,6 +192,17 @@ export class DeviceComponent implements OnInit {
   }
   clickedModal2() {
     this.modal2 = true;
+  }
+
+  picturemodalopen(index) {
+    this.picturemodal = true;
+    let picturesrc = this.getalldevicesdata[index].picture
+    console.log(picturesrc)
+    this.bigpicturesrc = picturesrc
+  }
+  picturemodalclose() {
+    console.log('닫기')
+    this.picturemodal = false;
   }
 
   deviceenroll() {

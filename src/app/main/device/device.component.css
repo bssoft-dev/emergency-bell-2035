@@ -173,6 +173,12 @@ li {
 	overflow: auto;
 }
 
+#picmodalcon {
+	background-color: transparent;
+}
+
+
+
 .modal-title {
 	color: #ffffff;
 	font-weight: 600;
@@ -180,8 +186,12 @@ li {
 }
 
 .modal-content {
+	display: flex;
+	flex-direction: column;
 	background-color: #282b30;
 	border: none !important;
+	justify-content: center;
+	align-items: center;
 }
 
 .deviceenrollcard {
@@ -304,4 +314,17 @@ button:active {
 
 .togglelabel:active:after {
 	width: 30px;
+}
+
+.smallimg {
+	cursor: pointer;
+}
+
+.smallimg:hover {
+	transform: scale(0.9);
+	opacity: 0.8;
+}
+
+.bigpicture {
+	width: 100%;
 }
