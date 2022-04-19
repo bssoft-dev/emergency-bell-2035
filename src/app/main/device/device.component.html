@@ -94,12 +94,12 @@
               <td class="tabletd">
                 <ul class="modify">
                   <li>
-                    <button class="modifying" (click)="getOneDevice(index)">
+                    <button class="modifying abtn" (click)="getOneDevice(index)">
                       <i class="menu-icon mdi mdi-pencil-box-outline"></i>
                     </button>
                   </li>
                   <li>
-                    <button class="modifying" (click)="deleteonedevice(index)">
+                    <button class="modifying abtn" (click)="deleteonedevice(index)">
                       <i class="menu-icon mdi mdi-delete"></i>
                     </button>
                   </li>
@@ -131,7 +131,7 @@
               <div class="labelbox">
                 <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
                   (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
+                <label for="bizFile" class="uploadlabel abtn">
                   <div>
                     <i class="menu-icon mdi mdi-cloud-upload"></i>
                   </div>
@@ -194,8 +194,8 @@
 
 
           <div class="modal_footer">
-            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">기기등록</button>
+            <button class="footerbutton abtn" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+            <button class="footerbutton abtn" tabindex="11" type="submit">기기등록</button>
           </div>
         </form>
 
@@ -223,7 +223,7 @@
               <div>
                 <input id="bizFile" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
                   (change)="onFileChange($event)" style="display: none;" />
-                <label for="bizFile" class="uploadlabel">
+                <label for="bizFile" class="uploadlabel abtn">
                   <div>
                     <i class="menu-icon mdi mdi-cloud-upload"></i>
                   </div>
@@ -282,8 +282,8 @@
 
 
           <div class="modal_footer">
-            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">기기수정</button>
+            <button class="footerbutton abtn" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
+            <button class="footerbutton abtn" tabindex="11" type="submit">기기수정</button>
           </div>
         </form>
 

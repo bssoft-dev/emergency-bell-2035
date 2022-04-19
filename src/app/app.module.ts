@@ -1,4 +1,3 @@
-import { NoticeComponent } from './main/notice/notice.component';
 import { DeviceComponent } from './main/device/device.component';
 import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
@@ -55,10 +54,6 @@ const appRoutes: Routes = [
         path: 'alldetection',
         component: AlldetectionComponent
       },
-      {
-        path: 'notice',
-        component: NoticeComponent
-      }
     ]
   },
   { path: 'register', component: RegisterComponent },
@@ -80,7 +75,6 @@ const appRoutes: Routes = [
     MainComponent,
     DashboardComponent,
     DeviceComponent,
-    NoticeComponent,
     UserComponent,
     ClientComponent,
     RegisterComponent,

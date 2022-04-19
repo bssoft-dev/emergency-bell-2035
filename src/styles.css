@@ -11735,7 +11735,6 @@ select.form-control-lg:not([size]):not([multiple]),
     display: inline-block;
     color: #fff !important;
     text-decoration: none;
-    padding: 20px 50px;
     background-color: #505dff;
     border-radius: 10px;
 }
@@ -11746,8 +11745,8 @@ select.form-control-lg:not([size]):not([multiple]),
 
 @keyframes pulsate {
     0% {
-        box-shadow: 0 0 10px #5ddcff,
-            0 0 20px #4e00c2;
+        box-shadow: 0 0 7px #5ddcff,
+            0 0 15px #4e00c2;
     }
 }
 

@@ -80,12 +80,12 @@
               <td class="tabletd">
                 <ul class="modify">
                   <li>
-                    <button class="modifying">
+                    <button class="modifying abtn">
                       <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOneUser(index)"></i>
                     </button>
                   </li>
                   <li>
-                    <button class="modifying">
+                    <button class="modifying abtn">
                       <i class="menu-icon mdi mdi-delete" (click)="deleteoneUser(index)"></i>
                     </button>
                   </li>
@@ -118,7 +118,7 @@
                 [ngClass]="(registeruserForm.controls.username.valid || !registeruserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
                 type="text" formControlName="username" />
               <button (click)="duplicatecheck()" type="button"
-                [ngClass]="registeruserForm.controls.username.valid ? 'duplicatebutton' : 'nonduplicatebutton' "
+                [ngClass]="registeruserForm.controls.username.valid ? 'duplicatebutton abtn' : 'nonduplicatebutton' "
                 [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">중복확인</button>
             </div>
           </div>
@@ -176,8 +176,8 @@
           </div>
 
           <div class="modal_footer">
-            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-            <button [ngClass]="!registeruserForm.valid || !overlapcheck ? 'nonactivebutton' : 'footerbutton' "
+            <button class="footerbutton abtn" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+            <button [ngClass]="!registeruserForm.valid || !overlapcheck ? 'nonactivebutton' : 'footerbutton abtn' "
               tabindex="11" type="submit" [disabled]="!registeruserForm.valid">회원등록</button>
           </div>
         </form>

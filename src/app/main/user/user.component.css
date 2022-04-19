@@ -258,13 +258,6 @@ li {
 	border-radius: 7px;
 }
 
-.footerbutton:hover {
-	transform: scale(0.98);
-}
-
-.footerbutton :active {
-	transform: scale(0.98);
-}
 
 .nonactivebutton {
 	border: none;
@@ -308,6 +301,7 @@ li {
 }
 
 .duplicatebutton {
+	cursor: pointer;
 	margin: 5px;
 	width: 40%;
 	height: 50px;

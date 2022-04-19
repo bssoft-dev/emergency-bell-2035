@@ -115,6 +115,7 @@ li {
 }
 
 .dropbtn {
+	cursor: pointer;
 	background-color: #505eff;
 	color: #ffffff;
 	width: 100px;
@@ -209,6 +210,10 @@ li {
 	background-color: #282b30;
 	border-radius: 10px;
 	padding: 30px;
+}
+
+.readinput {
+	color: #6e6f70b7 !important;
 }
 
 .inputtitle {

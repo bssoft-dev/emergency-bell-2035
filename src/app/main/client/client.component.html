@@ -93,12 +93,12 @@
               <td class="tabletd">
                 <ul class="modify">
                   <li>
-                    <button class="modifying">
+                    <button class="modifying abtn">
                       <i class="menu-icon mdi mdi-pencil-box-outline" (click)="getOnecustomers(index)"></i>
                     </button>
                   </li>
                   <li>
-                    <button class="modifying">
+                    <button class="modifying abtn">
                       <i class="menu-icon mdi mdi-delete" (click)="deleteonecustomer(index)"></i>
                     </button>
                   </li>
@@ -131,7 +131,7 @@
                 <div class="labelbox">
                   <input id="bizFile1" class="enrolldevice" placeholder="로고사진" type="file" accept=".jpg, .jpeg, .png"
                     (change)="onFileChange($event,1)" style="display: none;" />
-                  <label for="bizFile1" class="uploadlabel">
+                  <label for="bizFile1" class="uploadlabel abtn">
                     <div>
                       <i class="menu-icon mdi mdi-cloud-upload"></i>
                     </div>
@@ -147,7 +147,7 @@
                 <div class="labelbox">
                   <input id="bizFile2" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
                     (change)="onFileChange($event,2)" style="display: none;" />
-                  <label for="bizFile2" class="uploadlabel">
+                  <label for="bizFile2" class="uploadlabel abtn">
                     <div>
                       <i class="menu-icon mdi mdi-cloud-upload"></i>
                     </div>
@@ -185,8 +185,8 @@
           </div>
 
           <div class="modal_footer">
-            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">고객사등록</button>
+            <button class="footerbutton abtn" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
+            <button class="footerbutton abtn" tabindex="11" type="submit">고객사등록</button>
           </div>
         </form>
 
@@ -213,7 +213,7 @@
                 <div class="labelbox">
                   <input id="bizFile1" class="enrolldevice" placeholder="로고사진" type="file" accept=".jpg, .jpeg, .png"
                     (change)="onFileChange($event,1)" style="display: none;" />
-                  <label for="bizFile1" class="uploadlabel">
+                  <label for="bizFile1" class="uploadlabel abtn">
                     <div>
                       <i class="menu-icon mdi mdi-cloud-upload"></i>
                     </div>
@@ -229,7 +229,7 @@
                 <div class="labelbox">
                   <input id="bizFile2" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png"
                     (change)="onFileChange($event,2)" style="display: none;" />
-                  <label for="bizFile2" class="uploadlabel">
+                  <label for="bizFile2" class="uploadlabel abtn">
                     <div>
                       <i class="menu-icon mdi mdi-cloud-upload"></i>
                     </div>
@@ -242,7 +242,7 @@
 
           <div class="inputDiv">
             <p class="inputtitle">[고객사명] 수정 불가능</p>
-            <input readonly class="enrolldevice" type="text" formControlName="customerName" />
+            <input readonly class="enrolldevice readinput" type="text" formControlName="customerName" />
           </div>
 
           <div class="inputDiv">
@@ -266,8 +266,8 @@
           </div>
 
           <div class="modal_footer">
-            <button class="footerbutton" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
-            <button class="footerbutton" tabindex="11" type="submit">고객사수정</button>
+            <button class="footerbutton abtn" tabindex="10" type="button" (click)="clickedModal2Close()">취소</button>
+            <button class="footerbutton abtn" tabindex="11" type="submit">고객사수정</button>
           </div>
         </form>
 
