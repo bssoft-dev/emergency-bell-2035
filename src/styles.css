@@ -10998,7 +10998,7 @@ pre code {
 .jsgrid .jsgrid-table th,
 .table td,
 .jsgrid .jsgrid-table td {
-    padding: 18px 30px;
+    padding: 18px;
     vertical-align: top;
     border-top: 1px solid #f2f2f2;
 }
@@ -29322,7 +29322,7 @@ ul li {
 .jsgrid .jsgrid-table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'IBM Plex Sans KR', sans-serif;
     font-weight: 500;
 }
 
@@ -29336,7 +29336,7 @@ ul li {
 .table th,
 .jsgrid .jsgrid-table th {
     vertical-align: middle;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1;
     white-space: nowrap;
 }

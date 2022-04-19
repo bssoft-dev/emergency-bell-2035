@@ -122,19 +122,13 @@ select {
 	font-size: 15px;
 	white-space: normal;
 	font-family: 'IBM Plex Sans KR', sans-serif;
-
-
 }
-
-
 
 td {
 	text-align: center;
 	align-items: center;
 	justify-content: center;
-
 	white-space: normal;
-
 }
 
 ul {
@@ -318,10 +312,13 @@ button:active {
 
 .smallimg {
 	cursor: pointer;
+	border-radius: 5px;
+
 }
 
 .smallimg:hover {
 	transform: scale(0.9);
+	border-radius: 7px;
 	opacity: 0.8;
 }
 

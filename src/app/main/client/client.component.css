@@ -50,6 +50,8 @@
 
 .table-dark {
 	table-layout: fixed;
+	margin-top: 20px;
+
 }
 
 .tabletr {
@@ -65,6 +67,7 @@
 }
 
 .tabletd {
+
 	font-size: 15px;
 	white-space: normal;
 	font-family: 'IBM Plex Sans KR', sans-serif;
@@ -74,6 +77,7 @@
 
 
 td {
+	height: 60px;
 	text-align: center;
 	align-items: center;
 	justify-content: center;
@@ -109,10 +113,6 @@ li {
 	align-items: center;
 }
 
-.table-dark {
-	table-layout: fixed;
-	margin-top: 20px;
-}
 
 .dropdown-menu {
 	height: auto;
