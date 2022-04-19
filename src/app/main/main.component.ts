@@ -292,10 +292,10 @@ export class MainComponent implements OnInit {
     this.allsmsdata = !this.allsmsdata;
     this.service.allalarmsmssetting(this.allsmsdata).subscribe({
       next: (res) => {
-        this.getallsms();
+
       },
       error: (err) => {
-
+        alert('내부 서버에러')
       },
       complete: () => {
       }
@@ -305,9 +305,10 @@ export class MainComponent implements OnInit {
     this.allemaildata = !this.allemaildata;
     this.service.allalarmemailsetting(this.allemaildata).subscribe({
       next: (res) => {
-        this.getallemail();
+
       },
       error: (err) => {
+        alert('내부 서버에러')
 
       },
       complete: () => {

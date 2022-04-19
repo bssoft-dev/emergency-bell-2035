@@ -113,6 +113,7 @@ body {
 
 
 .innercard1 {
+	cursor: pointer;
 	position: relative;
 	margin: auto;
 	width: 100%;
@@ -122,9 +123,11 @@ body {
 	text-align: center;
 	align-items: center;
 	justify-content: space-around;
+
 }
 
 .innercard1-total {
+	cursor: pointer;
 	position: relative;
 	margin: auto;
 	background-color: #2b2fa0;
