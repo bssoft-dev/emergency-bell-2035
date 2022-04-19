@@ -99,7 +99,9 @@ export class MainComponent implements OnInit {
   clickedModal() {
     this.modal = true;
     this.getalarmsmsuser();
-    this.getalaremailuser();
+    this.getalarmemailuser();
+    this.getallsms();
+    this.getallemail();
   }
 
   selecttab(title) {
@@ -137,7 +139,7 @@ export class MainComponent implements OnInit {
   }
 
   getalarmemaildata = [];
-  getalaremailuser() {
+  getalarmemailuser() {
     this.getalarmemaildata = [];
     this.service.getalarmemailuser().subscribe({
       next: (res) => {
@@ -157,7 +159,7 @@ export class MainComponent implements OnInit {
     console.log(this.registeremailForm.value)
     this.service.registeremailalarm(this.registeremailForm.value).subscribe({
       next: (res) => {
-        this.getalaremailuser();
+        this.getalarmemailuser();
         this.registeremailForm.reset();
       },
       error: (err) => {
@@ -211,7 +213,7 @@ export class MainComponent implements OnInit {
     this.service.deleteemailalarm(data.email).subscribe({
       next: (res) => {
         alert('삭제 완료 되었습니다.')
-        this.getalaremailuser();
+        this.getalarmemailuser();
       },
       error: (err) => {
 
@@ -221,6 +223,99 @@ export class MainComponent implements OnInit {
 
     })
   }
+
+  onesmssetting(index) {
+    const data = this.getalarmsmsdata[index];
+    data.setting = !data.setting;
+    delete data.phone;
+    delete data.customerName;
+
+    this.service.onesmssetting(data).subscribe({
+      next: (res) => {
+        this.getalarmsmsuser();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+
+  oneemailsetting(index) {
+    const data = this.getalarmemaildata[index];
+    data.setting = !data.setting;
+    delete data.email;
+    delete data.customerName;
+
+    this.service.oneemailsetting(data).subscribe({
+      next: (res) => {
+        this.getalarmemailuser();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+
+  allsmsdata: Boolean;
+  getallsms() {
+    this.service.getallalarmsms().subscribe({
+      next: (res) => {
+        this.allsmsdata = res;
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+
+  allemaildata: Boolean;
+  getallemail() {
+    this.service.getallalarmemail().subscribe({
+      next: (res) => {
+        this.allemaildata = res;
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+
+  allsmssetting() {
+    this.allsmsdata = !this.allsmsdata;
+    this.service.allalarmsmssetting(this.allsmsdata).subscribe({
+      next: (res) => {
+        this.getallsms();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+  allemailsetting() {
+    this.allemaildata = !this.allemaildata;
+    this.service.allalarmemailsetting(this.allemaildata).subscribe({
+      next: (res) => {
+        this.getallemail();
+      },
+      error: (err) => {
+
+      },
+      complete: () => {
+      }
+    })
+  }
+
+
 
 
 }

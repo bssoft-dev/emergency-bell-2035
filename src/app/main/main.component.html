@@ -198,6 +198,7 @@
 
 
 
+
 				<ul class="tabtitle">
 					<li class="tabtitlebox" [class.selected]="title === selectedtab" *ngFor="let title of tabtitle;"
 						(click)="selecttab(title)">
@@ -207,6 +208,7 @@
 
 
 				<div class="tabcontents">
+					<!-- tab1 -->
 					<div class="contentbox" *ngIf="tab1">
 
 						<div class="flexbox">
@@ -223,7 +225,8 @@
 						</div>
 
 						<div class="buttonbox">
-							<input (click)="changetoggle()" class="toggleinput" type="checkbox" id="toggleinput" />
+							<input [checked]="allsmsdata" (click)="allsmssetting()" class="toggleinput" type="checkbox"
+								id="toggleinput" />
 							<label class="togglelabel customlabel" for="toggleinput"></label>
 						</div>
 
@@ -242,9 +245,9 @@
 								{{user.phone}}
 							</div>
 							<div class="td">
-								<input [checked]="user.setting" id="{{index}}" class="toggleinput" type="checkbox"
-									(click)="changetoggle()" />
-								<label class="togglelabel" for="{{index}}"></label>
+								<input [checked]="user.setting" id="sms{{index}}" class="toggleinput" type="checkbox"
+									(click)="onesmssetting(index)" />
+								<label class="togglelabel" for="sms{{index}}"></label>
 							</div>
 							<div class="td">
 								<button class="modifying" (click)="deletesmsalarm(index)">
@@ -255,6 +258,7 @@
 
 					</div>
 
+					<!-- tab2 -->
 					<div class="contentbox" *ngIf="tab2">
 						<div class="flexbox">
 							<form [formGroup]="registeremailForm" (ngSubmit)="registeremailuser()" novalidate>
@@ -270,7 +274,8 @@
 						</div>
 
 						<div class="buttonbox">
-							<input (click)="changetoggle()" class="toggleinput" type="checkbox" id="toggleinput" />
+							<input [checked]="allemaildata" (click)="allemailsetting()" class="toggleinput"
+								type="checkbox" id="toggleinput" />
 							<label class="togglelabel customlabel" for="toggleinput"></label>
 						</div>
 
@@ -289,9 +294,9 @@
 								{{user.email}}
 							</div>
 							<div class="td">
-								<input [checked]="user.setting" id="{{index}}" class="toggleinput" type="checkbox"
-									(click)="changetoggle()" />
-								<label class="togglelabel" for="{{index}}"></label>
+								<input (click)="oneemailsetting(index)" [checked]="user.setting" id="email{{index}}"
+									class="toggleinput" type="checkbox" />
+								<label class="togglelabel" for="email{{index}}"></label>
 							</div>
 							<div class="td">
 								<button class="modifying" (click)="deleteemailalarm(index)">
@@ -306,8 +311,7 @@
 
 
 				<div class="modal_footer">
-					<button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">취소</button>
-					<button class="footerbutton" tabindex="11" type="submit">저장</button>
+					<button class="footerbutton" tabindex="10" type="button" (click)="clickedModalClose()">확인</button>
 				</div>
 
 

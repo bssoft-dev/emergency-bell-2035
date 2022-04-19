@@ -30,12 +30,10 @@ export class AlldetectionComponent implements OnInit {
 
   alldetectiondata = [];
   alldetection(res) {
-    console.log('gld', res)
     const customer_code = res.customerCode;
     this.service.alldetection(customer_code).subscribe({
       next: (res) => {
         this.alldetectiondata.push(res)
-        console.log('잉', this.alldetectiondata)
       },
       error: (err) => {
 
@@ -48,7 +46,6 @@ export class AlldetectionComponent implements OnInit {
   ngOnInit(): void {
     this.getcurrentuser().then(res => {
       this.alldetection(res);
-      console.log('dl', this.alldetectiondata)
     })
 
   }

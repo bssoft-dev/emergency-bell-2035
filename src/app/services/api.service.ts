@@ -108,6 +108,34 @@ export class ApiService {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
     return this.http.get(`${this.apiUrl}` + 'api/customers/' + `${data}` + '/map', { headers });
   }
+  onesmssetting(data: any): Observable<any> {
+    const jsondata = JSON.stringify(data)
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/sms/setting', `${jsondata}`, { headers });
+  }
+  oneemailsetting(data: any): Observable<any> {
+    const jsondata = JSON.stringify(data)
+    const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/email/setting', `${jsondata}`, { headers });
+  }
+  getallalarmsms(): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/alarms/setting?type=sms', { headers });
+  }
+  getallalarmemail(): Observable<any> {
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.get(`${this.apiUrl}` + 'api/alarms/setting?type=email', { headers });
+  }
+  allalarmsmssetting(data: any): Observable<any> {
+    const data1 = String(data)
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/alarms/setting?sms=' + `${data1}`, data, { headers });
+  }
+  allalarmemailsetting(data: any): Observable<any> {
+    const data1 = String(data)
+    const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token}` })
+    return this.http.put(`${this.apiUrl}` + 'api/alarms/setting?email=' + `${data1}`, data, { headers });
+  }
 
 
   // 회원관리 페이지 

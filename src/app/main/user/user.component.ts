@@ -91,7 +91,6 @@ export class UserComponent implements OnInit {
     this.service.getallusers(temp).subscribe({
       next: (res) => {
         this.getallusersdata.push(res)
-        console.log(this.getallusersdata, 'getallusersdata')
       },
       error: (err) => {
         console.log(err, 'err')
