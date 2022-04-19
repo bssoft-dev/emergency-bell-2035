@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { WebsocketService } from '../services/websocket.service';
 
 
 
@@ -15,6 +16,7 @@ export class MainComponent implements OnInit {
   registeremailForm: FormGroup;
   registersmsForm: FormGroup;
 
+  public alarmmodal: boolean = false;
   public modal: boolean = false;
   token = "";
   customer_code = "";
@@ -26,7 +28,27 @@ export class MainComponent implements OnInit {
   tab2 = false;
   selectedtab = '휴대폰';
 
-  constructor(public router: Router, private service: ApiService) { }
+  // websocket 템프 데이터
+  requestreceived = [];
+  // websocket 알림 데이터
+  popupdata = [];
+
+  constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
+    WebsocketService.messages.subscribe(msg => {
+
+      this.requestreceived.push(msg);
+      if (Object.keys(msg).length < 3) {
+        for (let i of this.requestreceived) {
+          if (i.title === 'popup') {
+            this.popupdata = i.content;
+            if (this.popupdata) {
+              this.modal = true;
+            }
+          }
+        }
+      }
+    });
+  }
 
 
 
@@ -93,11 +115,15 @@ export class MainComponent implements OnInit {
     this.active = active;
   }
 
-  clickedModalClose() {
+  closepopupmodal() {
     this.modal = false;
   }
+
+  clickedModalClose() {
+    this.alarmmodal = false;
+  }
   clickedModal() {
-    this.modal = true;
+    this.alarmmodal = true;
     this.getalarmsmsuser();
     this.getalarmemailuser();
     this.getallsms();

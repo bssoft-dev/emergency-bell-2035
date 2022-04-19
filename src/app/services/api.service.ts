@@ -209,15 +209,15 @@ export class ApiService {
   }
   deleteonecustomer(temp): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Authorization": `Bearer ${this.token} ` })
-    return this.http.delete(`${this.apiUrl} ` + 'api/customers/' + `${temp} `, { headers });
+    return this.http.delete(`${this.apiUrl}` + 'api/customers/' + `${temp} `, { headers });
   }
   modifyonecustomer(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token} ` })
-    return this.http.put(`${this.apiUrl} ` + 'api/customers/' + `${data[0]} `, data[1], { headers });
+    return this.http.put(`${this.apiUrl}` + 'api/customers/' + `${data[0]} `, data[1], { headers });
   }
   registeronecustomer(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json", "Authorization": `Bearer ${this.token} ` })
-    return this.http.post(`${this.apiUrl} ` + 'api/customers', data, { headers });
+    return this.http.post(`${this.apiUrl}` + 'api/customers', data, { headers });
   }
 
 
@@ -225,7 +225,7 @@ export class ApiService {
   // image업로드
   uploadanal(data: any): Observable<any> {
     const headers = new HttpHeaders({ "Authorization": `Bearer ${this.token} ` })
-    return this.http.post(`${this.apiUrl} ` + 'api/upload', data, { headers });
+    return this.http.post(`${this.apiUrl}` + 'api/upload', data, { headers });
   }
 
 }

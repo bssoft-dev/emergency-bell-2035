@@ -21,7 +21,6 @@ import '../../../assets/amchart/light.js';
 })
 
 export class DashboardComponent implements OnInit {
-    public modal: boolean = false;
 
 
     checktoken = () => {
@@ -34,8 +33,6 @@ export class DashboardComponent implements OnInit {
 
     // websocket 템프 데이터
     requestreceived = [];
-    // websocket 알림 데이터
-    popupdata = [];
     // websocket 토탈 데이터
     socketconnectdata = [];
     socketdevicesdata = [];
@@ -61,11 +58,6 @@ export class DashboardComponent implements OnInit {
                         this.socketrecentdata = i.content;
                     } else if (i.title === "graph") {
                         this.socketgraphdata = i.content;
-                    } else {
-                        this.popupdata = i.content;
-                        if (this.popupdata) {
-                            this.modal = true;
-                        }
                     }
                 }
             }
@@ -257,9 +249,7 @@ export class DashboardComponent implements OnInit {
     }
 
 
-    clickedModalClose() {
-        this.modal = false;
-    }
+
 }
 
 
