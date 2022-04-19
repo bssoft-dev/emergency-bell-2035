@@ -114,6 +114,15 @@ li {
 	align-items: center;
 }
 
+.dropbtn {
+	background-color: #505eff;
+	color: #ffffff;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 
 .dropdown-menu {
 	height: auto;
