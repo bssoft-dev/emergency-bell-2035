@@ -59,6 +59,7 @@
 }
 
 .btn {
+	margin-right: 10px;
 	background-color: #505eff;
 	color: #ffffff;
 	width: 150px;
@@ -255,6 +256,14 @@ li {
 	color: white;
 	background-color: #505dff;
 	border-radius: 7px;
+}
+
+.footerbutton:hover {
+	transform: scale(0.98);
+}
+
+.footerbutton :active {
+	transform: scale(0.98);
 }
 
 .nonactivebutton {

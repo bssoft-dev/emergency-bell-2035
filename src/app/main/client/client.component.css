@@ -105,6 +105,7 @@ li {
 }
 
 .btn {
+	margin-right: 10px;
 	background-color: #505eff;
 	color: #ffffff;
 	width: 150px;

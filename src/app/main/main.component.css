@@ -127,6 +127,8 @@
 }
 
 .footerbutton {
+    padding: 20px 50px;
+    cursor: pointer;
     margin: 10px;
     margin-top: 60PX;
     width: 100px;
@@ -137,9 +139,15 @@
     border-radius: 7px;
 }
 
+.footerbutton:hover {
+    transform: scale(0.98);
+}
+
+
+
+
 .footerbutton :active {
-    position: relative;
-    transform: scale(0.91);
+    transform: scale(0.98);
 }
 
 .tabtitle {
