@@ -16630,8 +16630,14 @@ button.close {
 
 @media (min-width: 576px) {
     .modal-dialog {
-        max-width: 900px;
+        max-width: 500px;
         margin: 30px auto;
+    }
+
+    .bigpicdialog {
+        max-width: 800px !important;
+        margin-top: 100px auto !important;
+
     }
 
     .modal-dialog-centered {
