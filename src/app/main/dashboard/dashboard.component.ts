@@ -34,12 +34,9 @@ export class DashboardComponent implements OnInit {
     // websocket 템프 데이터
     requestreceived = [];
     // websocket 토탈 데이터
-    socketconnectdata = [];
     socketdevicesdata = [];
     socketgraphdata = [];
-    sockethistorydata = [];
     socketrecentdata = [];
-    socketmapdata = [];
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {

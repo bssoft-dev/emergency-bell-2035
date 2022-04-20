@@ -148,7 +148,6 @@ export class MainComponent implements OnInit {
     this.service.getalarmsmsuser().subscribe({
       next: (res) => {
         this.getalarmsmsdata = res;
-        console.log(this.getalarmsmsdata)
       },
       error: (err) => {
       },
@@ -163,8 +162,6 @@ export class MainComponent implements OnInit {
     this.service.getalarmemailuser().subscribe({
       next: (res) => {
         this.getalarmemaildata = res;
-        console.log(this.getalarmemaildata)
-
       },
       error: (err) => {
         console.log(err, 'dll')
