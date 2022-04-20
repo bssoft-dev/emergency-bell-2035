@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   registersmsForm: FormGroup;
 
   public alarmmodal: boolean = false;
-  public modal: boolean = false;
+
   token = "";
   customer_code = "";
   is_hyperuser;
@@ -31,15 +31,10 @@ export class MainComponent implements OnInit {
   // websocket 템프 데이터
   requestreceived = [];
   // websocket 알림 데이터
-  popupdata: string = "";
+
 
   constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
-    WebsocketService.messages.subscribe(msg => {
-      if (msg['title'] === 'popup') {
-        this.popupdata = msg['content'];
-        this.modal = true;
-      }
-    });
+
   }
 
 
@@ -96,6 +91,8 @@ export class MainComponent implements OnInit {
 
   }
 
+
+
   logout() {
     sessionStorage.removeItem("token")
     this.router.navigate(['/login'])
@@ -107,10 +104,7 @@ export class MainComponent implements OnInit {
     this.active = active;
   }
 
-  closepopupmodal() {
-    this.modal = false;
-    this.popupdata = "";
-  }
+
 
   clickedModalClose() {
     this.alarmmodal = false;

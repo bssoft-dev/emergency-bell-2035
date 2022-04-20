@@ -21,6 +21,9 @@ import '../../../assets/amchart/light.js';
 })
 
 export class DashboardComponent implements OnInit {
+    public modal: boolean = false;
+    customerCode: any;
+
 
 
     checktoken = () => {
@@ -29,39 +32,36 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-
-
-    // websocket 템프 데이터
-    requestreceived = [];
     // websocket 토탈 데이터
-    socketdevicesdata = [];
-    socketgraphdata = [];
+    socketdevicesdata = {};
+    socketgraphdata = {};
     socketrecentdata = [];
+    popupdata: string = "";
+
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
         WebsocketService.messages.subscribe(msg => {
-
-            this.requestreceived.push(msg);
             console.log("Response from websocket: ", msg);
 
-            if (Object.keys(msg).length > 2) {
-                this.socketdevicesdata = this.requestreceived[0]?.devices?.content;
-                this.socketgraphdata = this.requestreceived[0]?.graph?.content;
-                this.socketrecentdata = this.requestreceived[0]?.recent?.content;
-                this.requestreceived = [];
-            } else {
-                for (let i of this.requestreceived) {
-                    if (i.title === "recent") {
-                        this.socketrecentdata = i.content;
-                    } else if (i.title === "graph") {
-                        this.socketgraphdata = i.content;
-                    } else if (i.title === "numDevice") {
-                        this.socketdevicesdata = i.content;
-                    }
+            if (msg['customerCode'] === this.customerCode) {
+                if (msg['title'] === 'numDevice') {
+                    this.socketdevicesdata = msg['content'];
+                } else if (msg['title'] === 'graph') {
+                    this.socketgraphdata = msg['content'];
+                } else if (msg['title'] === 'recent') {
+                    this.socketrecentdata = [...msg['content']];
+
+                } else if (msg['title'] === 'popup') {
+                    this.popupdata = msg['content'];
+                    this.modal = true;
                 }
             }
         });
+    }
 
+    closepopupmodal() {
+        this.modal = false;
+        this.popupdata = "";
     }
 
 
@@ -237,6 +237,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.checktoken()
         this.getcurrentuser().then(res => {
+            this.customerCode = res['customerCode'];
             this.initrequest(res)
             this.getcustomermap(res['customerCode']);
         })
