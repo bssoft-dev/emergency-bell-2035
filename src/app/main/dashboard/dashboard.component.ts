@@ -12,6 +12,7 @@ import { ApiService } from '../../services/api.service';
 import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-dashboard',
@@ -37,34 +38,15 @@ export class DashboardComponent implements OnInit {
     socketgraphdata = {};
     socketrecentdata = [];
     popupdata: string = "";
+    websocketSubscription: Subscription
 
 
-    constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
-        WebsocketService.messages.subscribe(msg => {
-            console.log("Response from websocket: ", msg);
-
-            if (msg['customerCode'] === this.customerCode) {
-                if (msg['title'] === 'numDevice') {
-                    this.socketdevicesdata = msg['content'];
-                } else if (msg['title'] === 'graph') {
-                    this.socketgraphdata = msg['content'];
-                } else if (msg['title'] === 'recent') {
-                    this.socketrecentdata = [...msg['content']];
-
-                } else if (msg['title'] === 'popup') {
-                    this.popupdata = msg['content'];
-                    this.modal = true;
-                }
-            }
-        });
-    }
+    constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) { }
 
     closepopupmodal() {
         this.modal = false;
         this.popupdata = "";
     }
-
-
 
     makechart = (socketgraphdata) => {
         const dataset = []
@@ -241,11 +223,24 @@ export class DashboardComponent implements OnInit {
             this.initrequest(res)
             this.getcustomermap(res['customerCode']);
         })
+        this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
+            console.log("Response from websocket: ", msg);
 
-        setTimeout(() => {
-            this.makechart(this.socketgraphdata)
-        }, 300)
+            if (msg['customerCode'] === this.customerCode) {
+                if (msg['title'] === 'numDevice') {
+                    this.socketdevicesdata = msg['content'];
+                } else if (msg['title'] === 'graph') {
+                    this.socketgraphdata = msg['content'];
+                    this.makechart(this.socketgraphdata)
+                } else if (msg['title'] === 'recent') {
+                    this.socketrecentdata = [...msg['content']];
+                } else if (msg['title'] === 'popup') {
+                    this.popupdata = msg['content'];
+                    this.modal = true;
+                }
 
+            }
+        })
     }
 
 
