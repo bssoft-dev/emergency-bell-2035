@@ -227,7 +227,7 @@
 						<div class="buttonbox">
 							<input [checked]="allsmsdata" (click)="allsmssetting()" class="toggleinput" type="checkbox"
 								id="toggleinput" />
-							<label class="togglelabel customlabel" for="toggleinput"></label>
+							<label class="togglelabel customlabel abtn" for="toggleinput"></label>
 						</div>
 
 
@@ -247,10 +247,10 @@
 							<div class="td">
 								<input [checked]="user.setting" id="sms{{index}}" class="toggleinput" type="checkbox"
 									(click)="onesmssetting(index)" />
-								<label class="togglelabel" for="sms{{index}}"></label>
+								<label class="togglelabel abtn" for="sms{{index}}"></label>
 							</div>
 							<div class="td">
-								<button class="modifying" (click)="deletesmsalarm(index)">
+								<button class="modifying abtn" (click)="deletesmsalarm(index)">
 									<i class="menu-icon mdi mdi-delete"></i>
 								</button>
 							</div>
@@ -276,7 +276,7 @@
 						<div class="buttonbox">
 							<input [checked]="allemaildata" (click)="allemailsetting()" class="toggleinput"
 								type="checkbox" id="toggleinput" />
-							<label class="togglelabel customlabel" for="toggleinput"></label>
+							<label class="togglelabel customlabel abtn" for="toggleinput"></label>
 						</div>
 
 						<div class="tblth">
@@ -296,10 +296,10 @@
 							<div class="td">
 								<input (click)="oneemailsetting(index)" [checked]="user.setting" id="email{{index}}"
 									class="toggleinput" type="checkbox" />
-								<label class="togglelabel" for="email{{index}}"></label>
+								<label class="togglelabel abtn" for="email{{index}}"></label>
 							</div>
 							<div class="td">
-								<button class="modifying" (click)="deleteemailalarm(index)">
+								<button class="modifying abtn" (click)="deleteemailalarm(index)">
 									<i class="menu-icon mdi mdi-delete"></i>
 								</button>
 							</div>

@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="modal_footer">
-                    <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton' " tabindex="11"
+                    <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton abtn' " tabindex="11"
                         type="submit" [disabled]="!modifyuserForm.valid">수정</button>
                 </div>
                 <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.passwordGroup.touched"
@@ -65,7 +65,7 @@
         </div>
 
         <div class="another">
-            <button class="anotherbutton" (click)="gologin()">돌아가기</button>
+            <button class="anotherbutton abtn" (click)="gologin()">돌아가기</button>
         </div>
 
     </div>
