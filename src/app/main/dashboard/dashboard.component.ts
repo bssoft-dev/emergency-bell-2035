@@ -33,12 +33,7 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-    // websocket 토탈 데이터
-    socketdevicesdata = {};
-    socketgraphdata = {};
-    socketrecentdata = [];
-    popupdata: string = "";
-    websocketSubscription: Subscription
+
 
 
     constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) { }
@@ -216,6 +211,12 @@ export class DashboardComponent implements OnInit {
     }
 
 
+    // websocket 데이터
+    socketdevicesdata = {};
+    socketgraphdata = {};
+    socketrecentdata = [];
+    popupdata: string = "";
+    websocketSubscription: Subscription
     ngOnInit() {
         this.checktoken()
         this.getcurrentuser().then(res => {
