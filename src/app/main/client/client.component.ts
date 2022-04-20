@@ -134,7 +134,6 @@ export class ClientComponent implements OnInit {
     this.getonecustomerdata = [];
     this.modal2 = true;
     this.getonecustomerdata.push(this.getcustomersdata[index])
-    console.log('겟원', this.getonecustomerdata[0]['customerCode'])
     this.imageSrc = this.getonecustomerdata[0]["logo"]
     this.modifyclientForm.patchValue({
       customerName: this.getonecustomerdata[0]["customerName"],
@@ -191,7 +190,6 @@ export class ClientComponent implements OnInit {
     if (data['logo'].length < 1) {
       data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/bell.png"
     }
-    console.log(data, '데이타체크')
     if (this.registerclientForm.valid) {
       this.service.registeronecustomer(data).subscribe({
         next: (res) => {
@@ -201,7 +199,6 @@ export class ClientComponent implements OnInit {
           this.modal = false;
         },
         error: (err) => {
-          console.log(err, '에러코드')
           alert('정보를 잘못 입력하셨습니다')
         },
         complete: () => {
@@ -217,7 +214,6 @@ export class ClientComponent implements OnInit {
     temp.push(this.getonecustomerdata[0]["customerCode"])
     const data = this.modifyclientForm.value;
     temp.push(data)
-    console.log(temp, '체크')
     if (this.modifyclientForm.valid) {
       this.service.modifyonecustomer(temp).subscribe({
         next: (res) => {
@@ -227,7 +223,6 @@ export class ClientComponent implements OnInit {
           this.modal2 = false;
         },
         error: (err) => {
-          console.log(err, '에러코드')
           alert('정보를 잘못 입력하셨습니다')
         },
         complete: () => {

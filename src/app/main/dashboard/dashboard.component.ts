@@ -58,6 +58,8 @@ export class DashboardComponent implements OnInit {
                         this.socketrecentdata = i.content;
                     } else if (i.title === "graph") {
                         this.socketgraphdata = i.content;
+                    } else if (i.title === "numDevice") {
+                        this.socketdevicesdata = i.content;
                     }
                 }
             }

@@ -53,7 +53,6 @@ export class DeviceComponent implements OnInit {
     this.service.getalldevices(temp).subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
-        console.log(this.getalldevicesdata, '얼데이타')
       },
       error: (err) => {
 
@@ -70,10 +69,8 @@ export class DeviceComponent implements OnInit {
     this.service.getCustomerNames(temp).subscribe({
       next: (res) => {
         this.customerNames = res
-        console.log(this.customerNames, 'www')
       },
       error: (err) => {
-        console.log(err, 'err')
       },
       complete: () => {
       }
@@ -87,7 +84,6 @@ export class DeviceComponent implements OnInit {
         this.unregidevices = res
       },
       error: (err) => {
-        console.log(err, 'err')
       },
       complete: () => {
       }
@@ -104,7 +100,6 @@ export class DeviceComponent implements OnInit {
     this.service.getalldevices(temp).subscribe({
       next: (res) => {
         this.getalldevicesdata = res;
-        console.log(this.getalldevicesdata, '얼데이타')
       },
       error: (err) => {
 
@@ -197,17 +192,14 @@ export class DeviceComponent implements OnInit {
   picturemodalopen(index) {
     this.picturemodal = true;
     let picturesrc = this.getalldevicesdata[index].picture
-    console.log(picturesrc)
     this.bigpicturesrc = picturesrc
   }
   picturemodalclose() {
-    console.log('닫기')
     this.picturemodal = false;
   }
 
   deviceenroll() {
     const data = this.deviceenrollForm.value;
-    console.log(data, 'dkdkdk')
     if (data.customerName === null) {
       delete data.customerName
       data.customerName = "";
@@ -226,7 +218,6 @@ export class DeviceComponent implements OnInit {
           this.modal = false;
         },
         error: (err) => {
-          console.log(err, '에러코드')
           alert('정보를 잘못 입력하셨습니다')
         },
         complete: () => {
@@ -261,7 +252,6 @@ export class DeviceComponent implements OnInit {
   modifyonedevice() {
     const temp = this.devicemodifyForm.value;
     const data = [this.getonedeviceId, temp];
-    console.log(data, '데이터')
     if (this.devicemodifyForm.valid) {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
@@ -271,7 +261,6 @@ export class DeviceComponent implements OnInit {
           this.modal2 = false;
         },
         error: (err) => {
-          console.log(err, '에러코드')
           alert('정보를 잘못 입력하셨습니다')
         },
         complete: () => {
@@ -294,7 +283,6 @@ export class DeviceComponent implements OnInit {
         },
         error: (err) => {
           alert('기기 정보 삭제 실패')
-          console.log('에러', err)
         },
         complete: () => {
         }
@@ -304,7 +292,6 @@ export class DeviceComponent implements OnInit {
 
   chkinspection(index) {
     const data = [this.getalldevicesdata[index].deviceId, { "inspection": !this.getalldevicesdata[index].inspection }];
-    console.log(data)
 
     this.service.modifyinspection(data).subscribe({
       next: (res) => {

@@ -31,21 +31,13 @@ export class MainComponent implements OnInit {
   // websocket 템프 데이터
   requestreceived = [];
   // websocket 알림 데이터
-  popupdata = [];
+  popupdata: string = "";
 
   constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
     WebsocketService.messages.subscribe(msg => {
-
-      this.requestreceived.push(msg);
-      if (Object.keys(msg).length < 3) {
-        for (let i of this.requestreceived) {
-          if (i.title === 'popup') {
-            this.popupdata = i.content;
-            if (this.popupdata) {
-              this.modal = true;
-            }
-          }
-        }
+      if (msg['title'] === 'popup') {
+        this.popupdata = msg['content'];
+        this.modal = true;
       }
     });
   }
@@ -117,6 +109,7 @@ export class MainComponent implements OnInit {
 
   closepopupmodal() {
     this.modal = false;
+    this.popupdata = "";
   }
 
   clickedModalClose() {

@@ -56,7 +56,6 @@ export class UserComponent implements OnInit {
     this.modal = false;
   }
   clickedModal() {
-    console.log(this.customerNames)
     this.modal = true;
   }
   clickedModal2Close() {
@@ -76,7 +75,6 @@ export class UserComponent implements OnInit {
         this.customerNames = res
       },
       error: (err) => {
-        console.log(err, 'err')
       },
       complete: () => {
       }
@@ -93,7 +91,6 @@ export class UserComponent implements OnInit {
         this.getallusersdata.push(res)
       },
       error: (err) => {
-        console.log(err, 'err')
       },
       complete: () => {
       }
@@ -109,7 +106,7 @@ export class UserComponent implements OnInit {
         this.getallusersdata.push(res)
       },
       error: (err) => {
-        console.log(err, 'err')
+
       },
       complete: () => {
       }
@@ -227,7 +224,6 @@ export class UserComponent implements OnInit {
       temp.push(jsontemp)
       this.service.usersupergrant(temp).subscribe({
         next: (res) => {
-          console.log(res, 'res')
         },
         error: (err) => {
 
@@ -265,7 +261,6 @@ export class UserComponent implements OnInit {
     if (this.is_hyperuser || this.is_superuser) {
       const returnValue = confirm('회원을 삭제 하시겠습니까?')
       if (returnValue) {
-        console.log('쳌쳌', this.getallusersdata[0][index]['username'])
         this.service.deleteoneuser(this.getallusersdata[0][index]['username']).subscribe({
           next: (res) => {
             alert('삭제 완료')
