@@ -237,7 +237,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     this.socketdevicesdata = msg['content'];
                 } else if (msg['title'] === 'graph') {
                     this.socketgraphdata = msg['content'];
-                    this.makechart(this.socketgraphdata)
                 } else if (msg['title'] === 'recent') {
                     this.socketrecentdata = [...msg['content']];
                 } else if (msg['title'] === 'popup') {
@@ -247,6 +246,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
             }
         })
+
+        setTimeout(() => {
+            this.makechart(this.socketgraphdata);
+        }, 300)
     }
 
     ngOnDestroy(): void {
