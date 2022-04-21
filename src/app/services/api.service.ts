@@ -39,7 +39,7 @@ export class ApiService {
 
   forgotpassword(data: any): Observable<any> {
     const headers = new HttpHeaders({ "accept": "application/json", "Content-Type": "application/json" })
-    return this.http.post(`${this.apiUrl}` + 'auth/forgot-password?username=' + `${data}`, { headers });
+    return this.http.post(`${this.apiUrl}` + 'auth/forgot-password?username=' + `${data['username']}`, { headers });
   }
 
 
