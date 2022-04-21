@@ -10,7 +10,7 @@ export class GlobalService {
 
   private subject = new Subject<any>();
 
-  sendMessage(message: string) {
+  sendMessage(message: any) {
     this.subject.next(message);
   }
 

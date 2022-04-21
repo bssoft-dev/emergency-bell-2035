@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { WebsocketService } from '../services/websocket.service';
+import { GlobalService } from '../services/global.service';
 
 
 
@@ -33,7 +34,7 @@ export class MainComponent implements OnInit {
   // websocket 알림 데이터
 
 
-  constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) {
+  constructor(public router: Router, private service: ApiService, private GlobalService: GlobalService, private WebsocketService: WebsocketService) {
 
   }
 
@@ -75,6 +76,8 @@ export class MainComponent implements OnInit {
   myname = "";
 
   ngOnInit() {
+
+    this.GlobalService.sendMessage(this.tabtitle)
     this.registersmsForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'phone': new FormControl("", [Validators.required]),

@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { WebsocketService } from "../../services/websocket.service";
+import { GlobalService } from "../../services/global.service";
 
 declare const am5: any;
 declare const am5xy: any;
@@ -33,10 +34,14 @@ export class DashboardComponent implements OnInit {
         }
     }
 
+    subscription: Subscription;
 
 
-
-    constructor(public router: Router, private service: ApiService, private WebsocketService: WebsocketService) { }
+    constructor(public router: Router, private service: ApiService, private GlobalService: GlobalService, private WebsocketService: WebsocketService) {
+        this.subscription = this.GlobalService.getMessage().subscribe(message => {
+            console.log(message);
+        });
+    }
 
     closepopupmodal() {
         this.modal = false;
