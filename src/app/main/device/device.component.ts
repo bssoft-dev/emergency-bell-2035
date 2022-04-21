@@ -235,10 +235,12 @@ export class DeviceComponent implements OnInit {
   }
 
   getonedeviceId;
+  getonecustomerName;
   getOneDevice(index) {
     this.modal2 = true;
     this.getonedevicedata = this.getalldevicesdata[index]
     this.getonedeviceId = this.getonedevicedata['deviceId']
+    this.getonecustomerName = this.getonedevicedata['customerName']
     this.imageSrc = this.getonedevicedata["picture"]
 
     this.devicemodifyForm.patchValue({
