@@ -6,17 +6,10 @@
 
             <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
                 <div class="inputDiv">
-                    <p class="inputtitle">[이메일]</p>
+                    <p class="inputtitle">[아이디]</p>
                     <input
                         [ngClass]="(modifyuserForm.controls.username.valid || !modifyuserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
                         type="text" formControlName="username" />
-                </div>
-                <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.username.touched"
-                    [hidden]="!modifyuserForm.hasError('required', 'username') ">
-                    <p>이메일을 입력해주세요</p>
-                </div>
-                <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('pattern','username')">
-                    <p>이메일 형식이 아닙니다.</p>
                 </div>
 
                 <div class="inputDiv">

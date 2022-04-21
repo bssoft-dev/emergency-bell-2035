@@ -59,7 +59,7 @@ export class EditprofileComponent implements OnInit {
 
   ngOnInit() {
     this.modifyuserForm = new FormGroup({
-      'username': new FormControl("", [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+      'username': new FormControl("", [Validators.required]),
       'name': new FormControl("",),
       'phone': new FormControl("",),
       'passwordGroup': new FormGroup({
