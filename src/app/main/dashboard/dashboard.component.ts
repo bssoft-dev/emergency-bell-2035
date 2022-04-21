@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from "../../services/websocket.service";
 import { GlobalService } from "../../services/global.service";
 
@@ -22,7 +22,7 @@ import { Subscription } from 'rxjs';
     providers: [WebsocketService]
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
     public modal: boolean = false;
     customerCode: any;
 
@@ -247,6 +247,10 @@ export class DashboardComponent implements OnInit {
 
             }
         })
+    }
+
+    ngOnDestroy(): void {
+        this.websocketSubscription.unsubscribe();
     }
 
 

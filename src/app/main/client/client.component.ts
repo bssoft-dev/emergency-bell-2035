@@ -109,8 +109,8 @@ export class ClientComponent implements OnInit {
     })
     this.modifyclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
-      'staffName': new FormControl("", [Validators.required]),
-      'phone': new FormControl("",),
+      'staffName': new FormControl("",),
+      'phone': new FormControl("", [Validators.required]),
       'status': new FormControl("",),
       'payMethod': new FormControl("",),
       'logo': new FormControl("",),
@@ -119,8 +119,8 @@ export class ClientComponent implements OnInit {
     });
     this.registerclientForm = new FormGroup({
       'customerName': new FormControl("", [Validators.required]),
-      'staffName': new FormControl("", [Validators.required]),
-      'phone': new FormControl("",),
+      'staffName': new FormControl("",),
+      'phone': new FormControl("", [Validators.required]),
       'status': new FormControl("",),
       'payMethod': new FormControl("",),
       'logo': new FormControl("",),
@@ -188,7 +188,10 @@ export class ClientComponent implements OnInit {
   registeronecustomer() {
     const data = this.registerclientForm.value;
     if (data['logo'].length < 1) {
-      data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/bell.png"
+      data['logo'] = "http://api-2207.bs-soft.co.kr/api/images/person-fill.svg"
+    }
+    if (data['map'].length < 1) {
+      data['map'] = "http://api-2207.bs-soft.co.kr/api/images/map.png"
     }
     if (this.registerclientForm.valid) {
       this.service.registeronecustomer(data).subscribe({

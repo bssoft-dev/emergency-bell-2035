@@ -82,6 +82,7 @@ export class DeviceComponent implements OnInit {
     this.service.getunregidevices().subscribe({
       next: (res) => {
         this.unregidevices = res
+
       },
       error: (err) => {
       },
@@ -208,8 +209,12 @@ export class DeviceComponent implements OnInit {
       delete data.deviceId
       data.deviceId = "";
     }
+    if (data.picture === "") {
+      data.picture = "http://api-2207.bs-soft.co.kr/api/images/noimage.png";
+    }
 
     if (this.deviceenrollForm.valid) {
+      console.log(data, 'llw')
       this.service.deviceenroll(data).subscribe({
         next: (res) => {
           alert('디바이스 등록이 완료되었습니다')
@@ -218,7 +223,7 @@ export class DeviceComponent implements OnInit {
           this.modal = false;
         },
         error: (err) => {
-          alert('정보를 잘못 입력하셨습니다')
+          alert('권한이 없습니다')
         },
         complete: () => {
         }

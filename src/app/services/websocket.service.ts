@@ -44,6 +44,8 @@ export class WebsocketService {
                 }
             )
         );
+
+
     }
 
     public connect(url): AnonymousSubject<MessageEvent> {
