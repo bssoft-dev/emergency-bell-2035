@@ -14,4 +14,4 @@ v0.1에서는 누구나 회원 가입이 가능했으나, 0.2부터는 서버 �
 - 실행 파일: run.sh
 
 ## 실행 화면
-![screenshot](docs/img/v0.1.png)
+![image](https://user-images.githubusercontent.com/84006487/164390992-6ec6377d-3c6d-4dab-9e1a-99707b6b563c.png)
