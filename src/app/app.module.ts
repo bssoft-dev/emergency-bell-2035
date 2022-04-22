@@ -16,7 +16,6 @@ import { LoginComponent } from './login/login.component';
 
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './main/user/user.component';
 import { ClientComponent } from './main/client/client.component';
 
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
       },
     ]
   },
-  { path: 'register', component: RegisterComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'ws', component: WebsocketComponent },
@@ -77,7 +75,6 @@ const appRoutes: Routes = [
     DeviceComponent,
     UserComponent,
     ClientComponent,
-    RegisterComponent,
     WebsocketComponent,
     ForgotpasswordComponent,
     EditprofileComponent,

@@ -22288,6 +22288,7 @@ html {
 }
 
 .container-scroller {
+    background-color: #121619;
     overflow: hidden;
 }
 
