@@ -77,7 +77,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
 
-    this.GlobalService.sendMessage(this.tabtitle)
+    // this.GlobalService.sendMessage(this.tabtitle) 컴포넌트간 데이터 교환
     this.registersmsForm = new FormGroup({
       'name': new FormControl("", [Validators.required]),
       'phone': new FormControl("", [Validators.required]),
@@ -103,9 +103,7 @@ export class MainComponent implements OnInit {
 
   active = [];
 
-  outputEvent(active: any) {
-    this.active = active;
-  }
+
 
 
 
@@ -131,13 +129,6 @@ export class MainComponent implements OnInit {
     }
   }
 
-  changetoggle() {
-
-  }
-
-  challtoggle() {
-
-  }
 
   getalarmsmsdata = [];
   getalarmsmsuser() {

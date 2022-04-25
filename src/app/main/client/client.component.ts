@@ -88,6 +88,8 @@ export class ClientComponent implements OnInit {
   clickedModalClose() {
     this.modifyclientForm.reset()
     this.registerclientForm.reset()
+    this.mapSrc = "";
+    this.imageSrc = "";
     this.modal = false;
   }
 
@@ -95,6 +97,7 @@ export class ClientComponent implements OnInit {
     this.modifyclientForm.reset()
     this.registerclientForm.reset()
     this.modal2 = false;
+    this.mapSrc = "";
     this.imageSrc = "";
   }
   clickedModal2() {
