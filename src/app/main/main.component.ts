@@ -86,8 +86,9 @@ export class MainComponent implements OnInit {
       'name': new FormControl("", [Validators.required]),
       'email': new FormControl("", [Validators.required]),
     });
+
     this.token = sessionStorage.getItem('token')
-    this.currentusercheck().then((res) => {
+    this.currentusercheck().then(res => {
       this.myname = res['name'];
       this.getonecustomerslogo(res)
     })
@@ -152,7 +153,7 @@ export class MainComponent implements OnInit {
         this.getalarmemaildata = res;
       },
       error: (err) => {
-        console.log(err, 'dll')
+
       },
       complete: () => {
       }
@@ -160,7 +161,7 @@ export class MainComponent implements OnInit {
   }
 
   registeremailuser() {
-    console.log(this.registeremailForm.value)
+
     this.service.registeremailalarm(this.registeremailForm.value).subscribe({
       next: (res) => {
         this.getalarmemailuser();
@@ -168,7 +169,7 @@ export class MainComponent implements OnInit {
       },
       error: (err) => {
         alert('서버 에러')
-        console.log(err)
+
       },
       complete: () => {
       }
@@ -176,7 +177,7 @@ export class MainComponent implements OnInit {
   }
 
   registersmsuser() {
-    console.log(this.registersmsForm.value)
+
     this.service.registersmsalarm(this.registersmsForm.value).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
@@ -184,7 +185,6 @@ export class MainComponent implements OnInit {
       },
       error: (err) => {
         alert('서버 에러')
-        console.log(err, 'dll')
 
       },
       complete: () => {
@@ -193,9 +193,9 @@ export class MainComponent implements OnInit {
   }
 
   deletesmsalarm(index) {
-    console.log(index)
+
     const data = this.getalarmsmsdata[index];
-    console.log(data.phone)
+
 
     this.service.deletesmsalarm(data.phone).subscribe({
       next: (res) => {
@@ -210,9 +210,10 @@ export class MainComponent implements OnInit {
 
     })
   }
+
   deleteemailalarm(index) {
     const data = this.getalarmemaildata[index];
-    console.log(data.email)
+
 
     this.service.deleteemailalarm(data.email).subscribe({
       next: (res) => {

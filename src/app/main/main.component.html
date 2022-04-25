@@ -158,7 +158,7 @@
 			<div class="logoutbox">
 				<ul class="nav">
 					<li class="nav-item">
-						<a class="nav-link" (click)="clickedModal()">
+						<a class="nav-link" (click)="clickedModal()" href="javascript:false">
 							<img src="../../assets/images/dashboardicons/작동중.png" style="width: 34px;" />
 							<div class="menu-title">
 								<h6 class="gfont">알람설정</h6>
@@ -208,7 +208,7 @@
 
 
 				<div class="tabcontents">
-					<!-- tab1 -->
+
 					<div class="contentbox" *ngIf="tab1">
 
 						<div class="flexbox">
@@ -258,7 +258,6 @@
 
 					</div>
 
-					<!-- tab2 -->
 					<div class="contentbox" *ngIf="tab2">
 						<div class="flexbox">
 							<form [formGroup]="registeremailForm" (ngSubmit)="registeremailuser()" novalidate>
