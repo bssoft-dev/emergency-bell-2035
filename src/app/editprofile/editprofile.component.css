@@ -64,7 +64,7 @@
     border-top: none;
     border-right: none;
     border-left: none;
-    border: #dd1e1e 1px solid;
+    border: none;
     FONT-SIZE: 15px;
     color: #ffffff;
     transition: all ease 0.3s 0s;
@@ -101,6 +101,8 @@ input {
     flex-direction: column;
     margin-top: 30px;
 }
+
+
 
 .singin {
     margin: 10px;

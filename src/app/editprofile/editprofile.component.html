@@ -6,10 +6,8 @@
 
             <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
                 <div class="inputDiv">
-                    <p class="inputtitle">[아이디]</p>
-                    <input
-                        [ngClass]="(modifyuserForm.controls.username.valid || !modifyuserForm.controls.username.touched) ? 'enrolldevice' : 'nonenrolldevice'"
-                        type="text" formControlName="username" />
+                    <p class="inputtitle">[아이디] 수정불가능</p>
+                    <input readonly class="nonenrolldevice" type="text" formControlName="username" />
                 </div>
 
                 <div class="inputDiv">
