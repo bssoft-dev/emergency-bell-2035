@@ -185,9 +185,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    initrequest(res) {
-        const customer_code = res.customerCode;
-        let requestmessage = { cmd: "main", args: [res.customerCode] }
+    initrequest() {
+        let requestmessage = { cmd: "main", args: ['bssoft'] }
         this.WebsocketService.requestmessages.next(requestmessage);
     }
 
@@ -220,36 +219,42 @@ export class DashboardComponent implements OnInit, OnDestroy {
         })
     }
 
+    asycmakegraph() {
+        return new Promise((resolve, reject) => {
+            this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
+                console.log("Response from websocket: ", msg);
+
+                if (msg['customerCode'] === this.customerCode) {
+                    if (msg['title'] === 'numDevice') {
+                        this.socketdevicesdata = msg['content'];
+                    } else if (msg['title'] === 'graph') {
+                        resolve(this.socketgraphdata = msg['content']);
+                    } else if (msg['title'] === 'recent') {
+                        this.socketrecentdata = [...msg['content']];
+                    } else if (msg['title'] === 'popup') {
+                        this.popupdata = msg['content'];
+                        this.modal = true;
+                    }
+                }
+            })
+        })
+    }
+
 
 
     ngOnInit() {
         this.checktoken()
+        this.asycmakegraph().then(res => {
+            this.makechart(this.socketgraphdata);
+        })
         this.getcurrentuser().then(res => {
             this.customerCode = res['customerCode'];
-            this.initrequest(res)
+            this.initrequest()
             this.getcustomermap(res['customerCode']);
         })
-        this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
-            console.log("Response from websocket: ", msg);
 
-            if (msg['customerCode'] === this.customerCode) {
-                if (msg['title'] === 'numDevice') {
-                    this.socketdevicesdata = msg['content'];
-                } else if (msg['title'] === 'graph') {
-                    this.socketgraphdata = msg['content'];
-                } else if (msg['title'] === 'recent') {
-                    this.socketrecentdata = [...msg['content']];
-                } else if (msg['title'] === 'popup') {
-                    this.popupdata = msg['content'];
-                    this.modal = true;
-                }
 
-            }
-        })
 
-        setTimeout(() => {
-            this.makechart(this.socketgraphdata);
-        }, 300)
     }
 
     ngOnDestroy(): void {
