@@ -161,8 +161,12 @@ body {
 	padding: 15px;
 }
 
+.table-time {
+	width: 20%;
+}
+
 .table-type {
-	width: 120px;
+	width: 20%;
 }
 
 .table-responsive {
@@ -189,6 +193,7 @@ body {
 	font-size: 15px;
 	white-space: normal;
 	font-family: 'IBM Plex Sans KR', sans-serif;
+	line-height: 1.5rem;
 
 }
 

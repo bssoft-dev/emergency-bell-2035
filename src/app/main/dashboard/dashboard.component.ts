@@ -252,9 +252,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.initrequest()
             this.getcustomermap(res['customerCode']);
         })
-
-
-
     }
 
     ngOnDestroy(): void {
