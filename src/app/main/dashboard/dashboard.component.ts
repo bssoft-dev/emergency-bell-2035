@@ -26,6 +26,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     public modal: boolean = false;
     customerCode: any;
 
+    getcurrentuserdata = [];
+    getcustomermapdata = {};
+    // websocket 데이터
+    socketdevicesdata = {};
+    socketgraphdata = {};
+    socketrecentdata = [];
+    popupdata: string = "";
+    websocketSubscription: Subscription
+
+
 
 
     checktoken = () => {
@@ -181,7 +191,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.WebsocketService.requestmessages.next(requestmessage);
     }
 
-    getcurrentuserdata = [];
     getcurrentuser() {
         const token = sessionStorage.getItem('token');
         return new Promise((resolve, reject) => {
@@ -198,7 +207,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         })
     }
 
-    getcustomermapdata = {};
     getcustomermap(customer_code) {
         this.service.getcustomermap(customer_code).subscribe({
             next: (res) => {
@@ -213,12 +221,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
 
-    // websocket 데이터
-    socketdevicesdata = {};
-    socketgraphdata = {};
-    socketrecentdata = [];
-    popupdata: string = "";
-    websocketSubscription: Subscription
+
     ngOnInit() {
         this.checktoken()
         this.getcurrentuser().then(res => {
@@ -251,6 +254,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.websocketSubscription.unsubscribe();
+        this.getcurrentuserdata = [];
+        this.getcustomermapdata = {};
+        // websocket 데이터
+        this.socketdevicesdata = {};
+        this.socketgraphdata = {};
+        this.socketrecentdata = [];
+        this.popupdata = "";
+
     }
 
 
