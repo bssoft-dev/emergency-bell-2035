@@ -88,7 +88,6 @@ export class ClientComponent implements OnInit {
   clickedModalClose() {
     this.modifyclientForm.reset()
     this.registerclientForm.reset()
-    this.mapSrc = "";
     this.imageSrc = "";
     this.modal = false;
   }
@@ -97,7 +96,6 @@ export class ClientComponent implements OnInit {
     this.modifyclientForm.reset()
     this.registerclientForm.reset()
     this.modal2 = false;
-    this.mapSrc = "";
     this.imageSrc = "";
   }
   clickedModal2() {
@@ -138,6 +136,7 @@ export class ClientComponent implements OnInit {
     this.modal2 = true;
     this.getonecustomerdata.push(this.getcustomersdata[index])
     this.imageSrc = this.getonecustomerdata[0]["logo"]
+    this.mapSrc = this.getonecustomerdata[0]["map"]
     this.modifyclientForm.patchValue({
       customerName: this.getonecustomerdata[0]["customerName"],
       staffName: this.getonecustomerdata[0]["staffName"],
