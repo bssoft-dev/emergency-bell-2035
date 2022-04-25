@@ -185,8 +185,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     }
 
-    initrequest() {
-        let requestmessage = { cmd: "main", args: ['bssoft'] }
+    initrequest(res) {
+        const customer_code = res.customerCode;
+        let requestmessage = { cmd: "main", args: [res.customerCode] }
         this.WebsocketService.requestmessages.next(requestmessage);
     }
 
@@ -221,10 +222,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
 
-
-
     ngOnInit() {
         this.checktoken()
+        this.getcurrentuser().then(res => {
+            this.customerCode = res['customerCode'];
+            this.initrequest(res)
+            this.getcustomermap(res['customerCode']);
+        })
         this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
             console.log("Response from websocket: ", msg);
 
@@ -239,18 +243,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
                     this.popupdata = msg['content'];
                     this.modal = true;
                 }
+
             }
         })
-        this.getcurrentuser().then(res => {
-            this.customerCode = res['customerCode'];
-            this.initrequest()
-            this.getcustomermap(res['customerCode']);
-        })
-
 
         setTimeout(() => {
             this.makechart(this.socketgraphdata);
-        }, 500)
+        }, 300)
     }
 
     ngOnDestroy(): void {
@@ -268,11 +267,3 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
 }
-
-
-
-
-
-
-
-
