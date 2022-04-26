@@ -123,7 +123,7 @@ export class DeviceComponent implements OnInit {
       'name': new FormControl("",),
       'customerName': new FormControl(null, [Validators.required]),
       'model': new FormControl("",),
-      'location': new FormControl("", [Validators.required]),
+      'location': new FormControl("", [Validators.required, Validators.maxLength(30)]),
       'installDate': new FormControl("", [Validators.required]),
       'picture': new FormControl("",),
       'communicateMethod': new FormControl("",),
@@ -133,7 +133,7 @@ export class DeviceComponent implements OnInit {
       'name': new FormControl("", [Validators.required]),
       'customerName': new FormControl(null, [Validators.required]),
       'model': new FormControl("",),
-      'location': new FormControl("", [Validators.required]),
+      'location': new FormControl("", [Validators.required, Validators.maxLength(30)]),
       'installDate': new FormControl("",),
       'picture': new FormControl("",),
       'communicateMethod': new FormControl("",),
@@ -229,7 +229,7 @@ export class DeviceComponent implements OnInit {
         }
       });
     } else {
-      alert('정보를 입력해주세요')
+      alert('필수정보, 최대길이 제한을 지켜주세요')
     }
 
   }
@@ -274,7 +274,7 @@ export class DeviceComponent implements OnInit {
         }
       });
     } else {
-      alert('정보를 입력해주세요')
+      alert('필수정보, 최대길이 제한을 지켜주세요')
     }
   }
 
