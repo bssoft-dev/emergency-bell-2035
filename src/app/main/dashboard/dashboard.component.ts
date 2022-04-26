@@ -187,6 +187,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     initrequest(res) {
         const customer_code = res.customerCode;
+        console.log('mainmain')
         let requestmessage = { cmd: "main", args: [res.customerCode] }
         this.WebsocketService.requestmessages.next(requestmessage);
     }
@@ -220,36 +221,41 @@ export class DashboardComponent implements OnInit, OnDestroy {
         })
     }
 
+    waiting(msg) {
+        return new Promise((resolve, reject) => {
+            if (msg['customerCode'] === this.customerCode) {
+                this.socketdevicesdata = msg['deviceNum']?.['content'];
+                this.socketrecentdata = msg['recentEvent']?.['content'];
+                this.socketgraphdata = msg['graph']['content'];
+                // this.popupdata = msg['content'];
+                // this.modal = true;
+                resolve('succeed')
+            }
+        })
+    }
+
 
 
     ngOnInit() {
         this.checktoken()
+
         this.getcurrentuser().then(res => {
+            this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
+                console.log("Response from websocket: ", msg);
+                this.waiting(msg).then(res => {
+                    this.makechart(this.socketgraphdata);
+                })
+            })
             this.customerCode = res['customerCode'];
-            this.initrequest(res)
+            // 요청타이밍이 어긋나서 타임을 줌
+            setTimeout(() => {
+                this.initrequest(res)
+            }, 50)
             this.getcustomermap(res['customerCode']);
         })
-        this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
-            console.log("Response from websocket: ", msg);
 
-            if (msg['customerCode'] === this.customerCode) {
-                if (msg['title'] === 'numDevice') {
-                    this.socketdevicesdata = msg['content'];
-                } else if (msg['title'] === 'graph') {
-                    this.socketgraphdata = msg['content'];
-                } else if (msg['title'] === 'recent') {
-                    this.socketrecentdata = [...msg['content']];
-                } else if (msg['title'] === 'popup') {
-                    this.popupdata = msg['content'];
-                    this.modal = true;
-                }
 
-            }
-        })
 
-        setTimeout(() => {
-            this.makechart(this.socketgraphdata);
-        }, 300)
     }
 
     ngOnDestroy(): void {
@@ -261,9 +267,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.socketgraphdata = {};
         this.socketrecentdata = [];
         this.popupdata = "";
-
     }
-
-
 
 }
