@@ -14,6 +14,7 @@ import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
 import { Subscription } from 'rxjs';
+import { object } from '@amcharts/amcharts5';
 
 @Component({
     selector: 'app-dashboard',
@@ -186,8 +187,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     initrequest(res) {
-        const customer_code = res.customerCode;
-        console.log('mainmain')
         let requestmessage = { cmd: "main", args: [res.customerCode] }
         this.WebsocketService.requestmessages.next(requestmessage);
     }
@@ -224,12 +223,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
     waiting(msg) {
         return new Promise((resolve, reject) => {
             if (msg['customerCode'] === this.customerCode) {
-                this.socketdevicesdata = msg['deviceNum']?.['content'];
-                this.socketrecentdata = msg['recentEvent']?.['content'];
-                this.socketgraphdata = msg['graph']['content'];
-                // this.popupdata = msg['content'];
-                // this.modal = true;
-                resolve('succeed')
+                if (msg['title'] === 'dashboard') {
+                    this.socketdevicesdata = msg['deviceNum']?.['content'];
+                    this.socketrecentdata = msg['recentEvent']?.['content'];
+                    this.socketgraphdata = msg['graph']['content'];
+                    resolve('succeed')
+                } else if (msg['title'] === 'event') {
+                    this.popupdata = msg['popupEvent']['content'];
+                    this.socketrecentdata = msg['recentEvent']['content'];
+                    // this.socketgraphdata = msg['graph']['content'];
+                    this.modal = true;
+                    resolve('event')
+                } else {
+                    this.socketdevicesdata = msg['content']
+                    resolve('numDevice')
+                }
             }
         })
     }
@@ -243,7 +251,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
             this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
                 console.log("Response from websocket: ", msg);
                 this.waiting(msg).then(res => {
-                    this.makechart(this.socketgraphdata);
+                    if (res === 'succeed') {
+                        this.makechart(this.socketgraphdata);
+                    }
                 })
             })
             this.customerCode = res['customerCode'];
@@ -253,9 +263,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
             }, 50)
             this.getcustomermap(res['customerCode']);
         })
-
-
-
     }
 
     ngOnDestroy(): void {
