@@ -222,11 +222,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     waiting(msg) {
         return new Promise((resolve, reject) => {
-            if (msg['customerCode'] === this.customerCode) {
+            if (msg.customerCode === this.customerCode) {
                 if (msg['title'] === 'dashboard') {
-                    this.socketdevicesdata = msg['deviceNum']?.['content'];
-                    this.socketrecentdata = msg['recentEvent']?.['content'];
-                    this.socketgraphdata = msg['graph']['content'];
+                    this.socketdevicesdata = msg.deviceNum?.content;
+                    this.socketrecentdata = msg.recentEvent?.content;
+                    this.socketgraphdata = msg.graph?.content;
                     resolve('succeed')
                 } else if (msg['title'] === 'event') {
                     this.popupdata = msg['popupEvent']['content'];
@@ -248,7 +248,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.checktoken()
 
         this.getcurrentuser().then(res => {
-            this.websocketSubscription = this.WebsocketService.requestmessages.subscribe(msg => {
+            this.WebsocketService.requestmessages.subscribe(msg => {
                 console.log("Response from websocket: ", msg);
                 this.waiting(msg).then(res => {
                     if (res === 'succeed') {
@@ -266,7 +266,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.websocketSubscription.unsubscribe();
+        this.WebsocketService.requestmessages.unsubscribe();
         this.getcurrentuserdata = [];
         this.getcustomermapdata = {};
         // websocket 데이터
