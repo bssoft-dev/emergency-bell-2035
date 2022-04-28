@@ -35,9 +35,9 @@ export class ClientComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.service.getcurrentuser(token).subscribe({
         next: (res) => {
-          resolve(res);
           this.token = sessionStorage.getItem('token');
           this.customer_code = res.customerCode;
+          resolve(res);
         },
         error: (err) => {
           reject(new Error(err));
