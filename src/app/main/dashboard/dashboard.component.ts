@@ -202,7 +202,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.WebsocketService.requestmessages.next(requestmessage);
     }
 
-    getcurrentuser(res) {
+    getcurrentuser() {
         const token = sessionStorage.getItem('token');
         return new Promise((resolve, reject) => {
             this.service.getcurrentuser(token).subscribe({
@@ -259,8 +259,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
 
     async Starting() {
-        const checktoken = await this.checktoken()
-        const getCurrentuser = await this.getcurrentuser(checktoken);
+        await this.checktoken()
+        const getCurrentuser = await this.getcurrentuser();
         this.getcustomermap(getCurrentuser['customerCode']);
         this.getWebsocketdata();
         // 메세지 보내는 위치를 파악할수 없었음
