@@ -1,11 +1,12 @@
 import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../services/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { WebsocketService } from '../services/websocket.service';
-import { GlobalService } from '../services/global.service';
+import { WebsocketService } from 'src/app/services/websocket.service';
+import { GlobalService } from 'src/app/services/global.service';
 
-
+import { Sidebar } from 'src/app/main/main';
+import { SIDES} from 'src/app/main/mock-side';
 
 
 @Component({
@@ -18,6 +19,8 @@ export class MainComponent implements OnInit {
   registersmsForm: FormGroup;
 
   public alarmmodal: boolean = false;
+  public profilemodal : boolean = false;
+
 
   token = "";
   customer_code = "";
@@ -33,11 +36,13 @@ export class MainComponent implements OnInit {
   requestreceived = [];
   // websocket 알림 데이터
 
+  sides = SIDES;
+	selectedSide?: Sidebar;
+
 
   constructor(public router: Router, private service: ApiService, private GlobalService: GlobalService, private WebsocketService: WebsocketService) {
 
   }
-
 
 
   currentusercheckdata = [];
@@ -110,9 +115,11 @@ export class MainComponent implements OnInit {
 
   clickedModalClose() {
     this.alarmmodal = false;
+    this.profilemodal = false;
   }
   clickedModal() {
     this.alarmmodal = true;
+    this.profilemodal = true;
     this.getalarmsmsuser();
     this.getalarmemailuser();
     this.getallsms();
@@ -321,6 +328,10 @@ export class MainComponent implements OnInit {
     })
   }
 
+
+  onSelect(side: Sidebar): void {
+    this.selectedSide = side;
+  }
 
 
 

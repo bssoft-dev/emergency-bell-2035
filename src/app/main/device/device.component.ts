@@ -12,7 +12,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class DeviceComponent implements OnInit {
 
-
   deviceenrollForm: FormGroup;
   devicemodifyForm: FormGroup;
   public modal: boolean = false;
