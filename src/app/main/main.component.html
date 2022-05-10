@@ -101,7 +101,11 @@
 		padding-top: 30px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f;">
             <div>
                 <!-- 사이드 프로필 -->
-                <app-profile></app-profile>
+                <div class="avatarcon " style="height: 150px; text-align: center; margin-top: 30px; ">
+                    <img class="avatar bg-light rounded-circle text-white p-1 " [src]="corplogo " style="width: 80px; height: 80px; ">
+                    <p class="gfont " style="color: white; margin-top: 10px; font-weight: 400; font-size: 20px; ">{{myname}}</p>
+                    <a class="gfont " (click)="clickeModal() " href="javascript:false " style="color: white; margin-top: 10px; font-weight: 400; font-size: 14px; ">내 정보수정</a>
+                </div>
                 <div></div>
 
                 <!-- 사이드 메뉴 -->
@@ -262,4 +266,9 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
+    <app-profile></app-profile>
 </div>

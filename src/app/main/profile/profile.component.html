@@ -1,53 +1,44 @@
-<div class="avatarcon " style="height: 150px; text-align: center; margin-top: 30px; ">
-    <img class="avatar bg-light rounded-circle text-white p-1 " [src]="corplogo " style="width: 80px; height: 80px; ">
-    <p class="gfont " style="color: white; margin-top: 10px; font-weight: 400; font-size: 20px; ">{{myname}}</p>
-    <a class="gfont " (click)="clickeModal() " href="javascript:false " style="color: white; margin-top: 10px; font-weight: 400; font-size: 14px; ">내 정보수정</a>
-</div>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="registercard">
+            <p class="title">내 정보 수정</p>
+            <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
+                <div class="inputDiv">
+                    <p class="inputtitle">[아이디] 수정불가능</p>
+                    <input readonly class="noneactive" type="text" formControlName="username" />
+                </div>
+                <div class="inputDiv">
+                    <p class="inputtitle">[이름]</p>
+                    <input class="enrolldevice" type="text" formControlName="name" />
+                </div>
+                <div class="inputDiv">
+                    <p class="inputtitle">[연락처]</p>
+                    <input class="enrolldevice" type="text" formControlName="phone" />
+                </div>
+                <div formGroupName="passwordGroup">
+                    <div class="inputDiv">
+                        <p class="inputtitle">[패스워드]</p>
+                        <input [ngClass]="(modifyuserForm.controls.passwordGroup.valid || !modifyuserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'" type="password" formControlName="password" autocomplete="off" />
+                    </div>
+                    <div class="inputDiv">
+                        <p class="inputtitle">[패스워드확인]</p>
+                        <input [ngClass]="(modifyuserForm.controls.passwordGroup.valid || !modifyuserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'" type="password" formControlName="passwordconfirm" autocomplete="off" />
+                    </div>
+                    <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">
+                        <p>패스워드가 다릅니다</p>
+                    </div>
+                </div>
 
-<!-- Modal -->
-<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="registercard">
-                <p class="title">내 정보 수정</p>
-                <form [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
-                    <div class="inputDiv">
-                        <p class="inputtitle">[아이디] 수정불가능</p>
-                        <input readonly class="noneactive" type="text" formControlName="username" />
-                    </div>
-                    <div class="inputDiv">
-                        <p class="inputtitle">[이름]</p>
-                        <input class="enrolldevice" type="text" formControlName="name" />
-                    </div>
-                    <div class="inputDiv">
-                        <p class="inputtitle">[연락처]</p>
-                        <input class="enrolldevice" type="text" formControlName="phone" />
-                    </div>
-                    <div formGroupName="passwordGroup">
-                        <div class="inputDiv">
-                            <p class="inputtitle">[패스워드]</p>
-                            <input [ngClass]="(modifyuserForm.controls.passwordGroup.valid || !modifyuserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'" type="password" formControlName="password" autocomplete="off" />
-                        </div>
-                        <div class="inputDiv">
-                            <p class="inputtitle">[패스워드확인]</p>
-                            <input [ngClass]="(modifyuserForm.controls.passwordGroup.valid || !modifyuserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'" type="password" formControlName="passwordconfirm" autocomplete="off" />
-                        </div>
-                        <div class="confirmpasswordbox" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">
-                            <p>패스워드가 다릅니다</p>
-                        </div>
-                    </div>
-
-                    <div class="modal_footer">
-                        <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton abtn' " tabindex="11" type="submit" [disabled]="!modifyuserForm.valid">수정</button>
-                    </div>
-                    <div class="another">
-                        <button class="anotherbutton abtn" (click)="gologin()">돌아가기</button>
-                    </div>
-                    <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.passwordGroup.touched" [hidden]="!modifyuserForm.hasError('required',['passwordGroup','password']) ">
-                        <p>패스워드를 입력해주세요</p>
-                    </div>
-                </form>
-            </div>
+                <div class="modal_footer">
+                    <button [ngClass]="!modifyuserForm.valid ? 'nonactivebutton' : 'footerbutton abtn' " tabindex="11" type="submit" [disabled]="!modifyuserForm.valid">수정</button>
+                </div>
+                <div class="another">
+                    <button class="anotherbutton abtn" (click)="gologin()">돌아가기</button>
+                </div>
+                <div class="confirmpasswordbox" *ngIf="modifyuserForm.controls.passwordGroup.touched" [hidden]="!modifyuserForm.hasError('required',['passwordGroup','password']) ">
+                    <p>패스워드를 입력해주세요</p>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -1,3 +1,29 @@
+.navbar-menu-wrapper {
+    background-color: #121619 !important;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.navtitle {
+    margin-left: 50px;
+}
+
+.navtitle p {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 37px;
+    font-weight: 700;
+}
+
+.gfont {
+    align-items: center;
+}
+
 .media {
     display: none;
 }
@@ -6,7 +32,6 @@
     .media {
         display: inline-block;
     }
-
     .search__input {
         display: none;
     }
@@ -74,7 +99,6 @@
 
 .nav-item {
     margin-top: 30px;
-
 }
 
 .nav-item a {
@@ -87,8 +111,6 @@
     margin-right: 1.6vw;
     letter-spacing: 0.2rem;
 }
-
-
 
 .nav-item :hover {
     cursor: pointer;
@@ -117,7 +139,6 @@
     border-radius: 10px;
     padding: 30px;
     text-align: center;
-
 }
 
 .modal_footer {
@@ -142,7 +163,6 @@
     background-color: #505dff;
     border-radius: 7px;
 }
-
 
 .tabtitle {
     list-style-type: none;
@@ -187,13 +207,11 @@
 .contentbox {
     margin-top: 30px;
     width: 97%;
-
 }
 
 .tablebox {
     width: 97%;
 }
-
 
 .tblth {
     margin-top: 24px;
@@ -225,7 +243,6 @@
 
 .td {
     width: 20%;
-
     color: #ffffff;
     font-size: 14px;
     display: flex;
@@ -293,7 +310,6 @@
     width: 30px;
 }
 
-
 .inputDiv {
     margin-top: 5px;
     display: flex;
@@ -353,14 +369,12 @@
     flex-direction: row-reverse;
 }
 
-
 @media screen and (max-width: 1500px) {
     .nav-link {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     h6 {
         margin-top: 5px;
         margin-left: 15px;

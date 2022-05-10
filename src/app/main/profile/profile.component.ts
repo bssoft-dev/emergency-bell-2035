@@ -14,73 +14,17 @@ export class ProfileComponent implements OnInit {
 
   public modal : boolean = false;
 
-
-  token = "";
-  customer_code = "";
-  is_hyperuser;
-  corplogo;
-
   modifyuserForm: FormGroup;
   overlapcheckstate = false;
   submitted = false;
 
-  constructor(public router: Router, private service: ApiService) {
+  constructor(
+    public router: Router,
+    private service: ApiService) {
 
   }
-
-
-  currentusercheckdata = [];
-  currentusercheck() {
-    this.token = sessionStorage.getItem('token');
-    return new Promise((resolve, reject) => {
-      this.service.getcurrentuser(this.token).subscribe({
-        next: (res) => {
-          this.token = sessionStorage.getItem('token');
-          this.customer_code = res.customerCode;
-          this.is_hyperuser = res.is_hyperuser;
-          resolve(res);
-        },
-        error: (err) => {
-          reject(new Error(err));
-        },
-        complete: () => {
-        }
-      })
-    })
-  }
-
-  getonecustomerslogo(res) {
-    const temp = [sessionStorage.getItem('token'), res.customerCode]
-    this.service.getoncustomerslogo(temp).subscribe({
-      next: (res) => {
-        this.corplogo = res['logo']
-      },
-      error: (err) => {
-      },
-      complete: () => {
-      }
-    });
-  }
-
-  myname = "";
 
   ngOnInit() {
-
-    // this.GlobalService.sendMessage(this.tabtitle) 컴포넌트간 데이터 교환
-    this.registersmsForm = new FormGroup({
-      'name': new FormControl("", [Validators.required]),
-      'phone': new FormControl("", [Validators.required]),
-    });
-    this.registeremailForm = new FormGroup({
-      'name': new FormControl("", [Validators.required]),
-      'email': new FormControl("", [Validators.required]),
-    });
-
-    this.token = sessionStorage.getItem('token')
-    this.currentusercheck().then(res => {
-      this.myname = res['name'];
-      this.getonecustomerslogo(res)
-    }),
 
     this.modifyuserForm = new FormGroup({
       'username': new FormControl("", [Validators.required]),
@@ -91,21 +35,14 @@ export class ProfileComponent implements OnInit {
         'passwordconfirm': new FormControl("", [Validators.required,]),
       }, this.equalValidator)
     });
-
     this.currentuserck().then(res => {
       this.patchvalue(res)
     })
-
-  }
-
-  clickedModalClose() {
-    this.modal = false;
   }
 
   clickeModal() {
     this.modal = true;
   }
-
 
   getoneuserdata;
   currentuserck() {
@@ -172,8 +109,6 @@ export class ProfileComponent implements OnInit {
 
   get f() { return this.modifyuserForm.controls; }
 
-
-
   gologin() {
     this.router.navigate(['/login']);
   }
@@ -183,6 +118,5 @@ export class ProfileComponent implements OnInit {
   overlapcheck() {
     this.overlapcheckstate = !this.overlapcheckstate;
   }
-
 
 }

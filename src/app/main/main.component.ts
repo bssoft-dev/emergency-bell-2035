@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   registersmsForm: FormGroup;
 
   public alarmmodal: boolean = false;
-  public profilemodal : boolean = false;
+  public modal : boolean = false;
 
 
   token = "";
@@ -109,17 +109,15 @@ export class MainComponent implements OnInit {
 
   active = [];
 
-
-
-
+  clickeModal() {
+    this.modal = true;
+  }
 
   clickedModalClose() {
     this.alarmmodal = false;
-    this.profilemodal = false;
   }
   clickedModal() {
     this.alarmmodal = true;
-    this.profilemodal = true;
     this.getalarmsmsuser();
     this.getalarmemailuser();
     this.getallsms();
