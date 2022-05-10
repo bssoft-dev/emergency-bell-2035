@@ -80,7 +80,7 @@ body {
 
 #chartrow {
     width: 100%;
-    height: 46.8vh;
+    height: 46.8%;
     background-color: #282b30;
 }
 
@@ -501,8 +501,8 @@ body {
 
 #chartdiv {
     padding-top: 15px;
-    width: 100%;
-    height: 95%;
+    width: 95%;
+    height: 180%;
 }
 
 .modalcontainer {
