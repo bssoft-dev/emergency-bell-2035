@@ -1,334 +1,322 @@
-.navbar-menu-wrapper {
-	background-color: #121619 !important;
-}
-
 .navbar-nav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
 }
 
 .navtitle {
-	margin-left: 50px;
+    margin-left: 50px;
 }
 
 .navtitle p {
-	margin-top: 20px;
-	color: #ffffff;
-	font-size: 37px;
-	font-weight: 700;
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 37px;
+    font-weight: 700;
 }
 
 .card {
-	border-radius: 8px !important;
-	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
 
 .card {
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	background-color: #282b30;
-	padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #282b30;
+    padding: 20px;
 }
 
 .card-title {
-	color: #ffffff;
-	font-size: 25px;
-	font-weight: 600;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .table-responsive {
-	width: 100%;
-	overflow: auto;
-	white-space: nowrap;
-	border-collapse: collapse
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    border-collapse: collapse
 }
 
 .devicetitle {
-	display: flex;
-	flex-direction: row-reverse;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .mdi-plus {
-	color: #ffffff;
-	font-size: 30px;
+    color: #ffffff;
+    font-size: 30px;
 }
 
 .btn {
-	margin-right: 10px;
-	background-color: #505eff;
-	color: #ffffff;
-	width: 150px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    margin-right: 10px;
+    background-color: #505eff;
+    color: #ffffff;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .table-dark {
-	table-layout: fixed;
-	margin-top: 20px;
+    table-layout: fixed;
+    margin-top: 20px;
 }
 
 .tabletr {
-	background-color: #5156be;
+    background-color: #5156be;
 }
 
 .tableth {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 .modifyth {
-	width: 200px;
+    width: 200px;
 }
 
 .tabletd {
-	font-size: 15px;
-	white-space: normal;
-	font-family: 'IBM Plex Sans KR', sans-serif;
-
+    font-size: 15px;
+    white-space: normal;
+    font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
-
-
 .gfont {
-	color: #ffffff;
-	font-size: 30px;
+    color: #ffffff;
+    font-size: 30px;
 }
 
 .toggleinput[type=checkbox] {
-	height: 0;
-	width: 0;
-	visibility: hidden;
+    height: 0;
+    width: 0;
+    visibility: hidden;
 }
 
 .togglelabel {
-	margin-left: 15px;
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 70px;
-	height: 25px;
-	background: grey;
-	display: block;
-	border-radius: 100px;
-	position: relative;
+    margin-left: 15px;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 70px;
+    height: 25px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
 }
 
 .togglelabel:after {
-	content: '';
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 30px;
-	height: 15px;
-	background: #fff;
-	border-radius: 90px;
-	transition: 0.3s;
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 15px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
 }
 
 .toggleinput:checked+label {
-	background: #5156be;
+    background: #5156be;
 }
 
 .toggleinput:checked+label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
 }
 
 .togglelabel:active:after {
-	width: 30px;
+    width: 30px;
 }
 
 td {
-	text-align: center;
-	align-items: center;
-	justify-content: center;
-	white-space: normal;
-
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
 }
 
 ul {
-	list-style: none;
-	text-align: center;
+    list-style: none;
+    text-align: center;
 }
 
 li {
-	display: inline-block;
+    display: inline-block;
 }
 
 .modifying {
-	background-color: #5156be;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	border-radius: 3px;
-	margin-left: 20px;
+    background-color: #5156be;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-left: 20px;
 }
 
 .mdi-pencil-box-outline {
-	font-size: 20px;
-	color: #ffffff;
-	margin-top: 10px;
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 10px;
 }
 
 .mdi-delete {
-	font-size: 20px;
-	color: #ffffff;
+    font-size: 20px;
+    color: #ffffff;
 }
 
 .modalcontainer {
-	background-color: rgba(0, 0, 0, 0.6);
-	border: none;
-	overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    overflow: auto;
 }
 
 .modal-title {
-	color: #ffffff;
-	font-weight: 600;
-	font-size: 20px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .modal-content {
-	background-color: #282b30;
-	border: none !important;
+    background-color: #282b30;
+    border: none !important;
 }
 
 .deviceenrollcard {
-	width: 140%;
-	background-color: #282b30;
-	border-radius: 10px;
-	padding: 30px;
+    width: 140%;
+    background-color: #282b30;
+    border-radius: 10px;
+    padding: 30px;
 }
 
 .inputtitle {
-	margin: 0;
-	font-size: 15px;
-	font-weight: 700;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .enrolldevice {
-	background: transparent;
-	width: 100%;
-	height: 50px;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-	border-bottom: #39408a 2px solid;
-	FONT-SIZE: 15px;
-	color: #ffffff;
-	transition: all ease 0.3s 0s;
-
+    background: transparent;
+    width: 100%;
+    height: 50px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #39408a 2px solid;
+    FONT-SIZE: 15px;
+    color: #ffffff;
+    transition: all ease 0.3s 0s;
 }
 
 .nonenrolldevice {
-	background: transparent;
-	width: 100%;
-	height: 50px;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-	border: #dd1e1e 1px solid;
-	FONT-SIZE: 15px;
-	color: #ffffff;
-	transition: all ease 0.3s 0s;
+    background: transparent;
+    width: 100%;
+    height: 50px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border: #dd1e1e 1px solid;
+    FONT-SIZE: 15px;
+    color: #ffffff;
+    transition: all ease 0.3s 0s;
 }
 
 .inputDiv {
-	margin-top: 30px;
-	position: flex;
+    margin-top: 30px;
+    position: flex;
 }
-
-
 
 .footerbutton {
-	cursor: pointer;
-	margin: 10px;
-	margin-top: 60PX;
-	width: 100px;
-	height: 50px;
-	BORDER-LEFT: medium none;
-	BORDER-RIGHT: medium none;
-	BORDER-TOP: medium none;
-	border-bottom: medium none;
-	color: white;
-	background-color: #505dff;
-	border-radius: 7px;
+    cursor: pointer;
+    margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    border-bottom: medium none;
+    color: white;
+    background-color: #505dff;
+    border-radius: 7px;
 }
 
-
 .nonactivebutton {
-	border: none;
-	margin: 10px;
-	margin-top: 60PX;
-	width: 100px;
-	height: 50px;
-	color: rgba(0, 0, 0, 0.452);
-	background-color: #7c84fa;
-	border-radius: 7px;
+    border: none;
+    margin: 10px;
+    margin-top: 60PX;
+    width: 100px;
+    height: 50px;
+    color: rgba(0, 0, 0, 0.452);
+    background-color: #7c84fa;
+    border-radius: 7px;
 }
 
 .confirmidbox {
-	width: 100%;
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: rgb(89, 112, 247);
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(89, 112, 247);
 }
 
 .confirmpasswordbox {
-	position: absolute;
-	margin-left: 240px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: red;
+    position: absolute;
+    margin-left: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
 }
 
 .sectiondiv {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .confirmpasswordbox p {
-	font-size: 14px;
-	color: #dd1e1e;
+    font-size: 14px;
+    color: #dd1e1e;
 }
 
 .duplicatebutton {
-	cursor: pointer;
-	margin: 5px;
-	width: 40%;
-	height: 50px;
-	border: none;
-	color: white;
-	background-color: #5156be;
-	border-radius: 7px;
+    cursor: pointer;
+    margin: 5px;
+    width: 40%;
+    height: 50px;
+    border: none;
+    color: white;
+    background-color: #5156be;
+    border-radius: 7px;
 }
 
 .nonduplicatebutton {
-	margin: 5px;
-	width: 40%;
-	height: 50px;
-	border: none;
-	color: rgba(0, 0, 0, 0.452);
-	background-color: #7c84fa;
-	border-radius: 7px;
+    margin: 5px;
+    width: 40%;
+    height: 50px;
+    border: none;
+    color: rgba(0, 0, 0, 0.452);
+    background-color: #7c84fa;
+    border-radius: 7px;
 }
 
 button:active {
-	box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
-	position: relative;
-	top: 2px;
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
 }
 
 .modal_footer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

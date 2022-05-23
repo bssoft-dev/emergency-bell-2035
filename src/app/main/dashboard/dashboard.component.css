@@ -14,10 +14,6 @@
     font-size: 11px;
 }
 
-.navbar-menu-wrapper {
-    background-color: #121619 !important;
-}
-
 .navbar-nav {
     display: flex;
     align-items: center;

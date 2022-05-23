@@ -1,5 +1,5 @@
 <div class="menu-overlay"></div>
-<div class="container-scroller">
+<div [ngClass]="bcmode ? 'darkbc container-scroller' :  'bclight container-scroller'">
 
     <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top" style="visibility: none;">
     </nav>
@@ -8,11 +8,11 @@
 
         <!-- 헤드 -->
         <div class="main-header">
-            <app-header [side]="selectedSide"></app-header>
+            <app-header [side]="selectedSide" (bcmode)="outputEvent($event)"></app-header>
         </div>
 
-        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed; z-index: 350;
-		padding-top: 30px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f;">
+        <nav [ngClass]="bcmode ? 'darkbc sidebar sidebar-offcanvas' : 'bclight sidebar sidebar-offcanvas'" id="sidebar" style="position:fixed; z-index: 350;
+		padding-top: 30px; overflow-y: hidden; border-right: 3px solid #282c2f;">
             <div>
                 <!-- 사이드 프로필 -->
                 <div class="avatarcon " style="height: 150px; text-align: center; margin-top: 30px; ">
@@ -70,7 +70,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="main-panel">
+        <div [ngClass]="bcmode ? 'darkbc main-panel' : 'bclight main-panel'">
             <router-outlet></router-outlet>
         </div>
     </div>

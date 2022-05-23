@@ -53,12 +53,7 @@ const appRoutes: Routes = [
   },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'ws', component: WebsocketComponent },
-
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  }
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
