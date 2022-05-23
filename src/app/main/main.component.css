@@ -1,7 +1,3 @@
-.navbar-menu-wrapper {
-    background-color: #121619 !important;
-}
-
 .navbar-nav {
     display: flex;
     align-items: center;
@@ -35,10 +31,6 @@
     .search__input {
         display: none;
     }
-}
-
-.navbar-menu-wrapper {
-    background-color: #121619 !important;
 }
 
 .sidebar {
@@ -262,52 +254,9 @@
     color: #ffffff;
 }
 
-.toggleinput[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
-.togglelabel {
-    margin-bottom: 5px;
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 55px;
-    height: 17px;
-    background: grey;
-    display: block;
-    border-radius: 100px;
-    position: relative;
-}
-
 .customlabel {
     top: 40px;
     right: 50px;
-}
-
-.togglelabel:after {
-    content: '';
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 10px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-
-.toggleinput:checked+label {
-    background: #5156be;
-}
-
-.toggleinput:checked+label:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-}
-
-.togglelabel:active:after {
-    width: 30px;
 }
 
 .inputDiv {

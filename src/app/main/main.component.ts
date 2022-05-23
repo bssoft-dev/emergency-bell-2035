@@ -44,6 +44,12 @@ export class MainComponent implements OnInit {
 
   }
 
+  // 다크모드
+  bcmode = false;
+  outputEvent(bcmode: boolean) {
+    this.bcmode = bcmode;//자식으로 부터 받은 값
+  }
+
 
   currentusercheckdata = [];
   currentusercheck() {
@@ -100,14 +106,10 @@ export class MainComponent implements OnInit {
 
   }
 
-
-
   logout() {
     sessionStorage.removeItem("token")
     this.router.navigate(['/login'])
   }
-
-  active = [];
 
   clickeModal() {
     this.modal = true;

@@ -5,7 +5,6 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 
 import { MainRoutingModule } from './main-routing.module';
-import { EditprofileComponent } from '../editprofile/editprofile.component';
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { ProfileComponent } from './profile/profile.component';
     MainRoutingModule,
   ],
   declarations: [
-    EditprofileComponent,
     ProfileComponent
   ],
 })

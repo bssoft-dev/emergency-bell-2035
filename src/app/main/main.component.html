@@ -1,104 +1,18 @@
 <div class="menu-overlay"></div>
-<div class="container-scroller">
+<div [ngClass]="bcmode ? 'bclight container-scroller' :  'darkbc container-scroller'">
 
     <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top" style="visibility: none;">
-        <!-- <div class="navbar-menu-wrapper align-items-center">
-
-			<ul class="navbar-nav float-right" style="height: 50px;">
-
-				<li>
-					<div class="form-search float-right">
-						<form action="form-action" class="d-none d-sm-block">
-							<div class="search__container">
-								<input class="search__input" type="text" placeholder="Search">
-							</div>
-						</form>
-					</div>
-				</li>
-				<li class="nav-item dropdown ml-4">
-					<a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-						data-toggle="dropdown">
-						<i class="mdi mdi-bell-outline"></i>
-						<div class="count bg-success">4</div>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
-						aria-labelledby="notificationDropdown">
-						<a class="dropdown-item py-3 border-bottom">
-							<p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
-							<div class="badge badge-pill badge-primary float-right">View all</div>
-						</a>
-						<a class="dropdown-item preview-item py-3">
-							<div class="preview-thumbnail">
-								<i class="mdi mdi-alert m-auto text-primary"></i>
-							</div>
-							<div class="preview-item-content">
-								<h6 class="preview-subject font-weight-normal text-dark mb-1">Application Error</h6>
-								<p class="font-weight-light small-text mb-0"> Just now </p>
-							</div>
-						</a>
-						<a class="dropdown-item preview-item py-3">
-							<div class="preview-thumbnail">
-								<i class="mdi mdi-settings m-auto text-primary"></i>
-							</div>
-							<div class="preview-item-content">
-								<h6 class="preview-subject font-weight-normal text-dark mb-1">Settings</h6>
-								<p class="font-weight-light small-text mb-0"> Private message </p>
-							</div>
-						</a>
-						<a class="dropdown-item preview-item py-3">
-							<div class="preview-thumbnail">
-								<i class="mdi mdi-airballoon m-auto text-primary"></i>
-							</div>
-							<div class="preview-item-content">
-								<h6 class="preview-subject font-weight-normal text-dark mb-1">New user registration</h6>
-								<p class="font-weight-light small-text mb-0"> 2 days ago </p>
-							</div>
-						</a>
-					</div>
-				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
-						aria-expanded="false">
-						<div class="profile-text d-none d-md-inline-block">BS소프트</div>
-						<img class="img-xs rounded-circle" src="../assets/images/faces/face1.jpg" alt="Profile image">
-					</a>
-					<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-						<a class="dropdown-item p-0">
-							<div class="d-flex border-bottom">
-								<div class="py-3 px-4 d-flex align-items-center justify-content-center">
-									<i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
-								</div>
-								<div
-									class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-									<i class="mdi mdi-account-outline mr-0 text-gray"></i>
-								</div>
-								<div class="py-3 px-4 d-flex align-items-center justify-content-center">
-									<i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-								</div>
-							</div>
-						</a>
-						<a class="dropdown-item mt-2"> Manage Accounts </a>
-						<a class="dropdown-item"> Change Password </a>
-						<a class="dropdown-item"> Check Inbox </a>
-						<a class="dropdown-item"> Sign Out </a>
-					</div>
-				</li>
-
-			</ul>
-
-		</div> -->
     </nav>
 
     <div class="container-fluid page-body-wrapper">
 
         <!-- 헤드 -->
         <div class="main-header">
-            <app-header [side]="selectedSide"></app-header>
+            <app-header [side]="selectedSide" (bcmode)="outputEvent($event)"></app-header>
         </div>
 
-        <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position:fixed; z-index: 350;
-		padding-top: 30px; overflow-y: hidden; background-color: #121619; border-right: 3px solid #282c2f;">
+        <nav [ngClass]="bcmode ? 'bclight sidebar sidebar-offcanvas' : 'darkbc sidebar sidebar-offcanvas'" id="sidebar" style="position:fixed; z-index: 350;
+		padding-top: 30px; overflow-y: hidden; border-right: 3px solid #282c2f;">
             <div>
                 <!-- 사이드 프로필 -->
                 <div class="avatarcon " style="height: 150px; text-align: center; margin-top: 30px; ">
@@ -156,7 +70,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="main-panel">
+        <div [ngClass]="bcmode ? 'darkbcbclight main-panel' : ' main-panel'">
             <router-outlet></router-outlet>
         </div>
     </div>

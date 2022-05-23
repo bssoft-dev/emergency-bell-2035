@@ -5,10 +5,3 @@ export interface Sidebar {
     emt: string;
     ngif: string[];
 }
-
-export interface Sidefooter {
-    menu: string;
-    click: string;
-    href: string;
-    emt: string;
-}

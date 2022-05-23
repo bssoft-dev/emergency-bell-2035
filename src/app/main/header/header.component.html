@@ -1,14 +1,18 @@
 <div class="content-wrapper">
     <nav id="nav_top" class="navbar default-layout col-lg-12 col-12 p-0 fixed-top">
-        <div class="navbar-menu-wrapper align-items-center">
+        <div [ngClass]="active ? 'bclight navbar-menu-wrapper align-items-center' :  'darkbc navbar-menu-wrapper align-items-center'">
             <ul class="navbar-nav ">
-                <li class="navtitle" *ngIf="side">
+                <li *ngIf="side">
                     <p class="gfont whitefont">{{side.head}}</p>
                 </li>
-                <li class="navtitle" *ngIf="!side">
+                <li *ngIf="!side">
                     <p class="gfont whitefont">전체현황</p>
                 </li>
+                <input class="toggleinput" type="checkbox" (click)="updateMode(active)" />
+                <label class="togglelabel abtn"></label>
             </ul>
+        </div>
+        <div>
         </div>
     </nav>
 </div>
