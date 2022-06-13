@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 import { MainRoutingModule } from './main-routing.module';
 import { EditprofileComponent } from '../editprofile/editprofile.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChartComponent } from './dashboard/chart/chart.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   declarations: [
     EditprofileComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChartComponent
   ],
 })
 export class MainModule { }

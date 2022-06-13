@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 
+// import { AgmCoreModule } from '@agm/core';
+
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
@@ -17,39 +19,41 @@ import { ClientComponent } from './main/client/client.component';
 import { ProfileComponent } from './main/profile/profile.component';
 
 import { ApiService } from './services/api.service';
+import { AuthService } from './services/auth.service';
 import { WebsocketService } from './services/websocket.service';
 import { WebsocketComponent } from './websocket/websocket.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AlldetectionComponent } from './main/alldetection/alldetection.component';
 import { HeaderComponent } from './main/header/header.component';
-
+import { ChartComponent } from './main/dashboard/chart/chart.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: 'main', component: MainComponent,
+    path: 'main',
+    component: MainComponent,
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
       },
       {
         path: 'user',
-        component: UserComponent
+        component: UserComponent,
       },
       {
         path: 'client',
-        component: ClientComponent
+        component: ClientComponent,
       },
       {
         path: 'device',
-        component: DeviceComponent
+        component: DeviceComponent,
       },
       {
         path: 'alldetection',
-        component: AlldetectionComponent
+        component: AlldetectionComponent,
       },
-    ]
+    ],
   },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'ws', component: WebsocketComponent },
@@ -57,8 +61,8 @@ const appRoutes: Routes = [
   {
     path: '',
     redirectTo: '/login',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
@@ -74,23 +78,21 @@ const appRoutes: Routes = [
     ForgotpasswordComponent,
     AlldetectionComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChartComponent,
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes
-    ),
+    RouterModule.forRoot(appRoutes),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAEQ4MyV0f1OKQ4u6Y0WR-tQoOm9e_SOhE',
+    // }),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
-  providers: [
-    ApiService,
-    WebsocketService
-  ],
-  bootstrap: [AppComponent]
+  providers: [ApiService, WebsocketService, AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
