@@ -101,6 +101,10 @@
     </div>
 </div>
 
+<audio *ngIf="modal==true" autoplay>
+    <source src="../../../assets/siren.wav">
+</audio>
+
 <div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade' " tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modalcontainer">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
