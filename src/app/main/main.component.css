@@ -52,7 +52,7 @@
 }
 
 #sidebar {
-    background-color: #005BA8;
+    background-color: #005ba8;
     box-shadow: none;
 }
 
@@ -61,7 +61,7 @@
 }
 
 #nav-link:active {
-    background-color: #0278BB;
+    background-color: #0278bb;
 }
 
 #nav_top {
@@ -82,7 +82,7 @@
     left: 0;
     bottom: 0;
     text-align: center;
-    background-color: #F5F4F2;
+    background-color: #f5f4f2;
 }
 
 .search__container {
@@ -90,7 +90,7 @@
 }
 
 .card:active {
-    background-color: #0278BB;
+    background-color: #0278bb;
 }
 
 .card.card.card-statistics .card-body .text-muted:active {
@@ -155,7 +155,7 @@
     padding-top: 10px;
     text-align: center;
     cursor: pointer;
-    margin-top: 60PX;
+    margin-top: 60px;
     width: 100px;
     height: 50px;
     border: none;
@@ -187,7 +187,7 @@
 
 .tabtitlebox :hover {
     color: #ffffff;
-    left: .2rem;
+    left: 0.2rem;
 }
 
 .tabfont {
@@ -262,7 +262,7 @@
     color: #ffffff;
 }
 
-.toggleinput[type=checkbox] {
+.toggleinput[type="checkbox"] {
     height: 0;
     width: 0;
     visibility: hidden;
@@ -286,7 +286,7 @@
 }
 
 .togglelabel:after {
-    content: '';
+    content: "";
     position: absolute;
     top: 3px;
     left: 3px;
@@ -335,7 +335,7 @@
     border-right: none;
     border-left: none;
     border-bottom: #424549 2px solid;
-    FONT-SIZE: 15px;
+    font-size: 15px;
     color: #ffffff;
 }
 
@@ -348,7 +348,7 @@
     border-right: none;
     border-left: none;
     border-bottom: #424549 2px solid;
-    FONT-SIZE: 15px;
+    font-size: 15px;
     color: #ffffff;
 }
 

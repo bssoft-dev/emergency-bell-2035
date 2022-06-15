@@ -5761,7 +5761,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -5784,7 +5784,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -5796,7 +5796,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -5819,7 +5819,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -5831,7 +5831,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -5854,7 +5854,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -5866,7 +5866,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -5889,7 +5889,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -5901,7 +5901,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -5924,7 +5924,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -5936,7 +5936,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -5945,7 +5945,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -5957,7 +5957,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -5966,7 +5966,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -5978,7 +5978,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -5987,7 +5987,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -5999,7 +5999,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6008,7 +6008,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6020,7 +6020,7 @@
         -ms-transform: perspective(400px) rotateX(0deg);
         -o-transform: perspective(400px) rotateX(0deg);
         transform: perspective(400px) rotateX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6029,7 +6029,7 @@
         -ms-transform: perspective(400px) rotateX(90deg);
         -o-transform: perspective(400px) rotateX(90deg);
         transform: perspective(400px) rotateX(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6041,7 +6041,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -6064,7 +6064,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6076,7 +6076,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -6099,7 +6099,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6111,7 +6111,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -6134,7 +6134,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6146,7 +6146,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -6169,7 +6169,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6181,7 +6181,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     40% {
@@ -6204,7 +6204,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6216,7 +6216,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6225,7 +6225,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6237,7 +6237,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6246,7 +6246,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6258,7 +6258,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6267,7 +6267,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6279,7 +6279,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6288,7 +6288,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6300,7 +6300,7 @@
         -ms-transform: perspective(400px) rotateY(0deg);
         -o-transform: perspective(400px) rotateY(0deg);
         transform: perspective(400px) rotateY(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6309,7 +6309,7 @@
         -ms-transform: perspective(400px) rotateY(90deg);
         -o-transform: perspective(400px) rotateY(90deg);
         transform: perspective(400px) rotateY(90deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6321,7 +6321,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     60% {
@@ -6330,7 +6330,7 @@
         -ms-transform: translateX(-20%) skewX(30deg);
         -o-transform: translateX(-20%) skewX(30deg);
         transform: translateX(-20%) skewX(30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     80% {
@@ -6339,7 +6339,7 @@
         -ms-transform: translateX(0%) skewX(-15deg);
         -o-transform: translateX(0%) skewX(-15deg);
         transform: translateX(0%) skewX(-15deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6348,7 +6348,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6360,7 +6360,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     60% {
@@ -6369,7 +6369,7 @@
         -ms-transform: translateX(-20%) skewX(30deg);
         -o-transform: translateX(-20%) skewX(30deg);
         transform: translateX(-20%) skewX(30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     80% {
@@ -6378,7 +6378,7 @@
         -ms-transform: translateX(0%) skewX(-15deg);
         -o-transform: translateX(0%) skewX(-15deg);
         transform: translateX(0%) skewX(-15deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6387,7 +6387,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6399,7 +6399,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     60% {
@@ -6408,7 +6408,7 @@
         -ms-transform: translateX(-20%) skewX(30deg);
         -o-transform: translateX(-20%) skewX(30deg);
         transform: translateX(-20%) skewX(30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     80% {
@@ -6417,7 +6417,7 @@
         -ms-transform: translateX(0%) skewX(-15deg);
         -o-transform: translateX(0%) skewX(-15deg);
         transform: translateX(0%) skewX(-15deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6426,7 +6426,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6438,7 +6438,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     60% {
@@ -6447,7 +6447,7 @@
         -ms-transform: translateX(-20%) skewX(30deg);
         -o-transform: translateX(-20%) skewX(30deg);
         transform: translateX(-20%) skewX(30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     80% {
@@ -6456,7 +6456,7 @@
         -ms-transform: translateX(0%) skewX(-15deg);
         -o-transform: translateX(0%) skewX(-15deg);
         transform: translateX(0%) skewX(-15deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6465,7 +6465,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6477,7 +6477,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
     60% {
@@ -6486,7 +6486,7 @@
         -ms-transform: translateX(-20%) skewX(30deg);
         -o-transform: translateX(-20%) skewX(30deg);
         transform: translateX(-20%) skewX(30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     80% {
@@ -6495,7 +6495,7 @@
         -ms-transform: translateX(0%) skewX(-15deg);
         -o-transform: translateX(0%) skewX(-15deg);
         transform: translateX(0%) skewX(-15deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6504,7 +6504,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
 }
@@ -6516,7 +6516,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6525,7 +6525,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6537,7 +6537,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6546,7 +6546,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6558,7 +6558,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6567,7 +6567,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6579,7 +6579,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6588,7 +6588,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -6600,7 +6600,7 @@
         -ms-transform: translateX(0%) skewX(0deg);
         -o-transform: translateX(0%) skewX(0deg);
         transform: translateX(0%) skewX(0deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
     }
     100% {
@@ -6609,7 +6609,7 @@
         -ms-transform: translateX(100%) skewX(-30deg);
         -o-transform: translateX(100%) skewX(-30deg);
         transform: translateX(100%) skewX(-30deg);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -8123,7 +8123,7 @@
         -ms-transform: rotate(60deg) translateY(0);
         -o-transform: rotate(60deg) translateY(0);
         transform: rotate(60deg) translateY(0);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform-origin: top left 50%;
         -moz-transform-origin: top left 50%;
@@ -8142,7 +8142,7 @@
         -ms-transform: translateY(700px);
         -o-transform: translateY(700px);
         transform: translateY(700px);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -8206,7 +8206,7 @@
         -ms-transform: rotate(60deg) translateY(0);
         -o-transform: rotate(60deg) translateY(0);
         transform: rotate(60deg) translateY(0);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform-origin: top left 50%;
         -moz-transform-origin: top left 50%;
@@ -8225,7 +8225,7 @@
         -ms-transform: translateY(700px);
         -o-transform: translateY(700px);
         transform: translateY(700px);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -8289,7 +8289,7 @@
         -ms-transform: rotate(60deg) translateY(0);
         -o-transform: rotate(60deg) translateY(0);
         transform: rotate(60deg) translateY(0);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform-origin: top left 50%;
         -moz-transform-origin: top left 50%;
@@ -8308,7 +8308,7 @@
         -ms-transform: translateY(700px);
         -o-transform: translateY(700px);
         transform: translateY(700px);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -8372,7 +8372,7 @@
         -ms-transform: rotate(60deg) translateY(0);
         -o-transform: rotate(60deg) translateY(0);
         transform: rotate(60deg) translateY(0);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform-origin: top left 50%;
         -moz-transform-origin: top left 50%;
@@ -8391,7 +8391,7 @@
         -ms-transform: translateY(700px);
         -o-transform: translateY(700px);
         transform: translateY(700px);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
@@ -8455,7 +8455,7 @@
         -ms-transform: rotate(60deg) translateY(0);
         -o-transform: rotate(60deg) translateY(0);
         transform: rotate(60deg) translateY(0);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform-origin: top left 50%;
         -moz-transform-origin: top left 50%;
@@ -8474,14 +8474,14 @@
         -ms-transform: translateY(700px);
         -o-transform: translateY(700px);
         transform: translateY(700px);
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
     }
 }
 
 @-moz-keyframes rollIn {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8490,7 +8490,7 @@
         transform: translateX(-100%) rotate(-120deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8502,7 +8502,7 @@
 
 @-webkit-keyframes rollIn {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8511,7 +8511,7 @@
         transform: translateX(-100%) rotate(-120deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8523,7 +8523,7 @@
 
 @-o-keyframes rollIn {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8532,7 +8532,7 @@
         transform: translateX(-100%) rotate(-120deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8544,7 +8544,7 @@
 
 @-ms-keyframes rollIn {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8553,7 +8553,7 @@
         transform: translateX(-100%) rotate(-120deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8565,7 +8565,7 @@
 
 @keyframes rollIn {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8574,7 +8574,7 @@
         transform: translateX(-100%) rotate(-120deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8586,7 +8586,7 @@
 
 @-moz-keyframes rollOut {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8595,7 +8595,7 @@
         transform: translateX(0px) rotate(0deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8607,7 +8607,7 @@
 
 @-webkit-keyframes rollOut {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8616,7 +8616,7 @@
         transform: translateX(0px) rotate(0deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8628,7 +8628,7 @@
 
 @-o-keyframes rollOut {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8637,7 +8637,7 @@
         transform: translateX(0px) rotate(0deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8649,7 +8649,7 @@
 
 @-ms-keyframes rollOut {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8658,7 +8658,7 @@
         transform: translateX(0px) rotate(0deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -8670,7 +8670,7 @@
 
 @keyframes rollOut {
     0% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
         opacity: 1;
         -webkit-transform: translateX(0px) rotate(0deg);
         -moz-transform: translateX(0px) rotate(0deg);
@@ -8679,7 +8679,7 @@
         transform: translateX(0px) rotate(0deg);
     }
     100% {
-        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
         opacity: 0;
         -webkit-transform: translateX(-100%) rotate(-120deg);
         -moz-transform: translateX(-100%) rotate(-120deg);
@@ -15636,15 +15636,15 @@ button.close {
 }
 
 .modal {
-  bottom: 0;
-  display: none;
-  left: 0;
-  outline: 0 none;
-  overflow: hidden;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 999999;
+    bottom: 0;
+    display: none;
+    left: 0;
+    outline: 0 none;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999999;
 }
 
 .modal-open .modal {
@@ -15694,14 +15694,15 @@ button.close {
 }
 
 .modal-backdrop {
-  background-color: #000;
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 99999;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999;
 }
+
 .modal-backdrop.fade {
     opacity: 0;
 }
@@ -17484,19 +17485,19 @@ button.bg-dark:focus,
 }
 
 .fixed-top {
-  left: 255px;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: calc(100% - 255px);
-  z-index: 1030;
-  transition: 0.3s all;
-  -webkit-transition: 0.3s all;
-  -ms-transition: 0.3s all;
-  -moz-transition: 0.3s all;
-
+    left: 255px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: calc(100% - 255px);
+    z-index: 1030;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+    -moz-transition: 0.3s all;
 }
-.menu-open .fixed-top{
+
+.menu-open .fixed-top {
     left: 0;
     width: 100%;
 }
@@ -19671,55 +19672,60 @@ input:focus {
     -moz-transition: width 0.25s ease, background 0.25s ease;
     -ms-transition: width 0.25s ease, background 0.25s ease;
 }
-.sidebar-bg-image-1 .sidebar{
+
+.sidebar-bg-image-1 .sidebar {
     background-image: url('../images/setting/01.jpg');
 }
+
 .sidebar-bg-image-1 .sidebar .mCustomScrollBox {
-  position: relative;
-  z-index: 9;
+    position: relative;
+    z-index: 9;
 }
+
 .sidebar-bg-image-1 .sidebar::after {
-  background: rgba(0, 0, 0, 0) linear-gradient(90deg, #e53c64 0%, #fafa37 80%) repeat scroll 0 0;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.9;
-  position: absolute;
-  top: 0;
-  width: 100%;
+    background: rgba(0, 0, 0, 0) linear-gradient(90deg, #e53c64 0%, #fafa37 80%) repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
+
 .sidebar .nav {
-  position: relative;
-  z-index: 9;
+    position: relative;
+    z-index: 9;
 }
 
-
-.sidebar .nav .nav-item.active > .nav-link, 
-.sidebar .nav .nav-item.active > .nav-link:hover,
+.sidebar .nav .nav-item.active>.nav-link,
+.sidebar .nav .nav-item.active>.nav-link:hover,
 .sidebar .nav .nav-item .nav-link[aria-expanded="true"] {
-  background-color: rgba(0, 0, 0, 0.1) !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
 }
-
 
 #sidebar.sidebar {
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0px;
-  transition: 0.3s all;
-  -webkit-transition: 0.3s all;
-  -ms-transition: 0.3s all;
-  -moz-transition: 0.3s all;
-  -o-transition: 0.3s all;
-  overflow-y: scroll;
-  box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0px;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    overflow-y: scroll;
+    box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5);
 }
+
 #sidebar.sidebar.active {
-  left: -260px;
+    left: -260px;
 }
-.mCSB_inside > .mCSB_container {
-  margin-right: 10px;
+
+.mCSB_inside>.mCSB_container {
+    margin-right: 10px;
 }
+
 .sidebar .nav {
     overflow: hidden;
     flex-wrap: nowrap;
@@ -19784,17 +19790,17 @@ input:focus {
 }
 
 .sidebar .nav .nav-item .nav-link .menu-icon {
-  border-radius: 0;
-  color: #fff;
-  font-size: 20px;
-  line-height: 1;
-  margin-right: 1.25rem;
-  padding: 0;
-}
-.sidebar .nav .nav-item.active > .nav-link .menu-icon {
-  color: #fff;
+    border-radius: 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 1.25rem;
+    padding: 0;
 }
 
+.sidebar .nav .nav-item.active>.nav-link .menu-icon {
+    color: #fff;
+}
 
 .sidebar .nav .nav-item .nav-link .menu-title {
     color: inherit;
@@ -19830,8 +19836,8 @@ input:focus {
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper {
-  text-align: center;
-  width: 100%;
+    text-align: center;
+    width: 100%;
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper .profile-image {
@@ -19844,15 +19850,14 @@ input:focus {
     border-radius: 100%;
     max-width: 100%;
 }
-.sidebar .nav .nav-item.nav-profile .nav-link:hover *{
+
+.sidebar .nav .nav-item.nav-profile .nav-link:hover * {
     color: #fff;
 }
 
 .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper .text-wrapper {
-  margin-left: 0;
+    margin-left: 0;
 }
-
-
 
 .sidebar .nav .nav-item.nav-profile .nav-link .user-wrapper .text-wrapper .profile-name {
     font-weight: 500;
@@ -19864,28 +19869,28 @@ input:focus {
 }
 
 .sidebar .nav:not(.sub-menu)>.nav-item:hover:not(.nav-profile)>.nav-link {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #d2d2d2;
 }
 
 .sidebar .nav.sub-menu {
-  margin-bottom: 0;
-  padding: 0;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: #4a4a4a;
-  font-size: 12px;
-  height: auto;
-  line-height: 1;
-  padding: 0.75rem 1rem 0.75rem 15px;
+    color: #4a4a4a;
+    font-size: 12px;
+    height: auto;
+    line-height: 1;
+    padding: 0.75rem 1rem 0.75rem 15px;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link::before {
-  content: "\f178";
-  font-family: "fontawesome";
-  font-size: 16px;
-  margin-right: 20px;
+    content: "\f178";
+    font-family: "fontawesome";
+    font-size: 16px;
+    margin-right: 20px;
 }
 
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
@@ -19893,18 +19898,14 @@ input:focus {
     background: transparent;
 }
 
-.sidebar .nav.sub-menu .nav-item .nav-link.active:before {
-   
-}
+.sidebar .nav.sub-menu .nav-item .nav-link.active:before {}
 
 .sidebar .nav.sub-menu .nav-item:hover>.nav-link {
     background: initial;
     color: #000;
 }
 
-.sidebar .nav.sub-menu .nav-item:hover>.nav-link:before {
-    
-}
+.sidebar .nav.sub-menu .nav-item:hover>.nav-link:before {}
 
 .sidebar-dark .sidebar {
     background: #161a27;
@@ -19998,8 +19999,7 @@ input:focus {
         -o-transition: all 0.25s ease-out;
         transition: all 0.25s ease-out;
     }
-    #sidebar.sidebar.sidebar-offcanvas {
-    }
+    #sidebar.sidebar.sidebar-offcanvas {}
     #sidebar.sidebar.sidebar-offcanvas.active {
         left: 0;
     }
@@ -20009,41 +20009,41 @@ input:focus {
 /* Navbar */
 
 .navbar.default-layout {
-    
     box-shadow: 0 1px 15px 1px rgba(69, 65, 78, 0.1);
     font-family: "Roboto", sans-serif;
 }
+
 .topbar-image-bg .navbar.default-layout {
     backgroud: transition;
 }
-.topbar-image-bg .navbar.default-layout{
+
+.topbar-image-bg .navbar.default-layout {
     background-image: url('../images/setting/06.jpg');
 }
+
 .navbar.default-layout::after {
-  bottom: 0;
-  content: "";
-  height: 100%;
-  left: 0;
-  opacity: 0.9;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
 }
-.navbar.default-layout > .navbar-brand-wrapper,
-.navbar.default-layout > .navbar-menu-wrapper {
+
+.navbar.default-layout>.navbar-brand-wrapper,
+.navbar.default-layout>.navbar-menu-wrapper {
     position: relative;
     z-index: 9;
 }
 
-.topbar-image-bg .navbar.default-layout .navbar-brand-wrapper{
+.topbar-image-bg .navbar.default-layout .navbar-brand-wrapper {
     background-color: transparent;
 }
 
-
-.navbar.default-layout{
-
-}
+.navbar.default-layout {}
 
 .navbar.default-layout .navbar-brand-wrapper {
     transition: width 0.25s ease, background 0.25s ease;
@@ -20109,48 +20109,54 @@ input:focus {
 }
 
 @media (max-width: 991px) {
-    .navbar.default-layout .navbar-menu-wrapper {
-    
-    }
+    .navbar.default-layout .navbar-menu-wrapper {}
 }
 
 .navbar.default-layout .navbar-menu-wrapper .navbar-toggler {
     border: 0;
     color: inherit;
 }
+
 .navbar-menu-wrapper .navbar-toggler {
-  margin-top: 12px;
+    margin-top: 12px;
 }
+
 .navbar-menu-wrapper .form-search {
-  margin-top: 8px;
+    margin-top: 8px;
 }
+
 .navbar-menu-wrapper .form-search .search-box {
-  border: 1px solid #e4e4e4;
+    border: 1px solid #e4e4e4;
 }
-@media (min-width: 1200px){
+
+@media (min-width: 1200px) {
     .icon-menu.ti-close {
-      font-family: themify;
+        font-family: themify;
     }
-    .icon-menu.ti-close::before{
+    .icon-menu.ti-close::before {
         content: "\e628";
     }
 }
+
 .site-preloader {
-  background: #fff none repeat scroll 0 0;
-  height: 100%;
-  position: fixed;
-  width: 100%;
-  z-index: 999999;
+    background: #fff none repeat scroll 0 0;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
 }
+
 .site-preloader .loader-demo-box {
-  height: 100%;
+    height: 100%;
 }
+
 .site-preloader .flip-square-loader::before {
-  background-color: #252525;
+    background-color: #252525;
 }
+
 @media (max-width: 991px) {
     .navbar.default-layout .navbar-menu-wrapper .navbar-toggler:not(.navbar-toggler-right) {
-       /* display: none;*/
+        /* display: none;*/
     }
 }
 
@@ -20179,7 +20185,6 @@ input:focus {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
     }
-    
 }
 
 .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link i {
@@ -20190,8 +20195,6 @@ input:focus {
 .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link .profile-text {
     margin-right: 15px;
 }
-
-
 
 .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link.nav-btn .btn,
 .navbar.default-layout .navbar-menu-wrapper .navbar-nav .nav-item .nav-link.nav-btn .ajax-upload-dragdrop .ajax-file-upload,
@@ -20242,8 +20245,6 @@ input:focus {
     margin-right: 10px;
     font-size: 21px;
 }
-
-
 
 .navbar.default-layout .navbar-menu-wrapper .navbar-nav.header-links .nav-item.active {
     background: rgba(255, 255, 255, 0.13);
@@ -20731,16 +20732,14 @@ address p {
 }
 
 .card-title {
-  color: #252525;
-  font-family: "Roboto",sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 22px;
-  text-shadow: 0 0 0;
-  text-transform: capitalize;
+    color: #252525;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    text-shadow: 0 0 0;
+    text-transform: capitalize;
 }
-
-
 
 .card-subtitle {
     font-family: "Roboto", sans-serif;
@@ -20752,8 +20751,6 @@ address p {
     margin-bottom: 0.9375rem;
     font-family: "Roboto", sans-serif;
 }
-
-
 
 .font-weight-normal,
 .landing-page .feature-list .feature-list-row .feature-list-item h4 {
@@ -20804,9 +20801,9 @@ html {
 }
 
 .page-body-wrapper {
-  min-height: calc(100vh - 63px);
-  padding-left: 0;
-  padding-right: 0;
+    min-height: calc(100vh - 63px);
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .page-body-wrapper.full-page-wrapper {
@@ -20815,53 +20812,54 @@ html {
     margin: auto;
     min-height: 100vh;
 }
+
 .main-panel {
-  float: right;
-  background-color: #f0f0f0;
-  min-height: calc(100vh - 63px);
-  transition: width 0.25s ease 0s, margin 0.25s ease 0s;
-  width: calc(100% - 255px);
-}
-@media (min-width: 1200px){
-    .menu-open .main-panel {
-      width: 100%;
-    }
+    float: right;
+    background-color: #f0f0f0;
+    min-height: calc(100vh - 63px);
+    transition: width 0.25s ease 0s, margin 0.25s ease 0s;
+    width: calc(100% - 255px);
 }
 
+@media (min-width: 1200px) {
+    .menu-open .main-panel {
+        width: 100%;
+    }
+}
 
 @media (max-width: 1199px) {
     .main-panel {
         margin-left: 0;
         width: 100%;
     }
-    .fixed-top{
+    .fixed-top {
         width: 100%;
         left: 0;
     }
-    #sidebar.sidebar{
+    #sidebar.sidebar {
         left: -255px;
     }
-    #sidebar.sidebar.active{
+    #sidebar.sidebar.active {
         left: 0;
     }
     .menu-overlay {
-      background-color: rgba(0, 0, 0, 0.9);
-      height: 100%;
-      left: 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s all;
-      -webkit-transition: 0.3s all;
-      -ms-transition: 0.3s all;
-      -moz-transition: 0.3s all;
-      -o-transition: 0.3s all;
-      cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.9);
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s all;
+        -webkit-transition: 0.3s all;
+        -ms-transition: 0.3s all;
+        -moz-transition: 0.3s all;
+        -o-transition: 0.3s all;
+        cursor: pointer;
     }
-    .menu-overlay.active{
+    .menu-overlay.active {
         z-index: 9999;
         visibility: visible;
         opacity: 1;
@@ -20875,11 +20873,11 @@ html {
     -webkit-flex-grow: 1;
     flex-grow: 1;
 }
-@media (max-width: 767px){
+
+@media (max-width: 767px) {
     .content-wrapper {
-      padding: 15px 10px;
+        padding: 15px 10px;
     }
-    
 }
 
 .container-scroller {
@@ -21293,8 +21291,6 @@ pre {
     font-weight: 600;
     text-align: right;
 }
-
-
 
 .card-revenue {
     background: linear-gradient(120deg, rgba(0, 228, 208, 0.7), rgba(89, 131, 232, 0.7));
@@ -22247,8 +22243,6 @@ pre {
     margin-right: 10px;
     border-radius: 100%;
 }
-
-
 
 .badge.badge-pill {
     border-radius: 10rem;
@@ -24317,21 +24311,24 @@ pre {
 .card .card-body {
     padding: 1.88rem 1.81rem;
 }
+
 .card.card-statistics.one,
 .card.card-statistics.two,
 .card.card-statistics.three,
 .card.card-statistics.four {
-  background: #3688C4 none repeat scroll 0 0;
+    background: #3688C4 none repeat scroll 0 0;
 }
 
 .card.card-statistics .card-body {
-  color: #fff;
+    color: #fff;
 }
+
 .card.card.card-statistics .card-body .text-muted {
-  border-top: 1px solid rgba(0,0,0,0.1);
-  padding-top: 20px;
-  color: #fff !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+    color: #fff !important;
 }
+
 .card .card-body+.card-body {
     padding-top: 0;
 }
@@ -24432,8 +24429,6 @@ pre {
     line-height: 1.5;
 }
 
-
-
 .form-check .form-check-label input,
 .form-radio .form-check-label input {
     position: absolute;
@@ -24499,8 +24494,6 @@ pre {
     transition-duration: 250ms;
 }
 
-
-
 .form-check .form-check-label .input-helper:after {
     -webkit-transition: all;
     -o-transition: all;
@@ -24528,8 +24521,6 @@ pre {
     transform: translateY(-14%);
     color: #8862e0;
 }
-
-
 
 .form-check.form-check-flat label input:checked+.input-helper:before {
     background-color: #00ce68;
@@ -24578,8 +24569,6 @@ pre {
     transition-duration: 250ms;
 }
 
-
-
 .form-radio label input+.input-helper:after {
     content: "";
     width: 8px;
@@ -24607,8 +24596,6 @@ pre {
     transform: scale(0);
     position: absolute;
 }
-
-
 
 .form-radio label input:checked+.input-helper:before {
     background-color: #ffffff;
@@ -24672,8 +24659,6 @@ pre {
     text-align: center;
     font-weight: bold;
 }
-
-
 
 
 /* Dropdowns */
@@ -25482,8 +25467,6 @@ ul li {
     list-style-type: none;
 }
 
-
-
 .bullet-line-list li {
     position: relative;
     line-height: 1;
@@ -26267,52 +26250,62 @@ ul li {
         transform: scale(2) translateX(45px);
     }
 }
-/* bredcurms */
-.page-title-wrapper {
 
+
+/* bredcurms */
+
+.page-title-wrapper {
     background-color: #fff;
-  margin: 20px auto 0;
-  padding: 1.5rem 1.7rem;
-  position: relative;
-  width: calc(100% - 50px);
-  box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5);
+    margin: 20px auto 0;
+    padding: 1.5rem 1.7rem;
+    position: relative;
+    width: calc(100% - 50px);
+    box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5);
 }
-@media (max-width: 767px){
+
+@media (max-width: 767px) {
     .page-title-wrapper {
-      width: calc(100% - 20px);
+        width: calc(100% - 20px);
     }
     .navbar.default-layout .navbar-menu-wrapper {
-      padding-left: 0;
-      padding-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
+
 .page-title-wrapper .page-title {
     color: #252525;
     font-size: 23px;
     font-weight: normal;
     text-shadow: 0 0 0;
 }
+
 .page-title-wrapper nav,
-.page-title-wrapper .page-title{
+.page-title-wrapper .page-title {
     position: relative;
     z-index: 1;
 }
+
 .page-title-wrapper .breadcrumb {
     border: none;
     margin: 0;
     padding-left: 0;
     padding-right: 0;
 }
-.page-title-wrapper .breadcrumb li, 
+
+.page-title-wrapper .breadcrumb li,
 .page-title-wrapper .breadcrumb li a {
     color: #666;
 }
-.page-title-wrapper .breadcrumb li a{
+
+.page-title-wrapper .breadcrumb li a {
     text-shadow: 0 0 0;
 }
-.page-title-wrapper .breadcrumb-item + .breadcrumb-item::before {
+
+.page-title-wrapper .breadcrumb-item+.breadcrumb-item::before {
     color: #666;
 }
+
 .page-title-wrapper::after {
     content: '';
     width: 100%;
@@ -26322,6 +26315,8 @@ ul li {
     top: 0;
     opacity: 0.8;
 }
+
+
 /* Modals */
 
 .modal .modal-dialog {
@@ -26403,8 +26398,6 @@ ul li {
     vertical-align: middle;
 }
 
-
-
 .nav .nav-item.dropdown .navbar-dropdown,
 .navbar-nav .nav-item.dropdown .navbar-dropdown {
     font-size: 0.9rem;
@@ -26423,16 +26416,16 @@ ul li {
     overflow: hidden;
 }
 
-
-
 @media (max-width: 991px) {
     .nav .nav-item.dropdown .navbar-dropdown,
     .navbar-nav .nav-item.dropdown .navbar-dropdown {
-/*        right: -85px;
-*/    }
-    .nav .nav-item.dropdown .navbar-dropdown, .navbar-nav .nav-item.dropdown .navbar-dropdown.preview-list {
-      right: -100px;
-      width: 280px;
+        /*        right: -85px;
+*/
+    }
+    .nav .nav-item.dropdown .navbar-dropdown,
+    .navbar-nav .nav-item.dropdown .navbar-dropdown.preview-list {
+        right: -100px;
+        width: 280px;
     }
 }
 
@@ -26441,13 +26434,11 @@ ul li {
     left: 0;
     right: auto;
 }
-.nav .nav-item.dropdown .navbar-dropdown .badge, 
+
+.nav .nav-item.dropdown .navbar-dropdown .badge,
 .navbar-nav .nav-item.dropdown .navbar-dropdown .badge {
-  margin-left: 6px;
+    margin-left: 6px;
 }
-
-
-
 
 @media (max-width: 991px) {
     .nav .nav-item.dropdown .navbar-dropdown .badge,
@@ -26596,7 +26587,6 @@ ul li {
     margin-left: auto;
     margin-bottom: 0;
 }
-
 
 
 /* Pagination */
@@ -27774,13 +27764,9 @@ ul li {
     padding-left: 15px;
 }
 
-
-
 .preview-list .preview-item .preview-item-content:first-child {
     padding-left: 0;
 }
-
-
 
 .preview-list .preview-item .preview-item-content p {
     margin-bottom: 10px;
@@ -28184,8 +28170,6 @@ ul li {
     padding: 16px 0 13px 20px;
 }
 
-
-
 .settings-panel .sidebar-bg-options {
     padding: 13px 35px;
     display: -webkit-flex;
@@ -28325,8 +28309,6 @@ ul li {
     font-size: 0.8rem;
 }
 
-
-
 .settings-panel .chat-list .list.active {
     background: #f3f5f6;
 }
@@ -28358,14 +28340,9 @@ ul li {
     background: rgba(255, 255, 255, 0.3);
 }
 
-
-
 .settings-panel .events p {
     font-family: "Roboto", sans-serif;
 }
-
-
-
 
 
 /* Tabs */
@@ -28437,8 +28414,6 @@ ul li {
     line-height: 20px;
     text-align: center;
 }
-
-
 
 .list-wrapper .completed {
     text-decoration: line-through;
@@ -29756,8 +29731,6 @@ body.avgrund-active {
     display: inline-block;
     font-size: 13px;
 }
-
-
 
 
 /* Chartist */
@@ -32632,6 +32605,7 @@ div.tagsinput span.tag a {
     background-size: cover;
 }
 
+
 /* Error */
 
 .error-page h1 {
@@ -33178,8 +33152,6 @@ div.tagsinput span.tag a {
     font-size: 21px;
 }
 
-
-
 @media (max-width: 840px) {
     .horizontal-menu .navbar.horizontal-layout .navbar-menu-wrapper .navbar-nav.header-links {
         display: none;
@@ -33492,8 +33464,6 @@ div.tagsinput span.tag a {
     font-size: 21px;
     color: inherit;
 }
-
-
 
 .horizontal-menu-2 .navbar.horizontal-layout-2 .navbar-menu-wrapper .navbar-nav.header-links .nav-item.active .nav-link {
     background: rgba(255, 255, 255, 0.1);
@@ -33918,14 +33888,12 @@ div.tagsinput span.tag a {
         background: #1f2537;
         color: #a0a0a0;
     }
-    
     .sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title:after {
         display: none;
     }
     .sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link[data-toggle=collapse] .menu-title {
         border-bottom-right-radius: 0;
     }
-    
     .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse,
     .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
         display: block;
@@ -33946,7 +33914,6 @@ div.tagsinput span.tag a {
         background: #1f2537;
         color: #a0a0a0;
     }
-   
     .sidebar-icon-only .sidebar .nav.sub-menu {
         padding: 0 0 0 1.5rem;
     }
@@ -33960,7 +33927,6 @@ div.tagsinput span.tag a {
     .sidebar-dark.sidebar-icon-only .sidebar .nav.sub-menu .nav-item .nav-link {
         color: #a0a0a0;
     }
-    
     .sidebar-icon-only .sidebar .nav.sub-menu .nav-item:nth-child(5n+1) .nav-link:before,
     .sidebar-icon-only .sidebar .nav.sub-menu .nav-item:nth-child(5n+2) .nav-link:before,
     .sidebar-icon-only .sidebar .nav.sub-menu .nav-item:nth-child(5n+3) .nav-link:before,
@@ -34052,4 +34018,4 @@ div.tagsinput span.tag a {
 /*-------------------------------------------------------------------*/
 
 
-/*# sourceMappingURL=maps/style.css.map 
+/*# sourceMappingURL=maps/style.css.map
