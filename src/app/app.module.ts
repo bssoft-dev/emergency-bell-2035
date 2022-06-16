@@ -9,51 +9,40 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
 
-import { DeviceComponent } from './main/device/device.component';
 import { MainComponent } from './main/main.component';
-import { DashboardComponent } from './main/dashboard/dashboard.component';
-import { UserComponent } from './main/user/user.component';
-import { ClientComponent } from './main/client/client.component';
-import { ProfileComponent } from './main/profile/profile.component';
 
-import { ApiService } from './services/api.service';
-import { WebsocketService } from './services/websocket.service';
-import { WebsocketComponent } from './websocket/websocket.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { AlldetectionComponent } from './main/alldetection/alldetection.component';
+// 헤더
 import { HeaderComponent } from './main/header/header.component';
 
+// 사이드바
+import { ProfileComponent } from './main/side/profile/profile.component';
+import { SidebarComponent } from './main/side/sidebar/sidebar.component';
+import { SidefooterComponent } from './main/side/sidefooter/sidefooter.component';
+
+// 컨포넌트
+import { WebsocketComponent } from './websocket/websocket.component';
+import { DashboardComponent } from './main/container/dashboard/dashboard.component';
+import { AllstatusComponent } from './main/container/dashboard/allstatus/allstatus.component';
+import { SensingComponent } from './main/container/dashboard/sensing/sensing.component';
+
+// 서비스
+import { ApiService } from './services/api.service';
+import { WebsocketService } from './services/websocket.service';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: 'main', component: MainComponent,
+    path: 'main',
+    component: MainComponent,
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
       },
-      {
-        path: 'user',
-        component: UserComponent
-      },
-      {
-        path: 'client',
-        component: ClientComponent
-      },
-      {
-        path: 'device',
-        component: DeviceComponent
-      },
-      {
-        path: 'alldetection',
-        component: AlldetectionComponent
-      },
-    ]
+    ],
   },
-  { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'ws', component: WebsocketComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full'}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -61,31 +50,24 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     MainComponent,
-    DashboardComponent,
-    DeviceComponent,
-    UserComponent,
-    ClientComponent,
     WebsocketComponent,
-    ForgotpasswordComponent,
-    AlldetectionComponent,
+    SidebarComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    SidefooterComponent,
+    DashboardComponent,
+    AllstatusComponent,
+    SensingComponent,
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes
-    ),
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
-  providers: [
-    ApiService,
-    WebsocketService
-  ],
-  bootstrap: [AppComponent]
+  providers: [ApiService, WebsocketService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

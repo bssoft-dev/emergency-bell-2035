@@ -1,0 +1,53 @@
+.subheading {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  padding-top: 50px;
+}
+
+.subcontent {
+  font-size: 55px;
+  padding-top: 5px;
+  padding-bottom: 50px;
+}
+
+.bottomline {
+  border-bottom: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.topline {
+  border-top: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.leftline {
+  border-left: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.rightline {
+  border-right: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.total {
+  background: #438ffe;
+  box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
+  border-radius: 10px 0px 0px 0px;
+  width: auto;
+  color: #ffffff;
+
+  border-bottom: 2px solid rgba(28, 32, 114, 0.38);
+  border-right: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.Disconnected {
+  border-top: 2px solid rgba(28, 32, 114, 0.38);
+  border-left: 2px solid rgba(28, 32, 114, 0.38);
+  width: auto;
+}
+
+div {
+  align-items: center;
+}
+
+img {
+  width: 40%;
+}

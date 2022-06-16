@@ -1,0 +1,10 @@
+<div class="menu">
+    <ul *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}}>
+        <div>
+            <img src={{side.emt}} style="background-color:black;">
+        </div>
+        <div class="font sidemenu" (click)="addNewItem(side.menu)">
+            {{side.menu}}
+        </div>
+    </ul>
+</div>
