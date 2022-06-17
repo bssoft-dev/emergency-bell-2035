@@ -1,10 +1,4 @@
-import {
-  Component,
-  Output,
-  EventEmitter,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../../services/websocket.service';
 
 declare const am5: any;
@@ -18,7 +12,7 @@ import '../../../assets/amchart/amcharts.js';
 import '../../../assets/amchart/serial.js';
 import '../../../assets/amchart/light.js';
 import { Subscription } from 'rxjs';
-import { object } from '@amcharts/amcharts5';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,8 +36,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(
     public router: Router,
     private service: ApiService,
-    private WebsocketService: WebsocketService
-  ) {}
+    private WebsocketService: WebsocketService,
+    public http: HttpClient
+  ) {
+    this.inter();
+  }
 
   ngOnInit() {
     this.Starting();
@@ -249,6 +246,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.socketrecentdata = msg['recentEvent']['content'];
         // this.socketgraphdata = msg['graph']['content'];
         this.modal = true;
+        this.inter();
+        // console.log(this.modal);
       } else {
         this.socketdevicesdata = msg['content'];
       }
@@ -271,5 +270,44 @@ export class DashboardComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.initrequest(getCurrentuser);
     }, 50);
+  }
+
+  noticeListUrl = 'http://api-2035.bs-soft.co.kr/v3/recent-analysis/';
+  ingnoreEventList = ['Microwave_oven', 'Fart'];
+  noticeList = [];
+  inter() {
+    const interval = setTimeout(async () => {
+      fetch(this.noticeListUrl)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          this.noticeList = result.map((res) => {
+            const situ = res.situation;
+            const pred = Math.max(...situ.preds);
+            let situation = 'None';
+            if (pred > 0.8) {
+              situation = situ.labels[situ.preds.indexOf(pred)];
+            }
+            let events = [];
+            res.seds.forEach((sed) => {
+              sed.events.forEach((event) => {
+                if (this.ingnoreEventList.indexOf(event) < 0) {
+                  if (events.indexOf(event) < 0) {
+                    events.push(event);
+                  }
+                }
+              });
+            });
+            return {
+              ...res,
+              situationLabel: situation,
+              probability: pred,
+              detectedEvents: events,
+              time: res.time,
+            };
+          });
+          console.log(this.noticeList);
+        });
+    }, 0);
   }
 }

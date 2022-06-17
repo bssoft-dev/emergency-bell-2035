@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Chart } from 'chart.js';
 // import WaveSurfer from 'wavesurfer.js';
 
@@ -120,48 +120,17 @@ export class ChartComponent implements OnInit {
 
   detectionList = [];
   logList = [];
-
-  noticeList = [];
   wavesurfer;
+
+  @Input() noticeList = [];
+
   // noticeListUrl =
   //   'http://smartbell_backup.bs-soft.co.kr/assets/annotation/sample.json';
   noticeListUrl = 'http://api-2035.bs-soft.co.kr/v3/recent-analysis/';
   ingnoreEventList = ['Microwave_oven', 'Fart'];
-  constructor(public http: HttpClient) {
-    const interval = setInterval(async () => {
-      fetch(this.noticeListUrl)
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-          this.noticeList = result.map((res) => {
-            const situ = res.situation;
-            const pred = Math.max(...situ.preds);
-            let situation = 'None';
-            if (pred > 0.8) {
-              situation = situ.labels[situ.preds.indexOf(pred)];
-            }
-            let events = [];
-            res.seds.forEach((sed) => {
-              sed.events.forEach((event) => {
-                if (this.ingnoreEventList.indexOf(event) < 0) {
-                  if (events.indexOf(event) < 0) {
-                    events.push(event);
-                  }
-                }
-              });
-            });
-            return {
-              ...res,
-              situationLabel: situation,
-              probability: pred,
-              detectedEvents: events,
-              time: res.time,
-            };
-          });
-          console.log(this.noticeList);
-        });
-    }, 5000);
-  }
+  constructor(public http: HttpClient) {}
+
+  ngOnInit() {}
 
   randomColor(alpha): string {
     return (
@@ -197,8 +166,6 @@ export class ChartComponent implements OnInit {
       this.wavesurfer.addRegion(region);
     });
   }
-
-  ngOnInit() {}
 
   regionPlay() {}
 

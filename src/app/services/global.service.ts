@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GlobalService {
-
-  constructor() { }
+  constructor() {}
 
   private subject = new Subject<any>();
 
