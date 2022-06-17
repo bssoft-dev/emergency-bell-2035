@@ -21,8 +21,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public modal: boolean = false;
   customerCode: any;
 
+  // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
+  // /api/detections/{deviceId}
   getcustomermapdata = {};
-  // websocket 데이터
   socketdevicesdata = {};
   socketgraphdata = {};
   socketrecentdata = [];

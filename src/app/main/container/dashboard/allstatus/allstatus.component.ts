@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-allstatus',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./allstatus.component.css'],
 })
 export class AllstatusComponent implements OnInit {
+  @Input() socketdevicesdata = '';
   constructor() {}
 
   ngOnInit() {}

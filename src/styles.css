@@ -71,3 +71,24 @@ div > ul {
 
   color: #61676b;
 }
+
+/* 컨테이너 */
+.table {
+  position: grid;
+}
+
+.unit > div {
+  padding: 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+}
+
+.unittitle {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+
+  color: #ffffff;
+  background-color: #438ffe;
+  border-radius: 10px 10px 0px 0px;
+}

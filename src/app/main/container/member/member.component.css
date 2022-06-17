@@ -1,0 +1,19 @@
+#outer-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-width: 800px;
+}
+
+.unit > div {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+button {
+  background-color: #438ffe;
+  margin-bottom: 20px;
+  border: 0;
+}
+
+button:hover {
+  animation: pulsate 1s ease-in-out;
+}

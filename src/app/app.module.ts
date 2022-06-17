@@ -20,14 +20,16 @@ import { SidebarComponent } from './main/side/sidebar/sidebar.component';
 import { SidefooterComponent } from './main/side/sidefooter/sidefooter.component';
 
 // 컨포넌트
-import { WebsocketComponent } from './websocket/websocket.component';
 import { DashboardComponent } from './main/container/dashboard/dashboard.component';
 import { AllstatusComponent } from './main/container/dashboard/allstatus/allstatus.component';
 import { SensingComponent } from './main/container/dashboard/sensing/sensing.component';
 
+import { MemberComponent } from './main/container/member/member.component';
+
 // 서비스
 import { ApiService } from './services/api.service';
 import { WebsocketService } from './services/websocket.service';
+import { WebsocketComponent } from './websocket/websocket.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +40,10 @@ const appRoutes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+      },
+      {
+        path: 'member',
+        component: MemberComponent,
       },
     ],
   },
@@ -58,6 +64,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     AllstatusComponent,
     SensingComponent,
+    MemberComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

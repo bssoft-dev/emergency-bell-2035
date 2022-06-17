@@ -1,0 +1,35 @@
+<div id="outer-grid" >
+    <div class="font" >
+            <button (click)="clickedModal()">
+                회원등록
+            </button>
+        <div class="table">
+            <div class="unit unittitle">
+            <div class="unitunit">
+                    <div>아이디</div>
+                    <div>고객사명</div>
+                    <div>담당자명</div>
+                    <div>연락처</div>
+                    <div>이메일</div>
+                    <div>등록일자</div>
+                    <div>관리자권한</div>
+                    <div>변경</div>
+            </div>
+        </div>
+            <div class="unit">
+                <div class="unitunit" *ngFor="let i of getallusersdata[0];let index = index" >
+                    <div>{{i.username}}</div>
+                    <div>{{i.customerName}}</div>
+                    <div>{{i.name}}</div>
+                    <div>{{i.phone}}</div>
+                    <div>{{i.email}}</div>
+                    <div>{{i.createTime}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+박스 밑으로 내리고
+그래프 박스가 리프레쉬X
+알람팝업 시에만 리프레쉬
