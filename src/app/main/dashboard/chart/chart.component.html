@@ -31,9 +31,7 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>
-                                        #
-                                    </th>
+
                                     <th>
                                         Situation
                                     </th>
@@ -53,10 +51,8 @@
                             </thead>
                             <tbody>
 
-                                <tr id="log.id" *ngFor="let log of noticeList | slice:0:6" [ngClass]="{'table-active': eventLog.id==log.id}" (click)="noticeSelected(log)">
-                                    <td class="font-weight-medium">
-                                        {{noticeList.indexOf(log) + 1}}
-                                    </td>
+                                <tr id="log.id" *ngFor="let log of noticeList | slice:0:1" [ngClass]="{'table-active': eventLog.id==log.id}" (click)="noticeSelected(log)">
+
                                     <td>
                                         {{log.situationLabel}}
                                     </td>
