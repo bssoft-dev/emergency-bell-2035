@@ -5,7 +5,6 @@ import { Chart } from 'chart.js';
 declare var WaveSurfer;
 declare const AmCharts: any;
 declare let i: 0;
-declare var myBarChart;
 
 import 'src/assets/amchart/amcharts.js';
 import 'src/assets/amchart/serial.js';
@@ -18,6 +17,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit {
+  modal = false;
+
   screamhsla = 'hsla(5, 100%, 50%, 0.5)';
   sliphsla = 'hsla(150, 100%, 30%, 0.5)';
   helphsla = 'hsla(80, 100%, 30%, 0.5)';
@@ -296,7 +297,7 @@ export class ChartComponent implements OnInit {
   };
 
   makeSoundEventsBarChart(log) {
-    myBarChart = new Chart('SoundEventsBarChart', {
+    var myBarChart = new Chart('SoundEventsBarChart', {
       type: 'bar',
       data: {
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -361,7 +362,13 @@ export class ChartComponent implements OnInit {
   }
 
   makeSituationPredictionChart(log) {
+    var myBarChart = null;
     var datas = log.situation.preds;
+    var divevent = document.getElementById('div_event');
+    divevent.innerHTML = '&nbsp;';
+    divevent.innerHTML =
+      '<canvas class="col-md-7" id="eventDetails"></canvas><canvas class="col-md-5" id="SituationPredictionChart"></canvas>';
+
     myBarChart = new Chart('SituationPredictionChart', {
       type: 'horizontalBar',
       data: {
@@ -422,9 +429,6 @@ export class ChartComponent implements OnInit {
         },
       },
     });
-  }
-
-  makeEventDetailsChart(log) {
     const labels = [10, 20, 30];
     const yLabels = [];
     console.log(log.seds);
@@ -508,7 +512,95 @@ export class ChartComponent implements OnInit {
     };
 
     var chart = new Chart('eventDetails', config);
+
+    this.modal = true;
   }
+
+  // makeEventDetailsChart(log) {
+  //   const labels = [10, 20, 30];
+  //   const yLabels = [];
+  //   console.log(log.seds);
+  //   const pointData = [];
+  //   log['seds'].forEach((sed) => {
+  //     sed['events'].forEach((event) => {
+  //       if (this.ingnoreEventList.indexOf(event) < 0) {
+  //         if (yLabels.indexOf(event) < 0) {
+  //           yLabels.push(event);
+  //         }
+  //         console.log(sed);
+  //         console.log(event);
+  //         console.log(sed.preds[sed.events.indexOf(event)]);
+  //         pointData.push({
+  //           x: (sed.end + sed.start) / 2,
+  //           y: yLabels.indexOf(event),
+  //           r: 15 * sed.preds[sed.events.indexOf(event)],
+  //         });
+  //       }
+  //     });
+  //   });
+  //   console.log(pointData);
+  //   console.log(yLabels);
+  //   const data = {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         data: pointData,
+  //         borderColor: 'rgb(255, 99, 132)',
+  //         backgroundColor: 'rgb(255, 99, 132)',
+  //       },
+  //     ],
+  //   };
+  //   const config = {
+  //     type: 'bubble',
+  //     data: data,
+  //     options: {
+  //       maintainAspectRatio: false,
+  //       legend: {
+  //         display: false,
+  //       },
+  //       responsive: true,
+  //       plugins: {
+  //         title: {
+  //           display: true,
+  //           text: 'Chart.js Bubble Chart',
+  //         },
+  //       },
+  //       scales: {
+  //         yAxes: [
+  //           {
+  //             ticks: {
+  //               min: 0,
+  //               max: yLabels.length,
+  //               stepSize: 1,
+  //               display: true,
+  //               callback: function (label, index, labels) {
+  //                 // if(label == 5){
+  //                 //     return "일반상황"
+  //                 // }
+  //                 // return 'CODE '+label;
+  //                 return yLabels[label];
+  //               },
+  //             },
+  //           },
+  //         ],
+  //         xAxes: [
+  //           {
+  //             ticks: {
+  //               min: 0, // Controls where axis starts
+  //               max: 10, // Controls where axis finishes
+  //               stepSize: 0.25,
+  //               callback: function (label, index, labels) {
+  //                 return label + 's';
+  //               },
+  //             },
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   };
+
+  //   var chart = new Chart('eventDetails', config);
+  // }
 
   makeWaveForm(log) {
     console.log(log);
@@ -595,7 +687,7 @@ export class ChartComponent implements OnInit {
   }
 
   makeGraphs(log) {
-    this.makeEventDetailsChart(log);
+    // this.makeEventDetailsChart(log);
     this.makeSituationPredictionChart(log);
     // this.makeSoundEventsBarChart(log);
     this.makeWaveForm(log);

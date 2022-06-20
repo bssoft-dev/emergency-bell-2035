@@ -1,14 +1,32 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style="padding-top: 1.5rem; padding-right: 0rem; padding-bottom: 1.5rem; padding-left: 0;  width: 100%;">
 
     <div class="row" style="float: clear; display: flexbox;">
         <div class="col-md-12 grid-margin">
             <div class="card stretch-card ">
                 <div class="card-body">
                     <h4 class="card-title">Event Details</h4>
-                    <div class="row">
-                        <canvas class="col-md-7" id="eventDetails"></canvas>
-                        <canvas class="col-md-5" id="SituationPredictionChart"></canvas>
+                    <div class="row" id="div_event">
+                        <!-- <canvas class="col-md-7" id="eventDetails"></canvas> -->
+                        <!-- <canvas class="col-md-5" id="SituationPredictionChart"></canvas> -->
+
                     </div>
+                    <div [ngClass]="modal ? 'black':'white' " style="text-align: right; font-size: 49px; margin-top: -80px;" *ngFor="let log of noticeList  | slice:0:1">
+                        <div *ngIf="log.situationLabel.includes('None') == 1">CODE 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('abandoned_dog') == 1">CODE 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('animalcruelty') == 1">CODE 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('bees') == 1">CODE 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('crying_woman') == 1">CODE 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('ferocious') == 1">CODE 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('fire_detector') == 1">CODE 4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('gunshot_or_gunfire') == 1">CODE 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('hidden_camera') == 1">CODE 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('normal') == 1">CODE 5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('sexual_violence') == 1">CODE 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('stray_child') == 1">CODE 3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <div *ngIf="log.situationLabel.includes('vandalism') == 1">CODE 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+                    </div>
+
                     <div class="card">
 
                         <div id="wave-timeline"></div>
@@ -51,6 +69,7 @@
                             <tbody>
 
                                 <tr id="log.id" *ngFor="let log of noticeList | slice:0:1" [ngClass]="{'table-active': eventLog.id==log.id}" (click)="noticeSelected(log)">
+
                                     <td>
                                         {{log.situationLabel}}
                                     </td>
