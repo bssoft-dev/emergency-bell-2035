@@ -5,6 +5,7 @@ import { Chart } from 'chart.js';
 declare var WaveSurfer;
 declare const AmCharts: any;
 declare let i: 0;
+declare var myBarChart;
 
 import 'src/assets/amchart/amcharts.js';
 import 'src/assets/amchart/serial.js';
@@ -181,30 +182,21 @@ export class ChartComponent implements OnInit {
     } else {
       this.wavesurfer.playPause();
     }
-
-    //this.wavesurfer.play(10,20);
-    // this.wavesurfer.addRegion({
-    //     id: 'myid',
-    //     start: 10,
-    //     end: 23,
-    //     loop: true,
-    //     color: 'hsla(400, 100%, 30%, 0.5)'
-    // });
   }
 
   situationList = [
-    'abandoned_dog',
-    'animalcruelty',
-    'bees',
-    'crying_woman',
-    'ferocious',
-    'fire_detector',
-    'gunshot_or_gunfire',
-    'hidden_camera',
-    'normal',
-    'sexual_violence',
-    'stray_child',
-    'vandalism',
+    'abandoned_dog', // 4
+    'animalcruelty', // 3
+    'bees', // 4
+    'crying_woman', // 3
+    'ferocious', // 2
+    'fire_detector', // 4
+    'gunshot_or_gunfire', // 0
+    'hidden_camera', // 1
+    'normal', // 5
+    'sexual_violence', // 0
+    'stray_child', // 3
+    'vandalism', // 1
   ];
   eventList = [
     'accordion',
@@ -302,8 +294,9 @@ export class ChartComponent implements OnInit {
   eventLog = {
     id: '',
   };
+
   makeSoundEventsBarChart(log) {
-    var myBarChart = new Chart('SoundEventsBarChart', {
+    myBarChart = new Chart('SoundEventsBarChart', {
       type: 'bar',
       data: {
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -369,7 +362,7 @@ export class ChartComponent implements OnInit {
 
   makeSituationPredictionChart(log) {
     var datas = log.situation.preds;
-    var myBarChart = new Chart('SituationPredictionChart', {
+    myBarChart = new Chart('SituationPredictionChart', {
       type: 'horizontalBar',
       data: {
         labels: this.situationList,
@@ -430,6 +423,7 @@ export class ChartComponent implements OnInit {
       },
     });
   }
+
   makeEventDetailsChart(log) {
     const labels = [10, 20, 30];
     const yLabels = [];
@@ -464,7 +458,6 @@ export class ChartComponent implements OnInit {
         },
       ],
     };
-
     const config = {
       type: 'bubble',
       data: data,
@@ -595,28 +588,7 @@ export class ChartComponent implements OnInit {
           classList.add(cl);
         });
       });
-    } else {
-      // let startTime = Math.random()*10;
-      // let endTime = 10 + Math.random()*10;
-      // this.wavesurfer.clearRegions();
-      // this.wavesurfer.addRegion({
-      //     start: 5,
-      //     end: 17,
-      //     loop: false,
-      //     drag: false,
-      //     resize: false,
-      //     color: 'hsla(200, 50%, 70%, 0.4)'
-      // })
-      // this.wavesurfer.addRegion({
-      //     start: startTime,
-      //     end: endTime,
-      //     loop: false,
-      //     drag: false,
-      //     resize: false,
-      //     color: 'hsla(400, 100%, 30%, 0.5)'
-      // });
     }
-
     // this.wavesurfer.load('../assets/audio/situ_sexual_violence_bg-76_0-0-0.wav');
     this.wavesurfer.load(log.sound_url);
     this.wavesurfer.stop();
