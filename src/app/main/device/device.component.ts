@@ -129,7 +129,7 @@ export class DeviceComponent implements OnInit {
       'userMemo': new FormControl("",),
     });
     this.devicemodifyForm = new FormGroup({
-      'name': new FormControl("", [Validators.required]),
+      'name': new FormControl("",),
       'customerName': new FormControl(null, [Validators.required]),
       'model': new FormControl("",),
       'location': new FormControl("", [Validators.required, Validators.maxLength(30)]),
