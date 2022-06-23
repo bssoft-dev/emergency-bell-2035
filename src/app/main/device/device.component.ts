@@ -107,6 +107,7 @@ export class DeviceComponent implements OnInit {
 
     this.deviceenrollForm = new FormGroup({
       deviceId: new FormControl(null, [Validators.required]),
+      // deviceId: new FormControl(null),
       name: new FormControl(''),
       customerName: new FormControl(null, [Validators.required]),
       model: new FormControl(''),
@@ -198,6 +199,9 @@ export class DeviceComponent implements OnInit {
       data.deviceId = '';
     }
     if (data.picture === '') {
+      data.picture = 'http://api-2207.bs-soft.co.kr/api/images/noimage.png';
+    }
+    if (data.picture === null) {
       data.picture = 'http://api-2207.bs-soft.co.kr/api/images/noimage.png';
     }
 
