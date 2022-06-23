@@ -62,8 +62,10 @@
                             </td>
 
                             <td class="tabletd">
-                                <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
-                                <label class="togglelabel abtn" for="{{index}}"></label>
+                                <div style="display:table-cell; width:1%;">
+                                    <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
+                                    <label style="text-align:center; display:block; margin: 0 auto;" class="togglelabel abtn" for="{{index}}"></label>
+                                </div>
                             </td>
 
                             <td class="tabletd">

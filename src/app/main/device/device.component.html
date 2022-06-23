@@ -70,9 +70,10 @@
                                 {{devicedata.communicateMethod}}
                             </td>
                             <td class="tabletd">
-                                <input class="toggleinput" [checked]="devicedata.inspection" type="checkbox" id="{{index}}" (click)="chkinspection(index)" />
-                                <label class="togglelabel abtn" for="{{index}}"></label>
-
+                                <div style="display:table-cell; width:1%;">
+                                    <input class="toggleinput" [checked]="devicedata.inspection" type="checkbox" id="{{index}}" (click)="chkinspection(index)" />
+                                    <label style="text-align:center; display:block; margin: 0 auto;" class="togglelabel abtn" for="{{index}}"></label>
+                                </div>
                             </td>
 
                             <td class="tabletd">
