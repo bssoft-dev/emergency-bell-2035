@@ -130,7 +130,7 @@ export class UserComponent implements OnInit {
           this.modal = false;
         },
         error: (err) => {
-
+          alert('권한이 없습니다.')
         },
         complete: () => {
         }
