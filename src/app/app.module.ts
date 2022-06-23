@@ -26,10 +26,16 @@ import { SensingComponent } from './main/container/dashboard/sensing/sensing.com
 
 import { MemberComponent } from './main/container/member/member.component';
 
+import { ClientComponent } from './main/container/client/client.component';
+
 // 서비스
 import { ApiService } from './services/api.service';
 import { WebsocketService } from './services/websocket.service';
 import { WebsocketComponent } from './websocket/websocket.component';
+
+// modal
+import { RegistrationmodalComponent } from './main/modal/registrationmodal/registrationmodal.component';
+import { ModalComponent } from './main/modal/modal.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,6 +50,10 @@ const appRoutes: Routes = [
       {
         path: 'member',
         component: MemberComponent,
+      },
+      {
+        path: 'client',
+        component: ClientComponent,
       },
     ],
   },
@@ -65,6 +75,9 @@ const appRoutes: Routes = [
     AllstatusComponent,
     SensingComponent,
     MemberComponent,
+    RegistrationmodalComponent,
+    ModalComponent,
+    ClientComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

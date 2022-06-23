@@ -10,6 +10,8 @@ import { Sidebar } from './main';
 export class MainComponent implements OnInit {
   selectedSide?: Sidebar;
 
+  modal = false;
+
   currentItem = '전체현황';
 
   addItem(newItem: string) {

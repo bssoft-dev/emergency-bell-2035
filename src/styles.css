@@ -1,7 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  box-sizing: border-box;
-}
 
 body {
   overflow-x: hidden;
@@ -11,6 +8,12 @@ body {
   font-weight: 400;
   color: #666666;
   text-align: center;
+  vertical-align: middle;
+
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .darkmode {
@@ -68,15 +71,12 @@ div > ul {
   font-weight: 700;
   font-size: 18px;
   text-align: left;
+  cursor: pointer;
 
   color: #61676b;
 }
 
 /* 컨테이너 */
-.table {
-  position: grid;
-}
-
 .unit > div {
   padding: 30px;
   grid-template-columns: 1fr 1fr 1fr;
@@ -91,4 +91,52 @@ div > ul {
   color: #ffffff;
   background-color: #438ffe;
   border-radius: 10px 10px 0px 0px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #438ffe;
+  margin-bottom: 20px;
+  border: 1;
+  color: white;
+
+  width: flex;
+  height: 50px;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  animation: pulsate 1s ease-in-out;
+}
+
+.plus {
+  font: normal normal normal 24px/1 "Material Design Icons";
+  font-size: inherit;
+  width: 150px;
+  border-radius: 15px;
+  border: 0;
+}
+
+.plus:before {
+  content: "\F415";
+}
+
+.unit > div {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+/* 모달 */
+.modalopen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.modalclose {
+  z-index: -1;
+  opacity: 0;
 }

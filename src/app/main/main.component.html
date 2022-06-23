@@ -8,4 +8,8 @@
 </div>
 <div class="container">
     <router-outlet></router-outlet>
+    
+    <div [ngClass]="modal ? 'modalopen':'modalopen modalclose'">
+        <app-modal></app-modal>
+    </div>
 </div>
