@@ -1,10 +1,50 @@
 .imgmap {
-  width: 60%;
-  height: 85%;
+  width: 40vw;
+  height: 80%;
+
+  padding-top: 5vh;
 }
 
 #chartdiv {
-  width: 100%;
-  height: 85%;
-  background-color: #666666;
+  width: 40vw;
+  height: 15vw;
+  padding-top: 5vh;
+}
+
+mat-grid-tile {
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  padding: 20px;
+
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+mat-grid-list {
+  width: 85vw;
+}
+
+mat-grid-tile-header {
+  font-size: 2vh;
+  color: #03002c !important;
+  margin: 2% 0 0 0;
+
+  background: none !important;
+
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+
+  position: static;
+}
+
+a {
+  padding-top: 5vh;
+}
+
+.title-box {
+  display: block !important;
 }

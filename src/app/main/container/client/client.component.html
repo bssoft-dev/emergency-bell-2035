@@ -21,8 +21,8 @@
                 </div>
             </div>
 
-            <div class="unit" style="justify-content: center;">
-                <div *ngFor="let i of getcustomersdata; let index = index">
+            <div class="unit">
+                <div id="unitDiv" *ngFor="let i of getcustomersdata; let index = index">
                     <div>{{i.customerName}}</div>
                     <div>{{i.staffName}}</div>
                     <div>{{i.phone}}</div>
@@ -30,21 +30,19 @@
                     <div>{{i.status}}</div>
                     <div>{{i.payMethod}}</div>
                     <div>
-                        <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
-                        <label class="togglelabel abtn" for="{{index}}"></label>
+                        <!-- <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
+                        <label class="togglelabel abtn" for="{{index}}"></label> -->
+                        <!-- <mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle> -->
+                        <mat-slider min="1" max="100" step="1" value="50">dd</mat-slider>
                     </div>
-                    <div style="display:grid; grid-template-columns: 1fr 1fr;">
+                    <a id="buttonDiv">
                         <div>
-                            <button>
-                                <i class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)"></i>
-                            </button>
+                            <button class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)"></button>
                         </div>
                         <div>
-                            <button>
-                                <i class="mdi mdi-delete" (click)="deleteoneUser(index)"></i>
-                           </button>
+                            <button class="mdi mdi-delete" (click)="deleteoneUser(index)"></button>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

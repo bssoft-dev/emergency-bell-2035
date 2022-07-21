@@ -28,6 +28,10 @@ import { MemberComponent } from './main/container/member/member.component';
 
 import { ClientComponent } from './main/container/client/client.component';
 
+import { DeviceComponent } from './main/container/device/device.component';
+
+import { AlldetectionComponent } from './main/container/alldetection/alldetection.component';
+
 // 서비스
 import { ApiService } from './services/api.service';
 import { WebsocketService } from './services/websocket.service';
@@ -36,6 +40,10 @@ import { WebsocketComponent } from './websocket/websocket.component';
 // modal
 import { RegistrationmodalComponent } from './main/modal/registrationmodal/registrationmodal.component';
 import { ModalComponent } from './main/modal/modal.component';
+
+// MUI
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ToggleButton } from '@mui/material';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -54,6 +62,14 @@ const appRoutes: Routes = [
       {
         path: 'client',
         component: ClientComponent,
+      },
+      {
+        path: 'device',
+        component: DeviceComponent,
+      },
+      {
+        path: 'alldetection',
+        component: AlldetectionComponent,
       },
     ],
   },
@@ -78,6 +94,8 @@ const appRoutes: Routes = [
     RegistrationmodalComponent,
     ModalComponent,
     ClientComponent,
+    DeviceComponent,
+    AlldetectionComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -86,6 +104,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatGridListModule,
   ],
   providers: [ApiService, WebsocketService],
   bootstrap: [AppComponent],

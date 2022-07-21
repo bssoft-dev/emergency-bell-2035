@@ -40,10 +40,6 @@ body {
   grid-template-columns: 1fr 1fr;
 }
 
-#inner-grid > div {
-  padding: 8px;
-}
-
 .font {
   font-family: "Noto Sans";
   font-style: normal;
@@ -55,8 +51,6 @@ h2 {
   color: #03002c;
   margin: 1% 0 4% 0;
 }
-
-/* 토글 */
 
 /* 사이드바 */
 div > ul {
@@ -125,6 +119,24 @@ button:hover {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+div > #buttonDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#unitDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
 /* 모달 */
 .modalopen {
   position: fixed;
@@ -140,3 +152,24 @@ button:hover {
   z-index: -1;
   opacity: 0;
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

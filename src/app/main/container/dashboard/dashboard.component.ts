@@ -60,6 +60,73 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.popupdata = '';
   }
 
+  initrequest(res) {
+    let requestmessage = { cmd: 'main', args: [res.customerCode] };
+    this.WebsocketService.requestmessages.next(requestmessage);
+  }
+
+  getcurrentuser() {
+    const token = sessionStorage.getItem('token');
+    return new Promise((resolve, reject) => {
+      this.service.getcurrentuser(token).subscribe({
+        next: (res) => {
+          this.customerCode = res['customerCode'];
+          resolve(res);
+        },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {},
+      });
+    });
+  }
+
+  getcustomermap(customer_code) {
+    this.service.getcustomermap(customer_code).subscribe({
+      next: (res) => {
+        this.getcustomermapdata = res;
+      },
+      error: (err) => {},
+      complete: () => {},
+    });
+  }
+
+  processData(msg) {
+    if (msg.customerCode === this.customerCode) {
+      if (msg['title'] === 'dashboard') {
+        this.socketdevicesdata = msg.deviceNum?.content;
+        this.socketrecentdata = msg.recentEvent?.content;
+        this.socketgraphdata = msg.graph?.content;
+        this.makechart('succeed', this.socketgraphdata);
+      } else if (msg['title'] === 'event') {
+        this.popupdata = msg['popupEvent']['content'];
+        this.socketrecentdata = msg['recentEvent']['content'];
+        // this.socketgraphdata = msg['graph']['content'];
+        this.modal = true;
+      } else {
+        this.socketdevicesdata = msg['content'];
+      }
+    }
+  }
+
+  getWebsocketdata() {
+    this.WebsocketService.requestmessages.subscribe((msg) => {
+      console.log('Response from websocket: ', msg);
+      this.processData(msg);
+    });
+  }
+
+  async Starting() {
+    await this.checktoken();
+    const getCurrentuser = await this.getcurrentuser();
+    this.getcustomermap(getCurrentuser['customerCode']);
+    this.getWebsocketdata();
+    // 메세지 보내는 위치를 파악할수 없었음
+    setTimeout(() => {
+      this.initrequest(getCurrentuser);
+    }, 50);
+  }
+
   makechart = (res, socketgraphdata) => {
     if (res === 'succeed') {
       const dataset = [];
@@ -125,8 +192,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
       // set text,grid color white
-      root.interfaceColors.set('grid', am5.color('#ffffff'));
-      root.interfaceColors.set('text', am5.color('#ffffff'));
+      // root.interfaceColors.set('grid', am5.color('#ffffff'));
+      // root.interfaceColors.set('text', am5.color('#ffffff'));
+      root.interfaceColors.set('background', am5.color(0xadadad));
 
       // Add series
       // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
@@ -195,71 +263,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
       // https://www.amcharts.com/docs/v5/concepts/animations/
     }
   };
-
-  initrequest(res) {
-    let requestmessage = { cmd: 'main', args: [res.customerCode] };
-    this.WebsocketService.requestmessages.next(requestmessage);
-  }
-
-  getcurrentuser() {
-    const token = sessionStorage.getItem('token');
-    return new Promise((resolve, reject) => {
-      this.service.getcurrentuser(token).subscribe({
-        next: (res) => {
-          this.customerCode = res['customerCode'];
-          resolve(res);
-        },
-        error: (err) => {
-          reject(new Error(err));
-        },
-        complete: () => {},
-      });
-    });
-  }
-
-  getcustomermap(customer_code) {
-    this.service.getcustomermap(customer_code).subscribe({
-      next: (res) => {
-        this.getcustomermapdata = res;
-      },
-      error: (err) => {},
-      complete: () => {},
-    });
-  }
-
-  processData(msg) {
-    if (msg.customerCode === this.customerCode) {
-      if (msg['title'] === 'dashboard') {
-        this.socketdevicesdata = msg.deviceNum?.content;
-        this.socketrecentdata = msg.recentEvent?.content;
-        this.socketgraphdata = msg.graph?.content;
-        this.makechart('succeed', this.socketgraphdata);
-      } else if (msg['title'] === 'event') {
-        this.popupdata = msg['popupEvent']['content'];
-        this.socketrecentdata = msg['recentEvent']['content'];
-        // this.socketgraphdata = msg['graph']['content'];
-        this.modal = true;
-      } else {
-        this.socketdevicesdata = msg['content'];
-      }
-    }
-  }
-
-  getWebsocketdata() {
-    this.WebsocketService.requestmessages.subscribe((msg) => {
-      console.log('Response from websocket: ', msg);
-      this.processData(msg);
-    });
-  }
-
-  async Starting() {
-    await this.checktoken();
-    const getCurrentuser = await this.getcurrentuser();
-    this.getcustomermap(getCurrentuser['customerCode']);
-    this.getWebsocketdata();
-    // 메세지 보내는 위치를 파악할수 없었음
-    setTimeout(() => {
-      this.initrequest(getCurrentuser);
-    }, 50);
-  }
 }

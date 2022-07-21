@@ -20,6 +20,8 @@ export class ClientComponent implements OnInit {
   modifyclientForm: FormGroup;
   registerclientForm: FormGroup;
 
+  isChecked = true;
+
   checktoken = () => {
     if (!sessionStorage.getItem('token')) {
       this.router.navigate(['/login']);

@@ -4,3 +4,15 @@
   min-width: 800px;
 }
 
+#unitDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttonDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}

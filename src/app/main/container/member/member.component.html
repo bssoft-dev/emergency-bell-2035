@@ -2,18 +2,11 @@
     <div class="font">
         <div style="text-align: right;">
 
-            <!--
-            남은 작업 :
-                    버튼클릭 시 임팩트효과
-            -->
             <button class="font plus" (click)="clickedModal()">
                 회원등록
             </button>
         </div>
 
-        <!-- 
-        남은작업 :
-        -->
         <div>
             <div class="unit unittitle">
                 <div>
@@ -28,39 +21,37 @@
                 </div>
             </div>
 
-            <!--
-            남은 작업 :
-                    수직 가운데 정렬
-            -->
-            <div class="unit" style="justify-content: center;">
-                <div *ngFor="let i of getallusersdata[0];let index = index">
-                    <div>{{i.username}}</div>
+            <div class="unit">
+                <!-- <div *ngFor="let i of getallusersdata[0];let index = index"> -->
+                <div id="unitDiv">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <!-- <div>{{i.username}}</div>
                     <div>{{i.customerName}}</div>
                     <div>{{i.name}}</div>
                     <div>{{i.phone}}</div>
                     <div>{{i.email}}</div>
-                    <div>{{i.createTime}}</div>
+                    <div>{{i.createTime}}</div> -->
                     <div>
-                        <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
-                        <label class="togglelabel abtn" for="{{index}}"></label>
+                        <!-- <input class="toggleinput" [checked]="i.is_superuser" type="checkbox" id="{{index}}" (click)="modifymanager(index)" />
+                        <label class="togglelabel abtn" for="{{index}}"></label> -->
                     </div>
-
-                    <!-- 
-                        남은 작업 :
-                        버튼 디자인
-                    -->
-                    <div style="display:grid; grid-template-columns: 1fr 1fr;">
-                        <div>
-                            <button>
-                                <i class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)"></i>
+                        <a id="buttonDiv">
+                            <div>
+                                <button class="mdi mdi-pencil-box-outline">
+                                    <!-- <button class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)"> -->
+                                </button>
+                            </div>
+                            <div>
+                                <button class="mdi mdi-delete">
+                                    <!-- <button class="mdi mdi-delete" (click)="deleteoneUser(index)"> -->
                             </button>
                         </div>
-                        <div>
-                            <button>
-                                <i class="mdi mdi-delete" (click)="deleteoneUser(index)"></i>
-                           </button>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
