@@ -1,0 +1,47 @@
+<div id="outer-grid">
+    <div class="font">
+        <div style="text-align: right;">
+            <button class="font plus" (click)="clickedModal()">
+                회원등록
+            </button>
+        </div>
+        <div>
+            <div class="unit unittitle">
+                <div>
+                    <div>아이디</div>
+                    <div>고객사명</div>
+                    <div>담당자명</div>
+                    <div>연락처</div>
+                    <div>이메일</div>
+                    <div>등록일자</div>
+                    <div>관리자권한</div>
+                    <div>변경</div>
+                </div>
+            </div>
+
+            <div class="unit">
+                <div id="unitDiv" *ngFor="let i of getallusersdata[0];let index = index">
+                    <div>{{i.username}}</div>
+                    <div>{{i.customerName}}</div>
+                    <div>{{i.name}}</div>
+                    <div>{{i.phone}}</div>
+                    <div>{{i.email}}</div>
+                    <div>{{i.createTime}}</div>
+                    <div>
+                        <mat-slide-toggle [(ngModel)]="i.is_superuser" (change)="modifymanager(index)"></mat-slide-toggle>
+                    </div>
+                        <a id="buttonDiv">
+                            <div>
+                                <button class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)">
+                                </button>
+                            </div>
+                            <div>
+                                <button class="mdi mdi-delete" (click)="deleteoneUser(index)">
+                                </button>
+                            </div>
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

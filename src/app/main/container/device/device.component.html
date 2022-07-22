@@ -1,0 +1,66 @@
+<div id="outer-grid">
+    <div class="font">
+        <div style="text-align: right;">
+
+            <!--
+            남은 작업 :
+                    버튼클릭 시 임팩트효과
+            -->
+            <button class="font plus" (click)="clickedModal()">
+               <!-- <button> -->
+                기기 등록
+            </button>
+        </div>
+
+        <!-- 
+        남은작업 :
+        -->
+        <div>
+            <div class="unit unittitle">
+                <div>
+                        <div>설치사진</div>
+                        <div>모델명</div>
+                        <div>별칭</div>
+                        <div>설치장소</div>
+                        <div>설치일</div>
+                        <div>통신방식</div>
+                        <div>점검여부</div>
+                        <div>메모</div>
+                        <div>변경</div>
+                </div>
+            </div>
+
+            <!--
+            남은 작업 :
+                    수직 가운데 정렬
+            -->
+            <div class="unit">
+                <div id="unitDiv" *ngFor="let devicedata of getalldevicesdata; let index = index">
+                    <div><img style="width: 60px;height: 60px;" (click)="picturemodalopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
+                    <div>{{devicedata.model}}</div>
+                    <div>{{devicedata.name}}</div>
+                    <div>{{devicedata.location}}</div>
+                    <div>{{devicedata.installDate}}</div>
+                    <div>{{devicedata.communicateMethod}}</div>
+                    <div>
+                        <mat-slide-toggle [(ngModel)]="devicedata.inspection" (change)="chkinspection(index)"></mat-slide-toggle>
+                    </div>
+                    <div>
+                        {{devicedata.userMemo}}
+                    </div>
+
+                    <a id="buttonDiv">
+                        <div>
+                            <button class="mdi mdi-pencil-box-outline" (click)="getOneDevice(index)">
+                            </button>
+                        </div>
+                        <div>
+                            <button class="mdi mdi-delete" (click)="deleteonedevice(index)">
+                            </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
