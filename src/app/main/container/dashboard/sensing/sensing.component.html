@@ -1,0 +1,18 @@
+<div class="font" style="min-width: 270px; width:40vw;">
+    <div>
+        <div class="unit unittitle">
+        <div>
+                <div>시간</div>
+                <div>설치장소</div>
+                <div>타입</div>
+        </div>
+    </div>
+        <div class="unit">
+            <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index">
+                    <div>{{i.time}}</div>
+                    <div>{{i.location}}</div>
+                    <div>{{i.type}}</div>
+            </div>
+        </div>
+    </div>
+</div>

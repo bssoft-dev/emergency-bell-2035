@@ -1,331 +1,57 @@
-.navbar-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-}
-
-.navtitle {
-    margin-left: 50px;
-}
-
-.navtitle p {
-    margin-top: 20px;
-    color: #ffffff;
-    font-size: 37px;
-    font-weight: 700;
-}
-
-.gfont {
-    align-items: center;
-}
-
-.media {
-    display: none;
-}
-
-@media screen and (max-width: 768px) {
-    .media {
-        display: inline-block;
-    }
-    .search__input {
-        display: none;
-    }
-}
-
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  overflow: hidden;
+  position: fixed;
+  background: #fff;
+  width: 11.42%;
+  left: 0%;
+  top: 0%;
+  bottom: 0%;
+  background-color: #fff;
 }
 
-.logoutbox {
-    margin-bottom: 50px;
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  flex-direction: column;
+  height: 75px;
+  left: 11.42%;
+  right: 0%;
+  top: 0px;
+  border-bottom: 1.5px solid #e5e5e5;
 }
 
-#sidebar {
-    background-color: #005BA8;
-    box-shadow: none;
+.container {
+  position: absolute;
+  width: 88.58%;
+  right: 0px;
+  top: 76.5px;
+  bottom: 0px;
+  background-color: #e5e5e5;
 }
 
-#nav-link:hover {
-    background-color: #a8c2d1;
-}
+/* 사이드CSS
+  - 사라질 때 애니메이션 효과 추가
+  - 목록 애니메이션 효과 추과
+  - 창크기에맞춰 사이바내용 크기 조절
+  */
+/* 
+  
+  */
 
-#nav-link:active {
-    background-color: #0278BB;
-}
+@media (max-width: 1500px) {
+  .sidebar {
+    display: none;
+  }
+  .header {
+    left: 0%;
+    right: 0%;
+  }
 
-#nav_top {
-    z-index: 200;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: #000000;
-}
-
-.footer {
-    z-index: 200;
+  .container {
+    margin-left: 0;
     width: 100%;
-    height: 2.5rem;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    background-color: #F5F4F2;
-}
-
-.search__container {
-    border-radius: 15px;
-}
-
-.card:active {
-    background-color: #0278BB;
-}
-
-.card.card.card-statistics .card-body .text-muted:active {
-    color: white;
-}
-
-.nav-item {
-    margin-top: 30px;
-}
-
-.nav-item a {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.nav-item a h6 {
-    margin-right: 1.6vw;
-    letter-spacing: 0.2rem;
-}
-
-.nav-item :hover {
-    cursor: pointer;
-}
-
-.modalcontainer {
-    background-color: rgba(0, 0, 0, 0.6);
-    border: none;
-    overflow: auto;
-}
-
-.modal-title {
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.modal-content {
-    background-color: #282b30;
-    border: none !important;
-}
-
-.deviceenrollcard {
-    width: 140%;
-    background-color: #282b30;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-}
-
-.modal_footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#popcheck {
-    margin-top: 100px;
-}
-
-.footerbutton {
-    padding-top: 10px;
-    text-align: center;
-    cursor: pointer;
-    margin-top: 60PX;
-    width: 100px;
-    height: 50px;
-    border: none;
-    color: white;
-    background-color: #505dff;
-    border-radius: 7px;
-}
-
-.tabtitle {
-    list-style-type: none;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    color: #616060;
-}
-
-.tabtitlebox {
-    cursor: pointer;
-    width: 40%;
-    text-align: center;
-    position: relative;
-    border-bottom: 2px solid #4c4e50;
-}
-
-.tabtitlebox.selected {
-    border-bottom: 2px solid #505dff;
-    color: #ffffff;
-}
-
-.tabtitlebox :hover {
-    color: #ffffff;
-    left: .2rem;
-}
-
-.tabfont {
-    font-size: 18px;
-}
-
-.tabcontents {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 500px;
-    overflow: auto;
-}
-
-.contentbox {
-    margin-top: 30px;
-    width: 97%;
-}
-
-.tablebox {
-    width: 97%;
-}
-
-.tblth {
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    background-color: #505dff;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-}
-
-.tbltd {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 66px;
-    background-color: #32383e;
-    white-space: normal;
-}
-
-.th {
-    width: 20%;
-    color: #ffffff;
-    font-size: 17px;
-}
-
-.td {
-    width: 20%;
-    color: #ffffff;
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    white-space: normal;
-}
-
-.modifying {
-    font-size: 17px;
-    background-color: #5156be;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 3px;
-    margin-left: 20px;
-    color: #ffffff;
-}
-
-.customlabel {
-    top: 40px;
-    right: 50px;
-}
-
-.inputDiv {
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.add {
-    margin-left: 15px;
-}
-
-.inputtitle {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.enrolldevice1 {
-    margin-left: 20px;
-    background: transparent;
-    width: 15%;
-    height: 50px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: #424549 2px solid;
-    FONT-SIZE: 15px;
-    color: #ffffff;
-}
-
-.enrolldevice2 {
-    margin-left: 20px;
-    background: transparent;
-    width: 30%;
-    height: 50px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: #424549 2px solid;
-    FONT-SIZE: 15px;
-    color: #ffffff;
-}
-
-.imgbutton {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-}
-
-.imgbutton :hover {
-    transform: scale(0.87);
-}
-
-.buttonbox {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-@media screen and (max-width: 1500px) {
-    .nav-link {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    h6 {
-        margin-top: 5px;
-        margin-left: 15px;
-    }
+  }
 }

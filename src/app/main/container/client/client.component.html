@@ -1,0 +1,66 @@
+<div id="outer-grid">
+    <div class="font">
+        <div style="text-align: right;">
+
+            <button class="font plus" (click)="clickedModal()">
+                고객사 등록
+            </button>
+        </div>
+
+        <div>
+            <div class="unit unittitle">
+                <div>
+                        <div>고객사명</div>
+                        <div>담당자</div>
+                        <div>연락처</div>
+                        <div>단말기수</div>
+                        <div>상태</div>
+                        <div>결제방식</div>
+                        <div>알람</div>
+                        <div>변경</div>
+                </div>
+            </div>
+
+            <div class="unit">
+                <div id="unitDiv" *ngFor="let customers of getcustomersdata; let index = index">
+                    <div>{{customers.customerName}}</div>
+                    <div>{{customers.staffName}}</div>
+                    <div>{{customers.phone}}</div>
+                    <div>{{customers.numDevice}}</div>
+                    <div>{{customers.status}}</div>
+                    <div>{{customers.payMethod}}</div>
+                    <div>
+                        <ul>
+                            <li>
+                                <label>
+                                    <input type="checkbox" [checked]="customers?.alarm?.sms" disabled>
+                                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" [checked]="customers?.alarm?.email" disabled>
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type="checkbox" [checked]="customers?.alarm?.popup" disabled>
+                                    <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <a id="buttonDiv">
+                        <div>
+                            <button class="mdi mdi-pencil-box-outline" (click)="getOnecustomers(index)"></button>
+                        </div>
+                        <div>
+                            <button class="mdi mdi-delete" (click)="deleteonecustomer(index)"></button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

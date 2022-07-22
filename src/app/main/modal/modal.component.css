@@ -1,0 +1,210 @@
+/* .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #ffffff;
+  border-radius: 15px;
+
+  width: 700px;
+  height: 950px;
+} */
+
+.cardbox {
+  width: 24%;
+}
+
+.contain {
+  display: flex;
+  background: linear-gradient(to right bottom, #054779, #2a1234);
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.confirmpasswordbox {
+  width: 20%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+.icon {
+  color: #ffffff;
+  margin-right: 20px;
+  font-size: 30px;
+}
+
+.registercard {
+  background-color: #282b30;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.inputtitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.noneactive {
+  background: transparent;
+  width: 100%;
+  height: 50px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border: none;
+  font-size: 15px;
+  color: #ffffff;
+  transition: all ease 0.3s 0s;
+}
+
+.enrolldevice {
+  background: transparent;
+  width: 100%;
+  height: 50px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: #39408a 2px solid;
+  font-size: 15px;
+  color: #ffffff;
+  transition: all ease 0.3s 0s;
+}
+
+.nonenrolldevice {
+  background: transparent;
+  width: 100%;
+  height: 50px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border: #dd1e1e 1px solid;
+  font-size: 15px;
+  color: #ffffff;
+  transition: all ease 0.3s 0s;
+}
+
+input {
+  background: transparent;
+  width: 100%;
+  height: 50px;
+  border: #3a418e 2px solid;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.custominput {
+  margin-top: 30px;
+  background: transparent;
+  width: 70%;
+  height: 50px;
+  border: #3a418e 2px solid;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.overlapcheck {
+  width: 25% !important;
+  height: 40px !important;
+  margin-top: 30px !important;
+}
+
+.inputDiv {
+  position: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.singin {
+  margin: 10px;
+  margin-top: 60px;
+  width: 100px;
+  height: 50px;
+  border-left: medium none;
+  border-right: medium none;
+  border-top: medium none;
+  border-bottom: medium none;
+  color: white;
+  background-color: #5156be;
+  border-radius: 7px;
+}
+
+button:active {
+  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+  position: relative;
+  top: 2px;
+}
+
+.another {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.anotherbutton {
+  margin: 5px;
+  width: 30%;
+  height: 50px;
+  border-left: medium none;
+  border-right: medium none;
+  border-top: medium none;
+  border-bottom: medium none;
+  color: white;
+  background-color: #5156be;
+  border-radius: 7px;
+}
+
+.modal_footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nonactivebutton {
+  border: none;
+  margin: 10px;
+  margin-top: 60px;
+  width: 100px;
+  height: 50px;
+  color: rgba(0, 0, 0, 0.452);
+  background-color: #959bee;
+  border-radius: 7px;
+}
+
+.footerbutton {
+  margin: 10px;
+  margin-top: 60px;
+  width: 100px;
+  height: 50px;
+  border-left: medium none;
+  border-right: medium none;
+  border-top: medium none;
+  border-bottom: medium none;
+  color: white;
+  background-color: #505dff;
+  border-radius: 7px;
+}
+
+.modalcontainer {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #282b30;
+  border: none !important;
+}

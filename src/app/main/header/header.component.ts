@@ -1,27 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Sidebar } from '../main';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  
-  // 제목
-  @Input() side?:  Sidebar;
+  @Input() item = '';
+  constructor() {}
 
-  
-  // 다크모드
-  active = false;
-  @Output() bcmode = new EventEmitter<boolean>();
-  updateMode(mode: boolean) {
-    this.active = !mode;
-    this.bcmode.emit(mode);
-  }
-  
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

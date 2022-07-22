@@ -1,0 +1,12 @@
+#outer-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-width: 800px;
+}
+
+#buttonDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}

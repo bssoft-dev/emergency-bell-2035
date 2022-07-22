@@ -1,0 +1,46 @@
+<div class="menu">
+    <ul *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}}>
+        <!-- <ng-container *ngIf="side.ngif.includes('customer_code') == 1"> -->
+            <div>
+                <img src={{side.emt}} style="background-color:black;">
+            </div>
+            <div class="font sidemenu" (click)="addNewItem(side.menu)">
+                {{side.menu}}
+            </div>
+        <!-- </ng-container> -->
+        <!-- <ng-container *ngIf="side.ngif.includes('customer_code') != 1">
+            <div *ngIf="is_hyperuser">
+                <img src={{side.emt}} style="background-color:black;">
+            </div>
+            <div *ngIf="is_hyperuser" class="font sidemenu" (click)="addNewItem(side.menu)">
+                {{side.menu}}
+            </div>
+        </ng-container> -->
+    </ul>
+</div>
+
+<!-- <ul class="nav" *ngFor="let side of sides">
+    고객 사이드 메뉴
+    <ng-container *ngIf="side.ngif.includes('customer_code') == 1">
+        <li class="nav-item">
+            <a class="nav-link" routerLink={{side.route}} (click)="onSelect(side)">
+                <img src={{side.emt}} />
+                <div class="menu-title" style="display: block;">
+                    <h6 class="gfont">{{side.menu}}</h6>
+                </div>
+            </a>
+        </li>
+    </ng-container>
+
+    관리자 사이드 메뉴
+    <ng-container *ngIf="side.ngif.includes('customer_code') != 1">
+        <li class="nav-item" *ngIf="is_hyperuser">
+            <a class="nav-link" routerLink={{side.route}} (click)="onSelect(side)">
+                <img src={{side.emt}} />
+                <div class="menu-title" style="display: block;">
+                    <h6 class="gfont">{{side.menu}}</h6>
+                </div>
+            </a>
+        </li>
+    </ng-container>
+</ul> -->
