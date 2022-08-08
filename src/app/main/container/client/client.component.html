@@ -1,10 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-
-            <button class="font plus" (click)="clickedModal()">
-                고객사 등록
-            </button>
+            <button mat-raised-button class="font" (click)="clickedModal()"><mat-icon>add</mat-icon>고객사 등록</button>
         </div>
 
         <div>
@@ -51,14 +48,18 @@
                             </li>
                         </ul>
                     </div>
-                    <a id="buttonDiv">
+                    <div>
                         <div>
-                            <button class="mdi mdi-pencil-box-outline" (click)="getOnecustomers(index)"></button>
+                            <button mat-button (click)="getOnecustomers(index)">
+                                <mat-icon>open_in_new</mat-icon>
+                            </button>
                         </div>
                         <div>
-                            <button class="mdi mdi-delete" (click)="deleteonecustomer(index)"></button>
+                            <button mat-button (click)="deleteonecustomer(index)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>

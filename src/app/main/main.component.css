@@ -1,57 +1,78 @@
-.sidebar {
-  display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
-  overflow: hidden;
-  position: fixed;
-  background: #fff;
-  width: 11.42%;
-  left: 0%;
-  top: 0%;
-  bottom: 0%;
-  background-color: #fff;
+/* 구역 나누기 */
+.example-container {
+  width: 100%;
+  height: 100%;
 }
 
-.header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: absolute;
-  flex-direction: column;
+.example-sidenav {
+  display: flex;
+  width: 11.42%;
+  overflow: hidden;
+  background: #fff;
+  height: auto;
+  min-height: 100%;
+
+  text-align: center;
+  vertical-align: middle;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.example-header {
   height: 75px;
-  left: 11.42%;
-  right: 0%;
-  top: 0px;
   border-bottom: 1.5px solid #e5e5e5;
 }
 
-.container {
-  position: absolute;
-  width: 88.58%;
-  right: 0px;
-  top: 76.5px;
-  bottom: 0px;
-  background-color: #e5e5e5;
+/* 사이드바 스타일 */
+mat-icon {
+  font-size: 1.2vw;
+
+  display: flex !important;
+  text-align: center;
+  vertical-align: middle;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-/* 사이드CSS
-  - 사라질 때 애니메이션 효과 추가
-  - 목록 애니메이션 효과 추과
-  - 창크기에맞춰 사이바내용 크기 조절
-  */
-/* 
-  
-  */
+mat-nav-list {
+  margin: 20% 0 0 0;
+}
 
+mat-nav-list > a {
+  margin: 0 0 10% 0;
+}
+
+app-sidefooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 11.42%;
+}
+
+.sidemenu {
+  width: 100%;
+  font-weight: 700 !important;
+  font-size: 0.7vw !important;
+  color: #61676b;
+
+  display: flex !important;
+  text-align: center;
+  vertical-align: middle;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+/*  */
 @media (max-width: 1500px) {
-  .sidebar {
+  .example-sidenav {
     display: none;
-  }
-  .header {
-    left: 0%;
-    right: 0%;
-  }
 
-  .container {
-    margin-left: 0;
-    width: 100%;
+    width: 0;
   }
 }

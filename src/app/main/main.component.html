@@ -1,15 +1,20 @@
-<div class="sidebar">
-        <div><app-profile></app-profile></div>
-        <div><app-sidebar (newItemEvent)="addItem($event)"></app-sidebar></div>
-        <div><app-sidefooter></app-sidefooter></div>
-</div>
-<div class="header">
-    <div><app-header [item]="currentItem"></app-header></div>
-</div>
-<div class="container">
-    <router-outlet></router-outlet>
+<mat-drawer-container class="example-container">
+    <!-- 사이드 -->
+    <mat-drawer mode="side" opened class="example-sidenav">
+        <app-profile></app-profile>
+        <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
+        <app-sidefooter></app-sidefooter>
+    </mat-drawer>
+
+    <!-- 컨테이너 -->
+    <mat-drawer-content>
+
+        <!-- 헤더 -->
+        <mat-toolbar class="example-header">
+            <app-header [item]="currentItem"></app-header>
+        </mat-toolbar>
     
-    <div [ngClass]="modal ? 'modalopen':'modalopen modalclose'">
-        <app-modal></app-modal>
-    </div>
-</div>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+  </mat-drawer-container>

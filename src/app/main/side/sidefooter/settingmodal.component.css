@@ -1,0 +1,22 @@
+h2 {
+  margin-bottom: 49px;
+}
+
+.content {
+  margin: 49px 0 49px 0;
+}
+
+mat-form-field {
+  margin: 50px;
+}
+
+.imgbutton {
+  border: none;
+  background-color: transparent;
+}
+
+.menu-icon {
+  color: #438ffe;
+  font-size: 30px;
+  cursor: pointer;
+}

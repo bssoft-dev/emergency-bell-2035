@@ -1,18 +1,11 @@
-<div>
-    <ul (click)="clickedModal()" href="javascript:false">
-        <div>
-            <img src="../../assets/.png" style="background-color:black;">
-        </div>
-        <div class="font sidemenu">
-            알람설정
-        </div>
-    </ul>
-    <ul>
-        <div>
-            <img src="../../assets/로그아웃.png" (click)="clickedModal()" outerLink="" style="color:black;">
-        </div>
-        <div class="font sidemenu">
-            로그아웃
-        </div>
-    </ul>
-</div>
+<mat-nav-list>
+    <a mat-list-item (click)="openDialog()">
+    <!-- <a mat-list-item> -->
+        <mat-icon>settings</mat-icon>
+        <a class="font sidemenu">알람설정</a>
+    </a>  
+    <a mat-list-item (click)="logout()">
+        <mat-icon>arrow_back_ios</mat-icon>
+        <a class="font sidemenu">로그아웃</a>
+    </a>  
+</mat-nav-list>

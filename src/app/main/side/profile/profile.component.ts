@@ -20,7 +20,6 @@ export class ProfileComponent implements OnInit {
     this.modal = true;
   }
 
-  currentusercheckdata = [];
   currentusercheck() {
     this.token = sessionStorage.getItem('token');
     return new Promise((resolve, reject) => {

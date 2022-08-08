@@ -6,7 +6,7 @@ import { Sidebar } from '../../main';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
+  styleUrls: ['./sidebar.component.css', '../../main.component.css'],
 })
 export class SidebarComponent {
   sides = SIDES;
