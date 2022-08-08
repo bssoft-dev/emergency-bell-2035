@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import {
   MatDialog,
   MatDialogRef,
-  MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-sidefooter',
@@ -21,7 +19,8 @@ export class SidefooterComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SettingmodalComponent, {
-      width: '1000px',
+      width: '693px',
+      height: '945px',
     });
   }
 

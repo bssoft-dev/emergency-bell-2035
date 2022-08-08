@@ -41,17 +41,6 @@ export class PhontabComponent implements OnInit {
     console.log(this.getalarmsmsdata);
   }
 
-  allsmsdata: Boolean;
-  getallsms() {
-    this.service.getallalarmsms().subscribe({
-      next: (res) => {
-        this.allsmsdata = res;
-      },
-      error: (err) => {},
-      complete: () => {},
-    });
-  }
-
   registersmsuser() {
     this.service.registersmsalarm(this.registersmsForm.value).subscribe({
       next: (res) => {
@@ -87,6 +76,17 @@ export class PhontabComponent implements OnInit {
     this.service.onesmssetting(data).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
+      },
+      error: (err) => {},
+      complete: () => {},
+    });
+  }
+
+  allsmsdata = false;
+  getallsms() {
+    this.service.getallalarmsms().subscribe({
+      next: (res) => {
+        this.allsmsdata = res;
       },
       error: (err) => {},
       complete: () => {},

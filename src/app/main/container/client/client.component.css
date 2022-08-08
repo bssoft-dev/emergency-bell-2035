@@ -42,3 +42,60 @@ ul li label input[type="checkbox"] {
 ul li label input[type="checkbox"]:checked ~ i.fa {
   color: rgba(0, 176, 255, 1);
 }
+
+/* 고객사 등록 */
+mat-form-field {
+  margin: 10px !important;
+}
+
+.uploadlabel {
+  margin-top: 20px;
+  background-color: #505eff;
+  color: #ffffff;
+  width: 180px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.mdi-cloud-upload {
+  font-size: 40px;
+}
+
+.uploadlabeltext {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.imgdiv {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.locationpicture {
+  width: 130px;
+  height: 130px;
+  border-radius: 8px;
+}
+
+.flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+mat-form-field {
+  margin: 5px !important;
+  width: 90%;
+}

@@ -1,0 +1,41 @@
+<form [formGroup]="registeremailForm" (ngSubmit)="registeremailuser()" novalidate>
+    <div class="inputDiv">
+        <mat-form-field appearance="fill">
+            <mat-label>이름</mat-label>
+            <input matInput placeholder="홍길동" type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>이메일</mat-label>
+            <input matInput placeholder="example@address.com" type="text" formControlName="email">
+        </mat-form-field>
+        <button class="imgbutton">
+            <i class="menu-icon mdi mdi-plus-circle-outline"></i>
+        </button>
+    </div>
+</form>
+<div class="togglecontroller">
+    <mat-slide-toggle (click)="allemailsetting()"></mat-slide-toggle>
+</div>
+
+<div style="margin:30px">
+    <div class="tblth">
+        <div class="th">이름</div>
+        <div class="th">이메일</div>`
+        <div class="th">발신설정</div>
+        <div class="th">삭제</div>
+    </div>
+    <div class="tbltd" *ngFor="let user of getalarmemaildata; let index = index;">
+        <div class="td">
+            {{user.name}}
+        </div>
+        <div class="td">
+            {{user.email}}
+        </div>
+        <div class="td">
+            <mat-slide-toggle (click)="oneemailsetting(index)" [checked]="user.setting" id="email{{index}}" [disabled]="allemaildata"></mat-slide-toggle>
+        </div>
+        <div class="td">
+            <i class="menu-icon mdi mdi-delete" (click)="deleteemailalarm(index)"></i>
+        </div>
+    </div>
+</div>

@@ -23,10 +23,12 @@
   font-weight: 400;
   font-size: 12px;
   cursor: pointer;
-  /* identical to box height */
-
-  /* padding-bottom: 27px; */
   color: #61676b;
 
   margin: 0px;
+}
+
+/* 모달 */
+mat-form-field {
+  width: 90%;
 }

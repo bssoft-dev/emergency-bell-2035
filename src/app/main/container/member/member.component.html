@@ -29,16 +29,16 @@
                     <div>
                         <mat-slide-toggle [(ngModel)]="i.is_superuser" (change)="modifymanager(index)"></mat-slide-toggle>
                     </div>
-                        <a id="buttonDiv">
-                            <div>
-                                <button class="mdi mdi-pencil-box-outline" (click)="getOneUser(index)">
-                                </button>
-                            </div>
-                            <div>
-                                <button class="mdi mdi-delete" (click)="deleteoneUser(index)">
-                                </button>
-                            </div>
-                        </a>
+                    <div>
+                        <div>
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="getOneUser(index)">
+                            </button>
+                        </div>
+                        <div>
+                            <button class="mdi mdi-delete imgbutton" (click)="deleteoneUser(index)">
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

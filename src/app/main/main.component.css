@@ -4,6 +4,10 @@
   height: 100%;
 }
 
+.mat-drawer-content {
+  overflow: hidden !important;
+}
+
 .example-sidenav {
   display: flex;
   width: 11.42%;
@@ -11,6 +15,7 @@
   background: #fff;
   height: auto;
   min-height: 100%;
+  position: fixed;
 
   text-align: center;
   vertical-align: middle;

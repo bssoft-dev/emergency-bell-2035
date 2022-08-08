@@ -1,0 +1,68 @@
+<div class="content">
+
+    <h2 class="font modaltitle">회원등록</h2>
+
+    <form class="container" [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
+        <mat-form-field appearance="outline">
+            <mat-label>아이디</mat-label>
+            <input matInput required formControlName="username" (focus)="usernamechange($event)" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
+            <button mat-button matSuffix color="primary" (click)="duplicatecheck()" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </button>
+            <mat-hint [hidden]="!overlapcheck">사용 가능한 아이디 입니다</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>이름</mat-label>
+            <input matInput placeholder="홍길동" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>고객사명</mat-label>
+            <mat-select formControlName="customerName" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let i of customerNames" [value]="i">
+                {{i}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>연락처</mat-label>
+            <input matInput placeholder="01012345678" formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>이메일</mat-label>
+            <input matInput placeholder="abc@abcd.com" formControlName="email">
+            <mat-hint>비밀번호 분실시 이용됩니다</mat-hint>
+        </mat-form-field>
+
+        <div formGroupName="passwordGroup">
+
+            <mat-form-field appearance="outline">
+                <mat-label>비밀번호 입력</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" required/>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>비밀번호 확인</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" required />
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint [hidden]="!registeruserForm.hasError('equal','passwordGroup')">패스워드가 다릅니다</mat-hint>
+            </mat-form-field>
+        
+        </div>
+        <div class="modal_footer">
+            <button mat-flat-button color="primary" [disabled]="!registeruserForm.valid">회원등록</button>
+        </div>
+    </form>
+
+    <button mat-stroked-button color="primary" class="backbtn" (click)="onNoClick()">돌아가기</button>
+
+</div>

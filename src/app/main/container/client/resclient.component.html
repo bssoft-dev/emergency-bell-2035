@@ -1,0 +1,68 @@
+<div class="content">
+
+    <h2 class="font modaltitle">고객사수정</h2>
+
+    <form class="container" [formGroup]="modifyclientForm" (ngSubmit)="modifyonecustomer()" novalidate>
+
+        <div class="flexbox">
+            <div class="inputDiv">
+                <div class="imgdiv">
+                    <img [src]="imageSrc" class="locationpicture">
+                    <div class="labelbox">
+                        <input id="bizFile1" class="enrolldevice" placeholder="로고사진" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event,1)" style="display: none;" />
+                        <label for="bizFile1" class="uploadlabel abtn">
+                            <div>
+                                <i class="menu-icon mdi mdi-cloud-upload"></i>
+                            </div>
+                            <h4 class="uploadlabeltext">LogoUpdate</h4>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="inputDiv">
+                <div class="imgdiv">
+                    <img [src]="mapSrc" class="locationpicture">
+                    <div class="labelbox">
+                        <input id="bizFile2" class="enrolldevice" placeholder="설치사진" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event,2)" style="display: none;" />
+                        <label for="bizFile2" class="uploadlabel abtn">
+                            <div>
+                                <i class="menu-icon mdi mdi-cloud-upload"></i>
+                            </div>
+                            <h4 class="uploadlabeltext">MapUpdate</h4>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>고객사명</mat-label>
+            <input matInput formControlName="customerName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>담당자명</mat-label>
+            <input matInput formControlName="staffName">
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline">
+            <mat-label>연락처</mat-label>
+            <input matInput placeholder="01012345678" formControlName="phone">
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline">
+            <mat-label>상태</mat-label>
+            <input matInput placeholder="01012345678" formControlName="status">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>결제방법</mat-label>
+            <input matInput formControlName="payMethod">
+        </mat-form-field> 
+
+        <div class="modal_footer">
+            <button mat-flat-button color="primary">수정</button>
+        </div>
+    </form>
+    <button mat-stroked-button color="primary" class="backbtn" (click)="onNoClick()">돌아가기</button>
+</div>

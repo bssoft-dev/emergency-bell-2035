@@ -15,6 +15,7 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './main/header/header.component';
 
 // 사이드바
+import { ProfilemodalComponent } from './main/side/profile/profile.component';
 import { ProfileComponent } from './main/side/profile/profile.component';
 import { SidebarComponent } from './main/side/sidebar/sidebar.component';
 import { SidefooterComponent } from './main/side/sidefooter/sidefooter.component';
@@ -26,8 +27,12 @@ import { AllstatusComponent } from './main/container/dashboard/allstatus/allstat
 import { SensingComponent } from './main/container/dashboard/sensing/sensing.component';
 
 import { MemberComponent } from './main/container/member/member.component';
+import { AddmemberComponent } from './main/container/member/member.component';
+import { ResmemberComponent } from './main/container/member/member.component';
 
 import { ClientComponent } from './main/container/client/client.component';
+import { AddclientComponent } from './main/container/client/client.component';
+import { ResclientComponent } from './main/container/client/client.component';
 
 import { DeviceComponent } from './main/container/device/device.component';
 
@@ -56,6 +61,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.component';
+import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -108,6 +114,12 @@ const appRoutes: Routes = [
     AlldetectionComponent,
     SettingmodalComponent,
     PhontabComponent,
+    EmailtabComponent,
+    ProfilemodalComponent,
+    AddmemberComponent,
+    ResmemberComponent,
+    AddclientComponent,
+    ResclientComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
