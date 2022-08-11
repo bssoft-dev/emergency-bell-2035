@@ -1,7 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-            <button mat-raised-button class="font" (click)="clickedModal()"><mat-icon>add</mat-icon>고객사 등록</button>
+            <button mat-raised-button class="font" (click)="clickedaddModal()"><mat-icon>add</mat-icon>고객사 등록</button>
         </div>
 
         <div>
@@ -50,8 +50,7 @@
                     </div>
                     <div>
                         <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="getOnecustomers(index)">
-                            </button>
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)"></button>
                         </div>
                         <div>
                             <button class="mdi mdi-delete imgbutton" (click)="deleteonecustomer(index)">

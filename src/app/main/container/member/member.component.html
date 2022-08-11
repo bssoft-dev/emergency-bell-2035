@@ -1,7 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-            <button mat-raised-button class="font" (click)="clickedModal()"><mat-icon>add</mat-icon>회원 등록</button>
+            <button mat-raised-button class="font" (click)="clickedaddModal()"><mat-icon>add</mat-icon>회원 등록</button>
         
         </div>
         <div>
@@ -17,7 +17,6 @@
                     <div>변경</div>
                 </div>
             </div>
-
             <div class="unit">
                 <div id="unitDiv" *ngFor="let i of getallusersdata[0];let index = index">
                     <div>{{i.username}}</div>
@@ -31,7 +30,7 @@
                     </div>
                     <div>
                         <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="getOneUser(index)">
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)">
                             </button>
                         </div>
                         <div>

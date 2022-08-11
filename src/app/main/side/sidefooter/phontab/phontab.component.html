@@ -1,43 +1,39 @@
-<div>
-    <form [formGroup]="registersmsForm" (ngSubmit)="registersmsuser()" novalidate>
-        <div>
-            <mat-form-field appearance="fill">
-                <mat-label>이름</mat-label>
-                <input matInput placeholder="홍길동" type="text" formControlName="name">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>연락처</mat-label>
-                <input matInput placeholder="01012345678" type="text" formControlName="phone">
-            </mat-form-field>
-            <button class="imgbutton">
-                <i class="menu-icon mdi mdi-plus-circle-outline"></i>
-            </button>
-        </div>
-    </form>
-    <div class="togglecontroller">
-        <mat-slide-toggle (click)="allsmssetting()"></mat-slide-toggle>
+<form [formGroup]="registersmsForm" (ngSubmit)="registersmsuser()" novalidate>
+    <div class="inputDiv">
+        <mat-form-field appearance="fill">
+            <mat-label>이름</mat-label>
+            <input matInput placeholder="홍길동" type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>연락처</mat-label>
+            <input matInput placeholder="01012345678" type="text" formControlName="phone">
+        </mat-form-field>
+        <button class="menu-icon mdi mdi-plus-circle-outline imgbutton"></button>
     </div>
-
-    <div style="margin:30px; overflow: auto;">
-        <div class="tblth">
-            <div class="th">이름</div>
-            <div class="th">번호</div>
-            <div class="th">발신설정</div>
-            <div class="th">삭제</div>
-        </div>
-        <div class="tbltd" *ngFor="let user of getalarmsmsdata; let index = index;">
-            <div class="td">
-                {{user.name}}
-            </div>
-            <div class="td">
-                {{user.phone}}
-            </div>
-            <div class="td">
-                <mat-slide-toggle [checked]="user.setting" (click)="onesmssetting(index)" [disabled]="allsmsdata"></mat-slide-toggle>
-            </div>
-            <div class="td">
-                <i class="menu-icon mdi mdi-delete" (click)="deletesmsalarm(index)"></i>
-            </div>
-        </div>
-    </div> 
+</form>
+<div class="togglecontroller marginDiv">
+    <mat-slide-toggle (click)="allsmssetting()"></mat-slide-toggle>
 </div>
+
+<div class="marginDiv">
+    <div class="tblth">
+        <div class="th">이름</div>
+        <div class="th">번호</div>
+        <div class="th">발신설정</div>
+        <div class="th">삭제</div>
+    </div>
+    <div class="tbltd" *ngFor="let user of getalarmsmsdata; let index = index;">
+        <div class="td">
+            {{user.name}}
+        </div>
+        <div class="td">
+            {{user.phone}}
+        </div>
+        <div class="td">
+            <mat-slide-toggle [checked]="user.setting" (click)="onesmssetting(index)" [disabled]="allsmsdata"></mat-slide-toggle>
+        </div>
+        <div class="td">
+            <button class="menu-icon mdi mdi-delete imgbutton" (click)="deletesmsalarm(index)"></button>
+        </div>
+    </div>
+</div> 

@@ -9,9 +9,9 @@ body {
   margin: 0;
   font-weight: 400;
   color: #666666;
+
   text-align: center;
   vertical-align: middle;
-
   justify-items: center;
   justify-content: center;
   align-items: center;
@@ -122,27 +122,6 @@ div > #buttonDiv {
   vertical-align: middle;
 }
 
-/* 모달 */
-.modaltitle {
-  margin-bottom: 49px;
-}
-
-.mat-dialog-container {
-  overflow: hidden !important;
-}
-
-.content {
-  margin: 49px 0 49px 0;
-}
-
-.container {
-  height: 700px;
-}
-
-mat-form-field {
-  margin: 25px;
-}
-
 .example-container .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
@@ -164,6 +143,16 @@ input.example-right-align {
   -moz-appearance: textfield;
 }
 
+/* 모달 */
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+mat-form-field {
+  margin: 10px 0 10px 0;
+  width: 100%;
+}
+
 mat-form-field button {
   border: 0;
   background-color: transparent;
@@ -173,4 +162,18 @@ mat-form-field button mat-icon {
   border: 0;
   background-color: transparent;
   cursor: pointer;
+}
+
+.modalDiv {
+  padding: 10% !important;
+}
+
+.mat-dialog-container {
+  padding: 0% !important;
+  overflow: hidden !important;
+}
+
+.container {
+  height: flex;
+  margin: 3vw 0 3vw 0;
 }

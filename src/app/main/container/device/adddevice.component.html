@@ -1,0 +1,79 @@
+<div class="modalDiv">
+
+    <h2 class="font">기기등록</h2>
+
+    <form class="container" [formGroup]="deviceenrollForm" (ngSubmit)="deviceenroll()" novalidate>
+
+        <div class="flexbox">
+            <div class="imgdiv">
+                <img [src]="imageSrc" class="locationpicture">
+                <input id="bizFile1" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event)" style="display: none;" />
+                <label for="bizFile1" class="uploadlabel abtn">
+                    <div>
+                        <i class="menu-icon mdi mdi-cloud-upload"></i>
+                    </div>
+                    <h4 class="uploadlabeltext">LogoUpload</h4>
+                </label>
+            </div>
+        </div>
+        
+        <div class="matdiv">
+            <mat-form-field appearance="outline">
+                <mat-label>기기아이디</mat-label>
+                <mat-select formControlName="deviceId">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let i of unregidevices" [value]="i">
+                    {{i}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>고객사명</mat-label>
+                <mat-select formControlName="customerName">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let i of customerNames" [value]="i">
+                    {{i}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <mat-label>별칭</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>모델명</mat-label>
+            <input matInput formControlName="model">
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline">
+            <mat-label>설치장소</mat-label>
+            <input matInput formControlName="location">
+            <mat-hint>최대 30자</mat-hint>
+            <!-- 30자 이하일때 파란색 초과이면 빨간색 -->
+        </mat-form-field>  
+
+        <mat-form-field appearance="outline">
+            <mat-label>설치일</mat-label>
+            <input matInput formControlName="installDate">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>통신방식</mat-label>
+            <input matInput formControlName="communicateMethod">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>메모</mat-label>
+            <input matInput formControlName="userMemo">
+        </mat-form-field>
+
+        <div class="modal_footer">
+            <button mat-flat-button type="submit" color="primary" [disabled]="!deviceenrollForm.valid" [mat-dialog-close]="" cdkFocusInitial>등록</button>
+        </div>
+    </form>
+    <button mat-stroked-button color="primary" class="backbtn" (click)="onNoClick()">돌아가기</button>
+</div>

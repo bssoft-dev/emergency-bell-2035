@@ -8,16 +8,14 @@
             <mat-label>이메일</mat-label>
             <input matInput placeholder="example@address.com" type="text" formControlName="email">
         </mat-form-field>
-        <button class="imgbutton">
-            <i class="menu-icon mdi mdi-plus-circle-outline"></i>
-        </button>
+        <button class="menu-icon mdi mdi-plus-circle-outline imgbutton"></button>
     </div>
 </form>
-<div class="togglecontroller">
+<div class="togglecontroller marginDiv">
     <mat-slide-toggle (click)="allemailsetting()"></mat-slide-toggle>
 </div>
 
-<div style="margin:30px">
+<div class="marginDiv">
     <div class="tblth">
         <div class="th">이름</div>
         <div class="th">이메일</div>`
@@ -35,7 +33,7 @@
             <mat-slide-toggle (click)="oneemailsetting(index)" [checked]="user.setting" id="email{{index}}" [disabled]="allemaildata"></mat-slide-toggle>
         </div>
         <div class="td">
-            <i class="menu-icon mdi mdi-delete" (click)="deleteemailalarm(index)"></i>
+            <button class="menu-icon mdi mdi-delete imgbutton" (click)="deleteemailalarm(index)"></button>
         </div>
     </div>
 </div>

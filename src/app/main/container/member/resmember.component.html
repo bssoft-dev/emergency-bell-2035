@@ -1,17 +1,17 @@
-<div class="content">
+<div class="modalDiv">
 
-    <h2 class="modaltitle font">회원수정</h2>
+    <h2 class="font">회원수정</h2>
 
     <form class="container" [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()" novalidate>
 
         <mat-form-field appearance="outline">
             <mat-label>아이디</mat-label>
-            <input matInput formControlName="username" required>
+            <input matInput formControlName="username">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>이름</mat-label>
-            <input matInput placeholder="홍길동" formControlName="name" required>
+            <input matInput placeholder="홍길동" formControlName="name">
         </mat-form-field>  
 
         <mat-form-field appearance="outline">
@@ -29,18 +29,14 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 입력</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" required/>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off"/>
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 확인</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" required />
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off"/>
+                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-hint [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">패스워드가 다릅니다</mat-hint>
             </mat-form-field>
         

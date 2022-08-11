@@ -1,7 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-            <button mat-raised-button class="font" (click)="clickedModal()"><mat-icon>add</mat-icon>기기 등록</button>
+            <button mat-raised-button class="font" (click)="clickedaddModal()"><mat-icon>add</mat-icon>기기 등록</button>
         </div>
 
         <!-- 
@@ -28,7 +28,7 @@
             -->
             <div class="unit">
                 <div id="unitDiv" *ngFor="let devicedata of getalldevicesdata; let index = index">
-                    <div><img style="width: 60px;height: 60px;" (click)="picturemodalopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
+                    <div><img (click)="pictureopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
                     <div>{{devicedata.model}}</div>
                     <div>{{devicedata.name}}</div>
                     <div>{{devicedata.location}}</div>
@@ -43,11 +43,11 @@
                     <div>
 
                         <div>
-                            <button class="mdi mdi-pencil-box-outline" (click)="getOneDevice(index)">
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)">
                             </button>
                         </div>
                         <div>
-                            <button class="mdi mdi-delete" (click)="deleteonedevice(index)">
+                            <button class="mdi mdi-delete imgbutton" (click)="deleteonedevice(index)">
                             </button>
                         </div>
                     </div>

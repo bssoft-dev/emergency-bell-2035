@@ -5,11 +5,12 @@
     <form class="container" [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
         <mat-form-field appearance="outline">
             <mat-label>아이디</mat-label>
-            <input matInput required formControlName="username" (focus)="usernamechange($event)" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
-            <button mat-button matSuffix color="primary" (click)="duplicatecheck()" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
+            <input matInput formControlName="username">
+            <button mat-button matSuffix color="primary" type="button" (click)="duplicatecheck()" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </button>
-            <mat-hint [hidden]="!overlapcheck">사용 가능한 아이디 입니다</mat-hint>
+            <mat-hint class="trueCheck" [hidden]="!passIdMsg">사용 가능한 아이디 입니다</mat-hint>
+            <mat-hint class="falseCheck" [hidden]="!errorIdMsg">사용 할 수 없는 아이디 입니다</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -19,7 +20,7 @@
 
         <mat-form-field appearance="outline">
             <mat-label>고객사명</mat-label>
-            <mat-select formControlName="customerName" required>
+            <mat-select formControlName="customerName">
                 <mat-option>--</mat-option>
                 <mat-option *ngFor="let i of customerNames" [value]="i">
                 {{i}}
@@ -42,7 +43,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 입력</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" required/>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off"/>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
@@ -50,16 +51,16 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 확인</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" required />
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" />
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-hint [hidden]="!registeruserForm.hasError('equal','passwordGroup')">패스워드가 다릅니다</mat-hint>
-            </mat-form-field>
+                <mat-hint class="falseCheck" [hidden]="!registeruserForm.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다</mat-hint>
+                </mat-form-field>
         
         </div>
         <div class="modal_footer">
-            <button mat-flat-button color="primary" [disabled]="!registeruserForm.valid">회원등록</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="!registeruserForm.valid" [mat-dialog-close]="data.registeruserForm" cdkFocusInitial>회원등록</button>
         </div>
     </form>
 

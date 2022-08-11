@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-sidefooter',
@@ -19,15 +16,13 @@ export class SidefooterComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SettingmodalComponent, {
-      width: '693px',
-      height: '945px',
+      width: '750px',
+      height: '1100px',
     });
   }
 
   logout() {
-    console.log(this.token);
     sessionStorage.removeItem('token');
-    console.log(this.token);
     this.router.navigate(['/login']);
   }
 }

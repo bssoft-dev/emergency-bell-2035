@@ -29,6 +29,7 @@
 }
 
 /* 모달 */
-mat-form-field {
-  width: 90%;
+
+mat-icon {
+  cursor: pointer;
 }

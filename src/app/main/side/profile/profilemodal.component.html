@@ -1,8 +1,8 @@
-<div class="content">
+<div class="modalDiv">
 
-    <h2 class="font modaltitle">내 정보수정</h2>
+    <h2 class="font">내 정보수정</h2>
 
-    <form class="container" [formGroup]="modifyuserForm" (ngSubmit)="modifyoneUser()">
+    <form class="container" [formGroup]="modifyuserForm" (ngSubmit)="sudmit()">
 
         <mat-form-field appearance="fill">
             <mat-label>아이디</mat-label>
@@ -25,17 +25,13 @@
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 입력</mat-label>
                 <input matInput [type]="passwordhide ? 'password' : 'text'" formControlName="password" autocomplete="off" required>
-                <button mat-icon-button matSuffix (click)="passwordhide = !passwordhide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordhide">
-                <mat-icon>{{passwordhide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                <mat-icon mat-icon-button matSuffix (click)="passwordhide = !passwordhide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordhide">{{passwordhide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 확인</mat-label>
-                <input matInput [ngClass]="(modifyuserForm.controls.passwordGroup.valid || !modifyuserForm.controls.passwordGroup.touched) ? 'enrolldevice' : 'nonenrolldevice'" [type]="passwordconfirmhide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" required>
-                <button mat-icon-button matSuffix (click)="passwordconfirmhide = !passwordconfirmhide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordconfirmhide">
-                <mat-icon>{{passwordconfirmhide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                <input matInput [type]="passwordconfirmhide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" required>
+                <mat-icon mat-icon-button matSuffix (click)="passwordconfirmhide = !passwordconfirmhide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordconfirmhide">{{passwordconfirmhide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 <mat-hint [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">수정불가능</mat-hint>
             </mat-form-field>
         

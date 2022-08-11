@@ -10,11 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  token = '';
-  customer_code = '';
-  is_hyperuser;
+  token = sessionStorage.getItem('token');
+  myname = '';
   corplogo;
-  modal = false;
 
   constructor(
     public router: Router,
@@ -22,21 +20,19 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  // 팝업창열기
   openDialog(): void {
     const dialogRef = this.dialog.open(ProfilemodalComponent, {
-      width: '693px',
-      height: '945px',
+      width: '750px',
+      height: '1100px',
     });
   }
 
   currentusercheck() {
-    this.token = sessionStorage.getItem('token');
     return new Promise((resolve, reject) => {
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          this.token = sessionStorage.getItem('token');
-          this.customer_code = res.customerCode;
-          this.is_hyperuser = res.is_hyperuser;
+          this.myname = res['name'];
           resolve(res);
         },
         error: (err) => {
@@ -47,8 +43,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // 로고이미지
   getonecustomerslogo(res) {
-    const temp = [sessionStorage.getItem('token'), res.customerCode];
+    const temp = [this.token, res.customerCode];
     this.service.getoncustomerslogo(temp).subscribe({
       next: (res) => {
         this.corplogo = res['logo'];
@@ -58,12 +55,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  myname = '';
-
   ngOnInit() {
-    this.token = sessionStorage.getItem('token');
     this.currentusercheck().then((res) => {
-      this.myname = res['name'];
       this.getonecustomerslogo(res);
     });
   }
@@ -79,6 +72,7 @@ export class ProfilemodalComponent implements OnInit {
   passwordconfirmhide = true;
 
   modifyuserForm: FormGroup;
+
   constructor(
     public dialogRef: MatDialogRef<ProfilemodalComponent>,
     public router: Router,
@@ -98,18 +92,20 @@ export class ProfilemodalComponent implements OnInit {
         this.equalValidator
       ),
     });
-    this.currentuserck().then((res) => {
-      this.patchvalue(res);
-    });
+    this.currentuserck();
   }
 
-  getoneuserdata;
+  //사용자 정보[ID,NAME.PHONE]
   currentuserck() {
     const token = sessionStorage.getItem('token');
     return new Promise((resolve, reject) => {
       this.service.getcurrentuser(token).subscribe({
         next: (res) => {
-          this.getoneuserdata = res;
+          this.modifyuserForm.patchValue({
+            username: res.username,
+            name: res.name,
+            phone: res.phone,
+          });
           resolve(res);
         },
         error: (err) => {
@@ -120,15 +116,7 @@ export class ProfilemodalComponent implements OnInit {
     });
   }
 
-  //정보 불러오기[ID,NAME.PHONE]
-  patchvalue(res) {
-    this.modifyuserForm.patchValue({
-      username: res.username,
-      name: res.name,
-      phone: res.phone,
-    });
-  }
-
+  // 비밀번호 유효성검사
   equalValidator({ value }: FormGroup): { [key: string]: any } {
     const [first, ...rest] = Object.keys(value || {});
     if (first.length == 0 && rest.length == 0) {
@@ -139,7 +127,8 @@ export class ProfilemodalComponent implements OnInit {
     }
   }
 
-  modifyoneUser() {
+  // 저장
+  sudmit() {
     const temp = [];
 
     const data = this.modifyuserForm.value;
@@ -153,23 +142,17 @@ export class ProfilemodalComponent implements OnInit {
       next: (res) => {
         alert('정보 수정이 완료되었습니다');
         this.modifyuserForm.reset();
-        this.router.navigate(['/login']);
         this.dialogRef.close();
       },
       error: (err) => {
         alert('내부 서버 에러.');
         this.modifyuserForm.reset();
-        this.router.navigate(['/login']);
       },
       complete: () => {},
     });
   }
 
-  get f() {
-    return this.modifyuserForm.controls;
-  }
-
-  //모달 닫기
+  //닫기
   onNoClick(): void {
     this.dialogRef.close();
   }

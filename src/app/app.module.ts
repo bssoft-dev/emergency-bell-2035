@@ -35,6 +35,8 @@ import { AddclientComponent } from './main/container/client/client.component';
 import { ResclientComponent } from './main/container/client/client.component';
 
 import { DeviceComponent } from './main/container/device/device.component';
+import { AdddeviceComponent } from './main/container/device/device.component';
+import { RegdeviceComponent } from './main/container/device/device.component';
 
 import { AlldetectionComponent } from './main/container/alldetection/alldetection.component';
 
@@ -120,6 +122,8 @@ const appRoutes: Routes = [
     ResmemberComponent,
     AddclientComponent,
     ResclientComponent,
+    AdddeviceComponent,
+    RegdeviceComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

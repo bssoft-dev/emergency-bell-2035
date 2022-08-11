@@ -7,3 +7,61 @@
 .unit > div {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
+.smallimg {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.smallimg:hover {
+  transform: scale(0.9);
+  border-radius: 7px;
+  opacity: 0.8;
+}
+
+/* 등록 */
+.uploadlabel {
+  margin-top: 20px;
+  background-color: #505eff;
+  color: #ffffff;
+  width: 180px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.mdi-cloud-upload {
+  font-size: 40px;
+}
+
+.uploadlabeltext {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+mat-form-field {
+  margin: 10px 0 10px 0 !important;
+}
+
+.matdiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+div > mat-form-field {
+  width: 45%;
+}
+
+.container {
+  height: 1000px;
+}
