@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="unit">
-                <div id="unitDiv" *ngFor="let i of getallusersdata[0];let index = index">
+                <div id="unitDiv" *ngFor="let i of datalist[0];let index = index">
                     <div>{{i.username}}</div>
                     <div>{{i.customerName}}</div>
                     <div>{{i.name}}</div>
@@ -26,15 +26,15 @@
                     <div>{{i.email}}</div>
                     <div>{{i.createTime}}</div>
                     <div>
-                        <mat-slide-toggle [(ngModel)]="i.is_superuser" (change)="modifymanager(index)"></mat-slide-toggle>
+                        <mat-slide-toggle [(ngModel)]="i.is_superuser" [disabled]="!manangerDisabled" (change)="checkManager(i)"></mat-slide-toggle>
                     </div>
                     <div>
                         <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)">
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(i)">
                             </button>
                         </div>
                         <div>
-                            <button class="mdi mdi-delete imgbutton" (click)="deleteoneUser(index)">
+                            <button class="mdi mdi-delete imgbutton" (click)="deletedata(i)">
                             </button>
                         </div>
                     </div>

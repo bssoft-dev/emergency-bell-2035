@@ -2,11 +2,11 @@
 
     <h2 class="font modaltitle">회원등록</h2>
 
-    <form class="container" [formGroup]="registeruserForm" (ngSubmit)="registerUser()" novalidate>
+    <form class="container" [formGroup]="form" (ngSubmit)="formSubmit()" novalidate>
         <mat-form-field appearance="outline">
             <mat-label>아이디</mat-label>
             <input matInput formControlName="username">
-            <button mat-button matSuffix color="primary" type="button" (click)="duplicatecheck()" [disabled]="registeruserForm.hasError('pattern','username') || registeruserForm.hasError('required', 'username')">
+            <button mat-button matSuffix color="primary" type="button" (click)="idCheck()" [disabled]="form.hasError('pattern','username') || form.hasError('required', 'username')">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </button>
             <mat-hint class="trueCheck" [hidden]="!passIdMsg">사용 가능한 아이디 입니다</mat-hint>
@@ -51,16 +51,17 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>비밀번호 확인</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off" />
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm" autocomplete="off"/>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
-                <mat-hint class="falseCheck" [hidden]="!registeruserForm.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다</mat-hint>
+                <mat-hint class="falseCheck" [hidden]="!form.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다</mat-hint>
+                <mat-hint *ngIf="" class="trueeCheck" [hidden]="form.hasError('equal','passwordGroup')">패스워드가 일치합니다</mat-hint>
                 </mat-form-field>
         
         </div>
         <div class="modal_footer">
-            <button mat-flat-button color="primary" type="submit" [disabled]="!registeruserForm.valid" [mat-dialog-close]="data.registeruserForm" cdkFocusInitial>회원등록</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid" [mat-dialog-close]="" cdkFocusInitial>회원등록</button>
         </div>
     </form>
 

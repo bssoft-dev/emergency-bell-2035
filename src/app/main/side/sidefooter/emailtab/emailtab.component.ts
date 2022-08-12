@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-emailtab',
   templateUrl: './emailtab.component.html',
@@ -81,7 +80,7 @@ export class EmailtabComponent implements OnInit {
     });
   }
 
-  allemaildata: Boolean;
+  allemaildata = false;
   getallemail() {
     this.service.getallalarmemail().subscribe({
       next: (res) => {
