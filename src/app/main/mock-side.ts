@@ -10,7 +10,7 @@ export const SIDES: Sidebar[] = [
   },
   {
     menu: '회원관리',
-    route: 'member',
+    route: 'user',
     head: '회원 관리',
     emt: 'assignment_ind',
     ngif: 'customer_code',

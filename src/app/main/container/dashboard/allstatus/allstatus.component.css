@@ -8,37 +8,8 @@
   font-size: 55px;
 }
 
-.bottomline {
-  border-bottom: 2px solid rgba(28, 32, 114, 0.38);
-}
-
-.topline {
-  border-top: 2px solid rgba(28, 32, 114, 0.38);
-}
-
-.leftline {
+.leftboundary {
   border-left: 2px solid rgba(28, 32, 114, 0.38);
-}
-
-.rightline {
-  border-right: 2px solid rgba(28, 32, 114, 0.38);
-}
-
-.total {
-  background: #438ffe;
-  box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
-  border-radius: 10px 0px 0px 0px;
-  width: 20vw;
-  color: #ffffff;
-
-  border-bottom: 2px solid rgba(28, 32, 114, 0.38);
-  border-right: 2px solid rgba(28, 32, 114, 0.38);
-}
-
-.Disconnected {
-  border-top: 2px solid rgba(28, 32, 114, 0.38);
-  border-left: 2px solid rgba(28, 32, 114, 0.38);
-  width: auto;
 }
 
 div {
@@ -56,4 +27,20 @@ div #inner-grid {
 div #inner-grid .subheading {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
+}
+
+.total {
+  background: var(--MainBell-bg-color) !important;
+  box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
+  border-radius: 10px 0px 0px 0px;
+  width: 20vw;
+  color: #ffffff;
+
+  border-bottom: 2px solid rgba(28, 32, 114, 0.38);
+  border-right: 2px solid rgba(28, 32, 114, 0.38);
+}
+
+.defaultBack {
+  background: var(--bell-bg-color);
+  color: var(--profile-font-color);
 }

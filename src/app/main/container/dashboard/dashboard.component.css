@@ -12,7 +12,7 @@
 }
 
 mat-grid-tile {
-  background-color: #f0f0f0;
+  background: var(--grid-bg-color);
   border-radius: 15px;
   padding: 20px;
 
@@ -27,7 +27,7 @@ mat-grid-list {
 
 mat-grid-tile-header {
   font-size: 2vh;
-  color: #03002c !important;
+  color: var(--profile-font-color) !important;
   margin: 2% 0 0 0;
 
   background: none !important;
@@ -48,3 +48,4 @@ a {
 .title-box {
   display: block !important;
 }
+

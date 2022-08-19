@@ -1,0 +1,15 @@
+/* #buttonDiv > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+  } */
+
+.unit > div {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+/* modal */
+mat-form-field {
+  padding: 15px 0;
+}

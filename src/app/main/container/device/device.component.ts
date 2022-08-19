@@ -314,6 +314,7 @@ export class RegdeviceComponent implements OnInit {
     });
   }
 
+  // 사진
   onFileChange(event): void {
     this.fileSelected = event.target.files[0];
     const formData = new FormData();
@@ -332,6 +333,7 @@ export class RegdeviceComponent implements OnInit {
       complete: () => {},
     });
   }
+
   ngOnInit(): void {
     this.devicemodifyForm = new FormGroup({
       deviceId: new FormControl(''),
@@ -351,6 +353,7 @@ export class RegdeviceComponent implements OnInit {
     this.getOneDevice();
   }
 
+  // 사용자 정보
   getOneDevice() {
     this.devicemodifyForm.patchValue({
       deviceId: this.getonedevicedata['deviceId'],
@@ -362,6 +365,7 @@ export class RegdeviceComponent implements OnInit {
       installDate: this.getonedevicedata['installDate'],
       communicateMethod: this.getonedevicedata['communicateMethod'],
       userMemo: this.getonedevicedata['userMemo'],
+      picture: this.getonedevicedata['picture'],
     });
   }
 
@@ -388,6 +392,7 @@ export class RegdeviceComponent implements OnInit {
   }
 }
 
+// 사진확대
 @Component({
   selector: 'app-devicepoto',
   templateUrl: './devicepoto.component.html',

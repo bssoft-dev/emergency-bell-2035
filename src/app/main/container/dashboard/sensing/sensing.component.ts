@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-sensing',
   templateUrl: './sensing.component.html',
-  styleUrls: ['./sensing.component.css'],
+  styleUrls: ['./sensing.component.css', '../../container.component.css'],
 })
 export class SensingComponent implements OnInit {
   @Input() socketrecentdata = [];

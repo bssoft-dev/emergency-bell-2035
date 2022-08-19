@@ -3,16 +3,16 @@
         <div>
             <div class="unit unittitle">
                 <div>
-                        <div>순번</div>
-                        <div>디바이스명</div>
-                        <div>시간</div>
-                        <div>타입</div>
-                        <div>위치</div>
+                    <div>순번</div>
+                    <div>디바이스명</div>
+                    <div>시간</div>
+                    <div>타입</div>
+                    <div>위치</div>
                 </div>
             </div>
 
            
-            <div class="unit">
+            <div class="unit tnhhable">
                 <div id="unitDiv" *ngFor="let i of alldetectiondata[0];let index = index">
                     <div>{{index + 1}}</div>
                     <div>{{i.name}}</div>

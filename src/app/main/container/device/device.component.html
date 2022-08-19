@@ -26,7 +26,7 @@
             남은 작업 :
                     수직 가운데 정렬
             -->
-            <div class="unit">
+            <div class="unit tnhhable">
                 <div id="unitDiv" *ngFor="let devicedata of getalldevicesdata; let index = index">
                     <div><img (click)="pictureopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
                     <div>{{devicedata.model}}</div>

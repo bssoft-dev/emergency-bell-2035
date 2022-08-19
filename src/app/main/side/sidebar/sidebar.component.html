@@ -1,4 +1,3 @@
-
 <mat-nav-list>
     <a mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
         <mat-icon>{{side.emt}}</mat-icon>

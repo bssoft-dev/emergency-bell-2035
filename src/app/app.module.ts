@@ -26,9 +26,9 @@ import { DashboardComponent } from './main/container/dashboard/dashboard.compone
 import { AllstatusComponent } from './main/container/dashboard/allstatus/allstatus.component';
 import { SensingComponent } from './main/container/dashboard/sensing/sensing.component';
 
-import { MemberComponent } from './main/container/member/member.component';
-import { AddmemberComponent } from './main/container/member/member.component';
-import { ResmemberComponent } from './main/container/member/member.component';
+import { UserComponent } from './main/container/user/user.component';
+import { AdduserComponent } from './main/container/user/user.component';
+import { ReguserComponent } from './main/container/user/user.component';
 
 import { ClientComponent } from './main/container/client/client.component';
 import { AddclientComponent } from './main/container/client/client.component';
@@ -76,8 +76,8 @@ const appRoutes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'member',
-        component: MemberComponent,
+        path: 'user',
+        component: UserComponent,
       },
       {
         path: 'client',
@@ -110,7 +110,6 @@ const appRoutes: Routes = [
     DashboardComponent,
     AllstatusComponent,
     SensingComponent,
-    MemberComponent,
     ClientComponent,
     DeviceComponent,
     AlldetectionComponent,
@@ -118,12 +117,13 @@ const appRoutes: Routes = [
     PhontabComponent,
     EmailtabComponent,
     ProfilemodalComponent,
-    AddmemberComponent,
-    ResmemberComponent,
     AddclientComponent,
     ResclientComponent,
     AdddeviceComponent,
-    RegdeviceComponent
+    RegdeviceComponent,
+    UserComponent,
+    AdduserComponent,
+    ReguserComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

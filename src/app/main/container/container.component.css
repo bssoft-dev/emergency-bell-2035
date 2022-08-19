@@ -1,7 +1,14 @@
+#outer-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  min-width: 800px;
+}
+
 /* 아이콘 버튼 */
 .mdi {
   font-size: 34px;
   cursor: pointer;
+  color: var(--profile-font-color);
 }
 
 .imgbutton {
@@ -10,7 +17,7 @@
 }
 
 .mdi:hover {
-  color: #438ffe;
+  color: var(--bell-bg-color);
 }
 
 /* 이미지박스 */
@@ -60,4 +67,74 @@
 .uploadlabeltext {
   margin-left: 20px;
   margin-top: 10px;
+}
+
+.tnhhable :nth-child(odd) {
+  background: var(--table-bg-color);
+}
+#unitDiv :nth-child(odd) {
+  background-color: transparent;
+}
+
+.font > div > button {
+  margin-bottom: 20px;
+}
+
+.unittitle {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+
+  color: #ffffff;
+  background-color: var(--bell-bg-color);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.unit > div {
+  display: grid;
+  padding: 30px;
+}
+
+button {
+  cursor: pointer;
+}
+
+div > #buttonDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#unitDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--profile-font-color);
+}
+
+#buttonDiv > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
 }

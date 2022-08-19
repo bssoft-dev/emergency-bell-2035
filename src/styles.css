@@ -2,13 +2,78 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+/* 다크모드 */
+:root,
+:root.light {
+  /* main.component */
+  --main-bg-color: #ffffff;
+  --header-border-color: #e5e5e5;
+
+  /* container > dashoard */
+  --grid-bg-color: #e5e5e5;
+  /* container > dashboard > allstatus */
+  --MainBell-bg-color: var(--bell-bg-color);
+  --bell-bg-color: #438ffe;
+
+  --table-bg-color: #f5f7f9;
+
+  /* modal */
+  --modal-bg-color: #ffffff;
+
+  /* side > profile */
+  --profile-font-color: #000000;
+
+  /* side > sidebar */
+  --sidebar-font-color: #61676b;
+
+  /* modal */
+  --modal-font-color: #000000;
+  --input-bg-color: #f5f7f9;
+  --unmodifiable-bg-color: #e5e5e5;
+}
+:root.dark {
+  /* main component */
+  --main-bg-color: #121619;
+  --header-border-color: #606264;
+
+  /* container > dashoard */
+  --grid-bg-color: #282b30;
+  /* container > dashboard > allstatus */
+  --MainBell-bg-color: #1c2072;
+  --bell-bg-color: #5156be;
+
+  --table-bg-color: #424549;
+
+  /* modal */
+  --modal-bg-color: #282b30;
+
+  /* side > profile */
+  --profile-font-color: #ffffff;
+
+  /* side > sidebar */
+  --sidebar-font-color: #ffffff;
+
+  /* modal */
+  --modal-font-color: #ffffff;
+  --input-bg-color: #969494;
+  --unmodifiable-bg-color: #61676b;
+}
+
+/*  */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
   box-shadow: none;
-  padding: 0;
-  margin: 0;
   font-weight: 400;
-  color: #666666;
 
   text-align: center;
   vertical-align: middle;
@@ -21,6 +86,8 @@ body {
 #outer-grid {
   grid-gap: 1%;
   margin: 1%;
+  background-color: var(--grid-bg-color);
+  border-radius: 15px;
 
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -28,7 +95,6 @@ body {
 }
 
 #outer-grid > div {
-  background-color: #f0f0f0;
   border-radius: 15px;
   padding: 20px;
 }
@@ -41,106 +107,14 @@ body {
 .font {
   font-family: "Noto Sans";
   font-style: normal;
+  color: var(--profile-font-color);
 }
 
 h2 {
   font-size: 2vh;
   line-height: 27px;
-  color: #03002c;
+  /* color: #03002c; */
   margin: 1% 0 4% 0;
-}
-
-/* 사이드바 */
-div > ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0px;
-  align-items: center;
-  margin: 54px 0 0 0;
-}
-
-/* 컨테이너 */
-.font > div > button {
-  margin-bottom: 20px;
-}
-
-.unit > div {
-  padding: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
-  display: grid;
-}
-
-.unittitle {
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 20px;
-
-  color: #ffffff;
-  background-color: #438ffe;
-  border-radius: 10px 10px 0px 0px;
-}
-
-.btn {
-  cursor: pointer;
-  background-color: #438ffe;
-  margin-bottom: 20px;
-  border: 1;
-  color: white;
-
-  width: flex;
-  height: 50px;
-  font-size: 1.2rem;
-}
-
-.btn:hover {
-  animation: pulsate 1s ease-in-out;
-}
-
-button {
-  cursor: pointer;
-}
-
-.unit > div {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-div > #buttonDiv {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-#unitDiv > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#buttonDiv > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-}
-
-.example-container .mat-form-field + .mat-form-field {
-  margin-left: 8px;
-}
-
-.example-container .mat-form-field + .mat-form-field {
-  margin-left: 8px;
-}
-
-.example-right-align {
-  text-align: right;
-}
-
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-
-input.example-right-align {
-  -moz-appearance: textfield;
 }
 
 /* 모달 */
@@ -149,7 +123,6 @@ input.example-right-align {
 }
 
 mat-form-field {
-  margin: 10px 0 10px 0;
   width: 100%;
 }
 
@@ -169,11 +142,45 @@ mat-form-field button mat-icon {
 }
 
 .mat-dialog-container {
-  padding: 0% !important;
+  border-radius: 15px !important;
+  background-color: var(--modal-bg-color);
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
   overflow: hidden !important;
 }
 
 .container {
   height: flex;
   margin: 3vw 0 3vw 0;
+}
+
+.trueCheck {
+  color: blue;
+}
+
+.falseCheck {
+  color: red;
+}
+
+.noticeCheck {
+  color: greenyellow;
+}
+
+.mat-form-field-flex {
+  background-color: var(--input-bg-color) !important;
+  /* color: #c5c2c2 !important; */
+}
+
+.unmodifiable .mat-form-field-flex {
+  background-color: var(--unmodifiable-bg-color) !important;
+}
+
+.mat-form-field-label {
+  color: var(--modal-font-color);
+}
+
+mat-icon {
+  cursor: pointer;
 }

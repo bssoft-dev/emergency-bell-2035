@@ -5,17 +5,19 @@
 }
 
 .mat-drawer-content {
-  overflow: hidden !important;
+  overflow-x: hidden !important;
+  background-color: var(--main-bg-color);
 }
 
 .example-sidenav {
   display: flex;
   width: 11.42%;
   overflow: hidden;
-  background: #fff;
+  background: var(--main-bg-color);
   height: auto;
   min-height: 100%;
   position: fixed;
+  border: transparent;
 
   text-align: center;
   vertical-align: middle;
@@ -27,28 +29,16 @@
 
 .example-header {
   height: 75px;
-  border-bottom: 1.5px solid #e5e5e5;
+  border-bottom: 1.5px solid var(--header-border-color);
+  background: var(--main-bg-color);
 }
 
-/* 사이드바 스타일 */
-mat-icon {
-  font-size: 1.2vw;
-
-  display: flex !important;
-  text-align: center;
-  vertical-align: middle;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+.mat-toolbar-single-row {
+  padding: 0 36px !important;
 }
 
-mat-nav-list {
-  margin: 20% 0 0 0;
-}
-
-mat-nav-list > a {
-  margin: 0 0 10% 0;
+app-header {
+  width: 100%;
 }
 
 app-sidefooter {
@@ -56,21 +46,7 @@ app-sidefooter {
   bottom: 0;
   left: 0;
   width: 11.42%;
-}
-
-.sidemenu {
-  width: 100%;
-  font-weight: 700 !important;
-  font-size: 0.7vw !important;
-  color: #61676b;
-
-  display: flex !important;
-  text-align: center;
-  vertical-align: middle;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  /* vertical-align: bottom; */
 }
 
 /*  */

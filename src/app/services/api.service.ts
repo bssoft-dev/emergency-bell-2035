@@ -300,6 +300,7 @@ export class ApiService {
     const headers = new HttpHeaders({
       accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
     });
     return this.http.post(`${this.apiUrl}` + 'auth/register', data, {
       headers,
@@ -329,7 +330,7 @@ export class ApiService {
       { headers }
     );
   }
-  
+
   modifyoneuser(data: any): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',

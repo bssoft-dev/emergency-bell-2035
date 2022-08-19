@@ -13,7 +13,7 @@ mat-form-field {
 }
 
 .mdi:hover {
-  color: #438ffe;
+  color: var(--bell-bg-color);
 }
 
 .tblth {
@@ -22,7 +22,7 @@ mat-form-field {
   align-items: center;
   width: 100%;
   height: 40px;
-  background-color: #438ffe;
+  background-color: var(--bell-bg-color);
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
 }
@@ -72,4 +72,19 @@ form {
 
 .togglecontroller {
   text-align: right;
+}
+
+.tnhhable {
+  background-color: var(--grid-bg-color);
+}
+
+.tnhhable :nth-child(2n) {
+  background: var(--table-bg-color);
+}
+.tblth :nth-child(2n) {
+  background-color: transparent;
+}
+
+.tbltd :nth-child(2n) {
+  background-color: transparent;
 }

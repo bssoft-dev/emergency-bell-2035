@@ -4,7 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-alldetection',
   templateUrl: './alldetection.component.html',
-  styleUrls: ['./alldetection.component.css'],
+  styleUrls: ['./alldetection.component.css', '../container.component.css'],
 })
 export class AlldetectionComponent implements OnInit {
   constructor(private service: ApiService) {}

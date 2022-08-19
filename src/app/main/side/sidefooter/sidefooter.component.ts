@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-sidefooter',
   templateUrl: './sidefooter.component.html',
-  styleUrls: ['../../main.component.css'],
+  styleUrls: ['../side.component.css'],
 })
 export class SidefooterComponent implements OnInit {
   constructor(public router: Router, public dialog: MatDialog) {}
