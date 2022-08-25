@@ -18,8 +18,12 @@ import '../../../../assets/amchart/light.js';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  public modal: boolean = false;
-  customerCode: any;
+  customerCode = '';
+
+  // test code
+  setSituation() {
+    localStorage.setItem('situation', JSON.stringify(true));
+  }
 
   // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
   // /api/detections/{deviceId}
@@ -27,13 +31,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   socketdevicesdata = {};
   socketgraphdata = {};
   socketrecentdata = [];
-  popupdata: string = '';
 
   constructor(
     public router: Router,
     private service: ApiService,
     private WebsocketService: WebsocketService
-  ) {}
+  ) {
+    localStorage.setItem('situation', JSON.stringify(false));
+  }
 
   ngOnInit() {
     this.Starting();
@@ -46,18 +51,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.socketdevicesdata = {};
     this.socketgraphdata = {};
     this.socketrecentdata = [];
-    this.popupdata = '';
-  }
-
-  checktoken = () => {
-    if (!sessionStorage.getItem('token')) {
-      this.router.navigate(['/login']);
-    }
-  };
-
-  closepopupmodal() {
-    this.modal = false;
-    this.popupdata = '';
   }
 
   initrequest(res) {
@@ -76,7 +69,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         error: (err) => {
           reject(new Error(err));
         },
-        complete: () => {},
       });
     });
   }
@@ -87,7 +79,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.getcustomermapdata = res;
       },
       error: (err) => {},
-      complete: () => {},
     });
   }
 
@@ -99,10 +90,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.socketgraphdata = msg.graph?.content;
         this.makechart('succeed', this.socketgraphdata);
       } else if (msg['title'] === 'event') {
-        this.popupdata = msg['popupEvent']['content'];
+        localStorage.setItem('popupdata', msg['popupEvent']['content']);
         this.socketrecentdata = msg['recentEvent']['content'];
         // this.socketgraphdata = msg['graph']['content'];
-        this.modal = true;
+        localStorage.setItem('situation', JSON.stringify(true));
       } else {
         this.socketdevicesdata = msg['content'];
       }
@@ -117,7 +108,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   async Starting() {
-    await this.checktoken();
     const getCurrentuser = await this.getcurrentuser();
     this.getcustomermap(getCurrentuser['customerCode']);
     this.getWebsocketdata();

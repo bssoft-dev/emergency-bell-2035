@@ -6,6 +6,7 @@
 
 .mat-drawer-content {
   overflow-x: hidden !important;
+  overflow-y: scroll !important;
   background-color: var(--main-bg-color);
 }
 

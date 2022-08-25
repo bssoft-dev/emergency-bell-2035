@@ -34,7 +34,7 @@ div #inner-grid .subheading {
   box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
   border-radius: 10px 0px 0px 0px;
   width: 20vw;
-  color: #ffffff;
+  /* color: #ffffff; */
 
   border-bottom: 2px solid rgba(28, 32, 114, 0.38);
   border-right: 2px solid rgba(28, 32, 114, 0.38);

@@ -1,63 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-/* 다크모드 */
-:root,
-:root.light {
-  /* main.component */
-  --main-bg-color: #ffffff;
-  --header-border-color: #e5e5e5;
-
-  /* container > dashoard */
-  --grid-bg-color: #e5e5e5;
-  /* container > dashboard > allstatus */
-  --MainBell-bg-color: var(--bell-bg-color);
-  --bell-bg-color: #438ffe;
-
-  --table-bg-color: #f5f7f9;
-
-  /* modal */
-  --modal-bg-color: #ffffff;
-
-  /* side > profile */
+:root {
   --profile-font-color: #000000;
-
-  /* side > sidebar */
   --sidebar-font-color: #61676b;
-
-  /* modal */
-  --modal-font-color: #000000;
-  --input-bg-color: #f5f7f9;
+  --MainBell-bg-color: #438ffe;
+  --main-bg-color: #ffffff;
+  --grid-bg-color: #e5e5e5;
+  --modal-bg-color: #ffffff;
+  --table-bg-color: #f5f7f9;
+  --bell-bg-color: #f5f7f9;
+  --tablehead-bg-color: #438ffe;
+  --header-border-color: #e5e5e5;
   --unmodifiable-bg-color: #e5e5e5;
+  --input-bg-color: #f5f7f9;
+  --bgmode-bg-image: #438ffe;
 }
-:root.dark {
-  /* main component */
-  --main-bg-color: #121619;
-  --header-border-color: #606264;
-
-  /* container > dashoard */
-  --grid-bg-color: #282b30;
-  /* container > dashboard > allstatus */
-  --MainBell-bg-color: #1c2072;
-  --bell-bg-color: #5156be;
-
-  --table-bg-color: #424549;
-
-  /* modal */
-  --modal-bg-color: #282b30;
-
-  /* side > profile */
+.darkmode {
   --profile-font-color: #ffffff;
-
-  /* side > sidebar */
   --sidebar-font-color: #ffffff;
-
-  /* modal */
-  --modal-font-color: #ffffff;
-  --input-bg-color: #969494;
+  --MainBell-bg-color: #1c2072;
+  --main-bg-color: #121619;
+  --grid-bg-color: #282b30;
+  --modal-bg-color: #282b30;
+  --table-bg-color: #424549;
+  --bell-bg-color: #5156be;
+  --tablehead-bg-color: #5156be;
+  --header-border-color: #606264;
   --unmodifiable-bg-color: #61676b;
+  --input-bg-color: #969494;
+  --bgmode-bg-image: #ffffff;
 }
+/* :root.light {
+  --profile-font-color: #000000;
+  --sidebar-font-color: #61676b;
+  --profile-font-color: #000000;
+  --MainBell-bg-color: #438ffe;
+  --main-bg-color: #ffffff;
+  --grid-bg-color: #e5e5e5;
+  --modal-bg-color: #ffffff;
+  --table-bg-color: #f5f7f9;
+  --bell-bg-color: #f5f7f9;
+  --tablehead-bg-color: #438ffe;
+  --header-border-color: #e5e5e5;
+  --unmodifiable-bg-color: #e5e5e5;
+  --input-bg-color: #f5f7f9;
+} */
 
 /*  */
 
@@ -71,7 +61,6 @@ body {
 
 body {
   overflow-x: hidden;
-  overflow-y: scroll;
   box-shadow: none;
   font-weight: 400;
 
@@ -178,9 +167,33 @@ mat-form-field button mat-icon {
 }
 
 .mat-form-field-label {
-  color: var(--modal-font-color);
+  color: var(--profile-font-color);
 }
 
 mat-icon {
   cursor: pointer;
+}
+
+.mat-tab-label,
+.mat-tab-link {
+  color: var(--profile-font-color) !important;
+}
+
+/* toggle */
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: var(--tablehead-bg-color) !important;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba(148, 168, 255, 0.54) !important;
+}
+
+.mat-simple-snackbar-action {
+  color: var(--tablehead-bg-color) !important;
+}
+
+.mat-snack-bar-container {
+  color: var(--main-bg-color);
+  background: var(--sidebar-font-color);
+  box-shadow: 0px 3px 5px -1pxrgba (0, 0, 0, 0.2),
+    0px 6px 10px 0pxrgba (0, 0, 0, 0.14), 0px 1px 18px;
 }

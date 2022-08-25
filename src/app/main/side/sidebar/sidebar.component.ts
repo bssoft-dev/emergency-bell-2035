@@ -21,9 +21,7 @@ export class SidebarComponent {
   constructor() {}
 
   onSelect(side: Sidebar): void {
-    this.selectedSide = side;
-    console.log(side.menu);
+    // this.selectedSide = side;
+    // console.log(side.menu);
   }
-
-  ngOnInit(): void {}
 }

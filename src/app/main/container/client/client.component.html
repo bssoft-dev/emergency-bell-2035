@@ -1,7 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-            <button mat-raised-button class="font" (click)="clickedaddModal()"><mat-icon>add</mat-icon>고객사 등록</button>
+            <button mat-raised-button  (click)="clickedaddModal()"><mat-icon>add</mat-icon>고객사 등록</button>
         </div>
 
         <div>
@@ -19,7 +19,7 @@
             </div>
 
             <div class="unit tnhhable">
-                <div id="unitDiv" *ngFor="let customers of getcustomersdata; let index = index">
+                <div id="unitDiv" *ngFor="let customers of dataList; let index = index">
                     <div>{{customers.customerName}}</div>
                     <div>{{customers.staffName}}</div>
                     <div>{{customers.phone}}</div>
@@ -50,10 +50,10 @@
                     </div>
                     <div>
                         <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)"></button>
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(customers)"></button>
                         </div>
                         <div>
-                            <button class="mdi mdi-delete imgbutton" (click)="deleteonecustomer(index)">
+                            <button class="mdi mdi-delete imgbutton" (click)="deleteonecustomer(customers)">
                             </button>
                         </div>
                     </div>

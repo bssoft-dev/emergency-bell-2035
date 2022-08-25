@@ -1,11 +1,37 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import {
+  Component,
+  OnInit,
+  Inject,
+  ElementRef,
+  Input,
+  OnDestroy,
+  Optional,
+  Self,
+  ViewChild,
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ControlValueAccessor,
+  FormBuilder,
+  NgControl,
+} from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import {
+  MAT_FORM_FIELD,
+  MatFormField,
+  MatFormFieldControl,
+} from '@angular/material/form-field';
+import { Subject } from 'rxjs';
 
 export interface DialogData {
   token: string;
@@ -22,6 +48,10 @@ export class UserComponent implements OnInit {
   manangerDisabled: boolean; // 관리자권한 제어
 
   constructor(private service: ApiService, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.dataList();
+  }
 
   datalist = []; // 사용자데이터
   dataList() {
@@ -108,10 +138,6 @@ export class UserComponent implements OnInit {
     temp.push(index.username);
     temp.push(jsontemp);
     this.service.usersupergrant(temp).subscribe({});
-  }
-
-  ngOnInit(): void {
-    this.dataList();
   }
 }
 

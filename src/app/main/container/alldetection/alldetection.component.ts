@@ -9,37 +9,23 @@ import { ApiService } from 'src/app/services/api.service';
 export class AlldetectionComponent implements OnInit {
   constructor(private service: ApiService) {}
 
-  getcurrentuserdata = [];
-  getcurrentuser() {
-    const token = sessionStorage.getItem('token');
-    return new Promise((resolve, reject) => {
-      this.service.getcurrentuser(token).subscribe({
-        next: (res) => {
-          resolve(res);
-        },
-        error: (err) => {
-          reject(new Error(err));
-        },
-        complete: () => {},
-      });
-    });
-  }
-
-  alldetectiondata = [];
-  alldetection(res) {
-    const customer_code = res.customerCode;
-    this.service.alldetection(customer_code).subscribe({
-      next: (res) => {
-        this.alldetectiondata.push(res);
-      },
-      error: (err) => {},
-      complete: () => {},
-    });
-  }
-
   ngOnInit(): void {
-    this.getcurrentuser().then((res) => {
-      this.alldetection(res);
+    this.dataList();
+  }
+
+  datalist = []; // 사용자데이터
+  dataList() {
+    return new Promise(() => {
+      this.service.getcurrentuser(sessionStorage.getItem('token')).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.service.alldetection(res.customerCode).subscribe({
+            next: (res) => {
+              this.datalist.push(res);
+            },
+          });
+        },
+      });
     });
   }
 }

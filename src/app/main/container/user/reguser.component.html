@@ -4,21 +4,21 @@
 
     <form class="container" [formGroup]="form" (ngSubmit)="formSubmit()" novalidate>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="unmodifiable" appearance="fill">
             <mat-label>아이디</mat-label>
             <input readonly matInput formControlName="username">
-            <mat-hint>수정불가능</mat-hint>
+            <mat-hint class="noticeCheck">수정불가능</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>이름</mat-label>
-            <input matInput placeholder="홍길동" formControlName="name">
+            <input matInput placeholder="OOO" formControlName="name">
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field class="unmodifiable" appearance="fill">
             <mat-label>고객사명</mat-label>
             <input readonly matInput formControlName="customerName">
-            <mat-hint>수정불가능</mat-hint>
+            <mat-hint class="noticeCheck">수정불가능</mat-hint>
         </mat-form-field>  
 
         <mat-form-field appearance="fill">
@@ -29,7 +29,7 @@
         <mat-form-field appearance="fill">
             <mat-label>이메일</mat-label>
             <input matInput placeholder="01012345678" formControlName="email">
-            <mat-hint>비밀번호 분실시 이용됩니다</mat-hint>
+            <mat-hint class="noticeCheck">비밀번호 분실시 이용됩니다</mat-hint>
         </mat-form-field> 
 
         <div formGroupName="passwordGroup">
@@ -48,7 +48,8 @@
                     <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}
                     </mat-icon>
-                <mat-hint [hidden]="!form.hasError('equal','passwordGroup')">패스워드가 다릅니다</mat-hint>
+                    <mat-hint class="falseCheck" [hidden]="!form.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다</mat-hint>
+                    <mat-hint *ngIf="" class="trueeCheck" [hidden]="form.hasError('equal','passwordGroup')">패스워드가 일치합니다</mat-hint>    
             </mat-form-field>
         
         </div>

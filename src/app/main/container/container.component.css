@@ -17,7 +17,7 @@
 }
 
 .mdi:hover {
-  color: var(--bell-bg-color);
+  color: var(--tablehead-bg-color);
 }
 
 /* 이미지박스 */
@@ -86,7 +86,7 @@
   line-height: 20px;
 
   color: #ffffff;
-  background-color: var(--bell-bg-color);
+  background-color: var(--tablehead-bg-color);
   border-radius: 10px 10px 0px 0px;
 }
 
@@ -138,3 +138,5 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
+
+

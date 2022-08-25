@@ -1,7 +1,7 @@
 <div id="outer-grid">
     <div class="font">
         <div style="text-align: right;">
-            <button mat-raised-button class="font" (click)="clickedaddModal()"><mat-icon>add</mat-icon>기기 등록</button>
+            <button mat-raised-button  (click)="clickedaddModal()"><mat-icon>add</mat-icon>기기 등록</button>
         </div>
 
         <!-- 
@@ -27,15 +27,15 @@
                     수직 가운데 정렬
             -->
             <div class="unit tnhhable">
-                <div id="unitDiv" *ngFor="let devicedata of getalldevicesdata; let index = index">
-                    <div><img (click)="pictureopen(index)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
+                <div id="unitDiv" *ngFor="let devicedata of datalist; let index = index">
+                    <div><img (click)="pictureopen(devicedata)" class="smallimg" *ngIf="devicedata.picture?.length >0" [src]="devicedata.picture"></div>
                     <div>{{devicedata.model}}</div>
                     <div>{{devicedata.name}}</div>
                     <div>{{devicedata.location}}</div>
                     <div>{{devicedata.installDate}}</div>
                     <div>{{devicedata.communicateMethod}}</div>
                     <div>
-                        <mat-slide-toggle [(ngModel)]="devicedata.inspection" (change)="chkinspection(index)"></mat-slide-toggle>
+                        <mat-slide-toggle [(ngModel)]="devicedata.inspection" (change)="chkinspection(devicedata)"></mat-slide-toggle>
                     </div>
                     <div>
                         {{devicedata.userMemo}}
@@ -43,11 +43,11 @@
                     <div>
 
                         <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(index)">
+                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(devicedata)">
                             </button>
                         </div>
                         <div>
-                            <button class="mdi mdi-delete imgbutton" (click)="deleteonedevice(index)">
+                            <button class="mdi mdi-delete imgbutton" (click)="deleteonedevice(devicedata)">
                             </button>
                         </div>
                     </div>

@@ -8,10 +8,7 @@ import {
 } from '@angular/material/dialog';
 
 export interface DialogData {
-  token: string;
-  customer_code: string;
-  getcustomersdata: [];
-  cnt: number;
+  customers: string;
 }
 
 @Component({
@@ -25,100 +22,71 @@ export class ClientComponent implements OnInit {
 
   constructor(private service: ApiService, public dialog: MatDialog) {}
 
-  // 사용자 체크
-  currentusercheckdata = [];
-  currentusercheck() {
-    return new Promise((resolve, reject) => {
+  ngOnInit(): void {
+    this.dataList();
+  }
+
+  // 사용자데이터
+  datalist = [];
+  dataList() {
+    return new Promise(() => {
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          this.customer_code = res.customerCode;
-          resolve(res);
+          const temp = [res.token, res.customerCode];
+          this.service.getallcustomers(temp).subscribe({
+            next: (res) => {
+              this.datalist = res;
+            },
+          });
         },
-        error: (err) => {
-          reject(new Error(err));
-        },
-        complete: () => {},
       });
     });
   }
 
-  // 데이터 불러오기
-  getcustomersdata = [];
-  initgetcustomers() {
-    const temp = [this.token, this.customer_code];
-    this.getcustomersdata = [];
-    this.service.getallcustomers(temp).subscribe({
-      next: (res) => {
-        this.getcustomersdata = res;
-      },
-      error: (err) => {},
-      complete: () => {},
-    });
-  }
-
-  //등록 팝업
+  //등록
   clickedaddModal() {
     const dialogRef = this.dialog.open(AddclientComponent, {
       width: '750px',
       height: '1100px',
-      data: {
-        token: this.token,
-        customer_code: this.customer_code,
-      },
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.currentusercheck().then((res) => {
-        this.initgetcustomers();
-      });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataList();
     });
   }
 
-  ngOnInit() {
-    this.currentusercheck().then((res) => {
-      this.initgetcustomers();
-    });
-  }
-
-  // 수정 팝업
-  clickedregModal(index) {
+  // 수정
+  clickedregModal(customers) {
     const dialogRef = this.dialog.open(ResclientComponent, {
       width: '750px',
       height: '1100px',
       data: {
-        token: this.token,
-        customer_code: this.customer_code,
-        getcustomersdata: this.getcustomersdata,
-        cnt: index,
+        customers: customers,
       },
     });
-    dialogRef.afterClosed().subscribe((result) => {
-      this.initgetcustomers();
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataList();
     });
   }
 
   // 삭제
-  deleteonecustomer(index) {
+  deleteonecustomer(customers) {
     const returnValue = confirm(
-      this.getcustomersdata[index]['customerName'] +
-        ' 고객사를 삭제 하시겠습니까?'
+      customers['customerName'] + ' 고객사를 삭제 하시겠습니까?'
     );
     if (returnValue) {
-      this.service
-        .deleteonecustomer(this.getcustomersdata[index]['customerCode'])
-        .subscribe({
-          next: (res) => {
-            this.initgetcustomers();
-          },
-          error: (err) => {
-            alert('서버 에러');
-          },
-          complete: () => {},
-        });
+      this.service.deleteonecustomer(customers['customerCode']).subscribe({
+        next: (res) => {
+          this.dataList();
+        },
+        error: (err) => {
+          alert('서버 에러');
+        },
+      });
     }
   }
 }
 
-// 등록 기능
+// 등록기능
 @Component({
   selector: 'app-addclient',
   templateUrl: 'addclient.component.html',
@@ -128,19 +96,15 @@ export class AddclientComponent implements OnInit {
   fileSelected?: Blob;
   imageSrc: string;
   mapSrc: string;
-  token = this.data.token;
-  customer_code = this.data.customer_code;
-
-  registerclientForm: FormGroup;
+  Form: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<AddclientComponent>,
-    private service: ApiService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    private service: ApiService
   ) {}
 
-  ngOnInit() {
-    this.registerclientForm = new FormGroup({
+  ngOnInit(): void {
+    this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
       phone: new FormControl('', [Validators.required]),
@@ -151,19 +115,20 @@ export class AddclientComponent implements OnInit {
     });
   }
 
-  registeronecustomer() {
-    const data = this.registerclientForm.value;
+  // 등록
+  formSubmit() {
+    const data = this.Form.value;
     if (data['logo'].length < 1) {
       data['logo'] = 'http://api-2207.bs-soft.co.kr/api/images/person-fill.svg';
     }
     if (data['map'].length < 1) {
       data['map'] = 'http://api-2207.bs-soft.co.kr/api/images/map.png';
     }
-    if (this.registerclientForm.valid) {
+    if (this.Form.valid) {
       this.service.registeronecustomer(data).subscribe({
         next: (res) => {
           alert('고객사 등록이 완료되었습니다');
-          this.registerclientForm.reset();
+          this.Form.reset();
         },
         error: (err) => {
           alert('정보를 잘못 입력하셨습니다');
@@ -174,7 +139,7 @@ export class AddclientComponent implements OnInit {
   }
 
   // 이미지 업로드
-  onFileChange(event, index): void {
+  onFileChange(event, index) {
     this.fileSelected = event.target.files[0];
     const formData = new FormData();
     formData.append('file', this.fileSelected);
@@ -183,12 +148,12 @@ export class AddclientComponent implements OnInit {
       next: (res) => {
         if (index === 1) {
           this.imageSrc = res.url;
-          this.registerclientForm.patchValue({
+          this.Form.patchValue({
             logo: this.imageSrc,
           });
         } else {
           this.mapSrc = res.url;
-          this.registerclientForm.patchValue({
+          this.Form.patchValue({
             map: this.mapSrc,
           });
         }
@@ -196,7 +161,6 @@ export class AddclientComponent implements OnInit {
       error: (err) => {
         alert('서버 에러메세지');
       },
-      complete: () => {},
     });
   }
 
@@ -214,12 +178,9 @@ export class ResclientComponent implements OnInit {
   fileSelected?: Blob;
   imageSrc: string;
   mapSrc: string;
-  token = this.data.token;
-  customer_code = this.data.customer_code;
-  getcustomersdata = this.data.getcustomersdata;
-  cnt = this.data.cnt;
+  Form: FormGroup;
 
-  modifyclientForm: FormGroup;
+  customers = this.data.customers;
 
   constructor(
     public dialogRef: MatDialogRef<AddclientComponent>,
@@ -227,8 +188,8 @@ export class ResclientComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
-  ngOnInit() {
-    this.modifyclientForm = new FormGroup({
+  ngOnInit(): void {
+    this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
       phone: new FormControl('', [Validators.required]),
@@ -237,23 +198,21 @@ export class ResclientComponent implements OnInit {
       logo: new FormControl(''),
       map: new FormControl(''),
     });
-    this.getOnecustomers();
+    this.getOneUser();
   }
 
   // 정보 불러옴
-  getonecustomerdata = [];
-  getOnecustomers() {
-    this.getonecustomerdata.push(this.getcustomersdata[this.cnt]);
-    this.imageSrc = this.getonecustomerdata[0]['logo'];
-    this.mapSrc = this.getonecustomerdata[0]['map'];
-    this.modifyclientForm.patchValue({
-      customerName: this.getonecustomerdata[0]['customerName'],
-      staffName: this.getonecustomerdata[0]['staffName'],
-      phone: this.getonecustomerdata[0]['phone'],
-      status: this.getonecustomerdata[0]['status'],
-      payMethod: this.getonecustomerdata[0]['payMethod'],
-      logo: this.getonecustomerdata[0]['logo'],
-      map: this.getonecustomerdata[0]['map'],
+  getOneUser() {
+    // this.imageSrc = this.customers['logo'];
+    // this.mapSrc = this.customers['map'];
+    this.Form.patchValue({
+      customerName: this.customers['customerName'],
+      staffName: this.customers['staffName'],
+      phone: this.customers['phone'],
+      status: this.customers['status'],
+      payMethod: this.customers['payMethod'],
+      logo: this.customers['logo'],
+      map: this.customers['map'],
     });
   }
 
@@ -267,12 +226,12 @@ export class ResclientComponent implements OnInit {
       next: (res) => {
         if (index === 1) {
           this.imageSrc = res.url;
-          this.modifyclientForm.patchValue({
+          this.Form.patchValue({
             logo: this.imageSrc,
           });
         } else {
           this.mapSrc = res.url;
-          this.modifyclientForm.patchValue({
+          this.Form.patchValue({
             map: this.mapSrc,
           });
         }
@@ -280,28 +239,25 @@ export class ResclientComponent implements OnInit {
       error: (err) => {
         alert('서버 에러메세지');
       },
-      complete: () => {},
     });
   }
 
-  modifyonecustomer() {
-    const temp = [];
-    temp.push(this.getonecustomerdata[0]['customerCode']);
-    const data = this.modifyclientForm.value;
-    temp.push(data);
-    if (this.modifyclientForm.valid) {
+  // 수정
+  formSubmit() {
+    const temp = [this.customers['customerCode'], this.Form.value];
+    if (this.Form.valid) {
       this.service.modifyonecustomer(temp).subscribe({
         next: (res) => {
           alert('고객사 수정이 완료되었습니다');
-          this.modifyclientForm.reset();
+          this.Form.reset();
         },
         error: (err) => {
           alert('정보를 잘못 입력하셨습니다');
         },
-        complete: () => {},
       });
     }
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

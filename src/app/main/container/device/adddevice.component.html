@@ -2,7 +2,7 @@
 
     <h2 class="font">기기등록</h2>
 
-    <form class="container" [formGroup]="deviceenrollForm" (ngSubmit)="deviceenroll()" novalidate>
+    <form class="container" [formGroup]="Form" (ngSubmit)="deviceenroll()" novalidate>
 
         <div class="flexbox">
             <div class="imgdiv">
@@ -72,7 +72,7 @@
         </mat-form-field>
 
         <div class="modal_footer">
-            <button mat-flat-button type="submit" color="primary" [disabled]="!deviceenrollForm.valid" [mat-dialog-close]="" cdkFocusInitial>등록</button>
+            <button mat-flat-button type="submit" color="primary" [disabled]="!Form.valid" [mat-dialog-close]="" cdkFocusInitial>등록</button>
         </div>
     </form>
     <button mat-stroked-button color="primary" class="backbtn" (click)="onNoClick()">돌아가기</button>

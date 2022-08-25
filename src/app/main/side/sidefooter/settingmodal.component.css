@@ -1,3 +1,7 @@
+.mat-tab-label .mat-tab-label-content {
+  color: var(--profile-font-color) !important;
+}
+
 mat-form-field {
   margin: 3%;
 }
@@ -10,10 +14,11 @@ mat-form-field {
 .mdi {
   font-size: 34px;
   cursor: pointer;
+  color: var(--profile-font-color);
 }
 
 .mdi:hover {
-  color: var(--bell-bg-color);
+  color: var(--tablehead-bg-color);
 }
 
 .tblth {
@@ -22,7 +27,7 @@ mat-form-field {
   align-items: center;
   width: 100%;
   height: 40px;
-  background-color: var(--bell-bg-color);
+  background-color: var(--tablehead-bg-color);
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
 }
@@ -45,6 +50,7 @@ mat-form-field {
 .td {
   width: 100%;
   font-size: 11px;
+  color: var(--profile-font-color);
 }
 
 .backbtn {

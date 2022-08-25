@@ -8,7 +8,8 @@
         </div>
     </div>
         <div class="unit tnhhable">
-            <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index">
+            <!-- <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index"> -->
+                <div *ngFor="let i of socketrecentdata; let index = index">
                     <div>{{i.time}}</div>
                     <div>{{i.location}}</div>
                     <div>{{i.type}}</div>

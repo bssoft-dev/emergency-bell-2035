@@ -64,6 +64,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.component';
 import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -148,6 +149,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatListModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [ApiService, WebsocketService],
   bootstrap: [AppComponent],

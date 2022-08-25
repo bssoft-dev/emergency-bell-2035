@@ -12,7 +12,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>이름</mat-label>
-            <input matInput placeholder="홍길동" formControlName="name">
+            <input matInput placeholder="OOO" formControlName="name">
         </mat-form-field>  
 
         <mat-form-field appearance="fill">
@@ -40,7 +40,9 @@
                 (click)="passwordconfirmhide = !passwordconfirmhide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="passwordconfirmhide">{{passwordconfirmhide ? 'visibility_off' : 'visibility'}}
                 </mat-icon>
-                <mat-hint [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">수정불가능</mat-hint>
+                <mat-hint class="falseCheck" [hidden]="!modifyuserForm.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다</mat-hint>
+                <mat-hint *ngIf="" class="trueeCheck" [hidden]="form.hasError('equal','passwordGroup')">패스워드가 일치합니다</mat-hint>
+                
             </mat-form-field>
         
         </div>

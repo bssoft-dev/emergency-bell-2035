@@ -17,3 +17,7 @@
 }
 
 /* 토글 */
+mat-icon {
+  /* font-size: 12px; */
+  color: var(--bgmode-bg-image);
+}

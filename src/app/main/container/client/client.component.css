@@ -40,3 +40,12 @@ ul li label input[type="checkbox"]:checked ~ i.fa {
 .unit > div {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
+
+/* modal */
+mat-form-field {
+  padding: 15px 0;
+}
+
+.mdi:hover {
+  color: #ffffff !important;
+}
