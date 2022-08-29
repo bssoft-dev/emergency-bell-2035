@@ -116,7 +116,7 @@ export class AddclientComponent implements OnInit {
   }
 
   // 등록
-  formSubmit() {
+  FormSudmit() {
     const data = this.Form.value;
     if (data['logo'].length < 1) {
       data['logo'] = 'http://api-2207.bs-soft.co.kr/api/images/person-fill.svg';
@@ -243,7 +243,7 @@ export class ResclientComponent implements OnInit {
   }
 
   // 수정
-  formSubmit() {
+  FormSudmit() {
     const temp = [this.customers['customerCode'], this.Form.value];
     if (this.Form.valid) {
       this.service.modifyonecustomer(temp).subscribe({

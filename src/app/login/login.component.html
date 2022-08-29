@@ -1,7 +1,7 @@
 <div class="full-page-wrapper page-body-wrapper contain">
   <div>
     <p class="title">스마트 비상벨 관제시스템</p>
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+    <form [formGroup]="Form" (ngSubmit)="login()" novalidate>
       <div class="inputDiv">
         <i class="mdi mdi-bell-outline icon"></i>
         <input class="underline" type="text" placeholder="ID" formControlName="username" tabindex="1" />

@@ -1,3 +1,7 @@
+.profileDiv {
+  /* margin: 50px 0; */
+}
+
 .profileimg {
   height: 80%;
   width: 80%;
@@ -6,7 +10,7 @@
   border: 3px solid var(--tablehead-bg-color);
   border-radius: 50%;
 
-  margin: 50px 0px 20px 0px;
+  margin-bottom: 20px;
 }
 
 .profilename {
@@ -15,7 +19,7 @@
 
   color: var(--profile-font-color);
 
-  margin: 0px 0px 4px 0px;
+  margin-bottom: 4px;
 }
 
 .modifyprofile {

@@ -1,5 +1,10 @@
 /* 구역 나누기 */
-.example-container {
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
   width: 100%;
   height: 100%;
 }
@@ -10,8 +15,40 @@
   background-color: var(--main-bg-color);
 }
 
-.example-sidenav {
+.side_menu {
   display: flex;
+  flex-flow: column wrap;
+  justify-content: space-betwwen;
+  /* min-height: 100vh; */
+  padding: 20px;
+
+  width: 11.42%;
+  overflow: hidden;
+  background: var(--main-bg-color);
+  position: fixed;
+  border: transparent;
+
+  text-align: center;
+  vertical-align: middle;
+  justify-items: center;
+  /* justify-content: center; */
+  align-items: center;
+  align-content: center;
+}
+.side_menu .side_menu_head {
+}
+.side_menu .side_menu_bottom {
+  /* flex-grow: 1; */
+  /* padding-top: 170%; */
+}
+
+.gnb {
+  padding: 20% 0;
+}
+
+/* 부모 */
+.example-sidenav {
+  /* display: flex; */
   width: 11.42%;
   overflow: hidden;
   background: var(--main-bg-color);
@@ -19,6 +56,7 @@
   min-height: 100%;
   position: fixed;
   border: transparent;
+  padding: 20px;
 
   text-align: center;
   vertical-align: middle;
@@ -28,33 +66,153 @@
   align-content: center;
 }
 
+/* 자식 */
+.sidefooter {
+  position: absolute;
+  top: 100%;
+  /* bottom: 0%; */
+  left: 0;
+  width: 100%;
+  /* bottom: auto; */
+  /* vertical-align: bottom; */
+  /* margin-bottom: auto; */
+}
+
 .example-header {
   height: 75px;
   border-bottom: 1.5px solid var(--header-border-color);
   background: var(--main-bg-color);
-}
-
-.mat-toolbar-single-row {
-  padding: 0 36px !important;
+  padding: 0 20px;
 }
 
 app-header {
   width: 100%;
 }
 
-app-sidefooter {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 11.42%;
-  /* vertical-align: bottom; */
+.smallSide {
+  display: none;
 }
 
 /*  */
 @media (max-width: 1500px) {
   .example-sidenav {
     display: none;
+  }
 
-    width: 0;
+  .smallSide {
+    display: block;
+  }
+
+  input[id="menuicon"] {
+    display: none;
+    position: absolute;
+  }
+  input[id="menuicon"] + ul {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.35s;
+    text-align: left;
+    z-index: 2;
+  }
+  input[id="menuicon"] + ul > li {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #f1f1f1;
+    position: relative;
+    margin-top: -1px;
+  }
+  input[id="menuicon"] + ul > li > a {
+    display: block;
+    width: auto;
+    height: 50px;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+  input[id="menuicon"] + ul > li > label {
+    display: block;
+    cursor: pointer;
+    width: auto;
+    height: 50px;
+    background: #dadada;
+  }
+  input[id="menuicon"] + ul > li:nth-child(1) label span {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    border-radius: 30px;
+    background: #333;
+    transition: all 0.35s;
+  }
+  input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  input[id="menuicon"] + ul > li:nth-child(2) a .icon {
+    background: url("./img/search.png") center center no-repeat;
+    background-size: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+  }
+  input[id="menuicon"] + ul > li:nth-child(3) a .icon {
+    background: url("./img/sand-clock.png") center center no-repeat;
+    background-size: 50%;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+  }
+  input[id="menuicon"]:checked + ul {
+    z-index: 2;
+    left: 200px;
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label {
+    z-index: 2;
+    left: 200px;
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(2) {
+    opacity: 0;
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(-45deg);
+  }
+  div[class="sidebar"] {
+    width: 200px;
+    padding: 40px 0 !important;
+    background: var(--smallSide-bg-color) !important;
+    position: fixed;
+    top: 50%;
+    left: -200px;
+    transform: translate(0, -50%);
+    transition: all 0.35s;
+    border-radius: 0 30px 30px 0;
+    z-index: 2;
+  }
+  input[id="menuicon"]:checked + ul + div {
+    left: 0;
   }
 }

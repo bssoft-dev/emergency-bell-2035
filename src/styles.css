@@ -5,7 +5,6 @@
 
 :root {
   --profile-font-color: #000000;
-  --sidebar-font-color: #61676b;
   --MainBell-bg-color: #438ffe;
   --main-bg-color: #ffffff;
   --grid-bg-color: #e5e5e5;
@@ -17,10 +16,10 @@
   --unmodifiable-bg-color: #e5e5e5;
   --input-bg-color: #f5f7f9;
   --bgmode-bg-image: #438ffe;
+  --smallSide-bg-color: rgba(67, 143, 254, 0.6);
 }
 .darkmode {
   --profile-font-color: #ffffff;
-  --sidebar-font-color: #ffffff;
   --MainBell-bg-color: #1c2072;
   --main-bg-color: #121619;
   --grid-bg-color: #282b30;
@@ -32,22 +31,8 @@
   --unmodifiable-bg-color: #61676b;
   --input-bg-color: #969494;
   --bgmode-bg-image: #ffffff;
+  --smallSide-bg-color: rgba(81, 86, 190, 0.6);
 }
-/* :root.light {
-  --profile-font-color: #000000;
-  --sidebar-font-color: #61676b;
-  --profile-font-color: #000000;
-  --MainBell-bg-color: #438ffe;
-  --main-bg-color: #ffffff;
-  --grid-bg-color: #e5e5e5;
-  --modal-bg-color: #ffffff;
-  --table-bg-color: #f5f7f9;
-  --bell-bg-color: #f5f7f9;
-  --tablehead-bg-color: #438ffe;
-  --header-border-color: #e5e5e5;
-  --unmodifiable-bg-color: #e5e5e5;
-  --input-bg-color: #f5f7f9;
-} */
 
 /*  */
 
@@ -74,7 +59,7 @@ body {
 
 #outer-grid {
   grid-gap: 1%;
-  margin: 1%;
+  /* margin: 1%; */
   background-color: var(--grid-bg-color);
   border-radius: 15px;
 
@@ -193,7 +178,13 @@ mat-icon {
 
 .mat-snack-bar-container {
   color: var(--main-bg-color);
-  background: var(--sidebar-font-color);
+  background: var(--profile-font-color);
   box-shadow: 0px 3px 5px -1pxrgba (0, 0, 0, 0.2),
     0px 6px 10px 0pxrgba (0, 0, 0, 0.14), 0px 1px 18px;
+}
+
+/* dashboard */
+.mat-grid-tile-content {
+  margin: 30px !important;
+  height: auto !important;
 }

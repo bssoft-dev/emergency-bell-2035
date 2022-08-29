@@ -1,37 +1,12 @@
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import {
-  Component,
-  OnInit,
-  Inject,
-  ElementRef,
-  Input,
-  OnDestroy,
-  Optional,
-  Self,
-  ViewChild,
-} from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  AbstractControl,
-  ControlValueAccessor,
-  FormBuilder,
-  NgControl,
-} from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import {
-  MAT_FORM_FIELD,
-  MatFormField,
-  MatFormFieldControl,
-} from '@angular/material/form-field';
-import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface DialogData {
   token: string;
@@ -113,19 +88,23 @@ export class UserComponent implements OnInit {
 
   // 삭제
   deletedata(index) {
-    const returnValue = confirm(
-      index['username'] + ' 회원을 삭제 하시겠습니까?'
-    );
-    if (returnValue) {
-      this.service.deleteoneuser(index['username']).subscribe({
-        next: (reg) => {
-          alert('삭제 완료');
-          this.dataList();
-        },
-        error: (err) => {
-          alert('삭제 실패');
-        },
-      });
+    if (index['username']) {
+      const returnValue = confirm(
+        index['username'] + ' 회원을 삭제 하시겠습니까?'
+      );
+      if (returnValue) {
+        this.service.deleteoneuser(index['username']).subscribe({
+          next: (reg) => {
+            alert('삭제 완료');
+            this.dataList();
+          },
+          error: (err) => {
+            alert('삭제 실패');
+          },
+        });
+      }
+    } else {
+      
     }
   }
 
@@ -151,7 +130,8 @@ export class AdduserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AdduserComponent>,
     private service: ApiService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private _snackBar: MatSnackBar
   ) {}
   hide = true; // 비밀번호 표시
   form: FormGroup;
@@ -162,6 +142,7 @@ export class AdduserComponent implements OnInit {
       username: new FormControl(null, [Validators.required]),
       name: new FormControl(''),
       customerName: new FormControl(null, [Validators.required]),
+      // customerName: new FormControl(''),
       phone: new FormControl(''),
       email: new FormControl(''),
       passwordGroup: new FormGroup(
@@ -217,7 +198,10 @@ export class AdduserComponent implements OnInit {
           }
         },
         error: (err) => {
-          alert('서버 에러');
+          this._snackBar.open('서버 에러', '닫기', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         complete: () => {},
       });
@@ -225,7 +209,7 @@ export class AdduserComponent implements OnInit {
   }
 
   // 등록
-  formSubmit() {
+  FormSudmit() {
     const data = this.form.value;
     data.password = data.passwordGroup.password;
     delete data.passwordGroup;
@@ -233,13 +217,19 @@ export class AdduserComponent implements OnInit {
       delete data.customerName;
       data.customerName = '';
     }
-    if (this.form.valid) {
+    if (this.form.valid && this.passIdMsg) {
       this.service.registeruser(data).subscribe({
         next: (reg) => {
-          alert('회원 등록 완료');
+          this._snackBar.open('등록이 완료되었습니다', '닫기', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         error: (err) => {
-          alert('권한 에러');
+          this._snackBar.open('등록권한이 없습니다', '닫기', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         complete: () => {},
       });
@@ -262,7 +252,8 @@ export class ReguserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ReguserComponent>,
     private service: ApiService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private _snackBar: MatSnackBar
   ) {}
   hide = true;
   index = this.data.index;
@@ -309,23 +300,32 @@ export class ReguserComponent implements OnInit {
   }
 
   // 수정
-  formSubmit() {
-    const jsontemp = {
-      username: this.form.value.username,
-      name: this.form.value.name,
-      customerName: this.form.value.customerName,
-      phone: this.form.value.phone,
-      email: this.form.value.email,
-      password: this.form.value.passwordGroup.password,
-    };
-    const data = [this.index['username'], jsontemp];
+  FormSudmit() {
+    // const jsontemp = {
+    //   username: this.form.value.username,
+    //   name: this.form.value.name,
+    //   customerName: this.form.value.customerName,
+    //   phone: this.form.value.phone,
+    //   email: this.form.value.email,
+    //   password: this.form.value.passwordGroup.password,
+    // };
+    const temp = this.form.value;
+    temp.password = temp.passwordGroup.password;
+    delete temp.passwordGroup;
+    const data = [temp['username'], temp];
     if (this.form.valid) {
       this.service.modifyoneuser(data).subscribe({
         next: (res) => {
-          alert('수정완료');
+          this._snackBar.open('수정이 완료되었습니다', '닫기', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         error: (err) => {
-          alert('수정 실패');
+          this._snackBar.open('서버 에러', '닫기', {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
         },
         complete: () => {},
       });

@@ -1,5 +1,5 @@
 <mat-nav-list>
-    <a mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+    <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
         <mat-icon>{{side.emt}}</mat-icon>
         <a class="font sidemenu">{{side.menu}}</a>
     </a>            

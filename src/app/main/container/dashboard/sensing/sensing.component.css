@@ -3,3 +3,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   display: grid;
 }
+
+.mat-table .cdk-table .mat-elevation-z8 {
+  width: 100%;
+}

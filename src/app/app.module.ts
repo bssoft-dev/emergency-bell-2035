@@ -8,6 +8,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { LoginComponent } from './login/login.component';
+import { forgotpasswordComponent } from './login/login.component';
 
 import { MainComponent } from './main/main.component';
 
@@ -66,6 +67,7 @@ import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.compone
 import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {
@@ -102,6 +104,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    forgotpasswordComponent,
     MainComponent,
     WebsocketComponent,
     SidebarComponent,

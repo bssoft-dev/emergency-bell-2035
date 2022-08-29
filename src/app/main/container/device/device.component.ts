@@ -298,7 +298,7 @@ export class RegdeviceComponent implements OnInit {
     });
   }
 
-  modifyonedevice() {
+  FormSudmit() {
     const temp = this.Form.value;
     const data = [this.devicedata['deviceId'], temp];
     console.log('temp : ', temp);

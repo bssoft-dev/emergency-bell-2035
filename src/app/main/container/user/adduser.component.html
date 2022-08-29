@@ -2,7 +2,7 @@
 
     <h2 class="font">회원등록</h2>
 
-    <form class="container" [formGroup]="form" (ngSubmit)="formSubmit()" novalidate>
+    <form class="container" [formGroup]="form" (ngSubmit)="FormSudmit()" novalidate>
         
         <mat-form-field appearance="fill">
             <mat-label>아이디</mat-label>
@@ -62,7 +62,7 @@
         
         </div>
         <div class="modal_footer">
-            <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid" [mat-dialog-close]="" cdkFocusInitial>회원등록</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid || !passIdMsg" [mat-dialog-close]="" cdkFocusInitial>회원등록</button>
         </div>
     </form>
 

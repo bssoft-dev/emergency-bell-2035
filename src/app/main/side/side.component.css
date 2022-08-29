@@ -1,6 +1,6 @@
 mat-icon {
   font-size: 2vw;
-  color: var(--sidebar-font-color);
+  color: var(--profile-font-color);
 
   display: flex !important;
   text-align: center;
@@ -11,12 +11,8 @@ mat-icon {
   align-content: center;
 }
 
-mat-nav-list {
-  margin: 20% 0 0 0;
-}
-
 mat-nav-list > a {
-  margin: 0 0 10% 0;
+  margin: 20% 0;
 }
 
 mat-nav-list > a:hover {
@@ -31,17 +27,30 @@ mat-nav-list > a:focus {
   background-color: transparent;
 }
 
+.mat-list-base {
+  padding: 0 !important;
+}
+
+.mat-list-item-content {
+  padding: 0 !important;
+}
+
+.mat-list-base .mat-list-item
+/* .mat-list-base .mat-list-option .mat-list-item-content */ {
+  padding: 0 !important;
+}
+
 .sidemenu {
   width: 100%;
   /* font-weight: 700 !important; */
-  font-size: 0.9375rem !important;
-  color: var(--sidebar-font-color);
+  font-size: 1vw !important;
+  color: var(--profile-font-color);
 
   display: flex !important;
-  text-align: center;
+  text-align: right;
   vertical-align: middle;
   justify-items: center;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   align-content: center;
 }

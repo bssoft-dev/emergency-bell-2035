@@ -1,30 +1,30 @@
-<div style="margin:1vw;">
-    <mat-grid-list cols="2" rowHeight="42vh" gutterSize="50px">
+<div>
+    <mat-grid-list cols="2" rowHeight="45vh" gutterSize="0.5vw" style="width: 100%;">
+        
         <mat-grid-tile>
-            <mat-grid-tile-header>
-                <div>총 비상벨</div>
-            </mat-grid-tile-header>
-            <a>
+                <mat-grid-tile-header>
+                    총 비상벨
+                </mat-grid-tile-header>
                 <app-allstatus [socketdevicesdata]="socketdevicesdata"></app-allstatus>
-            </a>
         </mat-grid-tile>
-        <mat-grid-tile class="title-box">
+        
+        <mat-grid-tile>
             <mat-grid-tile-header>전체 감지 내역</mat-grid-tile-header>
-
+            <app-sensing [socketrecentdata]="socketrecentdata"></app-sensing>
             <!-- test code -->
             <!-- <app-sensing (click)="setSituation()"  style="vertical-align: top; 
             min-height: 360px; cursor: pointer;" [socketrecentdata]="socketrecentdata"></app-sensing> -->
-            
-            <app-sensing (click)="setSituation()"  style="vertical-align: top; 
-            min-height: 360px; cursor: pointer;" [socketrecentdata]="socketrecentdata"></app-sensing>
         </mat-grid-tile>
+        
         <mat-grid-tile>
             <mat-grid-tile-header>스마트벨 설치 장소</mat-grid-tile-header>
                 <img src="{{getcustomermapdata['map']}}" class="imgmap" />
-        </mat-grid-tile>
+            </mat-grid-tile>
+        
         <mat-grid-tile rowspan="1">
             <mat-grid-tile-header>통계</mat-grid-tile-header>
                 <div id="chartdiv"></div>
         </mat-grid-tile>
+
     </mat-grid-list>
 </div>

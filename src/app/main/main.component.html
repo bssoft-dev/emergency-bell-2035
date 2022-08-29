@@ -1,13 +1,15 @@
-<mat-drawer-container class="example-container">
-    <!-- 사이드 -->
-    <mat-drawer mode="side" opened class="example-sidenav">
+<mat-drawer-container class="container">
+    
+    <!-- 사이드 -->    
+    <mat-drawer mode="side" opened class="example-sidenav padding20px">
         <app-profile></app-profile>
         <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
-        <div>
-            <app-sidefooter></app-sidefooter>
+        <div style="position:relative; top:auto">
+            <app-sidefooter class="sidefooter"></app-sidefooter>
         </div>
     </mat-drawer>
 
+        
     <!-- 컨테이너 -->
     <mat-drawer-content>
 
@@ -15,8 +17,28 @@
         <mat-toolbar class="example-header">
             <app-header [item]="currentItem"></app-header>
         </mat-toolbar>
-    
-        <router-outlet></router-outlet>
+
+        <!-- 미니사이드바 -->
+        <div class="smallSide">
+            <input type="checkbox" id="menuicon">
+            <ul>
+                <li>
+                    <label for="menuicon">
+                        <span></span><span></span><span></span>
+                    </label>
+                </li>
+            </ul>
+            
+            <div class="sidebar">
+                <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
+                <app-sidefooter></app-sidefooter>
+            </div>
+        </div>
+
+
+        <div style="padding:20px">
+            <router-outlet></router-outlet>
+        </div>
     </mat-drawer-content>
 
 </mat-drawer-container>
@@ -25,3 +47,4 @@
 <audio *ngIf="situation===true" autoplay>
     <source src="../assets/siren.wav#t=0,10">
 </audio>
+

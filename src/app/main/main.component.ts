@@ -9,11 +9,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MainComponent implements DoCheck {
   currentItem = localStorage.getItem('whatTitle');
   situation = false;
+  showFiller = false;
+  innerWidth: boolean;
+  opened: boolean;
 
   constructor(private _snackBar: MatSnackBar) {}
 
   // 상시 체크
   ngDoCheck() {
+    if (window.innerWidth > 1500) {
+      this.innerWidth = true;
+    } else {
+      this.innerWidth = false;
+    }
+    console.log(`화면상태 : ${this.innerWidth}`);
     if (JSON.parse(localStorage.getItem('situation'))) {
       localStorage.setItem('situation', JSON.stringify(false));
       this.openSnackBar();

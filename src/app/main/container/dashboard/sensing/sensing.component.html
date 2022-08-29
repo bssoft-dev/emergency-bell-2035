@@ -8,7 +8,7 @@
         </div>
     </div>
         <div class="unit tnhhable">
-            <!-- <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index"> -->
+            <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index">
                 <div *ngFor="let i of socketrecentdata; let index = index">
                     <div>{{i.time}}</div>
                     <div>{{i.location}}</div>
@@ -17,3 +17,25 @@
         </div>
     </div>
 </div>
+
+<!-- mui table로 교체 작업 -->
+<!-- <table style="width: 100%;" mat-table [dataSource]="socketrecentdata" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="시간">
+      <th mat-header-cell *matHeaderCellDef> 시간 </th>
+      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="설치장소">
+      <th mat-header-cell *matHeaderCellDef> 설치장소 </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="타입">
+      <th mat-header-cell *matHeaderCellDef> 타입 </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> -->
