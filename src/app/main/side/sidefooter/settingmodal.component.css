@@ -103,5 +103,6 @@ form {
   height: 20%;
 }
 .togglecontroller {
+  width: 100%;
   text-align: right;
 }

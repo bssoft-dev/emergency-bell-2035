@@ -68,7 +68,7 @@ body {
 .mat-dialog-container {
   border-radius: 15px !important;
   background-color: var(--modal-bg-color);
-  padding: 0 !important;
+  padding: 20 !important;
   overflow: hidden !important;
 }
 

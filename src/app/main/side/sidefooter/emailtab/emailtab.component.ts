@@ -15,7 +15,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class EmailtabComponent implements OnInit {
   Form: FormGroup;
 
-  displayedColumns: string[] = ['name', 'emial', 'setting', 'delete '];
+  displayedColumns: string[] = ['name', 'email', 'setting', 'delete'];
   dataSource = [];
 
   constructor(public router: Router, private service: ApiService) {}
