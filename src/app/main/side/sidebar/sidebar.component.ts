@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
+import { ApiService } from '../../../services/api.service';
 import { SIDES } from '../../mock-side';
 import { Sidebar } from '../../main';
 
@@ -11,17 +11,12 @@ import { Sidebar } from '../../main';
 export class SidebarComponent {
   sides = SIDES;
   selectedSide?: Sidebar;
+  is_hyperuser;
 
   @Output() newItemEvent = new EventEmitter<string>();
+  constructor() {}
 
   addNewItem(value: string) {
     this.newItemEvent.emit(value);
-  }
-
-  constructor() {}
-
-  onSelect(side: Sidebar): void {
-    // this.selectedSide = side;
-    // console.log(side.menu);
   }
 }

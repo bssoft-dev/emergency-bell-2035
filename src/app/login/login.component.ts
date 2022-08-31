@@ -86,9 +86,8 @@ export class forgotpasswordComponent implements OnInit {
     });
   }
 
-  FormSudmit() {
+  submit() {
     const data = this.Form.value;
-    console.log(data, 'll');
     if (this.Form.valid) {
       this.service.forgotpassword(data).subscribe({
         next: (res) => {

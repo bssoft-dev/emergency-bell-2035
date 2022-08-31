@@ -1,7 +1,4 @@
-.unit > div {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-
-.unittitle {
-  margin-top: 56px;
+/* 테이블 */
+td {
+  width: 25%;
 }

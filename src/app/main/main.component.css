@@ -12,43 +12,12 @@
 .mat-drawer-content {
   overflow-x: hidden !important;
   overflow-y: scroll !important;
-  background-color: var(--main-bg-color);
-}
-
-.side_menu {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-betwwen;
-  /* min-height: 100vh; */
-  padding: 20px;
-
-  width: 11.42%;
-  overflow: hidden;
-  background: var(--main-bg-color);
-  position: fixed;
-  border: transparent;
-
-  text-align: center;
-  vertical-align: middle;
-  justify-items: center;
-  /* justify-content: center; */
-  align-items: center;
-  align-content: center;
-}
-.side_menu .side_menu_head {
-}
-.side_menu .side_menu_bottom {
-  /* flex-grow: 1; */
-  /* padding-top: 170%; */
-}
-
-.gnb {
-  padding: 20% 0;
+  background-color: var(--grid-bg-color);
 }
 
 /* 부모 */
 .example-sidenav {
-  /* display: flex; */
+  display: flex;
   width: 11.42%;
   overflow: hidden;
   background: var(--main-bg-color);
@@ -69,13 +38,9 @@
 /* 자식 */
 .sidefooter {
   position: absolute;
-  top: 100%;
-  /* bottom: 0%; */
-  left: 0;
+  bottom: 0;
   width: 100%;
-  /* bottom: auto; */
-  /* vertical-align: bottom; */
-  /* margin-bottom: auto; */
+  right: inherit;
 }
 
 .example-header {
@@ -94,7 +59,7 @@ app-header {
 }
 
 /*  */
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .example-sidenav {
     display: none;
   }

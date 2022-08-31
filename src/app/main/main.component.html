@@ -1,11 +1,15 @@
 <mat-drawer-container class="container">
     
     <!-- 사이드 -->    
-    <mat-drawer mode="side" opened class="example-sidenav padding20px">
-        <app-profile></app-profile>
-        <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
-        <div style="position:relative; top:auto">
-            <app-sidefooter class="sidefooter"></app-sidefooter>
+    <mat-drawer mode="side" opened class="example-sidenav">
+        <div style="position:relative; width: 100%; height:100%;">
+            <div>
+                <app-profile></app-profile>
+                <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
+            </div>
+            <div class="sidefooter">
+                <app-sidefooter></app-sidefooter>
+            </div>
         </div>
     </mat-drawer>
 

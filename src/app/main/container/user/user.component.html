@@ -1,45 +1,64 @@
-<div id="outer-grid">
-    <div class="font">
-        <div style="text-align: right;">
-            <button mat-raised-button  (click)="clickedaddModal()"><mat-icon>add</mat-icon>회원 등록</button>
-        
-        </div>
-        <div>
-            <div class="unit unittitle">
-                <div>
-                    <div>아이디</div>
-                    <div>고객사명</div>
-                    <div>담당자명</div>
-                    <div>연락처</div>
-                    <div>이메일</div>
-                    <div>등록일자</div>
-                    <div>관리자권한</div>
-                    <div>변경</div>
-                </div>
-            </div>
-            <div class="unit tnhhable">
-                <div id="unitDiv" *ngFor="let i of datalist[0];let index = index">
-                    <div>{{i.username}}</div>
-                    <div>{{i.customerName}}</div>
-                    <div>{{i.name}}</div>
-                    <div>{{i.phone}}</div>
-                    <div>{{i.email}}</div>
-                    <div>{{i.createTime}}</div>
-                    <div>
-                        <mat-slide-toggle [(ngModel)]="i.is_superuser" [disabled]="!manangerDisabled" (change)="checkManager(i)"></mat-slide-toggle>
-                    </div>
-                    <div>
-                        <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(i)">
-                            </button>
-                        </div>
-                        <div>
-                            <button class="mdi mdi-delete imgbutton" (click)="deletedata(i)">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container-table">
+
+    <div class="demo-button-container">
+        <button mat-raised-button (click)="clickedaddModal()" class="demo-button">
+            회원등록
+        </button>
     </div>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="username">
+                <th class="left" smat-header-cell *matHeaderCellDef> 아이디 </th>
+                <td class="left" mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="customerName">
+                <th mat-header-cell *matHeaderCellDef> 고객사명 </th>
+                <td mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> 담당자명 </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> 연락처 </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> 이메일 </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createTime">
+                <th mat-header-cell *matHeaderCellDef> 등록일자 </th>
+                <td mat-cell *matCellDef="let element"> {{element.createTime}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="manager">
+                <th mat-header-cell *matHeaderCellDef> 관리자권한 </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-slide-toggle [(ngModel)]="element.is_superuser" [disabled]="!manangerDisabled"
+                        (change)="checkManager(element)"></mat-slide-toggle>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="change">
+                <th class="right" mat-header-cell *matHeaderCellDef> 변경 </th>
+                <td class="right" mat-cell *matCellDef="let element">
+                    <div class="chagne-btn">
+                        <mat-icon class="btn" (click)="clickedregModal(element)">edit</mat-icon>
+                        <mat-icon class="btn" (click)="deletedata(element)">delete</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
 </div>

@@ -1,4 +1,4 @@
-.mat-tab-label .mat-tab-label-content {
+/* .mat-tab-label .mat-tab-label-content {
   color: var(--profile-font-color) !important;
 }
 
@@ -76,9 +76,7 @@ form {
   overflow: hidden;
 }
 
-.togglecontroller {
-  text-align: right;
-}
+
 
 .tnhhable {
   background-color: var(--grid-bg-color);
@@ -93,4 +91,17 @@ form {
 
 .tbltd :nth-child(2n) {
   background-color: transparent;
+} */
+
+.tab {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.tab-input {
+  height: 20%;
+}
+.togglecontroller {
+  text-align: right;
 }

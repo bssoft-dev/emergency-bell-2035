@@ -1,64 +1,85 @@
-<div id="outer-grid">
-    <div class="font">
-        <div style="text-align: right;">
-            <button mat-raised-button  (click)="clickedaddModal()"><mat-icon>add</mat-icon>고객사 등록</button>
-        </div>
+<div class="container-table">
 
-        <div>
-            <div class="unit unittitle">
-                <div>
-                        <div>고객사명</div>
-                        <div>담당자</div>
-                        <div>연락처</div>
-                        <div>단말기수</div>
-                        <div>상태</div>
-                        <div>결제방식</div>
-                        <div>알람</div>
-                        <div>변경</div>
-                </div>
-            </div>
+    <div class="demo-button-container">
+        <button mat-raised-button (click)="clickedaddModal()" class="demo-button">
+            고객사등록
+        </button>
+    </div>
 
-            <div class="unit tnhhable">
-                <div id="unitDiv" *ngFor="let customers of dataList; let index = index">
-                    <div>{{customers.customerName}}</div>
-                    <div>{{customers.staffName}}</div>
-                    <div>{{customers.phone}}</div>
-                    <div>{{customers.numDevice}}</div>
-                    <div>{{customers.status}}</div>
-                    <div>{{customers.payMethod}}</div>
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="customerName">
+                <th class="left" mat-header-cell *matHeaderCellDef> 고객사명 </th>
+                <td class="left" mat-cell *matCellDef="let element"> {{element.customerName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="staffName">
+                <th mat-header-cell *matHeaderCellDef> 담당자명 </th>
+                <td mat-cell *matCellDef="let element"> {{element.staffName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell *matHeaderCellDef> 연락처 </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numDevice">
+                <th smat-header-cell *matHeaderCellDef> 단말기수 </th>
+                <td mat-cell *matCellDef="let element"> {{element.numDevice}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> 상태 </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="payMethod">
+                <th mat-header-cell *matHeaderCellDef> 결제방식 </th>
+                <td mat-cell *matCellDef="let element"> {{element.payMethod}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="alarm">
+                <th mat-header-cell *matHeaderCellDef> 알람 </th>
+                <td mat-cell *matCellDef="let element">
                     <div>
                         <ul>
                             <li>
                                 <label>
-                                    <input type="checkbox" [checked]="customers?.alarm?.sms" disabled>
-                                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <input type="checkbox" [checked]="element?.alarm?.popup" disabled>
+                                    <mat-icon class="mat" aria-hidden="true">desktop_windows</mat-icon>
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" [checked]="customers?.alarm?.email" disabled>
-                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    <input type="checkbox" [checked]="element?.alarm?.email" disabled>
+                                    <mat-icon class="mat" aria-hidden="true">email</mat-icon>
                                 </label>
                             </li>
                             <li>
                                 <label>
-                                    <input type="checkbox" [checked]="customers?.alarm?.popup" disabled>
-                                    <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                                    <input type="checkbox" [checked]="element?.alarm?.sms" disabled>
+                                    <mat-icon class="mat" aria-hidden="true">sms</mat-icon>
                                 </label>
                             </li>
                         </ul>
                     </div>
-                    <div>
-                        <div>
-                            <button class="mdi mdi-pencil-box-outline imgbutton" (click)="clickedregModal(customers)"></button>
-                        </div>
-                        <div>
-                            <button class="mdi mdi-delete imgbutton" (click)="deleteonecustomer(customers)">
-                            </button>
-                        </div>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="change">
+                <th class="right" mat-header-cell *matHeaderCellDef> 변경 </th>
+                <td class="right" mat-cell *matCellDef="let element">
+                    <div class="chagne-btn">
+                        <mat-icon class="btn" (click)="clickedregModal(element)">edit</mat-icon>
+                        <mat-icon class="btn" (click)="deletedata(element)">delete</mat-icon>
                     </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </div>
+
 </div>

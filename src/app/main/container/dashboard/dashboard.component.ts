@@ -102,7 +102,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   getWebsocketdata() {
     this.WebsocketService.requestmessages.subscribe((msg) => {
-      console.log('Response from websocket: ', msg);
       this.processData(msg);
     });
   }

@@ -208,7 +208,7 @@ export class ApiService {
       { headers }
     );
   }
-  onesmssetting(data: any): Observable<any> {
+  oneesmssetting(data: any): Observable<any> {
     const jsondata = JSON.stringify(data);
     const headers = new HttpHeaders({
       accept: 'application/json',
@@ -276,6 +276,18 @@ export class ApiService {
   }
 
   // 회원관리 페이지
+  // getallusers(data): Observable<any> {
+  //   this.token = data[0];
+  //   this.customer_code = data[1];
+  //   const headers = new HttpHeaders({
+  //     accept: 'application/json',
+  //     Authorization: `Bearer ${data[0]}`,
+  //   });
+  //   return this.http.get(
+  //     `${this.apiUrl}` + 'users/all?customerCode=' + `${data[1]}`,
+  //     { headers }
+  //   );
+  // }
   getallusers(data): Observable<any> {
     this.token = data[0];
     this.customer_code = data[1];
@@ -300,7 +312,7 @@ export class ApiService {
     const headers = new HttpHeaders({
       accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.token}`,
+      Authorization: `Bearer ${this.token} `,
     });
     return this.http.post(`${this.apiUrl}` + 'auth/register', data, {
       headers,
@@ -330,7 +342,6 @@ export class ApiService {
       { headers }
     );
   }
-
   modifyoneuser(data: any): Observable<any> {
     const headers = new HttpHeaders({
       accept: 'application/json',

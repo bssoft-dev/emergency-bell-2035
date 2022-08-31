@@ -1,6 +1,18 @@
 <mat-nav-list>
-    <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+    <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" (click)="onSelect(side)"
+        routerLink={{side.route}} (click)="addNewItem(side.menu)">
         <mat-icon>{{side.emt}}</mat-icon>
         <a class="font sidemenu">{{side.menu}}</a>
-    </a>            
+    </a>
 </mat-nav-list>
+
+
+<!-- <mat-nav-list *ngFor="let side of sides">
+    <ng-container *ngIf="side.ngif == 'custommer_code'">
+        <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" routerLink={{side.route}}
+            (click)="addNewItem(side.menu)">
+            <mat-icon>{{side.emt}}</mat-icon>
+            <a class="font sidemenu">{{side.menu}}</a>
+        </a>
+    </ng-container>
+</mat-nav-list> -->

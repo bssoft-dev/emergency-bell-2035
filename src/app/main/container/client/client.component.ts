@@ -14,11 +14,21 @@ export interface DialogData {
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css', '../container.component.css'],
+  styleUrls: ['../container.table.css', './client.component.css'],
 })
 export class ClientComponent implements OnInit {
-  customer_code = '';
   token = sessionStorage.getItem('token');
+
+  displayedColumns = [
+    'customerName',
+    'staffName',
+    'phone',
+    'numDevice',
+    'status',
+    'payMethod',
+    'alarm',
+    'change',
+  ];
 
   constructor(private service: ApiService, public dialog: MatDialog) {}
 
@@ -27,18 +37,25 @@ export class ClientComponent implements OnInit {
   }
 
   // 사용자데이터
-  datalist = [];
+  dataSource = [];
   dataList() {
-    return new Promise(() => {
+    return new Promise((resolve, reject) => {
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          const temp = [res.token, res.customerCode];
+          const temp = [this.token, res.customerCode];
           this.service.getallcustomers(temp).subscribe({
             next: (res) => {
-              this.datalist = res;
+              this.dataSource = res;
             },
+            error: (err) => {},
+            complete: () => {},
           });
+          resolve(res);
         },
+        error: (err) => {
+          reject(new Error(err));
+        },
+        complete: () => {},
       });
     });
   }
@@ -69,7 +86,7 @@ export class ClientComponent implements OnInit {
   }
 
   // 삭제
-  deleteonecustomer(customers) {
+  deletedata(customers) {
     const returnValue = confirm(
       customers['customerName'] + ' 고객사를 삭제 하시겠습니까?'
     );
@@ -90,7 +107,7 @@ export class ClientComponent implements OnInit {
 @Component({
   selector: 'app-addclient',
   templateUrl: 'addclient.component.html',
-  styleUrls: ['./client.component.css', '../container.component.css'],
+  styleUrls: ['../../popup.css', './client.component.css'],
 })
 export class AddclientComponent implements OnInit {
   fileSelected?: Blob;
@@ -116,7 +133,7 @@ export class AddclientComponent implements OnInit {
   }
 
   // 등록
-  FormSudmit() {
+  submit() {
     const data = this.Form.value;
     if (data['logo'].length < 1) {
       data['logo'] = 'http://api-2207.bs-soft.co.kr/api/images/person-fill.svg';
@@ -172,7 +189,7 @@ export class AddclientComponent implements OnInit {
 @Component({
   selector: 'app-resclient',
   templateUrl: 'resclient.component.html',
-  styleUrls: ['./client.component.css', '../container.component.css'],
+  styleUrls: ['../../popup.css', './client.component.css'],
 })
 export class ResclientComponent implements OnInit {
   fileSelected?: Blob;
@@ -243,7 +260,7 @@ export class ResclientComponent implements OnInit {
   }
 
   // 수정
-  FormSudmit() {
+  submit() {
     const temp = [this.customers['customerCode'], this.Form.value];
     if (this.Form.valid) {
       this.service.modifyonecustomer(temp).subscribe({

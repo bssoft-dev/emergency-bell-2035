@@ -14,6 +14,7 @@
   --tablehead-bg-color: #438ffe;
   --header-border-color: #e5e5e5;
   --unmodifiable-bg-color: #e5e5e5;
+  --side-font-color: #61676b;
   --input-bg-color: #f5f7f9;
   --bgmode-bg-image: #438ffe;
   --smallSide-bg-color: rgba(67, 143, 254, 0.6);
@@ -29,11 +30,11 @@
   --tablehead-bg-color: #5156be;
   --header-border-color: #606264;
   --unmodifiable-bg-color: #61676b;
+  --side-font-color: #ffffff;
   --input-bg-color: #969494;
   --bgmode-bg-image: #ffffff;
   --smallSide-bg-color: rgba(81, 86, 190, 0.6);
 }
-
 /*  */
 
 html,
@@ -57,111 +58,39 @@ body {
   align-content: center;
 }
 
-#outer-grid {
-  grid-gap: 1%;
-  /* margin: 1%; */
-  background-color: var(--grid-bg-color);
-  border-radius: 15px;
-
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-}
-
-#outer-grid > div {
-  border-radius: 15px;
-  padding: 20px;
-}
-
-#inner-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .font {
   font-family: "Noto Sans";
   font-style: normal;
   color: var(--profile-font-color);
 }
 
-h2 {
-  font-size: 2vh;
-  line-height: 27px;
-  /* color: #03002c; */
-  margin: 1% 0 4% 0;
-}
-
-/* 모달 */
-.mat-tab-body-content {
-  overflow: hidden !important;
-}
-
-mat-form-field {
-  width: 100%;
-}
-
-mat-form-field button {
-  border: 0;
-  background-color: transparent;
-}
-
-mat-form-field button mat-icon {
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.modalDiv {
-  padding: 10% !important;
-}
-
+/* 팝업 */
 .mat-dialog-container {
   border-radius: 15px !important;
   background-color: var(--modal-bg-color);
-}
-
-.mat-dialog-container {
   padding: 0 !important;
   overflow: hidden !important;
 }
 
-.container {
-  height: flex;
-  margin: 3vw 0 3vw 0;
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: var(--input-bg-color);
 }
 
-.trueCheck {
-  color: blue;
-}
-
-.falseCheck {
-  color: red;
-}
-
-.noticeCheck {
-  color: greenyellow;
-}
-
-.mat-form-field-flex {
-  background-color: var(--input-bg-color) !important;
-  /* color: #c5c2c2 !important; */
-}
-
-.unmodifiable .mat-form-field-flex {
-  background-color: var(--unmodifiable-bg-color) !important;
-}
-
-.mat-form-field-label {
+/* 알람설정 팝업 */
+/* .mat-tab-label-content {
   color: var(--profile-font-color);
 }
 
-mat-icon {
-  cursor: pointer;
+.mat-tab-label-content :checked {
+  color: red;
+} */
+
+.mat-tab-label {
+  color: var(--profile-font-color);
 }
 
-.mat-tab-label,
-.mat-tab-link {
-  color: var(--profile-font-color) !important;
+.mat-tab-label :checked {
+  font-weight: bold;
 }
 
 /* toggle */
@@ -185,6 +114,9 @@ mat-icon {
 
 /* dashboard */
 .mat-grid-tile-content {
-  margin: 30px !important;
+  margin: 20px !important;
   height: auto !important;
+  position: relative;
 }
+
+/* test */

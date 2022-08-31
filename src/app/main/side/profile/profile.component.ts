@@ -65,13 +65,13 @@ export class ProfileComponent implements OnInit {
 @Component({
   selector: 'app-profilemodal',
   templateUrl: 'profilemodal.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['../../popup.css'],
 })
 export class ProfilemodalComponent implements OnInit {
   passwordhide = true;
   passwordconfirmhide = true;
 
-  modifyuserForm: FormGroup;
+  Form: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<ProfilemodalComponent>,
@@ -80,7 +80,7 @@ export class ProfilemodalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.modifyuserForm = new FormGroup({
+    this.Form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       name: new FormControl(''),
       phone: new FormControl(''),
@@ -101,7 +101,7 @@ export class ProfilemodalComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.service.getcurrentuser(token).subscribe({
         next: (res) => {
-          this.modifyuserForm.patchValue({
+          this.Form.patchValue({
             username: res.username,
             name: res.name,
             phone: res.phone,
@@ -128,10 +128,10 @@ export class ProfilemodalComponent implements OnInit {
   }
 
   // 저장
-  sudmit() {
+  submit() {
     const temp = [];
 
-    const data = this.modifyuserForm.value;
+    const data = this.Form.value;
     data.password = data.passwordGroup.password;
     delete data.passwordGroup;
 
@@ -141,12 +141,12 @@ export class ProfilemodalComponent implements OnInit {
     this.service.modifyoneuser(temp).subscribe({
       next: (res) => {
         alert('정보 수정이 완료되었습니다');
-        this.modifyuserForm.reset();
+        this.Form.reset();
         this.dialogRef.close();
       },
       error: (err) => {
         alert('내부 서버 에러.');
-        this.modifyuserForm.reset();
+        this.Form.reset();
       },
       complete: () => {},
     });

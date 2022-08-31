@@ -1,83 +1,63 @@
-<div id="inner-grid">
+<div class="back-grid">
 
-    <div class="total" id="inner-grid">
-        <div>
-            <img src="../../../../../assets/images/dashboardicons/총갯수.png"/>
-        </div>
-        <div>
-            <div id="inner-grid" class="subheading font">
-                <div>
+    <mat-grid-list cols="2" rowHeight="16.5vh">
+
+        <mat-grid-tile class="first">
+            <div class="dashleft">
+                <img src="../../../../../assets/images/dashboardicons/총갯수.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
                     총 갯수
                 </div>
-
-                <div class="subcontent font">
+                <div class="socketFont">
                     {{socketdevicesdata["numDevice"]}}
                 </div>
             </div>
-            
-        </div>
-    </div>
+        </mat-grid-tile>
 
-    <div class="leftboundary defaultBack" id="inner-grid" style="border-radius: 0px 10px 0px 0px;">
-        <div>
-            <img src="../../../../../assets/images/dashboardicons/작동중.png"/>
-        </div>
-        <div>
-            <div id="inner-grid" class="subheading font">
-            <div class="subheading font">
-                작동중
+        <mat-grid-tile style="border-top-right-radius: 20px;">
+            <div class="dashleft">
+                <img src="../../../../../assets/images/dashboardicons/작동중.png" />
             </div>
-            <div class="subcontent font">
-                {{socketdevicesdata["activationDevice"]}}
+            <div class="dashright">
+                <div class="fontSt">
+                    작동중
+                </div>
+                <div class="socketFont">
+                    {{socketdevicesdata["activationDevice"]}}
+                </div>
             </div>
-        </div>
-        </div>
-    </div>
+        </mat-grid-tile>
 
-    <div class="defaultBack" id="inner-grid" style="border-radius: 0px 0px 0px 10px;">
-        <div>
-            <img src="../../../../../assets/images/dashboardicons/점검중.png"/>
-        </div>
-        <div>
-            <div id="inner-grid" class="subheading font">
-
-                <div class="subheading font">
+        <mat-grid-tile style="border-bottom-left-radius: 20px;">
+            <div class="dashleft">
+                <img src="../../../../../assets/images/dashboardicons/점검중.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
                     점검중
                 </div>
-                <div class="subcontent font">
+                <div class="socketFont">
                     {{socketdevicesdata["inspectionDevice"]}}
                 </div>
             </div>
-        </div>
-    </div>
+        </mat-grid-tile>
 
-    <div class="leftboundary defaultBack" id="inner-grid" style="border-radius: 0px 0px 10px 0px;">
-        <div>
-            <img src="../../../../../assets/images/dashboardicons/연결끊김.png"/>
-        </div>
-        <div>
-            <div id="inner-grid" class="subheading font">
-
-                <div class="subheading font">
+        <mat-grid-tile style="border-bottom-right-radius: 20px;">
+            <div class="dashleft">
+                <img src="../../../../../assets/images/dashboardicons/연결끊김.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
                     연결끊김
                 </div>
-                <div class="subcontent font">
+                <div class="socketFont">
                     {{socketdevicesdata["deactivateDevice"]}}
                 </div>
             </div>
-        </div>
-    </div>
-    
-</div>
+        </mat-grid-tile>
 
-<!-- mui grid로 다시 작업 -->
-<!-- <div>
-
-    <mat-grid-list cols="2" rowHeight="2:1" gutterSize="0px">
-        <mat-grid-tile>hello</mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
     </mat-grid-list>
-</div> -->
-  
+
+</div>

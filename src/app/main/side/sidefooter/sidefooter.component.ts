@@ -30,7 +30,7 @@ export class SidefooterComponent implements OnInit {
 @Component({
   selector: 'app-settingmodal',
   templateUrl: 'settingmodal.component.html',
-  styleUrls: ['./settingmodal.component.css'],
+  styleUrls: ['../../popup.css', './settingmodal.component.css'],
 })
 export class SettingmodalComponent {
   constructor(public dialogRef: MatDialogRef<SettingmodalComponent>) {}

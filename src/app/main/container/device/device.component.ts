@@ -14,11 +14,23 @@ export interface DialogData {
 @Component({
   selector: 'app-device',
   templateUrl: './device.component.html',
-  styleUrls: ['./device.component.css', '../container.component.css'],
+  styleUrls: ['../container.table.css', './device.component.css'],
 })
 export class DeviceComponent implements OnInit {
   token = sessionStorage.getItem('token');
   customer_code = '';
+
+  displayedColumns = [
+    'picture',
+    'model',
+    'name',
+    'location',
+    'installDate',
+    'communicateMethod',
+    'inspection',
+    'memo',
+    'change',
+  ];
 
   constructor(private service: ApiService, public dialog: MatDialog) {}
 
@@ -27,7 +39,7 @@ export class DeviceComponent implements OnInit {
   }
 
   // 사용자데이터
-  datalist = [];
+  dataSource = [];
   dataList() {
     return new Promise(() => {
       this.service.getcurrentuser(this.token).subscribe({
@@ -35,7 +47,7 @@ export class DeviceComponent implements OnInit {
           const temp = [this.token, res.customerCode];
           this.service.getalldevices(temp).subscribe({
             next: (res) => {
-              this.datalist = res;
+              this.dataSource = res;
             },
           });
         },
@@ -81,7 +93,7 @@ export class DeviceComponent implements OnInit {
   }
 
   // 삭제
-  deleteonedevice(devicedata) {
+  deletedata(devicedata) {
     const returnValue = confirm(
       devicedata['customerName'] + '기기 정보를 삭제 하시겠습니까?'
     );
@@ -114,7 +126,7 @@ export class DeviceComponent implements OnInit {
 @Component({
   selector: 'app-adddevice',
   templateUrl: './adddevice.component.html',
-  styleUrls: ['./device.component.css', '../container.component.css'],
+  styleUrls: ['../../popup.css', './device.component.css'],
 })
 export class AdddeviceComponent implements OnInit {
   constructor(
@@ -190,7 +202,7 @@ export class AdddeviceComponent implements OnInit {
     });
   }
 
-  deviceenroll() {
+  submit() {
     const data = this.Form.value;
     if (data.customerName === null) {
       delete data.customerName;
@@ -208,7 +220,6 @@ export class AdddeviceComponent implements OnInit {
     }
 
     if (this.Form.valid) {
-      console.log(data, 'llw');
       this.service.deviceenroll(data).subscribe({
         next: (res) => {
           alert('디바이스 등록이 완료되었습니다');
@@ -229,7 +240,7 @@ export class AdddeviceComponent implements OnInit {
 @Component({
   selector: 'app-regdevice',
   templateUrl: './regdevice.component.html',
-  styleUrls: ['./device.component.css', '../container.component.css'],
+  styleUrls: ['../../popup.css', './device.component.css'],
 })
 export class RegdeviceComponent implements OnInit {
   constructor(
@@ -298,11 +309,9 @@ export class RegdeviceComponent implements OnInit {
     });
   }
 
-  FormSudmit() {
+  submit() {
     const temp = this.Form.value;
     const data = [this.devicedata['deviceId'], temp];
-    console.log('temp : ', temp);
-    console.log('data : ', data);
     if (this.Form.valid) {
       this.service.modifyonedevice(data).subscribe({
         next: (res) => {
@@ -325,7 +334,7 @@ export class RegdeviceComponent implements OnInit {
 @Component({
   selector: 'app-devicepoto',
   templateUrl: './devicepoto.component.html',
-  styleUrls: ['./device.component.css', '../container.component.css'],
+  styleUrls: ['./device.component.css'],
 })
 export class devicepotoComponent implements OnInit {
   imageSrc = this.data.devicedata['picture'];

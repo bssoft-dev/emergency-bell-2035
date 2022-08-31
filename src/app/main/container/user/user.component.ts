@@ -16,11 +16,24 @@ export interface DialogData {
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css', '../container.component.css'],
+  styleUrls: ['../container.table.css', './user.component.css'],
 })
 export class UserComponent implements OnInit {
   token = sessionStorage.getItem('token');
   manangerDisabled: boolean; // 관리자권한 제어
+
+  displayedColumns = [
+    'username',
+    'customerName',
+    'name',
+    'phone',
+    'email',
+    'createTime',
+    'manager',
+    'change',
+  ];
+
+  dataSource = []; // 회원데이터
 
   constructor(private service: ApiService, public dialog: MatDialog) {}
 
@@ -28,31 +41,25 @@ export class UserComponent implements OnInit {
     this.dataList();
   }
 
-  datalist = []; // 사용자데이터
+  datalist = []; // 버리는 데이터
   dataList() {
-    this.datalist = [];
-    return new Promise((resolve, reject) => {
+    return new Promise(() => {
       this.service.getcurrentuser(this.token).subscribe({
-        next: (reg) => {
-          resolve(reg);
-          if (reg.is_hyperuser || reg.is_superuser) {
+        next: (res) => {
+          if (res.is_hyperuser || res.is_superuser) {
             this.manangerDisabled = true;
           } else {
             this.manangerDisabled = false;
-          }
-          const temp = [this.token, reg.customerCode];
+          } // 관리자 권한 제어
+
+          const temp = [this.token, res.customerCode];
           this.service.getallusers(temp).subscribe({
-            next: (reg) => {
-              this.datalist.push(reg);
+            next: (res) => {
+              this.datalist = res; //버리는 값이 있어서 이렇게 받아옴
+              this.dataSource = res;
             },
-            error: (err) => {},
-            complete: () => {},
           });
         },
-        error: (err) => {
-          reject(new Error(err));
-        },
-        complete: () => {},
       });
     });
   }
@@ -66,7 +73,7 @@ export class UserComponent implements OnInit {
         token: this.token,
       },
     });
-    dialogRef.afterClosed().subscribe((regult) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.dataList();
     });
   }
@@ -81,7 +88,7 @@ export class UserComponent implements OnInit {
         index: index,
       },
     });
-    dialogRef.afterClosed().subscribe((regult) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.dataList();
     });
   }
@@ -94,7 +101,7 @@ export class UserComponent implements OnInit {
       );
       if (returnValue) {
         this.service.deleteoneuser(index['username']).subscribe({
-          next: (reg) => {
+          next: (res) => {
             alert('삭제 완료');
             this.dataList();
           },
@@ -104,7 +111,6 @@ export class UserComponent implements OnInit {
         });
       }
     } else {
-      
     }
   }
 
@@ -124,7 +130,7 @@ export class UserComponent implements OnInit {
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
-  styleUrls: ['./user.component.css', '../container.component.css'],
+  styleUrls: ['../../popup.css', './user.component.css'],
 })
 export class AdduserComponent implements OnInit {
   constructor(
@@ -134,11 +140,11 @@ export class AdduserComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
   hide = true; // 비밀번호 표시
-  form: FormGroup;
+  Form: FormGroup;
 
   ngOnInit(): void {
     this.initGetCustomerNames();
-    this.form = new FormGroup({
+    this.Form = new FormGroup({
       username: new FormControl(null, [Validators.required]),
       name: new FormControl(''),
       customerName: new FormControl(null, [Validators.required]),
@@ -159,8 +165,8 @@ export class AdduserComponent implements OnInit {
   initGetCustomerNames() {
     this.customerNames = [];
     this.service.getCustomerNames(this.data.token).subscribe({
-      next: (reg) => {
-        this.customerNames = reg;
+      next: (res) => {
+        this.customerNames = res;
       },
     });
   }
@@ -185,11 +191,11 @@ export class AdduserComponent implements OnInit {
 
   // ID 중복검사
   idCheck() {
-    const data = this.form.controls.username.value;
+    const data = this.Form.controls.username.value;
     if (data.length > 0) {
       this.service.duplicatecheck(data).subscribe({
-        next: (reg) => {
-          if (reg == '생성 가능한 아이디 입니다') {
+        next: (res) => {
+          if (res == '생성 가능한 아이디 입니다') {
             this.passIdMsg = true;
             this.errorIdMsg = false;
           } else {
@@ -209,17 +215,17 @@ export class AdduserComponent implements OnInit {
   }
 
   // 등록
-  FormSudmit() {
-    const data = this.form.value;
+  submit() {
+    const data = this.Form.value;
     data.password = data.passwordGroup.password;
     delete data.passwordGroup;
     if (data.customerName === null) {
       delete data.customerName;
       data.customerName = '';
     }
-    if (this.form.valid && this.passIdMsg) {
+    if (this.Form.valid && this.passIdMsg) {
       this.service.registeruser(data).subscribe({
-        next: (reg) => {
+        next: (res) => {
           this._snackBar.open('등록이 완료되었습니다', '닫기', {
             horizontalPosition: 'center',
             verticalPosition: 'top',
@@ -246,7 +252,7 @@ export class AdduserComponent implements OnInit {
 @Component({
   selector: 'app-reguser',
   templateUrl: './reguser.component.html',
-  styleUrls: ['./user.component.css'],
+  styleUrls: ['../../popup.css', './user.component.css'],
 })
 export class ReguserComponent implements OnInit {
   constructor(
@@ -257,10 +263,10 @@ export class ReguserComponent implements OnInit {
   ) {}
   hide = true;
   index = this.data.index;
-  form: FormGroup;
+  Form: FormGroup;
 
   ngOnInit(): void {
-    this.form = new FormGroup({
+    this.Form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       name: new FormControl(''),
       customerName: new FormControl(''),
@@ -290,7 +296,7 @@ export class ReguserComponent implements OnInit {
 
   // 사용자정보
   getOneUser() {
-    this.form.patchValue({
+    this.Form.patchValue({
       username: this.index['username'],
       name: this.index['name'],
       customerName: this.index['customerName'],
@@ -300,7 +306,7 @@ export class ReguserComponent implements OnInit {
   }
 
   // 수정
-  FormSudmit() {
+  submit() {
     // const jsontemp = {
     //   username: this.form.value.username,
     //   name: this.form.value.name,
@@ -309,11 +315,11 @@ export class ReguserComponent implements OnInit {
     //   email: this.form.value.email,
     //   password: this.form.value.passwordGroup.password,
     // };
-    const temp = this.form.value;
+    const temp = this.Form.value;
     temp.password = temp.passwordGroup.password;
     delete temp.passwordGroup;
     const data = [temp['username'], temp];
-    if (this.form.valid) {
+    if (this.Form.valid) {
       this.service.modifyoneuser(data).subscribe({
         next: (res) => {
           this._snackBar.open('수정이 완료되었습니다', '닫기', {

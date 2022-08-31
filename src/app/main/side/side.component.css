@@ -1,6 +1,6 @@
 mat-icon {
   font-size: 2vw;
-  color: var(--profile-font-color);
+  color: var(--side-font-color);
 
   display: flex !important;
   text-align: center;
@@ -44,13 +44,26 @@ mat-nav-list > a:focus {
   width: 100%;
   /* font-weight: 700 !important; */
   font-size: 1vw !important;
-  color: var(--profile-font-color);
+  color: var(--side-font-color);
+  font-weight: bold;
+  padding-left: 10px;
 
   display: flex !important;
-  text-align: right;
+  text-align: left;
   vertical-align: middle;
   justify-items: center;
-  justify-content: right;
+  justify-content: left;
   align-items: center;
   align-content: center;
+}
+
+@media (max-width: 1750px) {
+  .sidemenu {
+    display: none !important;
+  }
+
+  mat-icon {
+    font-size: 3vw;
+    width: 100%;
+  }
 }

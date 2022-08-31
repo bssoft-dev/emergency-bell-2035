@@ -6,22 +6,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-phontab',
   templateUrl: './phontab.component.html',
-  styleUrls: ['../settingmodal.component.css'],
+  styleUrls: [
+    '../../../popup.css',
+    '../settingmodal.component.css',
+    '../../../container/container.table.css',
+  ],
 })
 export class PhontabComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'phone', 'setting', 'del'];
-  getalarmsmsdata = [];
+  Form: FormGroup;
 
-  registersmsForm: FormGroup;
-
-  // websocket 템프 데이터
-  requestreceived = [];
-  // websocket 알림 데이터
+  displayedColumns: string[] = ['name', 'phone', 'setting', 'delete'];
+  dataSource = [];
 
   constructor(public router: Router, private service: ApiService) {}
 
   ngOnInit() {
-    this.registersmsForm = new FormGroup({
+    this.Form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
     });
@@ -30,22 +30,21 @@ export class PhontabComponent implements OnInit {
   }
 
   getalarmsmsuser() {
-    // this.getalarmsmsdata = [];
+    // this.dataSource = [];
     this.service.getalarmsmsuser().subscribe({
       next: (res) => {
-        this.getalarmsmsdata = res;
+        this.dataSource = res;
       },
       error: (err) => {},
       complete: () => {},
     });
-    console.log(this.getalarmsmsdata);
   }
 
-  registersmsuser() {
-    this.service.registersmsalarm(this.registersmsForm.value).subscribe({
+  submit() {
+    this.service.registersmsalarm(this.Form.value).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
-        this.registersmsForm.reset();
+        this.Form.reset();
       },
       error: (err) => {
         alert('서버 에러');
@@ -54,8 +53,8 @@ export class PhontabComponent implements OnInit {
     });
   }
 
-  deletesmsalarm(index) {
-    const data = this.getalarmsmsdata[index];
+  deletedata(index) {
+    const data = index;
 
     this.service.deletesmsalarm(data.phone).subscribe({
       next: (res) => {
@@ -67,13 +66,13 @@ export class PhontabComponent implements OnInit {
     });
   }
 
-  onesmssetting(index) {
-    const data = this.getalarmsmsdata[index];
+  onSetting(index) {
+    const data = index;
     data.setting = !data.setting;
     delete data.phone;
     delete data.customerName;
 
-    this.service.onesmssetting(data).subscribe({
+    this.service.oneesmssetting(data).subscribe({
       next: (res) => {
         this.getalarmsmsuser();
       },
@@ -82,20 +81,20 @@ export class PhontabComponent implements OnInit {
     });
   }
 
-  allsmsdata = false;
+  allData = false;
   getallsms() {
     this.service.getallalarmsms().subscribe({
       next: (res) => {
-        this.allsmsdata = res;
+        this.allData = res;
       },
       error: (err) => {},
       complete: () => {},
     });
   }
 
-  allsmssetting() {
-    this.allsmsdata = !this.allsmsdata;
-    this.service.allalarmsmssetting(this.allsmsdata).subscribe({
+  allSetting() {
+    this.allData = !this.allData;
+    this.service.allalarmsmssetting(this.allData).subscribe({
       next: (res) => {},
       error: (err) => {
         alert('내부 서버에러');

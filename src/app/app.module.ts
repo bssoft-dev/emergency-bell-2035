@@ -67,7 +67,6 @@ import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.compone
 import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {

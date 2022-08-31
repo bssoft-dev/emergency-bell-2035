@@ -6,21 +6,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-emailtab',
   templateUrl: './emailtab.component.html',
-  styleUrls: ['../settingmodal.component.css'],
+  styleUrls: [
+    '../../../popup.css',
+    '../settingmodal.component.css',
+    '../../../container/container.table.css',
+  ],
 })
 export class EmailtabComponent implements OnInit {
-  registeremailForm: FormGroup;
+  Form: FormGroup;
 
-  // websocket 템프 데이터
-  requestreceived = [];
-  // websocket 알림 데이터
-
-  getalarmemaildata = [];
+  displayedColumns: string[] = ['name', 'emial', 'setting', 'delete '];
+  dataSource = [];
 
   constructor(public router: Router, private service: ApiService) {}
 
   ngOnInit() {
-    this.registeremailForm = new FormGroup({
+    this.Form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
     });
@@ -29,21 +30,21 @@ export class EmailtabComponent implements OnInit {
   }
 
   getalarmemailuser() {
-    // this.getalarmemaildata = [];
+    // this.dataSource = [];
     this.service.getalarmemailuser().subscribe({
       next: (res) => {
-        this.getalarmemaildata = res;
+        this.dataSource = res;
       },
       error: (err) => {},
       complete: () => {},
     });
   }
 
-  registeremailuser() {
-    this.service.registeremailalarm(this.registeremailForm.value).subscribe({
+  submit() {
+    this.service.registeremailalarm(this.Form.value).subscribe({
       next: (res) => {
         this.getalarmemailuser();
-        this.registeremailForm.reset();
+        this.Form.reset();
       },
       error: (err) => {
         alert('서버 에러');
@@ -52,8 +53,8 @@ export class EmailtabComponent implements OnInit {
     });
   }
 
-  deleteemailalarm(index) {
-    const data = this.getalarmemaildata[index];
+  deletedata(index) {
+    const data = index;
 
     this.service.deleteemailalarm(data.email).subscribe({
       next: (res) => {
@@ -65,8 +66,8 @@ export class EmailtabComponent implements OnInit {
     });
   }
 
-  oneemailsetting(index) {
-    const data = this.getalarmemaildata[index];
+  onSetting(index) {
+    const data = index;
     data.setting = !data.setting;
     delete data.email;
     delete data.customerName;
@@ -80,20 +81,20 @@ export class EmailtabComponent implements OnInit {
     });
   }
 
-  allemaildata = false;
+  allData = false;
   getallemail() {
     this.service.getallalarmemail().subscribe({
       next: (res) => {
-        this.allemaildata = res;
+        this.allData = res;
       },
       error: (err) => {},
       complete: () => {},
     });
   }
 
-  allemailsetting() {
-    this.allemaildata = !this.allemaildata;
-    this.service.allalarmemailsetting(this.allemaildata).subscribe({
+  allSetting() {
+    this.allData = !this.allData;
+    this.service.allalarmemailsetting(this.allData).subscribe({
       next: (res) => {},
       error: (err) => {
         alert('내부 서버에러');

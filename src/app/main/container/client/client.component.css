@@ -1,31 +1,37 @@
+/* 테이블 */
+td {
+  width: 12.5%;
+}
+
+/* 테이블 > 알람 */
 ul {
   position: relative;
   margin: 0;
   padding: 0;
   display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 ul li {
   position: relative;
   list-style: none;
-  width: 60px;
-  text-align: center;
 }
 
 ul li label {
   position: relative;
 }
 
-ul li label i,
+ul li label .mat,
 ul li label input[type="checkbox"] {
   display: block;
   text-align: center;
 }
 
-ul li label i.fa {
-  font-size: 40px;
+ul li label .mat {
   color: #222;
   transition: 0.5s;
+  cursor: auto;
 }
 
 ul li label input[type="checkbox"] {
@@ -33,19 +39,14 @@ ul li label input[type="checkbox"] {
   opacity: 0;
 }
 
-ul li label input[type="checkbox"]:checked ~ i.fa {
-  color: rgba(0, 176, 255, 1);
+ul li label input[type="checkbox"]:checked ~ .mat {
+  color: var(--tablehead-bg-color);
 }
 
-.unit > div {
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+mat-icon.mat {
+  font-size: 30px;
+
+  margin: 0 20px;
 }
 
-/* modal */
-mat-form-field {
-  padding: 15px 0;
-}
-
-.mdi:hover {
-  color: #ffffff !important;
-}
+/* 팝업 */
