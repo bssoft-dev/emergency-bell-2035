@@ -3,19 +3,15 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-sensing',
   templateUrl: './sensing.component.html',
-  styleUrls: ['./sensing.component.css', '../../container.component.css'],
+  styleUrls: ['./sensing.component.css', '../../container.table.css'],
 })
 export class SensingComponent implements OnInit {
   @Input() socketrecentdata = [];
-  socketLength = this.socketrecentdata.length;
 
-  displayedColumns: string[] = ['시간', '설치장소', '타입'];
+  dataSource = this.socketrecentdata;
+  displayedColumns = ['time', 'location', 'type'];
 
-  constructor() {
-    if (this.socketLength == 0) {
-      // this.socketLength['time'] = '';
-    }
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }

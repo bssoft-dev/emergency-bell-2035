@@ -93,6 +93,10 @@ form {
   background-color: transparent;
 } */
 
+td {
+  width: 25%;
+}
+
 .tab {
   display: block;
   height: 100%;
@@ -105,4 +109,45 @@ form {
 .togglecontroller {
   width: 100%;
   text-align: right;
+}
+
+.upload-container {
+  display: flex;
+
+  align-items: center;
+
+  padding: 40px 0 20px 0;
+}
+
+.upload-container > mat-form-field {
+  padding: 0 20px;
+}
+
+.upload-container > mat-form-field.input1 {
+  width: 20%;
+}
+
+.upload-container > mat-form-field.input1 {
+  width: 40%;
+}
+
+.btn1 {
+  padding-bottom: 1.34375em;
+  cursor: pointer;
+}
+
+mat-icon.size {
+  font-size: 30px;
+}
+
+button {
+  width: 0;
+
+  border: transparent;
+  background-color: transparent;
+  padding: 0;
+}
+
+.padding20px-t-b {
+  padding: 20px 0;
 }

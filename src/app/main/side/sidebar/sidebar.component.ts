@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ApiService } from '../../../services/api.service';
-import { SIDES } from '../../mock-side';
-import { Sidebar } from '../../main';
+import { SIDES } from './mock-side';
+import { Sidebar } from '../main';
 
 @Component({
   selector: 'app-sidebar',

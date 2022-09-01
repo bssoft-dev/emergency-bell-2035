@@ -181,8 +181,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
       // set text,grid color white
-      // root.interfaceColors.set('grid', am5.color('#ffffff'));
-      // root.interfaceColors.set('text', am5.color('#ffffff'));
+      root.interfaceColors.set('grid', am5.color('#ffffff'));
+      root.interfaceColors.set('text', am5.color('#ffffff'));
       root.interfaceColors.set('background', am5.color(0xadadad));
 
       // Add series

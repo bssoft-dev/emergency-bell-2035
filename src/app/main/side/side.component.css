@@ -35,18 +35,11 @@ mat-nav-list > a:focus {
   padding: 0 !important;
 }
 
-.mat-list-base .mat-list-item
-/* .mat-list-base .mat-list-option .mat-list-item-content */ {
-  padding: 0 !important;
-}
-
 .sidemenu {
   width: 100%;
-  /* font-weight: 700 !important; */
   font-size: 1vw !important;
   color: var(--side-font-color);
   font-weight: bold;
-  padding-left: 10px;
 
   display: flex !important;
   text-align: left;
@@ -55,14 +48,32 @@ mat-nav-list > a:focus {
   justify-content: left;
   align-items: center;
   align-content: center;
+  border: 0 !important;
+}
+
+img {
+  width: 20%;
+  height: 20%;
+  display: block;
+  padding-right: 10px;
+}
+
+.sel-side :hover {
+  /* width: 100%;
+  height: 100%; */
+
+  background: var(--sdie-hover-bg);
+  box-shadow: var(--side-hover-shadow);
+  border-radius: 10px;
+  color: var(--profile-font-color);
 }
 
 @media (max-width: 1750px) {
   .sidemenu {
-    display: none !important;
+    font-size: 0px;
   }
 
-  mat-icon {
+  img {
     font-size: 3vw;
     width: 100%;
   }

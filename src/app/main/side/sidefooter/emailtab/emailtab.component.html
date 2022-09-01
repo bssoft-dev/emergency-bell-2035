@@ -1,48 +1,59 @@
-<form [formGroup]="Form" (ngSubmit)="submit()">
-    <div class="togglecontroller">
-        <button class="menu-icon mdi mdi-plus-circle-outline imgbutton"></button>
+<div>
+    <div>
+        <form [formGroup]="Form" (ngSubmit)="submit()">
+
+            <div class="upload-container ">
+                <mat-form-field class="input1" appearance="fill">
+                    <mat-label>이름</mat-label>
+                    <input matInput placeholder="OOO" type="text" formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="input2" appearance="fill">
+                    <mat-label>이메일</mat-label>
+                    <input matInput placeholder="01012345678" type="text" formControlName="email">
+                </mat-form-field>
+                <button class="btn1 chagne-btn">
+                    <mat-icon class="btn size" type="submit">add_circle_outline</mat-icon>
+                </button>
+            </div>
+            <div class="togglecontroller marginDiv">
+                <mat-slide-toggle class="padding20px-t-b" (click)="allSetting()"></mat-slide-toggle>
+            </div>
+        </form>
     </div>
-    <div class="upload-container ">
-        <mat-form-field appearance="fill">
-            <mat-label>이름</mat-label>
-            <input matInput placeholder="OOO" type="text" formControlName="name">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>이메일</mat-label>
-            <input matInput placeholder="01012345678" type="text" formControlName="email">
-        </mat-form-field>
+
+
+    <div class="datatable">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="name">
+                <th class="left" smat-header-cell *matHeaderCellDef> 이름 </th>
+                <td class="left" mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th smat-header-cell *matHeaderCellDef> 이메일 </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="setting">
+                <th mat-header-cell *matHeaderCellDef> 발신설정 </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-slide-toggle [checked]="element.setting" (click)="onSetting(index)" [disabled]="allData">
+                    </mat-slide-toggle>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <th class="right" mat-header-cell *matHeaderCellDef> 삭제 </th>
+                <td class="right" mat-cell *matCellDef="let element">
+                    <div class="chagne-btn">
+                        <mat-icon class="btn" (click)="deletedata(element)">delete</mat-icon>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
     </div>
-</form>
-<div class="togglecontroller marginDiv">
-    <mat-slide-toggle (click)="allSetting()"></mat-slide-toggle>
 </div>
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="name">
-        <th smat-header-cell *matHeaderCellDef> 이름 </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-        <th smat-header-cell *matHeaderCellDef> 이메일 </th>
-        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="setting">
-        <th mat-header-cell *matHeaderCellDef> 발신설정 </th>
-        <td mat-cell *matCellDef="let element">
-            <mat-slide-toggle [checked]="element.setting" (click)="onSetting(index)" [disabled]="allData">
-            </mat-slide-toggle>
-        </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> 삭제 </th>
-        <td mat-cell *matCellDef="let element"> <button class="menu-icon mdi mdi-delete imgbutton"
-                (click)="deletedata(element)"></button> </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>

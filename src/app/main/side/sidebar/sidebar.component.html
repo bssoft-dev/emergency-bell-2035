@@ -1,8 +1,13 @@
 <mat-nav-list>
-    <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" (click)="onSelect(side)"
-        routerLink={{side.route}} (click)="addNewItem(side.menu)">
-        <mat-icon>{{side.emt}}</mat-icon>
-        <a class="font sidemenu">{{side.menu}}</a>
+    <a mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}}
+        (click)="addNewItem(side.menu)">
+
+        <!-- <mat-icon>settings</mat-icon> -->
+
+        <a class="font sidemenu" (click)="addNewItem(side.menu)">
+            <img class="filter" src={{side.emt}} />
+            {{side.menu}}
+        </a>
     </a>
 </mat-nav-list>
 
