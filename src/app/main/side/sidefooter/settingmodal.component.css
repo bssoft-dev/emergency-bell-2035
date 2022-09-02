@@ -1,3 +1,13 @@
+.popup-container {
+  padding: 20px;
+  width: auto;
+  height: calc(100vh - 350px);
+}
+
+/* .tab-con {
+  width: 80% !important;
+} */
+
 th,
 td {
   height: 60px !important;
