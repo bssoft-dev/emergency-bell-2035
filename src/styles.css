@@ -93,8 +93,7 @@ body {
 
 .mat-tab-body-content {
   height: 100%;
-  overflow-x: hidden !important;
-  overflow-y: auto;
+  overflow: hidden !important;
 }
 
 .mat-tab-body.mat-tab-body-active {
@@ -133,9 +132,16 @@ mat-tab {
 
 /* test */
 .mat-list-item-content {
-  padding: 0;
+  padding: 0 !important;
 }
 
 img.filter {
   filter: grayscale(200%) var(--dashboard-img-filter);
+}
+
+@media (max-width: 1300px) {
+  img {
+    width: 100% !important;
+    padding-right: 0 !important;
+  }
 }

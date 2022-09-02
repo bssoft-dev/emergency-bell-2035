@@ -15648,8 +15648,7 @@ button.close {
 }
 
 .modal-open .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .modal-dialog {
@@ -29242,8 +29241,7 @@ ul li {
         min-height: 100vh;
         max-height: 100%;
         height: auto;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: hidden;
     }
 }
 

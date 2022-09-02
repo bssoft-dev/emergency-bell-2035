@@ -1,6 +1,6 @@
 <mat-drawer-container class="container">
-    
-    <!-- 사이드 -->    
+
+    <!-- 사이드 -->
     <mat-drawer mode="side" opened class="example-sidenav">
         <div style="position:relative; width: 100%; height:100%;">
             <div>
@@ -13,7 +13,7 @@
         </div>
     </mat-drawer>
 
-        
+
     <!-- 컨테이너 -->
     <mat-drawer-content>
 
@@ -32,7 +32,7 @@
                     </label>
                 </li>
             </ul>
-            
+
             <div class="sidebar">
                 <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
                 <app-sidefooter></app-sidefooter>
@@ -51,4 +51,3 @@
 <audio *ngIf="situation===true" autoplay>
     <source src="../assets/siren.wav#t=0,10">
 </audio>
-

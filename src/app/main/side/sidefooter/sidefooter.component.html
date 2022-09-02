@@ -1,17 +1,19 @@
 <mat-nav-list>
-    <!-- <a mat-list-item (click)="openDialog()"> -->
-
-    <a mat-list-item class="sel-side">
-        <!-- <a mat-list-item> -->
-        <!-- <mat-icon>settings</mat-icon> -->
-
+    <a mat-list-item (click)="openDialog()">
+        <!-- <img class="filter" src="../../../../assets/images/dashboardicons/작동중.png" /> -->
+        <div class="sideImg">
+            <img class="filter" src="../../../../assets/images/dashboardicons/작동중.png" />
+        </div>
         <a class="font sidemenu" (click)="openDialog()">
-            <img class="filter" src="../../../../assets/images/dashboardicons/작동중.png" />알람설정
+            알람설정
         </a>
     </a>
     <a mat-list-item (click)="logout()">
+        <div class="sideImg">
+            <img class="filter" src="../../../../assets/images/dashboardicons/로그아웃.png" />
+        </div>
         <a class="font sidemenu">
-            <img class="filter" src="../../../../assets/images/dashboardicons/로그아웃.png" />로그아웃
+            로그아웃
         </a>
     </a>
 </mat-nav-list>

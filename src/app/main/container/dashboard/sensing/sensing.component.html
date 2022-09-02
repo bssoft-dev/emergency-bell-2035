@@ -1,23 +1,3 @@
-<!-- <div class="font" style="min-width: 270px; width:40vw;">
-    <div>
-        <div class="unit unittitle">
-        <div>
-                <div>시간</div>
-                <div>설치장소</div>
-                <div>타입</div>
-        </div>
-    </div>
-        <div class="unit tnhhable">
-            <div [hidden]="socketrecentdata.length === 0" *ngFor="let i of socketrecentdata; let index = index">
-                <div *ngFor="let i of socketrecentdata; let index = index">
-                    <div>{{i.time}}</div>
-                    <div>{{i.location}}</div>
-                    <div>{{i.type}}</div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div>
   <table class="senssing" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -38,7 +18,7 @@
 
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>

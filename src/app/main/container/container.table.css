@@ -1,6 +1,6 @@
 .container-table {
   width: auto;
-  height: auto;
+  height: calc(100vh - 157px);
   background-color: var(--main-bg-color);
   padding: 20px;
   border-radius: 15px;
@@ -21,9 +21,8 @@ th.mat-header-cell {
 }
 
 table {
-  /* margin-top: 20px; */
   width: 100%;
-  border-radius: 50px;
+  border-radius: 50% !important;
 }
 
 th {
@@ -67,4 +66,29 @@ mat-icon.btn {
 
 .margin20px-t {
   margin-top: 20px;
+}
+
+.example-container {
+  height: 95%;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.example-container::-webkit-scrollbar {
+  width: 8px; /* 스크롤바의 너비 */
+}
+
+.example-container::-webkit-scrollbar-thumb {
+  height: 20%; /* 스크롤바의 길이 */
+  background: var(--smallSide-bg-color); /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.example-container::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
 }

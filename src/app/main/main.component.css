@@ -1,9 +1,3 @@
-/* 구역 나누기 */
-* {
-  padding: 0;
-  margin: 0;
-}
-
 .container {
   width: 100%;
   height: 100%;
@@ -11,11 +5,11 @@
 
 .mat-drawer-content {
   overflow-x: hidden !important;
-  overflow-y: scroll !important;
+  overflow-y: hidden !important;
   background-color: var(--grid-bg-color);
+  height: 100%;
 }
 
-/* 부모 */
 .example-sidenav {
   display: flex;
   width: 11.42%;
@@ -35,7 +29,6 @@
   align-content: center;
 }
 
-/* 자식 */
 .sidefooter {
   position: absolute;
   bottom: 0;
@@ -58,12 +51,12 @@ app-header {
   display: none;
 }
 
-/*  */
 @media (max-width: 1300px) {
   .example-sidenav {
     display: none;
   }
 
+  /* 여기부터 미니사이드바 */
   .smallSide {
     display: block;
   }
@@ -146,11 +139,11 @@ app-header {
   }
   input[id="menuicon"]:checked + ul {
     z-index: 2;
-    left: 200px;
+    left: 123.03px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label {
     z-index: 2;
-    left: 200px;
+    left: 123.03px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
     top: 50%;
@@ -166,8 +159,8 @@ app-header {
     transform: translate(-50%, 50%) rotate(-45deg);
   }
   div[class="sidebar"] {
-    width: 200px;
-    padding: 40px 0 !important;
+    height: auto;
+    padding: 0 40px !important;
     background: var(--smallSide-bg-color) !important;
     position: fixed;
     top: 50%;
