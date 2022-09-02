@@ -1,9 +1,10 @@
 .container-table {
   width: auto;
-  height: calc(100vh - 157px);
-  background-color: var(--main-bg-color);
-  padding: 20px;
+  height: calc(100vh - 455px);
+  background-color: var(--grid-table-bg);
+  padding: 100px;
   border-radius: 15px;
+  margin: 80px;
 }
 
 .demo-button-container {
@@ -25,10 +26,22 @@ table {
   border-radius: 50% !important;
 }
 
+th,
+td {
+  height: 100px;
+  font-family: Noto Sans;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
 th {
   background-color: var(--tablehead-bg-color);
   font-weight: bolder !important;
   color: #ffffff;
+
+  font-size: 0.9vw;
+  font-weight: 700;
+  line-height: 20px;
 }
 
 th.left {
@@ -48,6 +61,10 @@ tr:nth-child(even) {
 
 td {
   color: var(--profile-font-color);
+
+  font-weight: 500;
+  font-size: 0.7vw;
+  line-height: 18px;
 }
 
 .chagne-btn {
@@ -69,20 +86,20 @@ mat-icon.btn {
 }
 
 .example-container {
-  height: 95%;
-  width: 100%;
+  height: 92%;
+  width: auto;
   max-width: 100%;
   overflow: auto;
 }
 
 .example-container::-webkit-scrollbar {
-  width: 8px; /* 스크롤바의 너비 */
+  width: 15px; /* 스크롤바의 너비 */
 }
 
 .example-container::-webkit-scrollbar-thumb {
   height: 20%; /* 스크롤바의 길이 */
   background: var(--smallSide-bg-color); /* 스크롤바의 색상 */
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .example-container::-webkit-scrollbar-track {

@@ -8,6 +8,8 @@
   --MainBell-bg-color: #438ffe;
   --main-bg-color: #ffffff;
   --grid-bg-color: #e5e5e5;
+  --grid-table-bg: #ffffff;
+  --container-bg-color: #e5e5e5;
   --modal-bg-color: #ffffff;
   --table-bg-color: #f5f7f9;
   --bell-bg-color: #f5f7f9;
@@ -21,12 +23,15 @@
   --side-hover-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   --sdie-hover-bg: #ffffff;
   --dashboard-img-filter: opacity(0.6) drop-shadow(0 0 0 #000000);
+  --legacy-bg-color: rgba(137, 137, 137, 1);
 }
 .darkmode {
   --profile-font-color: #ffffff;
   --MainBell-bg-color: #1c2072;
   --main-bg-color: #121619;
   --grid-bg-color: #282b30;
+  --grid-table-bg: #282b30;
+  --container-bg-color: #121619;
   --modal-bg-color: #282b30;
   --table-bg-color: #424549;
   --bell-bg-color: #5156be;
@@ -40,6 +45,7 @@
   --side-hover-shadow: 4px 4px 10px rgba(200, 200, 200, 0.25);
   --sdie-hover-bg: #2d343f;
   --dashboard-img-filter: none;
+  --legacy-bg-color: rgba(220, 221, 221, 1);
 }
 /*  */
 
@@ -79,10 +85,19 @@ body {
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: var(--input-bg-color);
+  background-color: var(--input-bg-color) !important;
 }
 
 /* 알람설정 팝업 */
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: var(--legacy-bg-color) !important;
+}
+
+.mat-input-element {
+  color: var(--profile-font-color) !important;
+}
+
 .mat-tab-label {
   color: var(--profile-font-color);
 }

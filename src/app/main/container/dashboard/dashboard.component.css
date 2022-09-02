@@ -9,7 +9,7 @@
 }
 
 mat-grid-tile {
-  background: var(--main-bg-color);
+  background: var(--grid-table-bg);
   border-radius: 15px;
 
   justify-items: center;
