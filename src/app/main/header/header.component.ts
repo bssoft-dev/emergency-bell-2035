@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements DoCheck {
   @Input() item = '';
   isChecked: boolean;
   Realbody = document.querySelector('body');
@@ -15,9 +15,11 @@ export class HeaderComponent {
     this.whatmode();
   }
 
-  isCheckedchange() {
-    this.isChecked = !this.isChecked;
-    this.whatmode();
+  // 상시 체크
+  ngDoCheck() {
+    if (this.isChecked != JSON.parse(localStorage.getItem('bgmode'))) {
+      this.whatmode();
+    }
   }
 
   whatmode() {

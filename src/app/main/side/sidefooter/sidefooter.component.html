@@ -1,19 +1,14 @@
-<mat-nav-list>
-    <a mat-list-item (click)="openDialog()">
-        <!-- <img class="filter" src="../../../../assets/images/dashboardicons/작동중.png" /> -->
-        <div class="sideImg">
-            <img class="filter" src="../../../../assets/images/dashboardicons/작동중.png" />
-        </div>
-        <a class="font sidemenu" (click)="openDialog()">
+<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+    <mat-radio-button class="example-radio-button" (click)="openDialog()">
+        <img class="filter" src="../../../../assets/images/dashboardicons/알람설정.svg" />
+        <div style="display: inline; pointer-events: none;">
             알람설정
-        </a>
-    </a>
-    <a mat-list-item (click)="logout()">
-        <div class="sideImg">
-            <img class="filter" src="../../../../assets/images/dashboardicons/로그아웃.png" />
         </div>
-        <a class="font sidemenu">
+    </mat-radio-button>
+    <mat-radio-button class="example-radio-button" (click)="logout()">
+        <img class="filter" src="../../../../assets/images/dashboardicons/로그아웃.svg" />
+        <div style="display: inline; pointer-events: none;">
             로그아웃
-        </a>
-    </a>
-</mat-nav-list>
+        </div>
+    </mat-radio-button>
+</mat-radio-group>

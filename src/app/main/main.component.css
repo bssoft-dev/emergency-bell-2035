@@ -51,7 +51,7 @@ app-header {
   display: none;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1550px) {
   .example-sidenav {
     display: none;
   }
@@ -74,12 +74,13 @@ app-header {
     transition: all 0.35s;
     text-align: left;
     z-index: 2;
+    padding: 0;
   }
   input[id="menuicon"] + ul > li {
     display: block;
     width: 50px;
     height: 50px;
-    border: 1px solid #f1f1f1;
+    /* border: 1px solid #f1f1f1; */
     position: relative;
     margin-top: -1px;
   }
@@ -95,7 +96,8 @@ app-header {
     cursor: pointer;
     width: auto;
     height: 50px;
-    background: #dadada;
+    /* background: #dadada; */
+    background: rgba(172, 174, 233, 1);
   }
   input[id="menuicon"] + ul > li:nth-child(1) label span {
     display: block;
@@ -103,7 +105,7 @@ app-header {
     width: 50%;
     height: 3px;
     border-radius: 30px;
-    background: #333;
+    background: #fff;
     transition: all 0.35s;
   }
   input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {
@@ -139,11 +141,11 @@ app-header {
   }
   input[id="menuicon"]:checked + ul {
     z-index: 2;
-    left: 123.03px;
+    left: 155px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label {
     z-index: 2;
-    left: 123.03px;
+    left: 155px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
     top: 50%;

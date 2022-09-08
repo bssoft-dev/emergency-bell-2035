@@ -43,3 +43,7 @@
 img {
   width: 40%;
 }
+
+.filter {
+  filter: brightness(var(--filter-img-brightness));
+}

@@ -116,6 +116,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }, 50);
   }
 
+  // 통계차트
   makechart = (res, socketgraphdata) => {
     if (res === 'succeed') {
       const dataset = [];
@@ -181,9 +182,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
       // set text,grid color white
-      root.interfaceColors.set('grid', am5.color('#ffffff'));
-      root.interfaceColors.set('text', am5.color('#ffffff'));
-      root.interfaceColors.set('background', am5.color(0xadadad));
+      root.interfaceColors.set('grid', am5.color('#898989'));
+      root.interfaceColors.set('text', am5.color('#898989'));
+      root.interfaceColors.set('', am5.color('#898989'));
+      // root.interfaceColors.set('background', am5.color('#0000'));
 
       // Add series
       // https://www.amcharts.com/docs/v5/charts/xy-chart/series/

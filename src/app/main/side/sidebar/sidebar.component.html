@@ -1,21 +1,27 @@
-<mat-nav-list>
-    <a mat-list-item *ngFor="let side of sides" (click)="onSelect(side)" routerLink={{side.route}}
-        (click)="addNewItem(side.menu)">
-        <!-- <img class="filter" src={{side.emt}} /> -->
-        <div class="sideImg">
-            <img class="filter" src={{side.emt}} />
-        </div>
-        <a class="font sidemenu">{{side.menu}}</a>
-    </a>
-</mat-nav-list>
+<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
 
+    <ng-container *ngFor="let side of sides">
 
-<!-- <mat-nav-list *ngFor="let side of sides">
-    <ng-container *ngIf="side.ngif == 'custommer_code'">
-        <a style="padding:0px !important;" mat-list-item *ngFor="let side of sides" routerLink={{side.route}}
-            (click)="addNewItem(side.menu)">
-            <mat-icon>{{side.emt}}</mat-icon>
-            <a class="font sidemenu">{{side.menu}}</a>
-        </a>
+        <mat-radio-button id={{side.menu}} class="example-radio-button" *ngIf="hyperuser; else falseHyperuser"
+            (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+
+            <img class=" filter" src={{side.emt}} />
+            <div style="display: inline; pointer-events: none;">{{side.menu}}</div>
+
+        </mat-radio-button>
+
+        <ng-template #falseHyperuser>
+
+            <mat-radio-button id={{side.menu}} class="example-radio-button" *ngIf="side.ngif.includes('hyper') != 1"
+                (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+
+                <img class=" filter" src={{side.emt}} />
+                <div style="display: inline; pointer-events: none;">{{side.menu}}</div>
+
+            </mat-radio-button>
+
+        </ng-template>
+
     </ng-container>
-</mat-nav-list> -->
+
+</mat-radio-group>

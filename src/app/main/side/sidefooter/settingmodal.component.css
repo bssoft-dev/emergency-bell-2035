@@ -4,6 +4,16 @@
   height: calc(100vh - 350px);
 }
 
+.SelTab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SekTab > div {
+  width: 80%;
+}
+
 /* .tab-con {
   width: 80% !important;
 } */
@@ -11,7 +21,7 @@
 th,
 td {
   height: 60px !important;
-  font-size: 0.5vw;
+  font-size: 0.7vw !important;
 }
 
 td {

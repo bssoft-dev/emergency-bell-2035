@@ -21,6 +21,8 @@ import { ProfileComponent } from './main/side/profile/profile.component';
 import { SidebarComponent } from './main/side/sidebar/sidebar.component';
 import { SidefooterComponent } from './main/side/sidefooter/sidefooter.component';
 import { SettingmodalComponent } from './main/side/sidefooter/sidefooter.component';
+import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.component';
+import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
 
 // 컨포넌트
 import { DashboardComponent } from './main/container/dashboard/dashboard.component';
@@ -63,9 +65,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PhontabComponent } from './main/side/sidefooter/phontab/phontab.component';
-import { EmailtabComponent } from './main/side/sidefooter/emailtab/emailtab.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -152,6 +153,7 @@ const appRoutes: Routes = [
     MatListModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatRadioModule,
   ],
   providers: [ApiService, WebsocketService],
   bootstrap: [AppComponent],
