@@ -5,7 +5,7 @@
 
     <div class="form">
         <form [formGroup]="Form" (ngSubmit)="submit()">
-            
+
             <div class="upload-container">
                 <div>
                     <img [src]="imageSrc" class="locationpicture">
@@ -77,7 +77,8 @@
             </mat-form-field>
 
             <div class="completion-btn">
-                <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid">등록</button>
+                <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid"
+                    [mat-dialog-close]="">등록</button>
             </div>
         </form>
 

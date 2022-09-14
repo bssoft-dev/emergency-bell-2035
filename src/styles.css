@@ -20,10 +20,9 @@
   --bgmode-bg-image: #438ffe;
   --smallSide-bg-color: rgba(67, 143, 254, 0.6);
   --legacy-bg-color: rgba(137, 137, 137, 1);
-  --side-hover-bg: #ffffff;
+  --side-hover-bg: #e5e5e5;
   --side-hover-box: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  --filter-img-brightness: 0;
-  /* --filter-svg-brightness: 0; */
+  --filter-hover-svg-brightness: -99999999%;
 }
 .darkmode {
   --profile-font-color: #ffffff;
@@ -37,20 +36,15 @@
   --bell-bg-color: #5156be;
   --tablehead-bg-color: #5156be;
   --header-border-color: #606264;
-  --side-font-color: #ffffff;
+  --side-font-color: #ffffffc0;
   --input-bg-color: #969494;
   --bgmode-bg-image: #ffffff;
   --smallSide-bg-color: rgba(81, 86, 190, 0.6);
   --legacy-bg-color: rgba(220, 221, 221, 1);
-  --side-hover-bg: #2d343f;
+  --side-hover-bg: gray;
   --side-hover-box: 4px 4px 10px rgba(200, 200, 200, 0.25);
-  --filter-img-brightness: 100%;
-  --filter-svg-brightness: 250%;
-}
-
-.checked {
-  --side-checked-bg: var(--side-hover-bg);
-  --side-checked-box: var(--side-hover-box);
+  --filter-svg-brightness: 200%;
+  --filter-hover-svg-brightness: 99999999%;
 }
 
 /*  */
@@ -184,6 +178,10 @@ mat-tab {
 
   text-align: left;
   align-items: center;
+}
+
+.mat-radio-label-content :hover {
+  color: var(--profile-font-color) !important;
 }
 
 @media (max-width: 1755px) {

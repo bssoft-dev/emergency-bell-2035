@@ -56,7 +56,7 @@ app-header {
     display: none;
   }
 
-  /* 여기부터 미니사이드바 */
+  /* 미니사이드바 */
   .smallSide {
     display: block;
   }

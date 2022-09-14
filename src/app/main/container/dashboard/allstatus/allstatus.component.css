@@ -45,5 +45,5 @@ img {
 }
 
 .filter {
-  filter: brightness(var(--filter-img-brightness));
+  filter: brightness(var( --filter-hover-svg-brightness));
 }
