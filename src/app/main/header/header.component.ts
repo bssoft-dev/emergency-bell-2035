@@ -7,7 +7,7 @@ import { Component, Input, DoCheck } from '@angular/core';
 })
 export class HeaderComponent implements DoCheck {
   @Input() item = '';
-  isChecked: boolean;
+  isChecked: boolean = true;
   Realbody = document.querySelector('body');
 
   constructor() {

@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { WebsocketService } from '../../../services/websocket.service';
 
 declare const am5: any;
@@ -18,12 +24,9 @@ import '../../../../assets/amchart/light.js';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  @Output()
+  newsituation = new EventEmitter<boolean>();
   customerCode = '';
-
-  // test code
-  setSituation() {
-    localStorage.setItem('situation', JSON.stringify(true));
-  }
 
   // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
   // /api/detections/{deviceId}
@@ -36,9 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     public router: Router,
     private service: ApiService,
     private WebsocketService: WebsocketService
-  ) {
-    localStorage.setItem('situation', JSON.stringify(false));
-  }
+  ) {}
 
   ngOnInit() {
     this.Starting();
@@ -47,7 +48,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.WebsocketService.requestmessages.unsubscribe();
     this.getcustomermapdata = {};
-    // websocket 데이터
     this.socketdevicesdata = {};
     this.socketgraphdata = {};
     this.socketrecentdata = [];
@@ -93,7 +93,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         localStorage.setItem('popupdata', msg['popupEvent']['content']);
         this.socketrecentdata = msg['recentEvent']['content'];
         // this.socketgraphdata = msg['graph']['content'];
-        localStorage.setItem('situation', JSON.stringify(true));
+        // localStorage.setItem('situation', JSON.stringify(true));
+        this.newsituation.emit(true);
       } else {
         this.socketdevicesdata = msg['content'];
       }

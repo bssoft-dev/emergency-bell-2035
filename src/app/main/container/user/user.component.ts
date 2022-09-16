@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import {
@@ -19,6 +19,7 @@ export interface DialogData {
   styleUrls: ['../container.table.css', './user.component.css'],
 })
 export class UserComponent implements OnInit {
+  @Input() userLog = [];
   token = sessionStorage.getItem('token');
   manangerDisabled: boolean; // 관리자권한 제어
 
@@ -204,10 +205,7 @@ export class AdduserComponent implements OnInit {
           }
         },
         error: (err) => {
-          this._snackBar.open('서버 에러', '닫기', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
+          alert('서버 에러');
         },
         complete: () => {},
       });
@@ -226,18 +224,14 @@ export class AdduserComponent implements OnInit {
     if (this.Form.valid && this.passIdMsg) {
       this.service.registeruser(data).subscribe({
         next: (res) => {
-          this._snackBar.open('등록이 완료되었습니다', '닫기', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
+          alert('등록이 완료 되었습니다');
         },
         error: (err) => {
-          this._snackBar.open('등록권한이 없습니다', '닫기', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
+          alert('등록 권한이 없습니다');
         },
-        complete: () => {},
+        complete: () => {
+          this.onNoClick();
+        },
       });
     }
   }
@@ -322,18 +316,14 @@ export class ReguserComponent implements OnInit {
     if (this.Form.valid) {
       this.service.modifyoneuser(data).subscribe({
         next: (res) => {
-          this._snackBar.open('수정이 완료되었습니다', '닫기', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
+          alert('수정이 완료 되었습니다');
         },
         error: (err) => {
-          this._snackBar.open('서버 에러', '닫기', {
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-          });
+          alert('서버 에러');
         },
-        complete: () => {},
+        complete: () => {
+          this.onNoClick();
+        },
       });
     }
   }

@@ -208,7 +208,7 @@ export class ApiService {
       { headers }
     );
   }
-  oneesmssetting(data: any): Observable<any> {
+  onesmssetting(data: any): Observable<any> {
     const jsondata = JSON.stringify(data);
     const headers = new HttpHeaders({
       accept: 'application/json',

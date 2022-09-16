@@ -99,16 +99,26 @@ mat-icon.btn {
 
 .example-container::-webkit-scrollbar-thumb {
   height: 20%; /* 스크롤바의 길이 */
-  background: var(--table-bg-color); /* 스크롤바의 색상 */
+  background: var(--side-hover-bg); /* 스크롤바의 색상 */
   /* background: rgba(89, 87, 87, 1); 스크롤바의 색상 */
   border-radius: 15px;
+  width: 5%;
 }
 
 .example-container::-webkit-scrollbar-track {
-  background: rgba(196, 196, 196, 1); /*스크롤 색상*/
+  /* background: rgba(196, 196, 196, 1); 스크롤 색상 */
+  background-color: transparent;
   border-radius: 15px;
 }
 
 .mat-elevation-z8 {
   box-shadow: none;
+}
+
+.completion-btn {
+  width: auto;
+}
+
+.footerBtn {
+  display: inline-flex;
 }

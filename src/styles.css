@@ -76,6 +76,21 @@ body {
   color: var(--profile-font-color);
 }
 
+.trueCheck {
+  color: skyblue;
+  font-size: 12px !important;
+}
+
+.falseCheck {
+  color: brown;
+  font-size: 12px !important;
+}
+
+.noticeCheck {
+  color: green !important;
+  font-size: 12px !important;
+}
+
 /* 팝업 */
 .mat-dialog-container {
   border-radius: 15px !important;
@@ -100,6 +115,8 @@ body {
 
 .mat-tab-label {
   color: var(--profile-font-color);
+  font-size: 16px;
+  font-weight: bolder;
 }
 
 .mat-tab-label :checked {

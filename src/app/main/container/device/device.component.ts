@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import {
@@ -17,6 +17,7 @@ export interface DialogData {
   styleUrls: ['../container.table.css', './device.component.css'],
 })
 export class DeviceComponent implements OnInit {
+  @Input() userLog = [];
   token = sessionStorage.getItem('token');
   customer_code = '';
 
@@ -227,6 +228,9 @@ export class AdddeviceComponent implements OnInit {
         error: (err) => {
           alert('권한이 없습니다');
         },
+        complete() {
+          this.onNoClick();
+        },
       });
     }
   }
@@ -320,7 +324,9 @@ export class RegdeviceComponent implements OnInit {
         error: (err) => {
           alert('정보를 잘못 입력하셨습니다');
         },
-        complete: () => {},
+        complete() {
+          this.onNoClick();
+        },
       });
     }
   }

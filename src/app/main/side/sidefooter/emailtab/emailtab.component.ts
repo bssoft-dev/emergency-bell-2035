@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,25 +12,26 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     '../../../container/container.table.css',
   ],
 })
-export class EmailtabComponent implements OnInit {
+export class EmailtabComponent implements OnInit, DoCheck {
   Form: FormGroup;
 
   displayedColumns: string[] = ['name', 'email', 'setting', 'delete'];
   dataSource = [];
 
-  constructor(public router: Router, private service: ApiService) {}
+  constructor(public router: Router, private service: ApiService) {
+    this.getUser();
+    this.getallemail();
+  }
 
   ngOnInit() {
     this.Form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
     });
-    this.getalarmemailuser();
-    this.getallemail();
   }
 
-  getalarmemailuser() {
-    // this.dataSource = [];
+  // 테이블데이터
+  getUser() {
     this.service.getalarmemailuser().subscribe({
       next: (res) => {
         this.dataSource = res;
@@ -43,7 +44,7 @@ export class EmailtabComponent implements OnInit {
   submit() {
     this.service.registeremailalarm(this.Form.value).subscribe({
       next: (res) => {
-        this.getalarmemailuser();
+        this.getUser();
         this.Form.reset();
       },
       error: (err) => {
@@ -53,47 +54,54 @@ export class EmailtabComponent implements OnInit {
     });
   }
 
-  deletedata(index) {
-    const data = index;
+  // 삭제
+  deletedata(element) {
+    const returnValue = confirm(
+      element.name + '기기 정보를 삭제 하시겠습니까?'
+    );
 
-    this.service.deleteemailalarm(data.email).subscribe({
-      next: (res) => {
-        alert('삭제 완료 되었습니다.');
-        this.getalarmemailuser();
-      },
-      error: (err) => {},
-      complete: () => {},
-    });
+    if (returnValue) {
+      this.service.deleteemailalarm(element.email).subscribe({
+        next: (res) => {
+          alert('삭제 완료 되었습니다.');
+          this.getUser();
+        },
+        error: (err) => {},
+        complete: () => {},
+      });
+    }
   }
 
-  onSetting(index) {
-    const data = index;
-    data.setting = !data.setting;
-    delete data.email;
-    delete data.customerName;
-
+  // 개인설정
+  onSetting(element) {
+    var userSetting = !element.setting;
+    const data = {
+      name: element.name,
+      setting: element.setting,
+    };
     this.service.oneemailsetting(data).subscribe({
-      next: (res) => {
-        this.getalarmemailuser();
-      },
+      next: (res) => {},
       error: (err) => {},
       complete: () => {},
     });
   }
 
-  allData = false;
+  allData: boolean;
+  allData2: boolean;
+  // 전체 sms 설정값 가져오기
   getallemail() {
     this.service.getallalarmemail().subscribe({
       next: (res) => {
         this.allData = res;
+        this.allData2 = res;
       },
       error: (err) => {},
       complete: () => {},
     });
   }
 
+  // 전체 sms 설정값 변경
   allSetting() {
-    this.allData = !this.allData;
     this.service.allalarmemailsetting(this.allData).subscribe({
       next: (res) => {},
       error: (err) => {
@@ -101,5 +109,18 @@ export class EmailtabComponent implements OnInit {
       },
       complete: () => {},
     });
+  }
+
+  ngDoCheck(): void {
+    if (this.allData2 != this.allData) {
+      this.allData = !this.allData;
+      this.service.allalarmemailsetting(this.allData).subscribe({
+        next: (res) => {},
+        error: (err) => {
+          alert('내부 서버에러');
+        },
+        complete: () => {},
+      });
+    }
   }
 }

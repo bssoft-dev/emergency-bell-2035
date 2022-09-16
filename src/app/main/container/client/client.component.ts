@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
@@ -17,6 +17,7 @@ export interface DialogData {
   styleUrls: ['../container.table.css', './client.component.css'],
 })
 export class ClientComponent implements OnInit {
+  @Input() userLog = [];
   token = sessionStorage.getItem('token');
 
   displayedColumns = [
@@ -150,7 +151,9 @@ export class AddclientComponent implements OnInit {
         error: (err) => {
           alert('정보를 잘못 입력하셨습니다');
         },
-        complete: () => {},
+        complete() {
+          this.onNoClick();
+        },
       });
     }
   }
@@ -270,6 +273,9 @@ export class ResclientComponent implements OnInit {
         },
         error: (err) => {
           alert('정보를 잘못 입력하셨습니다');
+        },
+        complete() {
+          this.onNoClick();
         },
       });
     }

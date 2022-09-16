@@ -30,11 +30,6 @@ mat-form-field {
   height: 20% !important;
 }
 
-.falseCheck {
-  color: brown;
-  font-weight: bolder;
-}
-
 .completion-btn {
   padding: 20px 0;
 }

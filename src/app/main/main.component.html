@@ -5,7 +5,7 @@
         <div style="position:relative; width: 100%; height:100%;">
             <div>
                 <app-profile></app-profile>
-                <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
+                <app-sidebar (newItemEvent)="addItem($event)" [userLog]="userLog"></app-sidebar>
             </div>
             <div class="sidefooter">
                 <app-sidefooter></app-sidefooter>
@@ -42,7 +42,7 @@
 
         <!-- 컨테이너 -->
         <div style="padding:20px; min-width: 900px;">
-            <router-outlet></router-outlet>
+            <router-outlet (newsituation)="addsituation($event)"></router-outlet>
         </div>
     </mat-drawer-content>
 

@@ -9,25 +9,28 @@ import { ApiService } from '../services/api.service';
 })
 export class MainComponent implements DoCheck {
   currentItem = localStorage.getItem('whatTitle');
-  situation = false;
+  situation;
   opened: boolean;
-  token = sessionStorage.getItem('token');
   user = false;
 
-  constructor(private _snackBar: MatSnackBar, private service: ApiService) {}
+  userLog = [sessionStorage.getItem('token')]; // token, hyperuser, customeruser, superuser
+
+  constructor(private _snackBar: MatSnackBar, private service: ApiService) {
+    this.userCheck();
+  }
 
   // 상시 체크
   ngDoCheck() {
-    if (!this.user) {
-      this.userCheck();
-    }
-    if (JSON.parse(localStorage.getItem('situation'))) {
-      localStorage.setItem('situation', JSON.stringify(false));
+    // if (JSON.parse(localStorage.getItem('situation'))) {
+    //   localStorage.setItem('situation', JSON.stringify(false));
+    //   this.openSnackBar();
+    //   this.situation = true;
+    // }
+    // setTimeout(() => {
+    //   this.situation = false;
+    // }, 10000);
+    if (this.situation) {
       this.openSnackBar();
-      this.situation = true;
-      setTimeout(() => {
-        this.situation = false;
-      }, 10000);
     }
   }
 
@@ -35,19 +38,11 @@ export class MainComponent implements DoCheck {
   userCheck() {
     this.user = true;
     return new Promise((resolve, reject) => {
-      this.service.getcurrentuser(this.token).subscribe({
+      this.service.getcurrentuser(this.userLog[0]).subscribe({
         next: (res) => {
-          // 토큰
-          localStorage.setItem('token', JSON.stringify(this.token));
-          // 하이퍼유저
-          localStorage.setItem('hyperuser', JSON.stringify(res.is_hyperuser));
-          // 커스터머유저
-          localStorage.setItem(
-            'customeruser',
-            JSON.stringify(res.customerCode)
-          );
-          // 슈퍼유저
-          localStorage.setItem('superuser', JSON.stringify(res.is_superuser));
+          this.userLog[1] = res.is_hyperuser;
+          this.userLog[2] = res.customerCode;
+          this.userLog[3] = res.is_superuser;
 
           resolve(res);
         },
@@ -64,11 +59,12 @@ export class MainComponent implements DoCheck {
     localStorage.setItem('whatTitle', newItem);
   }
 
+  addsituation(situation) {
+    this.situation = situation;
+  }
+
   // 이벤트 발생 시 알림창
   openSnackBar() {
-    this._snackBar.open(localStorage.getItem('popupdata'), '닫기', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
+    alert(localStorage.getItem('popupdata'));
   }
 }
