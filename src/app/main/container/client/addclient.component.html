@@ -1,0 +1,70 @@
+<div class="popup-container">
+    <div class="header">
+        고객사 등록
+    </div>
+
+    <div class="form">
+        <form [formGroup]="Form" (ngSubmit)="submit()">
+
+            <div class="upload-container">
+                <div>
+                    <img [src]="imageSrc" class="locationpicture">
+                    <input id="bizFile1" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event,1)"
+                        style="display: none;" />
+                    <label for="bizFile1" class="uploadlabel">
+                        <div>
+                            <mat-icon class="upload-btn">cloud_upload</mat-icon>
+                        </div>
+                        <div class="upload-btn">LogoUpload</div>
+                    </label>
+                </div>
+                <div>
+                    <img [src]="mapSrc" class="locationpicture">
+                    <input id="bizFile2" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event,2)"
+                        style="display: none;" />
+                    <label for="bizFile2" class="uploadlabel">
+                        <div>
+                            <mat-icon class="upload-btn">cloud_upload</mat-icon>
+                        </div>
+                        <div class="upload-btn">MapUpload</div>
+                    </label>
+                </div>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>고객사명</mat-label>
+                <input matInput formControlName="customerName">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>담당자명</mat-label>
+                <input matInput formControlName="staffName">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>연락처</mat-label>
+                <input matInput placeholder="01012345678" formControlName="phone">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>상태</mat-label>
+                <input matInput placeholder="01012345678" formControlName="status">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>결제방법</mat-label>
+                <input matInput formControlName="payMethod">
+            </mat-form-field>
+
+            <div class="completion-btn">
+                <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid"
+                    [mat-dialog-close]="">등록</button>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="footer">
+        <button class="btn" mat-stroked-button color="primary" (click)="onNoClick()">돌아가기</button>
+    </div>
+</div>

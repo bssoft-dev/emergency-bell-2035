@@ -1,0 +1,80 @@
+<div class="popup-container">
+    <div class="header">
+        기기 수정
+    </div>
+
+    <div class="form">
+        <form [formGroup]="Form" (ngSubmit)="submit()">
+
+            <div class="upload-container">
+                <div>
+                    <img [src]="imageSrc" class="locationpicture">
+                    <input id="bizFile1" type="file" accept=".jpg, .jpeg, .png" (change)="onFileChange($event)"
+                        style="display: none;" />
+                    <label for="bizFile1" class="uploadlabel">
+                        <div>
+                            <mat-icon class="upload-btn">cloud_upload</mat-icon>
+                        </div>
+                        <div class="upload-btn">LogoUpload</div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="rect1">
+                <mat-form-field class="space" appearance="fill">
+                    <mat-label>기기아이디</mat-label>
+                    <input readonly matInput formControlName="deviceId">
+                    <mat-hint class="falseCheck">수정불가</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="rect2">
+                <mat-form-field class="space" appearance="fill">
+                    <mat-label>고객사명</mat-label>
+                    <input readonly matInput formControlName="devicecustomerNameId">
+                    <mat-hint class="falseCheck">수정불가</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>별칭</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>모델명</mat-label>
+                <input matInput formControlName="model">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>설치장소</mat-label>
+                <input matInput formControlName="location">
+                <mat-hint class="noticeCheck">최대 30자</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>설치일</mat-label>
+                <input matInput formControlName="installDate" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>통신방식</mat-label>
+                <input matInput formControlName="communicateMethod">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>메모</mat-label>
+                <input matInput formControlName="userMemo">
+            </mat-form-field>
+
+            <div class="completion-btn">
+                <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid"
+                    [mat-dialog-close]="">수정</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="footer">
+        <button class="btn" mat-stroked-button color="primary" (click)="onNoClick()">돌아가기</button>
+    </div>
+</div>

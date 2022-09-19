@@ -1,0 +1,29 @@
+.profileimg {
+  height: 80%;
+  width: 80%;
+  top: 35px;
+
+  border: 3px solid var(--tablehead-bg-color);
+  border-radius: 50%;
+
+  margin-bottom: 20px;
+}
+
+.profilename {
+  font-weight: 700;
+  font-size: 0.8vw;
+
+  color: var(--profile-font-color);
+
+  margin-bottom: 4px;
+}
+
+.modifyprofile {
+  font-family: "Gill Sans MT" !important;
+  font-weight: 400;
+  font-size: 0.7vw;
+  cursor: pointer;
+  color: #a6a8aa;
+
+  margin: 0px;
+}

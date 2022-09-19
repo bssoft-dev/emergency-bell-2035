@@ -1,0 +1,23 @@
+/* 테이블 */
+td {
+  width: 11.1%;
+}
+
+.smallimg {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.smallimg:hover {
+  transform: scale(0.9);
+  border-radius: 7px;
+  opacity: 0.8;
+}
+
+/* 팝업 */
+mat-form-field {
+  padding: 15px 0;
+  width: 100%;
+}

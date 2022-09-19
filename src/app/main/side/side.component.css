@@ -1,0 +1,61 @@
+img {
+  width: 30%;
+  padding: 0 15px 0 15px;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.example-radio-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  padding: 20px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.example-radio-group :hover {
+  width: 100%;
+  background: var(--side-hover-bg);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.filter {
+  filter: brightness(var(--filter-svg-brightness));
+}
+.menuName {
+  display: inline;
+}
+
+.menuName :hover {
+  color: black !important;
+}
+
+@media (max-width: 1755px) {
+  img {
+    display: block;
+    padding: 0 35% 15px;
+  }
+
+  .menuName {
+    display: block;
+  }
+}
+
+@media (max-width: 1550px) {
+  img {
+    padding: 0 25% 15px;
+    width: 35px;
+  }
+
+  .menuName {
+    display: block;
+    font-size: 15px;
+  }
+}

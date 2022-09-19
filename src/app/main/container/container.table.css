@@ -1,0 +1,124 @@
+.container-table {
+  width: auto;
+  height: calc(100vh - 455px);
+  background-color: var(--grid-table-bg);
+  padding: 100px;
+  border-radius: 15px;
+  margin: 80px;
+}
+
+.demo-button-container {
+  text-align: right;
+}
+
+.demo-button {
+  color: #ffffff;
+  background-color: var(--tablehead-bg-color);
+  border-radius: 15px;
+  font-size: 0.9vw;
+  padding: 7px 15px;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-radius: 50% !important;
+}
+
+th,
+td {
+  font-family: Noto Sans;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+th {
+  background-color: var(--tablehead-bg-color);
+  font-weight: bolder !important;
+  color: #ffffff;
+  height: 60px;
+  font-size: 0.9vw;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+th.left {
+  border-top-left-radius: 15px;
+  padding-left: 24px;
+}
+th.right {
+  border-top-right-radius: 15px;
+}
+tr {
+  background: var(--table-default-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-bg-color);
+}
+
+td {
+  color: var(--profile-font-color);
+  height: 100px;
+  font-weight: 500;
+  font-size: 0.7vw;
+  line-height: 18px;
+}
+
+.chagne-btn {
+  color: var(--profile-font-color);
+  cursor: pointer;
+  width: auto;
+}
+
+.chagne-btn :hover {
+  color: var(--tablehead-bg-color);
+}
+
+mat-icon.btn {
+  margin: 0 20px;
+}
+
+.margin20px-t {
+  margin-top: 20px;
+}
+
+.example-container {
+  height: 92%;
+  width: auto;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.example-container::-webkit-scrollbar {
+  width: 15px; /* 스크롤바의 너비 */
+}
+
+.example-container::-webkit-scrollbar-thumb {
+  height: 20%; /* 스크롤바의 길이 */
+  background: var(--side-hover-bg); /* 스크롤바의 색상 */
+  /* background: rgba(89, 87, 87, 1); 스크롤바의 색상 */
+  border-radius: 15px;
+  width: 5%;
+}
+
+.example-container::-webkit-scrollbar-track {
+  /* background: rgba(196, 196, 196, 1); 스크롤 색상 */
+  background-color: transparent;
+  border-radius: 15px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.completion-btn {
+  width: auto;
+}
+
+.footerBtn {
+  display: inline-flex;
+}

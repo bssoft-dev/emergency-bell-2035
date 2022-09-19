@@ -1,0 +1,49 @@
+.back-grid {
+  background-color: var(--MainBell-bg-color);
+  border-radius: 30px;
+}
+
+.mat-grid-tile {
+  background-color: var(--bell-bg-color);
+  color: var(--profile-font-color);
+}
+
+.first {
+  background-color: var(--MainBell-bg-color);
+  color: #fff;
+  border-top-left-radius: 20px;
+  box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
+  z-index: 1;
+}
+
+.dashleft {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: auto;
+}
+
+.dashright {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: auto;
+}
+
+.fontSt {
+  font-size: 1vw;
+  margin-bottom: 50px;
+}
+
+.socketFont {
+  font-size: 2.5vw;
+  margin-top: 50px;
+}
+
+img {
+  width: 40%;
+}
+
+.filter {
+  filter: brightness(var( --filter-hover-svg-brightness));
+}

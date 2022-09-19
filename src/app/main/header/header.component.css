@@ -1,19 +1,23 @@
-.navbar-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
+.title {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 34px;
+  color: var(--profile-font-color);
+
+  text-align: left;
 }
 
-.gfont {
-    align-items: center;
-    margin-top: 20px;
-    color: #ffffff;
-    font-size: 37px;
-    font-weight: 700;
-    margin-left: 50px;
+.headerjustify {
+  display: flex;
+  justify-content: space-between;
 }
 
-.toggleinput {
-    left: 100%;
+.darktoggle {
+  text-align: right;
+}
+
+/* 토글 */
+mat-icon {
+  /* font-size: 12px; */
+  color: var(--bgmode-bg-image);
 }

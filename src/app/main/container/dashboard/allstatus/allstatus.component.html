@@ -1,0 +1,63 @@
+<div class="back-grid">
+
+    <mat-grid-list cols="2" rowHeight="16.5vh">
+
+        <mat-grid-tile class="first">
+            <div class="dashleft">
+                <img src="../../../../../assets/images/dashboardicons/총갯수.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
+                    총 갯수
+                </div>
+                <div class="socketFont">
+                    {{socketdevicesdata["numDevice"]}}
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile style="border-top-right-radius: 20px;">
+            <div class="dashleft">
+                <img class="filter" src="../../../../../assets/images/dashboardicons/작동중.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
+                    작동중
+                </div>
+                <div class="socketFont">
+                    {{socketdevicesdata["activationDevice"]}}
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile style="border-bottom-left-radius: 20px;">
+            <div class="dashleft">
+                <img class="filter" src="../../../../../assets/images/dashboardicons/점검중.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
+                    점검중
+                </div>
+                <div class="socketFont">
+                    {{socketdevicesdata["inspectionDevice"]}}
+                </div>
+            </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile style="border-bottom-right-radius: 20px;">
+            <div class="dashleft">
+                <img class="filter" src="../../../../../assets/images/dashboardicons/연결끊김.png" />
+            </div>
+            <div class="dashright">
+                <div class="fontSt">
+                    연결끊김
+                </div>
+                <div class="socketFont">
+                    {{socketdevicesdata["deactivateDevice"]}}
+                </div>
+            </div>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+
+</div>

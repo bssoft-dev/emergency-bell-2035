@@ -1,0 +1,61 @@
+.imgmap {
+  width: 100%;
+  height: 100%;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 100%;
+}
+
+mat-grid-tile {
+  background: var(--grid-table-bg);
+  border-radius: 15px;
+
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+mat-grid-tile {
+  display: block !important;
+}
+
+mat-grid-tile-header {
+  font-size: 2vh;
+  color: var(--profile-font-color) !important;
+
+  background: none !important;
+
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+
+  position: static;
+}
+
+.title-box {
+  display: block !important;
+}
+
+.mat-grid-tile .mat-grid-tile-header {
+  padding: 0;
+}
+
+mat-grid-tile-header {
+  font-weight: bold;
+}
+
+.dashTop {
+  position: absolute;
+  top: 0;
+}
+
+.dashBottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80%;
+}

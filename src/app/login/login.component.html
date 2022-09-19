@@ -1,8 +1,7 @@
 <div class="full-page-wrapper page-body-wrapper contain">
   <div>
     <p class="title">스마트 비상벨 관제시스템</p>
-
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+    <form [formGroup]="Form" (ngSubmit)="login()" novalidate>
       <div class="inputDiv">
         <i class="mdi mdi-bell-outline icon"></i>
         <input class="underline" type="text" placeholder="ID" formControlName="username" tabindex="1" />
@@ -14,10 +13,7 @@
       <button class="singin abtn" tabindex="3">로그인</button>
     </form>
     <div class="another">
-      <!-- <button class="anotherbutton" tabindex="4" (click)="goregister()">회원가입</button> -->
       <button class="anotherbutton abtn" tabindex="5" (click)="goforgotpassword()">비밀번호찾기</button>
-
     </div>
-
   </div>
 </div>

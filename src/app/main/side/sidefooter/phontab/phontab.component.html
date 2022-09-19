@@ -1,0 +1,66 @@
+<div class="SelTab">
+    <div>
+        <div>
+            <form [formGroup]="Form" (ngSubmit)="submit()">
+
+                <div class="upload-container ">
+                    <mat-form-field class="input1" appearance="legacy">
+                        <mat-label>이름</mat-label>
+                        <input matInput type="text" formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field class="input2" appearance="legacy">
+                        <mat-label>번호</mat-label>
+                        <input matInput type="text" formControlName="phone">
+                        <mat-hint class="noticeCheck">' - ' 생략</mat-hint>
+                    </mat-form-field>
+                    <button class="btn1 chagne-btn" [disabled]="!Form.valid">
+                        <mat-icon class="btn size" type="submit">add_circle_outline</mat-icon>
+                    </button>
+                </div>
+            </form>
+            <div class="togglecontroller marginDiv">
+                <mat-slide-toggle [(ngModel)]="allData2" [checked]="allData2"></mat-slide-toggle>
+            </div>
+        </div>
+
+        <div class=" datatable">
+            <section class="example-container mat-elevation-z8" tabindex="0">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="name">
+                        <th class="left" smat-header-cell *matHeaderCellDef> 이름 </th>
+                        <td class="left" mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="phone">
+                        <th smat-header-cell *matHeaderCellDef> 번호 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="setting">
+                        <th mat-header-cell *matHeaderCellDef> 발신설정 </th>
+                        <td mat-cell *matCellDef="let element">
+                            <!-- <mat-slide-toggle [(ngModel)]="element.setting" [checked]="userSetting"
+                                (click)="onSetting(element)" [disabled]="!allData2"> -->
+                            <mat-slide-toggle [(ngModel)]="element.setting" [checked]="element.setting"
+                                [disabled]="!allData2" (click)="onSetting(element)">
+                            </mat-slide-toggle>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="delete">
+                        <th class="right" mat-header-cell *matHeaderCellDef> 삭제 </th>
+                        <td class="right" mat-cell *matCellDef="let element">
+                            <div class="chagne-btn">
+                                <mat-icon class="btn" (click)="deletedata(element)">delete</mat-icon>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>

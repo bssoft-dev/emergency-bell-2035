@@ -1,0 +1,27 @@
+<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+
+    <ng-container *ngFor="let side of sides">
+
+        <mat-radio-button id={{side.menu}} class="example-radio-button " *ngIf="userLog[1]; else falseHyperuser"
+            (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+
+            <img class="filter" src={{side.emt}} />
+            <div class="menuName">{{side.menu}}</div>
+
+        </mat-radio-button>
+
+        <ng-template #falseHyperuser>
+
+            <mat-radio-button id={{side.menu}} class="example-radio-button" *ngIf="side.ngif.includes('hyper') != 1"
+                (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)">
+
+                <img class="filter" src={{side.emt}} />
+                <div class="menuName">{{side.menu}}</div>
+
+            </mat-radio-button>
+
+        </ng-template>
+
+    </ng-container>
+
+</mat-radio-group>

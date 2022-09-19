@@ -1,27 +1,33 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Sidebar } from '../main';
+import { Component, Input, DoCheck } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
-  
-  // 제목
-  @Input() side?:  Sidebar;
+export class HeaderComponent implements DoCheck {
+  @Input() item = '';
+  isChecked: boolean = true;
+  Realbody = document.querySelector('body');
 
-  
-  // 다크모드
-  active = false;
-  @Output() bcmode = new EventEmitter<boolean>();
-  updateMode(mode: boolean) {
-    this.active = !mode;
-    this.bcmode.emit(mode);
+  constructor() {
+    this.isChecked = JSON.parse(localStorage.getItem('bgmode'));
+    this.whatmode();
   }
-  
-  constructor() { }
 
-  ngOnInit(): void {
+  // 상시 체크
+  ngDoCheck() {
+    if (this.isChecked != JSON.parse(localStorage.getItem('bgmode'))) {
+      this.whatmode();
+    }
+  }
+
+  whatmode() {
+    if (this.isChecked) {
+      this.Realbody.classList.add('darkmode');
+    } else {
+      this.Realbody.classList.remove('darkmode');
+    }
+    localStorage.setItem('bgmode', JSON.stringify(this.isChecked));
   }
 }

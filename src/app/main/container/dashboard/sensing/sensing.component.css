@@ -1,0 +1,9 @@
+table {
+  padding: 0 !important;
+}
+
+th,
+td {
+  height: 5.4vh !important;
+  font-size: 0.8vw !important;
+}

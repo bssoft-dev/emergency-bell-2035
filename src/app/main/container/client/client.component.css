@@ -1,0 +1,52 @@
+/* 테이블 */
+td {
+  width: 12.5%;
+}
+
+/* 테이블 > 알람 */
+ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+ul li {
+  position: relative;
+  list-style: none;
+}
+
+ul li label {
+  position: relative;
+}
+
+ul li label .mat,
+ul li label input[type="checkbox"] {
+  display: block;
+  text-align: center;
+}
+
+ul li label .mat {
+  color: #222;
+  transition: 0.5s;
+  cursor: auto;
+}
+
+ul li label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+ul li label input[type="checkbox"]:checked ~ .mat {
+  color: var(--tablehead-bg-color);
+}
+
+mat-icon.mat {
+  font-size: 30px;
+
+  margin: 0 20px;
+}
+
+/* 팝업 */
