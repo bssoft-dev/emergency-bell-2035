@@ -141,11 +141,11 @@ app-header {
   }
   input[id="menuicon"]:checked + ul {
     z-index: 2;
-    left: 155px;
+    left: 140px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label {
     z-index: 2;
-    left: 155px;
+    left: 140px;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
     top: 50%;
