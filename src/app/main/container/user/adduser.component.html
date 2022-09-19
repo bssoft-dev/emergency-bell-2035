@@ -14,6 +14,7 @@
                     <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                     중복확인
                 </button>
+                <mat-hint class="noticeCheck" [hidden]="!NonCheck">중복확인을 눌러주세요</mat-hint>
                 <mat-hint class="trueCheck" [hidden]="!passIdMsg">사용 가능한 아이디 입니다</mat-hint>
                 <mat-hint class="falseCheck" [hidden]="!errorIdMsg">사용 할 수 없는 아이디 입니다</mat-hint>
             </mat-form-field>

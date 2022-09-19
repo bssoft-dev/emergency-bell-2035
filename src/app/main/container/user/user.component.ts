@@ -183,12 +183,9 @@ export class AdduserComponent implements OnInit {
     }
   }
 
+  NonCheck = true;
   errorIdMsg = false;
   passIdMsg = false;
-  // input focus??
-  usernamechange(e) {
-    this.passIdMsg = false;
-  }
 
   // ID 중복검사
   idCheck() {
@@ -197,9 +194,11 @@ export class AdduserComponent implements OnInit {
       this.service.duplicatecheck(data).subscribe({
         next: (res) => {
           if (res == '생성 가능한 아이디 입니다') {
+            this.NonCheck = false;
             this.passIdMsg = true;
             this.errorIdMsg = false;
           } else {
+            this.NonCheck = false;
             this.passIdMsg = false;
             this.errorIdMsg = true;
           }
