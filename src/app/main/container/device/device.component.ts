@@ -59,8 +59,8 @@ export class DeviceComponent implements OnInit {
   //등록 팝업
   clickedaddModal() {
     const dialogRef = this.dialog.open(AdddeviceComponent, {
-      width: '750px',
-      height: '1300px',
+      width: '600px',
+      height: '1200px',
       data: {},
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -82,8 +82,8 @@ export class DeviceComponent implements OnInit {
   // 수정 팝업
   clickedregModal(devicedata) {
     const dialogRef = this.dialog.open(RegdeviceComponent, {
-      width: '750px',
-      height: '1300px',
+      width: '600px',
+      height: '1200px',
       data: {
         devicedata: devicedata,
       },

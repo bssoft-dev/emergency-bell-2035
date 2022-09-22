@@ -23,6 +23,7 @@
   --side-hover-bg: #e5e5e5;
   --side-hover-box: 0px 4px 10px rgba(0, 0, 0, 0.25);
   --filter-hover-svg-brightness: -99999999%;
+  --main-scroll-bar: #ffffff;
 }
 .darkmode {
   --profile-font-color: #ffffff;
@@ -45,6 +46,7 @@
   --side-hover-box: 4px 4px 10px rgba(200, 200, 200, 0.25);
   --filter-svg-brightness: 200%;
   --filter-hover-svg-brightness: 99999999%;
+  --main-scroll-bar: gray;
 }
 
 /*  */
@@ -78,17 +80,17 @@ body {
 
 .trueCheck {
   color: skyblue;
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .falseCheck {
   color: brown;
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 .noticeCheck {
   color: green !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
 }
 
 /* 팝업 */
@@ -170,11 +172,6 @@ mat-tab {
   position: relative;
 }
 
-/* test */
-/* .mat-list-item-content {
-  padding: 0 !important;
-} */
-
 .mat-radio-container {
   display: none !important;
   position: absolute !important;
@@ -189,12 +186,32 @@ mat-tab {
   font-family: "Noto Sans" !important;
   font-style: normal;
   color: var(--side-font-color);
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   font-weight: bolder;
   pointer-events: none;
 
   text-align: left;
   align-items: center;
+}
+
+.mat-snack-bar-container
+  .ng-tns-c81-2
+  .ng-trigger
+  .ng-trigger-state
+  .mat-snack-bar-center
+  .mat-snack-bar-top
+  .ng-star-inserted {
+  background-color: var(--tablehead-bg-color) !important;
+  /* max-width: 100vw !important; */
+}
+
+.mat-snack-bar-container {
+  max-width: none !important;
+  padding: 40px !important;
+}
+
+.mat-simple-snack-bar-content {
+  font-size: 20px !important;
 }
 
 .mat-radio-label-content :hover {

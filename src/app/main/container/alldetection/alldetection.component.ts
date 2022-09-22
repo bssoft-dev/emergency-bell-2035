@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class AlldetectionComponent implements OnInit {
   @Input() userLog = [];
 
-  displayedColumns = ['name', 'time', 'type', 'location'];
+  displayedColumns = ['index','name', 'time', 'type', 'location'];
 
   dataSource = [];
 

@@ -11,7 +11,7 @@
 .first {
   background-color: var(--MainBell-bg-color);
   color: #fff;
-  border-top-left-radius: 20px;
+  border-top-left-radius: 15px;
   box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
   z-index: 1;
 }
@@ -31,19 +31,19 @@
 }
 
 .fontSt {
-  font-size: 1vw;
-  margin-bottom: 50px;
+  font-size: 25px;
 }
 
 .socketFont {
-  font-size: 2.5vw;
-  margin-top: 50px;
+  font-size: 25px;
+  margin-top: 30px;
+  font-weight: bolder;
 }
 
 img {
-  width: 40%;
+  width: 80px;
 }
 
 .filter {
-  filter: brightness(var( --filter-hover-svg-brightness));
+  filter: brightness(var(--filter-hover-svg-brightness));
 }

@@ -1,7 +1,7 @@
 .popup-container {
-  padding: 20px;
-  width: auto;
-  height: calc(100vh - 350px);
+  /* padding: 20px; */
+  width: 100%;
+  /* height: calc(100vh - 350px); */
 }
 
 .SelTab {
@@ -11,21 +11,20 @@
 }
 
 .SekTab > div {
-  width: 80%;
+  width: 100%;
 }
-
-/* .tab-con {
-  width: 80% !important;
-} */
 
 th,
 td {
   height: 60px !important;
-  font-size: 18px !important;
+}
+th {
+  font-size: 14px !important;
 }
 
 td {
   width: 25%;
+  font-size: 12px !important;
 }
 
 .tab {
@@ -63,8 +62,9 @@ td {
 }
 
 .demo-button {
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  width: auto;
   color: #ffffff;
   background-color: var(--tablehead-bg-color);
   border-radius: 15px;
@@ -73,8 +73,8 @@ td {
 }
 
 .btn1 {
-  padding-bottom: 1.34375em;
-  cursor: pointer;
+  width: auto;
+  color: var(--side-hover-bg);
 }
 
 mat-icon.size {

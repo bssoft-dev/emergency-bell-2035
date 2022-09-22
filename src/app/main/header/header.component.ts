@@ -10,9 +10,18 @@ export class HeaderComponent implements DoCheck {
   isChecked: boolean = true;
   Realbody = document.querySelector('body');
 
+  Target = document.getElementById('clock');
+
+  date;
+  week = ['일', '월', '화', '수', '목', '금', '토'];
+  nowweek;
+  nowdate;
+  nowtime;
+
   constructor() {
     this.isChecked = JSON.parse(localStorage.getItem('bgmode'));
     this.whatmode();
+    console.log(typeof this.date);
   }
 
   // 상시 체크
@@ -20,6 +29,25 @@ export class HeaderComponent implements DoCheck {
     if (this.isChecked != JSON.parse(localStorage.getItem('bgmode'))) {
       this.whatmode();
     }
+
+    this.date = new Date();
+    this.nowweek = this.week[this.date.getDay()];
+
+    this.nowdate =
+      this.date.getFullYear() +
+      '.' +
+      (this.date.getMonth() + 1) +
+      '.' +
+      this.date.getDate() +
+      '.' +
+      this.nowweek;
+
+    this.nowtime =
+      this.date.getHours() +
+      ':' +
+      this.date.getMinutes() +
+      ':' +
+      this.date.getSeconds();
   }
 
   whatmode() {

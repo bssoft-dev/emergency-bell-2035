@@ -48,7 +48,7 @@ export class EmailtabComponent implements OnInit, DoCheck {
         this.Form.reset();
       },
       error: (err) => {
-        alert('서버 에러');
+        alert('올바른 이메일 형식이 아닙니다. 다시 입력해주세요.');
       },
       complete: () => {},
     });
@@ -74,7 +74,7 @@ export class EmailtabComponent implements OnInit, DoCheck {
 
   // 개인설정
   onSetting(element) {
-    var userSetting = !element.setting;
+    element.setting = !element.setting;
     const data = {
       name: element.name,
       setting: element.setting,
@@ -96,17 +96,6 @@ export class EmailtabComponent implements OnInit, DoCheck {
         this.allData2 = res;
       },
       error: (err) => {},
-      complete: () => {},
-    });
-  }
-
-  // 전체 sms 설정값 변경
-  allSetting() {
-    this.service.allalarmemailsetting(this.allData).subscribe({
-      next: (res) => {},
-      error: (err) => {
-        alert('내부 서버에러');
-      },
       complete: () => {},
     });
   }

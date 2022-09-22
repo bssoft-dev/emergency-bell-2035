@@ -64,7 +64,7 @@ export class ClientComponent implements OnInit {
   //등록
   clickedaddModal() {
     const dialogRef = this.dialog.open(AddclientComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -75,7 +75,7 @@ export class ClientComponent implements OnInit {
   // 수정
   clickedregModal(customers) {
     const dialogRef = this.dialog.open(ResclientComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         customers: customers,

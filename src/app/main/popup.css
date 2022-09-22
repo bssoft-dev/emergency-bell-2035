@@ -15,7 +15,6 @@
   align-items: center;
 }
 .form {
-  /* display: flex; */
   height: 80%;
 
   justify-content: center;
@@ -30,23 +29,11 @@ mat-form-field {
   height: 20% !important;
 }
 
-.completion-btn {
-  padding: 20px 0;
-}
-
 button.btn {
   width: 88px;
   padding: 0 15px;
   background-color: var(--tablehead-bg-color);
   color: #ffffff;
-}
-
-.footer {
-  display: flex;
-  height: 10%;
-
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .upload-container {
@@ -107,4 +94,13 @@ div.upload-btn {
   display: block;
   float: right;
   width: 45%;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.footer > .btn {
+  margin: 0 40px;
 }

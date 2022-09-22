@@ -42,13 +42,13 @@
 
         <!-- 컨테이너 -->
         <div style="padding:20px; min-width: 900px;">
-            <router-outlet (newsituation)="addsituation($event)"></router-outlet>
+            <router-outlet></router-outlet>
         </div>
     </mat-drawer-content>
 
 </mat-drawer-container>
 
 <!-- 사이렌 -->
-<audio *ngIf="situation===true" autoplay>
+<audio *ngIf="situation==true" autoplay>
     <source src="../assets/siren.wav#t=0,10">
 </audio>

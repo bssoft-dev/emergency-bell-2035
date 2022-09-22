@@ -56,15 +56,11 @@
                 <input matInput formControlName="payMethod">
             </mat-form-field>
 
-            <div class="completion-btn">
+            <div class="footer">
                 <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid"
                     [mat-dialog-close]="">등록</button>
+                <button class="btn" mat-stroked-button color="primary" type="button" (click)="onNoClick()">돌아가기</button>
             </div>
         </form>
-
-    </div>
-
-    <div class="footer">
-        <button class="btn" mat-stroked-button color="primary" (click)="onNoClick()">돌아가기</button>
     </div>
 </div>

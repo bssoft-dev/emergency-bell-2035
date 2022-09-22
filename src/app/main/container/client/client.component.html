@@ -41,29 +41,25 @@
 
             <ng-container matColumnDef="alarm">
                 <th mat-header-cell *matHeaderCellDef> 알람 </th>
-                <td mat-cell *matCellDef="let element">
-                    <div>
-                        <ul>
-                            <li>
-                                <label>
-                                    <input type="checkbox" [checked]="element?.alarm?.popup" disabled>
-                                    <mat-icon class="mat" aria-hidden="true">desktop_windows</mat-icon>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" [checked]="element?.alarm?.email" disabled>
-                                    <mat-icon class="mat" aria-hidden="true">email</mat-icon>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input type="checkbox" [checked]="element?.alarm?.sms" disabled>
-                                    <mat-icon class="mat" aria-hidden="true">sms</mat-icon>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
+                <td mat-cell *matCellDef="let element" class="alarm">
+                    <li>
+                        <label>
+                            <input type="checkbox" [checked]="element?.alarm?.popup" disabled>
+                            <mat-icon class="mat" aria-hidden="true">desktop_windows</mat-icon>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" [checked]="element?.alarm?.email" disabled>
+                            <mat-icon class="mat" aria-hidden="true">email</mat-icon>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox" [checked]="element?.alarm?.sms" disabled>
+                            <mat-icon class="mat" aria-hidden="true">sms</mat-icon>
+                        </label>
+                    </li>
                 </td>
             </ng-container>
 

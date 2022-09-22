@@ -6,9 +6,14 @@
     <section class="example-container mat-elevation-z8" tabindex="0">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+            <ng-container matColumnDef="index">
+                <th class="left" mat-header-cell *matHeaderCellDef> 순번 </th>
+                <td class="left" mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="name">
-                <th class="left" mat-header-cell *matHeaderCellDef> 디바이스명 </th>
-                <td class="left" mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <th mat-header-cell *matHeaderCellDef> 디바이스명 </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="time">

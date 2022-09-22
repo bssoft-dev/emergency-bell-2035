@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
   // 팝업창열기
   openDialog(): void {
     const dialogRef = this.dialog.open(ProfilemodalComponent, {
-      width: '750px',
-      height: '1100px',
+      width: '600px',
+      height: '800px',
     });
   }
 

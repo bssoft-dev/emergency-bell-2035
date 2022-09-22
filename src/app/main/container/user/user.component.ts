@@ -68,7 +68,7 @@ export class UserComponent implements OnInit {
   //등록
   clickedaddModal() {
     const dialogRef = this.dialog.open(AdduserComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         token: this.token,
@@ -82,7 +82,7 @@ export class UserComponent implements OnInit {
   // 수정
   clickedregModal(index) {
     const dialogRef = this.dialog.open(ReguserComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         token: this.token,
