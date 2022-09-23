@@ -2,6 +2,12 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SelectionModel } from '@angular/cdk/collections';
+
+export interface PeriodicElement {
+  name: string;
+  phone: number;
+}
 
 @Component({
   selector: 'app-phontab',
@@ -17,6 +23,7 @@ export class PhontabComponent implements OnInit, DoCheck {
 
   displayedColumns: string[] = ['name', 'phone', 'setting', 'delete'];
   dataSource = [];
+  selection = new SelectionModel<PeriodicElement>(true, []);
 
   constructor(public router: Router, private service: ApiService) {
     this.getUser();
@@ -26,7 +33,12 @@ export class PhontabComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.Form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
     });
   }
 
@@ -48,7 +60,7 @@ export class PhontabComponent implements OnInit, DoCheck {
         this.Form.reset();
       },
       error: (err) => {
-        alert('서버 에러');
+        alert('');
       },
       complete: () => {},
     });
@@ -74,16 +86,18 @@ export class PhontabComponent implements OnInit, DoCheck {
 
   // 개인설정
   onSetting(element) {
-    const userSetting = !element.setting;
-    const data = {
-      name: element.name,
-      setting: element.setting,
-    };
-    this.service.onesmssetting(data).subscribe({
-      next: (res) => {},
-      error: (err) => {},
-      complete: () => {},
-    });
+    if (this.allData2) {
+      element.setting = !element.setting;
+      const data = {
+        name: element.name,
+        setting: element.setting,
+      };
+      this.service.onesmssetting(data).subscribe({
+        next: (res) => {},
+        error: (err) => {},
+        complete: () => {},
+      });
+    }
   }
 
   allData: boolean;

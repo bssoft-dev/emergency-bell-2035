@@ -68,7 +68,7 @@ export class UserComponent implements OnInit {
   //등록
   clickedaddModal() {
     const dialogRef = this.dialog.open(AdduserComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         token: this.token,
@@ -82,7 +82,7 @@ export class UserComponent implements OnInit {
   // 수정
   clickedregModal(index) {
     const dialogRef = this.dialog.open(ReguserComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         token: this.token,
@@ -150,7 +150,11 @@ export class AdduserComponent implements OnInit {
       name: new FormControl(''),
       customerName: new FormControl(null, [Validators.required]),
       // customerName: new FormControl(''),
-      phone: new FormControl(''),
+      phone: new FormControl('', [
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       email: new FormControl(''),
       passwordGroup: new FormGroup(
         {
@@ -263,7 +267,11 @@ export class ReguserComponent implements OnInit {
       username: new FormControl('', [Validators.required]),
       name: new FormControl(''),
       customerName: new FormControl(''),
-      phone: new FormControl(''),
+      phone: new FormControl('', [
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       email: new FormControl(''),
       passwordGroup: new FormGroup(
         {

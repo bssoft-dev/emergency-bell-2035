@@ -4,6 +4,7 @@ import {
   OnDestroy,
   Output,
   EventEmitter,
+  DoCheck,
 } from '@angular/core';
 import { WebsocketService } from '../../../services/websocket.service';
 
@@ -23,10 +24,11 @@ import '../../../../assets/amchart/light.js';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
   @Output()
   newsituation = new EventEmitter<boolean>();
   customerCode = '';
+  cols = 0;
 
   // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
   // /api/detections/{deviceId}
@@ -43,6 +45,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.Starting();
+  }
+
+  ngDoCheck() {
+    if (window.innerWidth <= 1290) {
+      this.cols = 1;
+    } else {
+      this.cols = 2;
+    }
   }
 
   ngOnDestroy(): void {
@@ -93,8 +103,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         localStorage.setItem('popupdata', msg['popupEvent']['content']);
         this.socketrecentdata = msg['recentEvent']['content'];
         // this.socketgraphdata = msg['graph']['content'];
-        // localStorage.setItem('situation', JSON.stringify(true));
-        this.newsituation.emit(true);
+        localStorage.setItem('situation', JSON.stringify(true));
+        // this.newsituation.emit(true);
       } else {
         this.socketdevicesdata = msg['content'];
       }
@@ -183,10 +193,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       );
 
       // set text,grid color white
-      root.interfaceColors.set('grid', am5.color('#898989'));
-      root.interfaceColors.set('text', am5.color('#898989'));
-      root.interfaceColors.set('', am5.color('#898989'));
-      // root.interfaceColors.set('background', am5.color('#0000'));
+      root.interfaceColors.set('grid', am5.color('#ffffff'));
+      root.interfaceColors.set('text', am5.color('#ffffff'));
+      root.interfaceColors.set('', am5.color('#ffffff'));
 
       // Add series
       // https://www.amcharts.com/docs/v5/charts/xy-chart/series/

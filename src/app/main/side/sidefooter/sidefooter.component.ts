@@ -22,7 +22,7 @@ export class SidefooterComponent implements DoCheck {
   // 팝업창열기
   openDialog(): void {
     const dialogRef = this.dialog.open(SettingmodalComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
     });
   }
@@ -30,6 +30,7 @@ export class SidefooterComponent implements DoCheck {
   logout() {
     sessionStorage.removeItem('token');
     this.router.navigate(['/login']);
+    localStorage.setItem('whatTitle', '');
   }
 }
 

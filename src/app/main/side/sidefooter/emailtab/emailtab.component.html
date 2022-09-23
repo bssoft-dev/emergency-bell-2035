@@ -12,8 +12,8 @@
                         <mat-label>이메일</mat-label>
                         <input matInput type="text" formControlName="email">
                     </mat-form-field>
-                    <button class="btn1 chagne-btn" [disabled]="!Form.valid">
-                        <mat-icon class="btn size" type="submit">add_circle_outline</mat-icon>
+                    <button [ngClass]="!Form.valid ? 'btn1':'chagne-btn'" [disabled]="!Form.valid">
+                        <mat-icon type="submit">add_circle_outline</mat-icon>
                     </button>
                 </div>
             </form>
@@ -39,9 +39,22 @@
                     <ng-container matColumnDef="setting">
                         <th mat-header-cell *matHeaderCellDef> 발신설정 </th>
                         <td mat-cell *matCellDef="let element">
-                            <mat-slide-toggle [(ngModel)]="element.setting" [checked]="userSetting"
-                                (click)="onSetting(element)" [disabled]="!allData2">
-                            </mat-slide-toggle>
+                            <div *ngIf="allData2">
+                                <button *ngIf="element.setting" mat-raised-button
+                                    style="background: var(--tablehead-bg-color) !important; color:#ffffff;"
+                                    (click)="onSetting(element)">
+                                    On
+                                </button>
+                                <button *ngIf="!element.setting" mat-raised-button
+                                    style="background: var(--side-hover-bg) !important;" (click)="onSetting(element)">
+                                    Off
+                                </button>
+                            </div>
+                            <div *ngIf="!allData2">
+                                <button *ngIf="element.setting" mat-raised-button disabled
+                                    style="color: rgba(67, 143, 254, 0.3);">On</button>
+                                <button *ngIf="!element.setting" mat-raised-button disabled>Off</button>
+                            </div>
                         </td>
                     </ng-container>
 

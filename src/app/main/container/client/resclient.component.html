@@ -43,12 +43,13 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>연락처</mat-label>
-                <input matInput placeholder="01012345678" formControlName="phone">
+                <input matInput formControlName="phone">
+                <mat-hint class="noticeCheck">10~11자리 숫자만 입력해주세요</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>상태</mat-label>
-                <input matInput placeholder="01012345678" formControlName="status">
+                <input matInput formControlName="status">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -56,15 +57,11 @@
                 <input matInput formControlName="payMethod">
             </mat-form-field>
 
-            <div class="completion-btn">
+            <div class="footer">
                 <button class="btn" mat-flat-button type="submit" color="primary" [mat-dialog-close]=""
                     cdkFocusInitial>수정</button>
+                <button class="btn" mat-stroked-button color="primary" type="button" (click)="onNoClick()">돌아가기</button>
             </div>
         </form>
-
-    </div>
-
-    <div class="footer">
-        <button class="btn" mat-stroked-button color="primary" (click)="onNoClick()">돌아가기</button>
     </div>
 </div>

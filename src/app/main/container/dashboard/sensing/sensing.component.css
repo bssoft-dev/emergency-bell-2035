@@ -5,5 +5,12 @@ table {
 th,
 td {
   height: 5.4vh !important;
-  font-size: 0.8vw !important;
+}
+
+th {
+  font-size: 25px !important;
+}
+
+td {
+  font-size: 15px !important;
 }

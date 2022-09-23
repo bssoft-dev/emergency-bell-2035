@@ -64,7 +64,7 @@ export class ClientComponent implements OnInit {
   //등록
   clickedaddModal() {
     const dialogRef = this.dialog.open(AddclientComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -75,7 +75,7 @@ export class ClientComponent implements OnInit {
   // 수정
   clickedregModal(customers) {
     const dialogRef = this.dialog.open(ResclientComponent, {
-      width: '750px',
+      width: '600px',
       height: '1100px',
       data: {
         customers: customers,
@@ -125,7 +125,12 @@ export class AddclientComponent implements OnInit {
     this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       status: new FormControl(''),
       payMethod: new FormControl(''),
       logo: new FormControl(''),
@@ -212,7 +217,12 @@ export class ResclientComponent implements OnInit {
     this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       status: new FormControl(''),
       payMethod: new FormControl(''),
       logo: new FormControl(''),

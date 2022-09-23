@@ -26,6 +26,7 @@
     "bootstrap": "^5.1.3",
     "bootstrap-avatar": "^1.3.1",
     "codelyzer": "^0.0.28",
+    "coerce-property": "^0.2.1",
     "core-js": "^2.6.5",
     "FileReader": "^0.10.2",
     "html2canvas": "^1.4.1",
