@@ -125,7 +125,12 @@ export class AddclientComponent implements OnInit {
     this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       status: new FormControl(''),
       payMethod: new FormControl(''),
       logo: new FormControl(''),
@@ -212,7 +217,12 @@ export class ResclientComponent implements OnInit {
     this.Form = new FormGroup({
       customerName: new FormControl('', [Validators.required]),
       staffName: new FormControl(''),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       status: new FormControl(''),
       payMethod: new FormControl(''),
       logo: new FormControl(''),

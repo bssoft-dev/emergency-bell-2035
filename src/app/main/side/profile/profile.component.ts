@@ -83,7 +83,12 @@ export class ProfilemodalComponent implements OnInit {
     this.Form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       name: new FormControl(''),
-      phone: new FormControl(''),
+      phone: new FormControl('', [
+        // Validators.required,
+        Validators.pattern(/^[0-9]*$/),
+        Validators.minLength(10),
+        Validators.maxLength(11),
+      ]),
       passwordGroup: new FormGroup(
         {
           password: new FormControl('', [Validators.required]),
@@ -139,16 +144,16 @@ export class ProfilemodalComponent implements OnInit {
     temp.push(data);
 
     this.service.modifyoneuser(temp).subscribe({
-      next: (res) => {
-        alert('정보 수정이 완료되었습니다');
-        this.Form.reset();
-        this.dialogRef.close();
-      },
+      next: (res) => {},
       error: (err) => {
         alert('내부 서버 에러.');
         this.Form.reset();
       },
-      complete: () => {},
+      complete: () => {
+        alert('정보 수정이 완료되었습니다');
+        this.Form.reset();
+        this.dialogRef.close();
+      },
     });
   }
 

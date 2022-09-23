@@ -20,7 +20,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>이름</mat-label>
-                <input matInput placeholder="OOO" formControlName="name">
+                <input matInput formControlName="name">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -35,12 +35,13 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>연락처</mat-label>
-                <input matInput placeholder="01012345678" formControlName="phone">
+                <input matInput formControlName="phone">
+                <mat-hint class="noticeCheck">입력 시 10~11자리 숫자만 입력해주세요</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>이메일</mat-label>
-                <input matInput placeholder="abc@abcd.com" formControlName="email">
+                <input matInput formControlName="email">
                 <mat-hint class="noticeCheck">비밀번호 분실시 이용됩니다</mat-hint>
             </mat-form-field>
 

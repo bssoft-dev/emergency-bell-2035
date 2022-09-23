@@ -11,7 +11,7 @@
                     <mat-form-field class="input2" appearance="legacy">
                         <mat-label>번호</mat-label>
                         <input matInput type="text" formControlName="phone">
-                        <mat-hint class="noticeCheck">숫자만 입력해주세요</mat-hint>
+                        <mat-hint class="noticeCheck">10~11자리 숫자만 입력해주세요</mat-hint>
                     </mat-form-field>
                     <button [ngClass]="!Form.valid ? 'btn1':'chagne-btn'" [disabled]="!Form.valid">
                         <mat-icon type="submit">add_circle_outline
