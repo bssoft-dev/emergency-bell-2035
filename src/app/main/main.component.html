@@ -14,31 +14,31 @@
     </mat-drawer>
 
 
-    <!-- 헤드,컨테이너,미니사이드바 -->
+    <!-- 헤더,컨테이너,미니사이드바 -->
     <mat-drawer-content>
 
         <!-- 헤더 -->
         <mat-toolbar class="example-header">
+
+            <!-- 미니사이드바 -->
+            <div class="smallSide">
+                <input type="checkbox" id="menuicon">
+                <ul>
+                    <li>
+                        <label for="menuicon">
+                            <span></span><span></span><span></span>
+                        </label>
+                    </li>
+                </ul>
+
+                <div class="sidebar">
+                    <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
+                    <app-sidefooter></app-sidefooter>
+                </div>
+            </div>
+
             <app-header [item]="currentItem"></app-header>
         </mat-toolbar>
-
-        <!-- 미니사이드바 -->
-        <div class="smallSide">
-            <input type="checkbox" id="menuicon">
-            <ul>
-                <li>
-                    <label for="menuicon">
-                        <span></span><span></span><span></span>
-                    </label>
-                </li>
-            </ul>
-
-            <div class="sidebar">
-                <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
-                <app-sidefooter></app-sidefooter>
-            </div>
-        </div>
-
 
         <!-- 컨테이너 -->
         <div style="padding:20px; min-width: 900px;">
