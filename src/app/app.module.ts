@@ -67,12 +67,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'main',
     component: MainComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
