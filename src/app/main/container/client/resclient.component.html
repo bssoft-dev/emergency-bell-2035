@@ -1,6 +1,6 @@
 <div class="popup-container">
     <div class="header">
-        고객사 등록
+        고객사 수정
     </div>
 
     <div class="form">
@@ -59,7 +59,7 @@
 
             <div class="footer">
                 <button class="btn" mat-flat-button type="submit" color="primary" [mat-dialog-close]=""
-                    cdkFocusInitial>수정</button>
+                    cdkFocusInitial [disabled]="!Form.valid">수정</button>
                 <button class="btn" mat-stroked-button color="primary" type="button" (click)="onNoClick()">돌아가기</button>
             </div>
         </form>

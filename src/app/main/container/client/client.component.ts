@@ -233,6 +233,7 @@ export class ResclientComponent implements OnInit {
 
   // 정보 불러옴
   getOneUser() {
+    console.log(this.customers);
     // this.imageSrc = this.customers['logo'];
     // this.mapSrc = this.customers['map'];
     this.Form.patchValue({
@@ -244,6 +245,8 @@ export class ResclientComponent implements OnInit {
       logo: this.customers['logo'],
       map: this.customers['map'],
     });
+    this.imageSrc = this.customers['logo'];
+    this.mapSrc = this.customers['map'];
   }
 
   // 이미지 업로드
@@ -254,6 +257,7 @@ export class ResclientComponent implements OnInit {
 
     this.service.uploadanal(formData).subscribe({
       next: (res) => {
+        alert('이미지가 전송되었습니다');
         if (index === 1) {
           this.imageSrc = res.url;
           this.Form.patchValue({
@@ -275,6 +279,8 @@ export class ResclientComponent implements OnInit {
   // 수정
   submit() {
     const temp = [this.customers['customerCode'], this.Form.value];
+    console.log(temp)
+    console.log('valid', this.Form.valid)
     if (this.Form.valid) {
       this.service.modifyonecustomer(temp).subscribe({
         next: (res) => {

@@ -343,6 +343,7 @@ export class ApiService {
     );
   }
   modifyoneuser(data: any): Observable<any> {
+    console.log('data', data)
     const headers = new HttpHeaders({
       accept: 'application/json',
       'Content-Type': 'application/json',
@@ -354,6 +355,22 @@ export class ApiService {
         `${data[0]}?customerCode=` +
         `${this.customer_code}`,
       data[1],
+      { headers }
+    );
+  }
+  
+  modifymyinfo(data: any): Observable<any> {
+    console.log(data)
+    this.token = data[0];
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.patch(
+      `${this.apiUrl}` +
+        'users/me',
+        data[1],
       { headers }
     );
   }
@@ -452,6 +469,7 @@ export class ApiService {
     });
   }
   modifyonecustomer(data: any): Observable<any> {
+    console.log('data', data);
     const headers = new HttpHeaders({
       accept: 'application/json',
       'Content-Type': 'application/json',

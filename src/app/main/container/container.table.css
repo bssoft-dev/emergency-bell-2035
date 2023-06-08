@@ -66,7 +66,7 @@ td {
   color: var(--profile-font-color);
   height: 100px;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 1rem;
   line-height: 18px;
 }
 

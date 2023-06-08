@@ -33,30 +33,7 @@
                 <input matInput formControlName="email">
                 <mat-hint class="noticeCheck">비밀번호 분실시 이용됩니다</mat-hint>
             </mat-form-field>
-
-            <div formGroupName="passwordGroup">
-
-                <mat-form-field appearance="fill">
-                    <mat-label>비밀번호 입력</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" />
-                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}
-                    </mat-icon>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>비밀번호 확인</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordconfirm"
-                        autocomplete="off" />
-                    <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">{{hide ? 'visibility_off' : 'visibility'}}
-                    </mat-icon>
-                    <mat-hint class="falseCheck" [hidden]="!Form.hasError('equal','passwordGroup')">패스워드가 일치하지 않습니다
-                    </mat-hint>
-                    <mat-hint *ngIf="" class="trueeCheck" [hidden]="Form.hasError('equal','passwordGroup')">패스워드가 일치합니다
-                    </mat-hint>
-                </mat-form-field>
-            </div>
+            
             <div class="footer">
                 <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid"
                     [mat-dialog-close]="">수정</button>

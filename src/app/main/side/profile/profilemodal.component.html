@@ -8,7 +8,7 @@
 
             <mat-form-field appearance="fill">
                 <mat-label>아이디</mat-label>
-                <input readonly matInput formControlName="username">
+                <input readonly matInput formControlName="username" disabled>
                 <mat-hint class="falseCheck">수정불가</mat-hint>
             </mat-form-field>
 
@@ -21,6 +21,12 @@
                 <mat-label>연락처</mat-label>
                 <input matInput formControlName="phone">
                 <mat-hint class="noticeCheck">입력 시 10~11자리 숫자만 입력해주세요</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>이메일</mat-label>
+                <input matInput formControlName="email">
+                <mat-hint class="noticeCheck">비밀번호 분실시 이용됩니다</mat-hint>
             </mat-form-field>
 
             <div formGroupName="passwordGroup">
@@ -53,7 +59,7 @@
             </div>
 
             <div class="footer">
-                <button class="btn" mat-flat-button type="submit" color="primary" [disabled]="!Form.valid">수정</button>
+                <button class="btn" mat-flat-button type="submit" color="primary">수정</button>
                 <button class="btn" mat-stroked-button color="primary" type="button" (click)="onNoClick()">돌아가기</button>
             </div>
         </form>

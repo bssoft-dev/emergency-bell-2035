@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ProfilemodalComponent, {
       width: '600px',
-      height: '800px',
+      height: '900px',
     });
   }
 
@@ -70,6 +70,7 @@ export class ProfileComponent implements OnInit {
 export class ProfilemodalComponent implements OnInit {
   passwordhide = true;
   passwordconfirmhide = true;
+  token = sessionStorage.getItem('token');
 
   Form: FormGroup;
 
@@ -83,6 +84,7 @@ export class ProfilemodalComponent implements OnInit {
     this.Form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       name: new FormControl(''),
+      email: new FormControl(''),
       phone: new FormControl('', [
         // Validators.required,
         Validators.pattern(/^[0-9]*$/),
@@ -134,17 +136,18 @@ export class ProfilemodalComponent implements OnInit {
 
   // 저장
   submit() {
-    const temp = [];
+    // const temp = [];
 
-    const data = this.Form.value;
-    data.password = data.passwordGroup.password;
-    delete data.passwordGroup;
-
-    temp.push(data.username);
-    temp.push(data);
-
-    this.service.modifyoneuser(temp).subscribe({
-      next: (res) => {},
+    const temp = this.Form.value;
+    console.log('temp', temp)
+    temp.password = temp.passwordGroup.password;
+    delete temp.passwordGroup;
+    delete temp.username;
+    const data = [this.token, temp];
+    this.service.modifymyinfo(data).subscribe({
+      next: (res) => {
+        alert('회원 정보 수정이 완료 되었습니다');
+      },
       error: (err) => {
         alert('내부 서버 에러.');
         this.Form.reset();

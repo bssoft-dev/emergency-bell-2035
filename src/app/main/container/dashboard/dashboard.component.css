@@ -20,7 +20,7 @@ mat-grid-tile-header {
   background-color: transparent !important;
   justify-content: center;
   font-family: Roboto, "Helvetica Neue", sans-serif !important;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .mat-grid-tile .mat-grid-tile-header {

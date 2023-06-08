@@ -69,7 +69,7 @@ export class UserComponent implements OnInit {
   clickedaddModal() {
     const dialogRef = this.dialog.open(AdduserComponent, {
       width: '600px',
-      height: '1100px',
+      height: '1040px',
       data: {
         token: this.token,
       },
@@ -83,7 +83,7 @@ export class UserComponent implements OnInit {
   clickedregModal(index) {
     const dialogRef = this.dialog.open(ReguserComponent, {
       width: '600px',
-      height: '1100px',
+      height: '800px',
       data: {
         token: this.token,
         index: index,
@@ -103,11 +103,11 @@ export class UserComponent implements OnInit {
       if (returnValue) {
         this.service.deleteoneuser(index['username']).subscribe({
           next: (res) => {
-            alert('삭제 완료');
+            alert('회원 삭제가 완료되었습니다');
             this.dataList();
           },
           error: (err) => {
-            alert('삭제 실패');
+            alert('회원 삭제를 처리하는 도중 문제가 발생했습니다.');
           },
         });
       }
@@ -252,6 +252,7 @@ export class AdduserComponent implements OnInit {
   styleUrls: ['../../popup.css', './user.component.css'],
 })
 export class ReguserComponent implements OnInit {
+  token = sessionStorage.getItem('token');
   constructor(
     public dialogRef: MatDialogRef<ReguserComponent>,
     private service: ApiService,
@@ -272,14 +273,7 @@ export class ReguserComponent implements OnInit {
         Validators.minLength(10),
         Validators.maxLength(11),
       ]),
-      email: new FormControl(''),
-      passwordGroup: new FormGroup(
-        {
-          password: new FormControl('', [Validators.required]),
-          passwordconfirm: new FormControl('', [Validators.required]),
-        },
-        this.equalPassword
-      ),
+      email: new FormControl('')
     });
     this.getOneUser();
   }
@@ -316,14 +310,30 @@ export class ReguserComponent implements OnInit {
     //   email: this.form.value.email,
     //   password: this.form.value.passwordGroup.password,
     // };
+    
     const temp = this.Form.value;
-    temp.password = temp.passwordGroup.password;
+    console.log(temp);
     delete temp.passwordGroup;
     const data = [temp['username'], temp];
-    if (this.Form.valid) {
-      this.service.modifyoneuser(data).subscribe({
+    if (data) {
+      console.log('a')
+      this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          alert('수정이 완료 되었습니다');
+          if (!res.is_hyperuser) {
+            alert('회원 정보 수정 권한이 없습니다.');
+          }else {
+            this.service.modifyoneuser(data).subscribe({
+              next: (res) => {
+                alert('회원 정보 수정이 완료 되었습니다');
+              },
+              error: (err) => {
+                alert('회원 정보 수정을 처리하는 도중 문제가 발생했습니다.');
+              },
+              complete: () => {
+                this.onNoClick();
+              },
+            });
+          }
         },
         error: (err) => {
           alert('서버 에러');
@@ -332,6 +342,8 @@ export class ReguserComponent implements OnInit {
           this.onNoClick();
         },
       });
+
+      
     }
   }
 
