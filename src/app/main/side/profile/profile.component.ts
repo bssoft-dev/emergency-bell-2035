@@ -137,10 +137,7 @@ export class ProfilemodalComponent implements OnInit {
 
   // 저장
   submit() {
-    // const temp = [];
-
     const temp = this.Form.value;
-    console.log('temp', temp)
     temp.password = temp.passwordGroup.password;
     delete temp.passwordGroup;
     delete temp.username;

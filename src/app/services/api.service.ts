@@ -469,7 +469,6 @@ export class ApiService {
     });
   }
   modifyonecustomer(data: any): Observable<any> {
-    console.log('data', data);
     const headers = new HttpHeaders({
       accept: 'application/json',
       'Content-Type': 'application/json',
