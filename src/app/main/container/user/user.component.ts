@@ -316,7 +316,6 @@ export class ReguserComponent implements OnInit {
     delete temp.passwordGroup;
     const data = [temp['username'], temp];
     if (data) {
-      console.log('a')
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
           if (!res.is_hyperuser) {
@@ -342,8 +341,6 @@ export class ReguserComponent implements OnInit {
           this.onNoClick();
         },
       });
-
-      
     }
   }
 

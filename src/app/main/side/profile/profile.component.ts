@@ -112,6 +112,7 @@ export class ProfilemodalComponent implements OnInit {
             username: res.username,
             name: res.name,
             phone: res.phone,
+            email: res.email,
           });
           resolve(res);
         },
@@ -153,9 +154,9 @@ export class ProfilemodalComponent implements OnInit {
         this.Form.reset();
       },
       complete: () => {
-        alert('정보 수정이 완료되었습니다');
-        this.Form.reset();
-        this.dialogRef.close();
+        // alert('정보 수정이 완료되었습니다');
+        // this.Form.reset();
+        // this.dialogRef.close();
       },
     });
   }
