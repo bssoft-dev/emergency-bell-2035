@@ -137,23 +137,34 @@ export class ProfilemodalComponent implements OnInit {
 
   // 저장
   submit() {
+    interface FormData {
+      [key: string]: string;
+    }
+
     const temp = this.Form.value;
     temp.password = temp.passwordGroup.password;
     delete temp.passwordGroup;
     delete temp.username;
-    const data = [this.token, temp];
+
+    const validData: FormData = {};
+    for (let [key, value] of Object.entries(temp)) {
+      console.log(key, value)
+      if (typeof value === 'string' && value.trim() !== '') {
+        validData[key] = value;
+      }
+    }
+
+    const data = [this.token, validData];
     this.service.modifymyinfo(data).subscribe({
-      next: (res) => {
-        alert('회원 정보 수정이 완료 되었습니다');
-      },
+      next: (res) => {},
       error: (err) => {
-        alert('내부 서버 에러.');
+        alert('Server Error');
         this.Form.reset();
       },
       complete: () => {
-        // alert('정보 수정이 완료되었습니다');
-        // this.Form.reset();
-        // this.dialogRef.close();
+        alert('회원 정보 수정이 완료 되었습니다');
+        this.Form.reset();
+        this.dialogRef.close();
       },
     });
   }
