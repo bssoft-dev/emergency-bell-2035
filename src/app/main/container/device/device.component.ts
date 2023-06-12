@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
+import { MatDatepicker, MatDatepickerInput } from '@angular/material/datepicker';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import {
@@ -123,6 +124,19 @@ export class DeviceComponent implements OnInit {
   }
 }
 
+
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'YYYY-MM-DD',
+  },
+  display: {
+    dateInput: 'MMM DD, YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  },
+}; 
+
 // 등록 기능
 @Component({
   selector: 'app-adddevice',
@@ -133,8 +147,9 @@ export class AdddeviceComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AdddeviceComponent>,
     private service: ApiService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
+
   Form: FormGroup;
 
   fileSelected?: Blob;
@@ -158,8 +173,11 @@ export class AdddeviceComponent implements OnInit {
       communicateMethod: new FormControl(''),
       userMemo: new FormControl(''),
     });
+    this.imageSrc = 'http://api-2207.bs-soft.co.kr/api/images/noimage.png';
     // this.getOneDevice(); // test code
   }
+
+  token = sessionStorage.getItem('token');
 
   // getOneDevice() {
   //   this.Form.patchValue({
@@ -219,19 +237,36 @@ export class AdddeviceComponent implements OnInit {
     if (data.picture === null) {
       data.picture = 'http://api-2207.bs-soft.co.kr/api/images/noimage.png';
     }
-
+    const temp = [this.token, data.deviceId]
     if (this.Form.valid) {
-      this.service.deviceenroll(data).subscribe({
-        next: (res) => {
-          alert('디바이스 등록이 완료되었습니다');
+      this.service.getdevice(temp).subscribe({
+        next: (res: null | Object[]) => {
+          if(res === null) {
+            alert('등록할 수 없는 디바이스입니다.');
+          } else if(Object.keys(res[0]).length > 2) {
+            alert('이미 등록된 디바이스입니다.');
+          } else {
+            this.service.deviceenroll(data).subscribe({
+              next: (res) => {
+                alert('디바이스 등록이 완료되었습니다');
+              },
+              error: (err) => {
+                alert('권한이 없습니다');
+              },
+              complete() {
+                this.onNoClick();
+              },
+            });
+          }
         },
         error: (err) => {
-          alert('권한이 없습니다');
+          alert('오류가 발생하였습니다.')
         },
         complete() {
           this.onNoClick();
         },
       });
+      
     }
   }
 

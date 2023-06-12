@@ -9,6 +9,7 @@ export class ApiService {
   apiUrl = 'http://api-2207.bs-soft.co.kr/';
   token = '';
   customer_code = '';
+  deviceId = '';
 
   /////////////
   getcurrentuser(data: any): Observable<any> {
@@ -388,7 +389,19 @@ export class ApiService {
       { headers }
     );
   }
-
+  
+  getdevice(data: any): Observable<any> {
+    this.token = data[0];
+    this.deviceId = data[1];
+    const headers = new HttpHeaders({
+      accept: 'application/json',
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.get(
+      `${this.apiUrl}` + 'api/device/' + `${this.deviceId}`,
+      { headers }
+    );
+  }
   deviceenroll(data: any): Observable<any> {
     const jsondata = JSON.stringify(data);
     const headers = new HttpHeaders({

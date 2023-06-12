@@ -21,3 +21,22 @@ mat-form-field {
   padding: 15px 0;
   width: 100%;
 }
+
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+} 
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    background: transparent;
+    z-index: 1;
+} 
+input[type="date"]:after{
+  position: absolute;
+  top:-5%;
+  right: 0;
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24px' height='24px' fill='%230000008a' focusable='false' class='mat-datepicker-toggle-default-icon ng-star-inserted'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3E%3C/svg%3E") no-repeat center center/ contain;
+  z-index: 0;
+}

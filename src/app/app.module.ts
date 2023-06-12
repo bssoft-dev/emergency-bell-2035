@@ -57,7 +57,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
@@ -68,6 +68,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { AuthGuard } from './auth/auth.guard';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -124,8 +125,8 @@ const appRoutes: Routes = [
     EmailtabComponent,
     ProfilemodalComponent,
     AddclientComponent,
-    ResclientComponent,
     AdddeviceComponent,
+    ResclientComponent,
     RegdeviceComponent,
     UserComponent,
     AdduserComponent,
@@ -156,6 +157,7 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatSnackBarModule,
     MatRadioModule,
+    MatDatepickerModule,
   ],
   providers: [ApiService, WebsocketService],
   bootstrap: [AppComponent],
