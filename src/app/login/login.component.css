@@ -25,39 +25,60 @@
   justify-content: center;
   text-align: center;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -3vh;
+}
 
 .title {
   color: #ffffff;
-  font-size: 32px;
-  font-weight: 500;
+  font-size: 2rem;
+}
+
+form {
+  width: 90%;
+  margin-block: 80px 52px;
+}
+
+.inputDiv {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.inputDiv:nth-child(2) {
+margin-bottom: 52px;
 }
 
 input {
-  margin-top: 100px;
+  flex: 1;
   background: transparent;
   width: 250px;
   border-bottom: teal 2px solid;
   border-left: medium none;
   border-right: medium none;
   border-top: medium none;
-  font-size: 15px;
+  font-size: 1rem;
   color: #ffffff;
+  padding-block: 4px;
 }
 
-.inputDiv {
-  position: flex;
+input::placeholder {
+  color: #dbdbdbb2;
 }
 
 .icon {
   color: #ffffff;
-  margin-right: 20px;
   font-size: 30px;
+  margin-right: 20px;
+  margin-bottom: 4px;
 }
 
-.singin {
-  margin: 10px;
-  margin-top: 60px;
-  width: 300px;
+.abtn {
+  margin-left: 4px;
+  width: 100%;
   height: 50px;
   border-left: medium none;
   border-right: medium none;
@@ -67,7 +88,6 @@ input {
   background-color: #5156be;
   border-radius: 7px;
 }
-
 button:active {
   box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
   position: relative;
@@ -75,23 +95,19 @@ button:active {
 }
 
 .another {
-  margin-top: 60px;
+  width: 90%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   text-align: center;
+  font-size: .9rem;
+  color: #dbdbdbb2;
 }
-
 .anotherbutton {
-  margin: 5px;
-  width: 80%;
-  height: 50px;
-  border-left: medium none;
-  border-right: medium none;
-  border-top: medium none;
-  border-bottom: medium none;
-  color: white;
-  background-color: #5156be;
-  border-radius: 7px;
+  border: none;
+  background-color: transparent;
+  color: teal;
+  text-decoration: underline;
+  font-size: 1rem;
 }
