@@ -115,6 +115,7 @@ export class AddclientComponent implements OnInit {
   imageSrc: string;
   mapSrc: string;
   Form: FormGroup;
+  token = sessionStorage.getItem('token');
 
   constructor(
     public dialogRef: MatDialogRef<AddclientComponent>,
@@ -136,6 +137,8 @@ export class AddclientComponent implements OnInit {
       logo: new FormControl(''),
       map: new FormControl(''),
     });
+    this.imageSrc = 'http://api-2207.bs-soft.co.kr/api/images/person-fill.svg';
+    this.mapSrc = 'http://api-2207.bs-soft.co.kr/api/images/map.png';
   }
 
   // 등록
@@ -148,17 +151,29 @@ export class AddclientComponent implements OnInit {
       data['map'] = 'http://api-2207.bs-soft.co.kr/api/images/map.png';
     }
     if (this.Form.valid) {
-      this.service.registeronecustomer(data).subscribe({
+      const temp = [this.token];
+      this.service.getallcustomers(temp).subscribe({
         next: (res) => {
-          alert('고객사 등록이 완료되었습니다');
-          this.Form.reset();
+          const customer = res.find(item => item.customerName === data.customerName);
+          if(!customer) {
+            this.service.registeronecustomer(data).subscribe({
+              next: (res) => {
+                alert('고객사 등록이 완료되었습니다');
+                this.Form.reset();
+              },
+              error: (err) => {
+                alert('정보를 잘못 입력하셨습니다');
+              },
+              complete() {
+                this.onNoClick();
+              },
+            });
+          } else {
+            alert('중복된 고객사명이 존재합니다.')
+          }
         },
-        error: (err) => {
-          alert('정보를 잘못 입력하셨습니다');
-        },
-        complete() {
-          this.onNoClick();
-        },
+        error: (err) => {},
+        complete: () => {},
       });
     }
   }
@@ -168,25 +183,27 @@ export class AddclientComponent implements OnInit {
     this.fileSelected = event.target.files[0];
     const formData = new FormData();
     formData.append('file', this.fileSelected);
+    if(event.target.files.length > 0) {
+      this.service.uploadanal(formData).subscribe({
+        next: (res) => {
+          if (index === 1) {
+            this.imageSrc = res.url;
+            this.Form.patchValue({
+              logo: this.imageSrc,
+            });
+          } else {
+            this.mapSrc = res.url;
+            this.Form.patchValue({
+              map: this.mapSrc,
+            });
+          }
+        },
+        error: (err) => {
+          alert('서버 에러메세지');
+        },
+      });
 
-    this.service.uploadanal(formData).subscribe({
-      next: (res) => {
-        if (index === 1) {
-          this.imageSrc = res.url;
-          this.Form.patchValue({
-            logo: this.imageSrc,
-          });
-        } else {
-          this.mapSrc = res.url;
-          this.Form.patchValue({
-            map: this.mapSrc,
-          });
-        }
-      },
-      error: (err) => {
-        alert('서버 에러메세지');
-      },
-    });
+    }
   }
 
   onNoClick(): void {
@@ -206,6 +223,7 @@ export class ResclientComponent implements OnInit {
   Form: FormGroup;
 
   customers = this.data.customers;
+  token = sessionStorage.getItem('token');
 
   constructor(
     public dialogRef: MatDialogRef<AddclientComponent>,
@@ -251,43 +269,55 @@ export class ResclientComponent implements OnInit {
     this.fileSelected = event.target.files[0];
     const formData = new FormData();
     formData.append('file', this.fileSelected);
-
-    this.service.uploadanal(formData).subscribe({
-      next: (res) => {
-        alert('이미지가 전송되었습니다');
-        if (index === 1) {
-          this.imageSrc = res.url;
-          this.Form.patchValue({
-            logo: this.imageSrc,
-          });
-        } else {
-          this.mapSrc = res.url;
-          this.Form.patchValue({
-            map: this.mapSrc,
-          });
-        }
-      },
-      error: (err) => {
-        alert('서버 에러메세지');
-      },
-    });
+    if(event.target.files.length > 0) {
+      this.service.uploadanal(formData).subscribe({
+        next: (res) => {
+          // alert('이미지가 전송되었습니다');
+          if (index === 1) {
+            this.imageSrc = res.url;
+            this.Form.patchValue({
+              logo: this.imageSrc,
+            });
+          } else {
+            this.mapSrc = res.url;
+            this.Form.patchValue({
+              map: this.mapSrc,
+            });
+          }
+        },
+        error: (err) => {
+          alert('서버 에러메세지');
+        },
+      });
+    }
   }
 
   // 수정
   submit() {
     const temp = [this.customers['customerCode'], this.Form.value];
     if (this.Form.valid) {
-      this.service.modifyonecustomer(temp).subscribe({
+      this.service.getallcustomers([this.token]).subscribe({
         next: (res) => {
-          alert('고객사 수정이 완료되었습니다');
-          this.Form.reset();
+          const customer = res.find(item => item.customerCode === this.customers['customerCode']);
+          if(customer) {
+            this.service.modifyonecustomer(temp).subscribe({
+              next: (res) => {
+                alert('고객사 수정이 완료되었습니다');
+                this.Form.reset();
+              },
+              error: (err) => {
+                alert('정보를 잘못 입력하셨습니다');
+              },
+              complete() {
+                this.onNoClick();
+              },
+            });
+          } else {
+            alert('존재하지 않는 고객사입니다.')
+          }
         },
-        error: (err) => {
-          alert('정보를 잘못 입력하셨습니다');
-        },
-        complete() {
-          this.onNoClick();
-        },
+        error: (err) => {},
+        complete: () => {},
       });
     }
   }
