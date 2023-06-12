@@ -5,19 +5,6 @@
   min-height: 100vh;
 }
 
-.abtn {
-  cursor: pointer;
-  display: inline-block;
-  color: #fff !important;
-  text-decoration: none;
-  background-color: #505dff;
-  border-radius: 10px;
-}
-
-.abtn:hover {
-  animation: pulsate 1s ease-in-out;
-}
-
 .contain {
   display: flex;
   background: linear-gradient(to right bottom, #054779, #2a1234);
@@ -55,7 +42,6 @@ margin-bottom: 52px;
 input {
   flex: 1;
   background: transparent;
-  width: 250px;
   border-bottom: teal 2px solid;
   border-left: medium none;
   border-right: medium none;
@@ -77,18 +63,22 @@ input::placeholder {
 }
 
 .abtn {
-  margin-left: 4px;
   width: 100%;
   height: 50px;
-  border-left: medium none;
-  border-right: medium none;
-  border-top: medium none;
-  border-bottom: medium none;
-  color: white;
+  display: inline-block;
+  border: none;
+  color: #fff;
   background-color: #5156be;
   border-radius: 7px;
+  margin-left: 4px;
+  cursor: pointer;
 }
-button:active {
+
+.abtn:hover {
+  animation: pulsate 1s ease-in-out;
+}
+
+.abtn:active {
   box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
   position: relative;
   top: 2px;
@@ -105,6 +95,7 @@ button:active {
   color: #dbdbdbb2;
 }
 .anotherbutton {
+  cursor: pointer;
   border: none;
   background-color: transparent;
   color: teal;

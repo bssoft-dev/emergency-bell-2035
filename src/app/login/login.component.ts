@@ -56,8 +56,8 @@ export class LoginComponent implements OnInit {
 
   goforgotpassword() {
     const dialogRef = this.dialog.open(forgotpasswordComponent, {
-      width: '750px',
-      height: '450px',
+      width: '370px',
+      height: 'max-content',
     });
     dialogRef.afterClosed();
   }
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
 @Component({
   selector: 'app-forgotpasswordComponent',
   templateUrl: './forgotpassword.component.html',
-  styleUrls: [],
+  styleUrls: ['./forgotpassword.component.css'],
 })
 export class forgotpasswordComponent implements OnInit {
   Form: FormGroup;
