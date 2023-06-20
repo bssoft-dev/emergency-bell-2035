@@ -10,7 +10,7 @@
                     </mat-form-field>
                     <mat-form-field class="input2" appearance="legacy">
                         <mat-label>이메일</mat-label>
-                        <input matInput type="text" formControlName="email">
+                        <input matInput type="email" formControlName="email">
                     </mat-form-field>
                     <button [ngClass]="!Form.valid ? 'btn1':'chagne-btn'" [disabled]="!Form.valid">
                         <mat-icon type="submit">add_circle_outline</mat-icon>

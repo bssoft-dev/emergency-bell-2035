@@ -50,7 +50,10 @@
 app-header {
   width: 100%;
 }
-
+.overlay {
+  visibility: hidden;
+  background-color: transparent
+}
 .smallSide {
   display: none;
 }
@@ -87,7 +90,7 @@ app-header {
   .example-sidenav {
     display: none;
   }
-
+  
   /* 미니사이드바 */
   .smallSide {
     display: block;
@@ -96,6 +99,7 @@ app-header {
   input[id="menuicon"] {
     display: none;
     position: absolute;
+    z-index: 10;
   }
   input[id="menuicon"] + ul {
     display: block;
@@ -130,6 +134,7 @@ app-header {
     border-radius: 15px;
     background: var(--profile-font-color);
     transition: all 0.35s;
+    z-index: 10;
   }
   input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {
     top: 30%;
@@ -163,15 +168,16 @@ app-header {
     vertical-align: middle;
   }
   input[id="menuicon"]:checked + ul {
-    z-index: 2;
+    z-index: 10;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label {
-    z-index: 2;
+    z-index: 10;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #fff;
   }
   input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(2) {
     opacity: 0;
@@ -180,21 +186,33 @@ app-header {
     bottom: 50%;
     left: 50%;
     transform: translate(-50%, 50%) rotate(-45deg);
+    background-color: #fff;
   }
   div[class="sidebar"] {
     padding: 0 10px;
     display: flex;
     height: auto;
     background: var(--tablehead-bg-color) !important;
-    position: absolute;
+    position: fixed;
     top: -112px;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translateX(-50%);
     transition: all 0.35s;
     border-radius: 0 0 15px 15px;
-    z-index: 2;
+    z-index: 10;
   }
   input[id="menuicon"]:checked + ul + div {
     top: 0px;
+  }
+  input[id="menuicon"]:checked + ul ~ .overlay {
+    visibility: visible;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 5;
+    transition: all 0.35s;
   }
 }

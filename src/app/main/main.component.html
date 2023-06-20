@@ -19,7 +19,6 @@
 
         <!-- 헤더 -->
         <mat-toolbar class="example-header">
-
             <!-- 미니사이드바 -->
             <div class="smallSide">
                 <input type="checkbox" id="menuicon">
@@ -30,11 +29,12 @@
                         </label>
                     </li>
                 </ul>
-
+                
                 <div class="sidebar">
                     <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
                     <app-sidefooter></app-sidefooter>
                 </div>
+                <div class="overlay"></div>
             </div>
 
             <app-header [item]="currentItem"></app-header>

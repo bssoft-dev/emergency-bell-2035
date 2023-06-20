@@ -26,7 +26,10 @@ export class EmailtabComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.Form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9._%+-]{2,}[.][A-Za-z]{2,}$')
+      ]),
     });
   }
 
