@@ -101,15 +101,31 @@ export class DeviceComponent implements OnInit {
     );
 
     if (returnValue) {
-      this.service.deleteonedevice(devicedata['deviceId']).subscribe({
-        next: (res) => {
-          alert('기기 정보 삭제가 완료되었습니다');
-          this.dataList();
+      const temp = [this.token, devicedata['deviceId']]
+      this.service.getdevice(temp).subscribe({
+        next: (res: null | Object[]) => {
+          if(Object.keys(res[0]).length > 2) {
+            this.service.deleteonedevice(devicedata['deviceId']).subscribe({
+              next: (res) => {
+                alert('기기 정보 삭제가 완료되었습니다');
+                this.dataList();
+              },
+              error: (err) => {
+                alert('기기 정보 삭제를 처리하는 도중 문제가 발생했습니다.');
+              },
+            });
+          } else{
+            alert('삭제할 수 없는 기기입니다.');
+          } 
         },
         error: (err) => {
-          alert('기기 정보 삭제 실패');
+          alert('오류가 발생하였습니다.')
+        },
+        complete() {
+          this.onNoClick();
         },
       });
+      
     }
   }
 
@@ -124,18 +140,6 @@ export class DeviceComponent implements OnInit {
   }
 }
 
-
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'YYYY-MM-DD',
-  },
-  display: {
-    dateInput: 'MMM DD, YYYY',
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  },
-}; 
 
 // 등록 기능
 @Component({
@@ -168,7 +172,7 @@ export class AdddeviceComponent implements OnInit {
         Validators.required,
         Validators.maxLength(30),
       ]),
-      installDate: new FormControl('', [Validators.required]),
+      installDate: new FormControl(new Date().toISOString().substring(0, 10), [Validators.required]),
       picture: new FormControl(''),
       communicateMethod: new FormControl(''),
       userMemo: new FormControl(''),
@@ -352,12 +356,23 @@ export class RegdeviceComponent implements OnInit {
     const temp = this.Form.value;
     const data = [this.devicedata['deviceId'], temp];
     if (this.Form.valid) {
-      this.service.modifyonedevice(data).subscribe({
-        next: (res) => {
-          alert('기기 정보 수정이 완료되었습니다');
+      this.service.getdevice(temp).subscribe({
+        next: (res: null | Object[]) => {
+          if(Object.keys(res[0]).length > 2) {
+            this.service.modifyonedevice(data).subscribe({
+              next: (res) => {
+                alert('기기 정보 수정이 완료되었습니다');
+              },
+              error: (err) => {
+                alert('기기 정보를 잘못 입력하셨습니다');
+              },
+            });
+          } else{
+            alert('수정할 수 없는 기기입니다.');
+          } 
         },
         error: (err) => {
-          alert('정보를 잘못 입력하셨습니다');
+          alert('기기 정보 수정을 처리하는 도중 문제가 발생했습니다. ');
         },
         complete() {
           this.onNoClick();
