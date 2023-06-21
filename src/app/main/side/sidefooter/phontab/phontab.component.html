@@ -27,6 +27,12 @@
         <div class=" datatable">
             <section class="example-container mat-elevation-z8" tabindex="0">
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <colgroup>
+                        <col width="26%" />
+                        <col width="37%" />
+                        <col width="26%" />
+                        <col width="11%" />
+                    </colgroup>
 
                     <ng-container matColumnDef="name">
                         <th class="left" smat-header-cell *matHeaderCellDef>이름</th>

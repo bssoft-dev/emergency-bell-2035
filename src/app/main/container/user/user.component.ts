@@ -96,6 +96,7 @@ export class UserComponent implements OnInit {
 
   // 삭제
   deletedata(index) {
+    console.log(index)
     if (index['username']) {
       const returnValue = confirm(
         index['username'] + ' 회원을 삭제 하시겠습니까?'

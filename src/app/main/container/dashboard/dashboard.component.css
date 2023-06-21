@@ -14,13 +14,13 @@ mat-grid-tile {
 }
 
 mat-grid-tile-header {
-  font-size: 30px;
+  font-size: 1.6rem;
   color: var(--profile-font-color) !important;
 
   background-color: transparent !important;
   justify-content: center;
-  font-family: Roboto, "Helvetica Neue", sans-serif !important;
-  font-weight: bold;
+  font-family: 'Pretendard Variable', Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 700;
 }
 
 .mat-grid-tile .mat-grid-tile-header {

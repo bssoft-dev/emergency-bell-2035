@@ -8,6 +8,7 @@
   display: flex;
   font-size: 30px;
   color: var(--profile-font-color);
+  font-family: 'Pretendard Variable', "Noto Sans";
   font-weight: bolder;
   height: 10%;
 

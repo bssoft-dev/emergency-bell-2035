@@ -1,6 +1,6 @@
 img {
-  width: 50px;
-  padding: 0 20px 0 20px;
+  width: 44px;
+  padding-inline: 15% 10%;
   vertical-align: middle;
   pointer-events: none;
 }
@@ -19,53 +19,52 @@ img {
   margin: 10px 0;
 }
 
-.example-radio-group :hover {
-  width: 100%;
-  background: var(--side-hover-bg);
-  border-radius: 10px;
-  cursor: pointer;
-}
-
 .filter {
   filter: brightness(var(--filter-svg-brightness));
 }
 .menuName {
   display: inline;
+  font-size: 1.1rem;
 }
 
 .menuName :hover {
   color: black !important;
 }
 
+.example-radio-button.active {
+  width: 100%;
+  background: var(--side-hover-bg);
+  border-radius: 10px;
+  color: var(--profile-font-color);
+}
+.example-radio-button.active :is(.filter, .menuName) {
+  color: var(--profile-font-color);
+  filter: brightness(var(--filter-hover-svg-brightness));
+}
+
+.example-radio-button:hover {
+  width: 100%;
+  background: var(--side-hover-bg);
+  border-radius: 10px;
+  cursor: pointer;
+}
+@media (max-width: 2000px) {
+  img {
+    padding-left: 10%;
+  }
+}
+
 @media (max-width: 1755px) {
+}
+
+@media (max-width: 1290px) {
   .example-radio-button {
     display: flex;
-    text-align: center;
     vertical-align: middle;
     justify-items: center;
     justify-content: center;
     align-items: center;
     align-content: center;
-  }
-
-  .menuName {
-    display: block;
-  }
-}
-
-@media (max-width: 1550px) {
-  img {
-    padding-bottom: 15px;
-    width: 35px;
-  }
-
-  .menuName {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 1290px) {
-  .example-radio-button {
     padding: 10px !important;
     margin: 10px 0 0 0 !important;
   }
@@ -77,14 +76,31 @@ img {
     padding: 0px;
   }
 
+  .menuName {
+    display: block;
+  }
+
   img {
-    padding-bottom: 10px;
-    width: 40px;
+    padding: 0 16px 10px;
+    width: 36px;
     filter: brightness(99999999%) !important;
   }
 
   .menuName {
     font-size: 15px;
     color: #ffffff;
+  }
+  
+  .example-radio-button.active {
+    background-color: #fff;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .example-radio-button.active .menuName {
+    color: var(--tablehead-bg-color) !important;
+    filter: none !important;
+  }
+  .example-radio-button.active .filter {
+    filter: var(--filter-active-svg-color) !important;
   }
 }

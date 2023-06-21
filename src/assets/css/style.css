@@ -144,6 +144,9 @@
 
 @import url("/assets/vendors/iconfonts/simple-line-icon/css/simple-line-icons.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
+
+
 @-moz-keyframes flash {
     0% {
         opacity: 1;
@@ -8756,7 +8759,7 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: 'Pretendard Variable', sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -8783,7 +8786,7 @@ section {
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -8918,7 +8921,7 @@ pre,
 code,
 kbd,
 samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: 'Pretendard Variable', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1em;
 }
 
@@ -15783,7 +15786,7 @@ button.close {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -15908,7 +15911,7 @@ button.close {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -18941,7 +18944,7 @@ button.bg-dark:focus,
 }
 
 .text-monospace {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: 'Pretendard Variable', SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .text-justify {
@@ -19661,7 +19664,7 @@ input:focus {
 .sidebar {
     min-height: calc(100vh - 63px);
     background-color: #252525;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     padding: 0;
     width: 255px;
     z-index: 99999;
@@ -20010,10 +20013,10 @@ input:focus {
 .navbar.default-layout {
     
     box-shadow: 0 1px 15px 1px rgba(69, 65, 78, 0.1);
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 .topbar-image-bg .navbar.default-layout {
-    backgroud: transition;
+    background: transition;
 }
 .topbar-image-bg .navbar.default-layout{
     background-image: url('../images/setting/06.jpg');
@@ -20544,7 +20547,7 @@ input:focus {
 :root,
 body {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .h1,
@@ -20559,7 +20562,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -20731,7 +20734,7 @@ address p {
 
 .card-title {
   color: #252525;
-  font-family: "Roboto",sans-serif;
+  font-family: 'Pretendard Variable', "Roboto",sans-serif;
   font-size: 15px;
   font-weight: 500;
   margin-bottom: 22px;
@@ -20742,14 +20745,14 @@ address p {
 
 
 .card-subtitle {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     margin-top: 0.625rem;
     margin-bottom: 0.625rem;
 }
 
 .card-description {
     margin-bottom: 0.9375rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 
@@ -20918,7 +20921,7 @@ pre {
     -ms-transition: all 0.25s ease;
     border-top: 1px solid #f2f2f2;
     font-size: calc(13px - 0.05rem);
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .footer a {
@@ -21288,7 +21291,7 @@ pre {
 
 .card-revenue-table .revenue-item .revenue-amount p {
     font-size: 1.25rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 600;
     text-align: right;
 }
@@ -21303,7 +21306,7 @@ pre {
 
 .card-revenue .highlight-text {
     font-size: 1.875rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -22234,7 +22237,7 @@ pre {
     font-weight: initial;
     line-height: 1;
     padding: 0.2rem 0.3rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 600;
 }
 
@@ -22670,7 +22673,7 @@ pre {
 .wizard>.actions a {
     font-size: 0.875rem;
     line-height: 1;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .btn i,
@@ -24716,7 +24719,7 @@ pre {
 .tt-query,
 .typeahead {
     border: 1px solid #f2f2f2;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 0.75rem;
     padding: 0.56rem 0.75rem;
     line-height: 14px;
@@ -25409,7 +25412,7 @@ select.typeahead {
     -webkit-align-items: center;
     align-items: center;
     padding: 15px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
 }
 
@@ -27786,7 +27789,7 @@ ul li {
 }
 
 .preview-list .preview-item .preview-item-content p .content-category {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     padding-right: 15px;
     border-right: 1px solid #f2f2f2;
 }
@@ -27847,7 +27850,7 @@ ul li {
 .pricing-table .pricing-card .pricing-card-body .plan-features li {
     text-align: left;
     padding: 4px 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
 }
 
@@ -27863,7 +27866,7 @@ ul li {
 .jsgrid .jsgrid-table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -27939,7 +27942,7 @@ ul li {
 
 .nav-pills .nav-item .nav-link,
 .nav-tabs .nav-item .nav-link {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     line-height: 1;
     font-size: 13px;
     color: #000;
@@ -27954,7 +27957,7 @@ ul li {
 }
 
 .tab-content {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
     line-height: 1.71;
 }
@@ -28360,7 +28363,7 @@ ul li {
 
 
 .settings-panel .events p {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 
@@ -28485,7 +28488,7 @@ ul li {
 }
 
 .tooltip .tooltip-inner {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .tooltip-primary .tooltip-inner {
@@ -28952,7 +28955,7 @@ ul li {
     padding: 11px 25px;
     background: #f3f5f6;
     width: 80%;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
     font-weight: 300;
     border-radius: 4px;
@@ -28960,7 +28963,7 @@ ul li {
 
 .horizontal-timeline .time-frame .event .event-info {
     margin-top: 0.8rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: #c2c2c2;
@@ -29301,7 +29304,7 @@ ul li {
     font-size: 13px;
     color: #308ee0;
     margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .email-wrapper .mail-sidebar .menu-bar .online-status .status {
@@ -29376,7 +29379,7 @@ ul li {
 
 .email-wrapper .mail-sidebar .menu-bar .profile-list-item a .user .u-name {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
     line-height: 1;
 }
@@ -29431,7 +29434,7 @@ ul li {
 .email-wrapper .mail-list-container .mail-list .content .sender-name {
     margin-bottom: 0;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     max-width: 95%;
 }
 
@@ -29482,17 +29485,17 @@ ul li {
 
 .email-wrapper .message-body .sender-details .details .msg-subject {
     margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .email-wrapper .message-body .sender-details .details .sender-email {
     margin-bottom: 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .email-wrapper .message-body .sender-details .details .sender-email i {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     margin: 0 1px 0 7px;
 }
 
@@ -29579,7 +29582,7 @@ ul li {
     left: 50%;
     z-index: 1000;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: initial;
     line-height: 1.85;
     border-radius: 10px;
@@ -29592,7 +29595,7 @@ ul li {
 
 .avgrund-popin p {
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: initial;
 }
 
@@ -29694,7 +29697,7 @@ body.avgrund-active {
 .tour-tour {
     padding: 0;
     border: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     background: #ffffff;
 }
 
@@ -29702,7 +29705,7 @@ body.avgrund-active {
     background: #308ee0;
     color: #ffffff;
     font-size: 0.8125rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     padding: 0.75rem;
 }
 
@@ -30034,7 +30037,7 @@ body.avgrund-active {
 .context-menu-list .context-menu-item span {
     color: #000;
     font-size: 0.75rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .context-menu-list .context-menu-item.context-menu-hover {
@@ -30202,7 +30205,7 @@ body.avgrund-active {
 
 .datepicker.datepicker-dropdown .datepicker-days table.table-condensed thead tr th.dow,
 .datepicker.datepicker-inline .datepicker-days table.table-condensed thead tr th.dow {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     color: #6c757d;
     font-size: 0.875rem;
     font-weight: initial;
@@ -30723,7 +30726,7 @@ body.avgrund-active {
 
 .jsgrid .jsgrid-table th {
     font-weight: initial;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number] {
@@ -30899,7 +30902,7 @@ body.avgrund-active {
 }
 
 .noUi-target .noUi-base .noUi-origin .noUi-handle .noUi-tooltip {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     border-radius: 4px;
     border: none;
     line-height: 1;
@@ -30926,7 +30929,7 @@ body.avgrund-active {
 .noUi-target .noUi-pips .noUi-value {
     color: #000;
     font-size: 0.94rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 
@@ -31437,7 +31440,7 @@ body.avgrund-active {
 .swal2-modal .swal2-title {
     font-size: 25px;
     line-height: 1;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     color: #212529;
     font-weight: initial;
     margin-bottom: 0;
@@ -31476,7 +31479,7 @@ body.avgrund-active {
 
 .swal2-modal .swal2-content {
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     color: #212529;
     font-weight: initial;
     margin-top: 11px;
@@ -31905,7 +31908,7 @@ div.tagsinput span.tag a {
     -moz-border-radius: 5px;
     border-radius: 5px;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .wizard>.steps a:hover {
@@ -32345,7 +32348,7 @@ div.tagsinput span.tag a {
 }
 
 .auth.theme-one .auto-form-wrapper .form-group .submit-btn {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
     padding: 12px 8px;
     font-weight: 600;
@@ -32567,7 +32570,7 @@ div.tagsinput span.tag a {
 }
 
 .auth.theme-two .auto-form-wrapper form .form-group .submit-btn {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-size: 13px;
     padding: 11px 33px;
     font-weight: 600;
@@ -32686,7 +32689,7 @@ div.tagsinput span.tag a {
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.9375rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     text-align: left;
 }
 
@@ -32827,7 +32830,7 @@ div.tagsinput span.tag a {
 }
 
 .landing-page .feature-list .feature-list-row .feature-list-item .feature-description {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .landing-page .footer {
@@ -32870,7 +32873,7 @@ div.tagsinput span.tag a {
     padding-top: 0;
     padding-bottom: 0;
     font-size: 0.9375rem;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     line-height: 1;
 }
 
@@ -32908,7 +32911,7 @@ div.tagsinput span.tag a {
 
 .landing-page .footer .footer-bottom {
     color: #ffffff;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .profile-page .profile-header {
@@ -32921,13 +32924,13 @@ div.tagsinput span.tag a {
 
 .profile-page .profile-header .profile-info .profile-user-name {
     margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     font-weight: 600;
 }
 
 .profile-page .profile-header .profile-info .profile-user-designation {
     margin-bottom: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
 }
 
 .profile-page .profile-header .profile-info .br-wrapper {
@@ -33060,7 +33063,7 @@ div.tagsinput span.tag a {
 /* Navbar */
 
 .horizontal-menu .navbar.horizontal-layout {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     background: #ffffff;
     -webkit-box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.08);
@@ -33358,7 +33361,7 @@ div.tagsinput span.tag a {
 
 .horizontal-menu-2 .navbar.horizontal-layout-2 {
     height: 88px;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Pretendard Variable', "Roboto", sans-serif;
     background: linear-gradient(120deg, #00e4d0, #5983e8);
     -webkit-box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0 7px 64px 0 rgba(0, 0, 0, 0.08);
@@ -34045,6 +34048,7 @@ div.tagsinput span.tag a {
         margin-right: auto;
     }
 }
+
 
 
 /*-------------------------------------------------------------------*/

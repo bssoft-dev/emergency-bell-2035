@@ -4,7 +4,7 @@
   background-color: var(--grid-table-bg);
   padding: 20px;
   border-radius: 15px;
-  margin-top: 55px;
+  margin-top: 30px;
   height: calc(100vh - 210px);
 }
 
@@ -15,8 +15,9 @@
 .demo-button {
   color: #ffffff;
   background-color: var(--tablehead-bg-color);
-  border-radius: 15px;
-  font-size: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   padding: 7px 15px;
 }
 
@@ -31,7 +32,7 @@ table {
 
 th,
 td {
-  font-family: Noto Sans;
+  font-family: 'Pretendard Variable', Noto Sans;
   letter-spacing: 0em;
   text-align: center;
   z-index: 1 !important;
@@ -39,11 +40,10 @@ td {
 
 th {
   background-color: var(--tablehead-bg-color);
-  font-weight: bolder !important;
+  font-weight: 600;
   color: #ffffff;
   height: 60px;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 1rem;
   line-height: 20px;
 }
 
@@ -65,7 +65,6 @@ tr:nth-child(even) {
 td {
   color: var(--profile-font-color);
   height: 100px;
-  font-weight: 500;
   font-size: 1rem;
   line-height: 18px;
 }

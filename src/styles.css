@@ -2,6 +2,7 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css');
 
 :root {
   --profile-font-color: #000000;
@@ -24,6 +25,7 @@
   --side-hover-box: 0px 4px 10px rgba(0, 0, 0, 0.25);
   --filter-hover-svg-brightness: -99999999%;
   --main-scroll-bar: #ffffff;
+  --filter-active-svg-color: invert(100%) sepia(5%) saturate(7463%) hue-rotate(217deg) brightness(130%) contrast(110%);
 }
 .darkmode {
   --profile-font-color: #ffffff;
@@ -47,6 +49,7 @@
   --filter-svg-brightness: 200%;
   --filter-hover-svg-brightness: 99999999%;
   --main-scroll-bar: gray;
+  --filter-active-svg-color: invert(80%) sepia(20%) saturate(5000%) hue-rotate(215deg) brightness(80%) contrast(100%);
 }
 
 /*  */
@@ -73,7 +76,7 @@ body {
 }
 
 .font {
-  font-family: "Noto Sans";
+  font-family: 'Pretendard Variable', "Noto Sans";
   font-style: normal;
   color: var(--profile-font-color);
 }
@@ -117,6 +120,7 @@ body {
 
 .mat-tab-label {
   color: var(--profile-font-color);
+  font-family: 'Pretendard Variable', "Noto Sans";
   font-size: 16px;
   font-weight: bolder;
 }
@@ -183,7 +187,7 @@ mat-tab {
 .mat-radio-label-content {
   width: 100%;
   padding: 0 !important;
-  font-family: "Noto Sans" !important;
+  font-family: 'Pretendard Variable', "Noto Sans" !important;
   font-style: normal;
   color: var(--side-font-color);
   font-size: 0.8vw;
@@ -218,8 +222,13 @@ mat-tab {
   color: var(--profile-font-color) !important;
 }
 
-@media (max-width: 1755px) {
+@media (max-width: 1290px) {
   .mat-radio-label-content {
     text-align: center;
+  }
+}
+@media (max-width: 992px) {
+  html, body {
+    font-size: 14px;
   }
 }
