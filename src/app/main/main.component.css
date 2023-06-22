@@ -110,7 +110,7 @@ app-header {
   input[id="menuicon"] + ul {
     display: block;
     padding: 0;
-    margin-right: 10px;
+    margin: 0 10px;
   }
   input[id="menuicon"] + ul > li {
     display: block;
@@ -205,7 +205,7 @@ app-header {
     transform: translateX(-50%);
     transition: all 0.35s;
     border-radius: 0 0 15px 15px;
-    z-index: 10;
+    z-index: 9;
   }
   input[id="menuicon"]:checked + ul + div {
     top: 0px;
@@ -226,5 +226,47 @@ app-header {
 @media (max-width: 992px) {
   .mainContainer {
     min-width: fit-content;
+  }
+  .example-header {
+    height: 68px
+  }
+  input[id="menuicon"] + ul > li {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  div[class="sidebar"] {
+    flex-direction: column;
+    width: 75vw;
+    /* max-width: 80vw; */
+    height: 100vh;
+    position: fixed;
+    left: -100vw;
+    top: 0;
+    box-sizing: border-box;
+    background-color: #fff !important;
+    padding-top: 75px;
+    padding-inline: 16px;
+    border-radius: 0 15px 15px 0;
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
+    background: var(--profile-font-color);
+  }
+  input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(3) {
+    background: var(--profile-font-color);
+  }
+  input[id="menuicon"]:checked + ul + div {
+    left: 37%;
+  }
+}
+@media (max-width: 576px) {
+  .example-header {
+    height: 60px;
+  }
+  .mainContainer {
+    width: 100%;
+    box-sizing: border-box;
   }
 }

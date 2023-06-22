@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
   newsituation = new EventEmitter<boolean>();
   customerCode = '';
   cols = 0;
+  rowHeight: number | string = '43vh';
 
   // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
   // /api/detections/{deviceId}
@@ -48,10 +49,13 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   ngDoCheck() {
-    if (window.innerWidth <= 1290) {
+    if (window.innerWidth <= 992) {
       this.cols = 1;
     } else {
       this.cols = 2;
+    }
+    if (window.innerWidth >= window.innerHeight && window.innerWidth >= 992 && window.innerWidth <= 1200) {
+      this.rowHeight = '41.2vh';
     }
   }
 

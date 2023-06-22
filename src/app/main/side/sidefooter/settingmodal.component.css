@@ -94,3 +94,9 @@ button {
   height: 550px;
   padding-top: 20px;
 }
+
+@media (max-width: 1290px) {
+  .datatable {
+    height: fit-content;
+  }
+}

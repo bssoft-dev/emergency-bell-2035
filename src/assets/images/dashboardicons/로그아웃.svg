@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35px" height="35px" viewBox="0 0 35 35" version="1.1">
-<g id="surface1">
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(38.039216%,40.392157%,41.960784%);stroke-opacity:1;stroke-miterlimit:4;" d="M 5.148884 25.086384 L 5.148884 27.230357 C 5.148884 30.417857 7.281362 32.998214 9.925781 32.998214 L 26.856696 32.998214 C 29.501116 32.998214 31.633594 30.417857 31.633594 27.230357 L 31.633594 6.769643 C 31.633594 3.582143 29.501116 1.001786 26.856696 1.001786 L 9.925781 1.001786 C 7.281362 1.001786 5.148884 3.582143 5.148884 6.769643 L 5.148884 8.925 " transform="matrix(1.060606,0,0,1.029412,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(38.039216%,40.392157%,41.960784%);stroke-opacity:1;stroke-miterlimit:4;" d="M 1.329576 17.022768 L 19.30279 17.022768 " transform="matrix(1.060606,0,0,1.029412,0,0)"/>
-<path style="fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(38.039216%,40.392157%,41.960784%);stroke-opacity:1;stroke-miterlimit:4;" d="M 14.076563 11.220759 L 19.903125 17.045536 L 14.10971 22.836161 " transform="matrix(1.060606,0,0,1.029412,0,0)"/>
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_10_103)">
+<path d="M6.90704 26.84V29.0512C6.90704 32.3387 9.0885 35 11.7937 35H29.1134C31.8186 35 34 32.3387 34 29.0512V7.94877C34 4.66129 31.8186 2 29.1134 2H11.7937C9.0885 2 6.90704 4.66129 6.90704 7.94877V10.1717" stroke="#61676B" stroke-width="1.56734" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 18.5234H21.386" stroke="#61676B" stroke-width="1.56734" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.0398 12.5396L22.0002 18.547L16.0737 24.5193" stroke="#61676B" stroke-width="1.56734" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
+<defs>
+<clipPath id="clip0_10_103">
+<rect width="35" height="35" fill="white" transform="translate(0.5 0.5)"/>
+</clipPath>
+</defs>
 </svg>

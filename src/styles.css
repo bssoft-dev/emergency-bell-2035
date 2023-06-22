@@ -26,6 +26,8 @@
   --filter-hover-svg-brightness: -99999999%;
   --main-scroll-bar: #ffffff;
   --filter-active-svg-color: invert(100%) sepia(5%) saturate(7463%) hue-rotate(217deg) brightness(130%) contrast(110%);
+  --scrollbar-track: #e5e5e5;
+  --scrollbar-thumb: #c4c4c4;
 }
 .darkmode {
   --profile-font-color: #ffffff;
@@ -50,6 +52,8 @@
   --filter-hover-svg-brightness: 99999999%;
   --main-scroll-bar: gray;
   --filter-active-svg-color: invert(80%) sepia(20%) saturate(5000%) hue-rotate(215deg) brightness(80%) contrast(100%);
+  --scrollbar-track: #c4c4c4;
+  --scrollbar-thumb: gray;
 }
 
 /*  */
@@ -226,9 +230,31 @@ mat-tab {
   .mat-radio-label-content {
     text-align: center;
   }
+  .mat-dialog-container, .cdk-overlay-pane {
+    max-height: 95vh !important;
+  }
 }
 @media (max-width: 992px) {
   html, body {
     font-size: 14px;
   }
+}
+@media (max-width: 768px) {
+  .mat-radio-label-content {
+    text-align: left;
+  }
+}
+@media (max-width: 576px) {
+  html, body {
+    font-size: 12px;
+  }
+  .mat-dialog-container, .cdk-overlay-pane {
+    height: max-content !important;
+  }
+}
+
+
+
+.mat-tab-body-content .datatable {
+  height: fit-content !important;
 }

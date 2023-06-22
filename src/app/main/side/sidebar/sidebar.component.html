@@ -2,8 +2,8 @@
 
     <ng-container *ngFor="let side of sides">
 
-        <mat-radio-button id={{side.menu}} class="example-radio-button" *ngIf="userLog[1]; else falseHyperuser"
-            (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)"
+        <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" *ngIf="userLog[1]; else falseHyperuser"
+            routerLink={{side.route}} (click)="addNewItem(side.menu)"
             routerLinkActive="active">
 
             <img class="filter" src={{side.emt}} />
@@ -13,8 +13,8 @@
 
         <ng-template #falseHyperuser>
 
-            <mat-radio-button id={{side.menu}} class="example-radio-button" *ngIf="side.ngif.includes('hyper') != 1"
-                (click)="onSelect(side)" routerLink={{side.route}} (click)="addNewItem(side.menu)"
+            <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" *ngIf="side.ngif.includes('hyper') != 1"
+                routerLink={{side.route}} (click)="addNewItem(side.menu)"
                 routerLinkActive="active">
 
                 <img class="filter" src={{side.emt}} />

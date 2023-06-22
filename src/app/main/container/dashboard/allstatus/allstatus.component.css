@@ -20,7 +20,10 @@
   position: absolute;
   left: 0;
   width: 50%;
-  height: auto;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dashright {
@@ -31,19 +34,42 @@
 }
 
 .fontSt {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .socketFont {
-  font-size: 32px;
-  margin-top: 30px;
-  font-weight: bolder;
+  font-size: 2rem;
+  margin-top: 1.9rem;
+  font-weight: 700;
 }
 
 img {
-  width: 80px;
+  width: 70%;
+  object-fit: contain;
 }
 
 .filter {
   filter: brightness(var(--filter-hover-svg-brightness));
+}
+
+@media (max-width: 1220px) {
+  .fontSt {
+    font-size: 1.2rem;
+  }
+  
+  .socketFont {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 576px) {
+  .dashleft {
+    width: 40%;
+  }
+  .dashright {
+    width: 60%;
+  } 
+  img {
+    width: 95%;
+  }
 }

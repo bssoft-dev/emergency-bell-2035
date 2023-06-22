@@ -58,6 +58,15 @@
 			$('.site-preloader').fadeOut(200);
 			$('body').fadeIn(300);
 		}, 500);
+		window.addEventListener('DOMContentLoaded', () => {
+			const menuLinks = document.querySelectorAll('.menuLink');
+			menuLinks.forEach(menuLink => {
+				menuLink.addEventListener('click', () => {
+					const menuicon = document.getElementById('menuicon');
+					menuicon.checked = false;
+				});
+			});
+		});
 	</script>
 	<!-- endinject -->
 	<!-- Custom js for this page-->

@@ -104,3 +104,33 @@ img {
     filter: var(--filter-active-svg-color) !important;
   }
 }
+@media (max-width: 768px) {
+  .example-radio-group {
+    flex-direction: column;
+  }
+  .example-radio-button {
+    flex-direction: row;
+  }
+  .menuName {
+    display: inline-block;
+    color: var(--profile-font-color);
+    font-weight: 500;
+  }
+  .filter {
+    display: none;
+  }
+  .example-radio-button {
+    box-sizing: border-box;
+  }
+  .example-radio-button.active {
+    width: 100%;
+    background: var(--side-hover-bg);
+    border-radius: 10px;
+    color: var(--profile-font-color) !important;
+  }
+  .example-radio-button.active .menuName {
+    color: var(--profile-font-color) !important;
+    filter: brightness(var(--filter-hover-svg-brightness)) !important;
+    font-weight: 700;
+  }
+}
