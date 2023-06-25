@@ -231,6 +231,7 @@ mat-tab {
     text-align: center;
   }
   .mat-dialog-container, .cdk-overlay-pane {
+    height: max-content !important;
     max-height: 95vh !important;
   }
 }
@@ -257,4 +258,9 @@ mat-tab {
 
 .mat-tab-body-content .datatable {
   height: fit-content !important;
+}
+@media (max-width: 576px) {
+  .mat-tab-label .mat-tab-label-content {
+    font-size: 1.2rem ;
+  }
 }

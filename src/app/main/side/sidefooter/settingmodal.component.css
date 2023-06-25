@@ -46,7 +46,7 @@ td {
 
   align-items: center;
 
-  padding: 40px 0 40px 0;
+  padding-block: 40px;
 }
 
 .upload-container > mat-form-field {
@@ -96,7 +96,46 @@ button {
 }
 
 @media (max-width: 1290px) {
+  .SelTab > div {
+    width: 100%;
+  }
   .datatable {
     height: fit-content;
+    padding-top: 10px
+  }
+  .mat-tab-labels {
+    font-size: 1rem !important;
+  }
+  .upload-container {
+    flex-direction: column;
+    padding: 1.8rem 1rem;
+  }
+  .upload-container > mat-form-field.input1 {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .upload-container > mat-form-field.input1 {
+    width: 100%;
+    padding: 0;
+  }
+  .datatable th {
+    min-width: 0;
+  }
+  .datatable td {
+    height: 50px !important;
+  }
+  .datatable td button {
+    font-size: 1rem;
+    min-width: 4rem;
+  }
+  .datatable td .chagne-btn mat-icon.btn {
+    margin-inline: 8px;
+  }
+  .demo-button {
+    margin-top: 2rem;
+    height: 36px;
+    font-size: 14px;
+    padding: 0 15px;
   }
 }

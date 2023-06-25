@@ -1,6 +1,8 @@
 import { Component, DoCheck } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../services/api.service';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { SIDES } from './side/sidebar/mock-side';
 
 @Component({
   selector: 'app-main',
@@ -12,15 +14,25 @@ export class MainComponent implements DoCheck {
   situation;
   opened: boolean;
   user = false;
-  windowHeight;
 
   userLog = [sessionStorage.getItem('token')]; // token, hyperuser, customeruser, superuser
 
-  constructor(private _snackBar: MatSnackBar, private service: ApiService) {
+  constructor(private _snackBar: MatSnackBar, private service: ApiService, private route: ActivatedRoute, private router: Router) {
     this.userCheck();
-    if (localStorage.getItem('whatTitle') == '') {
-      this.currentItem = '전체현황';
-    }
+    
+    // router 변경 감지, title 변경
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const path = route.children[0].routeConfig.path;
+        for (const side of SIDES) {
+          if (side.route === path) {
+            localStorage.setItem('whatTitle', side.menu);
+            break;
+          }
+        }
+      }
+      this.currentItem = localStorage.getItem('whatTitle');
+    });
   }
 
   // 상시 체크

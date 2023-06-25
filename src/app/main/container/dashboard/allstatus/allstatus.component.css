@@ -45,6 +45,7 @@
 
 img {
   width: 70%;
+  max-width: 124px;
   object-fit: contain;
 }
 

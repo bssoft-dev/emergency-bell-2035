@@ -109,10 +109,16 @@ div.upload-btn {
 
 @media (max-width: 1290px) {
   .popup-container {
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
+    min-height: 70vh;
   }
   .header {
     font-size: 1.5rem;
+    height: max-content;
+    padding-block: 1.2rem 2.2rem; 
+  }
+  mat-form-field {
+    padding-block: 0.8rem !important;
   }
   .locationpicture {
     width: 150px;
@@ -124,19 +130,43 @@ div.upload-btn {
 }
 @media (max-width: 576px) {
   .header {
-    height: max-content;
-    margin-bottom: 1rem;
-  }
-  mat-form-field {
-    padding-block: 10px;
+    padding-block: 0.8rem 1.4rem; 
+    position: sticky;
+    top: 0;
+    background-color: #fff;
   }
   .mat-form-field, .mat-form-field-label, .mat-button {
     font-size: 1rem !important;
+  }
+  .locationpicture {
+    width: 120px;
+    height: 120px;
+  }
+  .uploadlabel {
+    width: 120px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  mat-icon.upload-btn {
+    font-size: 1.4rem;
+    width: min-content;
+    height: min-content;
+    vertical-align: middle;
+  }
+  div.upload-btn {
+    font-size: 1rem;
+  }
+  mat-form-field {
+    padding-block: 0 1.2rem !important;
+  }
+  .footer {
+    margin-top: 20px;
   }
   .footer > .btn {
     margin: 0 20px;
   }
   .popup-container {
     height: max-content;
+    max-height: calc(95vh - 24px * 2);
   }
 }
