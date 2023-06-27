@@ -1,5 +1,10 @@
-<div>
-  <table class="senssing" mat-table [dataSource]="socketrecentdata" class="mat-elevation-z8">
+
+  <table class="senssing" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <colgroup>
+      <col width="35%" />
+      <col width="48%" />
+      <col width="17%" />
+    </colgroup>
 
     <ng-container matColumnDef="time">
       <th class="left" smat-header-cell *matHeaderCellDef> 시간 </th>
@@ -21,4 +26,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>

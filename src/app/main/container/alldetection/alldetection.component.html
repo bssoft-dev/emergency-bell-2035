@@ -8,7 +8,7 @@
 
             <ng-container matColumnDef="index">
                 <th class="left" mat-header-cell *matHeaderCellDef> 순번 </th>
-                <td class="left" mat-cell *matCellDef="let index = index"> {{index+1}} </td>
+                <td class="left" mat-cell *matCellDef="let index = index"> {{ (index + 1) + (paginator.pageIndex * paginator.pageSize) }} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
@@ -34,6 +34,11 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        
+        <mat-paginator [length]="length"
+            [pageSize]="pageSize"
+            [pageIndex]="currentPage" (page)="handlePage($event)">
+        </mat-paginator>
     </section>
 
 </div>

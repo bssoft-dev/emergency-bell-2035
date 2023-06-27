@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
   newsituation = new EventEmitter<boolean>();
   customerCode = '';
   cols = 0;
-  rowHeight: number | string = '43vh';
+  rowHeight: number | string = '43dvh';
 
   // http://api-2207.bs-soft.co.kr/docs#/Detection/push_one_detection_api_detections__deviceId__post
   // /api/detections/{deviceId}
@@ -49,13 +49,12 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   ngDoCheck() {
-    if (window.innerWidth <= 992) {
-      this.cols = 1;
-    } else {
-      this.cols = 2;
-    }
-    if (window.innerWidth >= window.innerHeight && window.innerWidth >= 992 && window.innerWidth <= 1200) {
-      this.rowHeight = '41.2vh';
+    if (window.innerWidth <= 992)  this.cols = 1;
+    else this.cols = 2;
+    
+    if (window.innerWidth >= window.innerHeight) {
+      if(window.innerWidth >= 992 && window.innerWidth <= 1200) this.rowHeight = '41.2dvh';
+      else if (window.innerHeight <= 992) this.rowHeight = '40dvh';
     }
   }
 
@@ -145,6 +144,8 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
 
       var root = am5.Root.new('chartdiv');
 
+      root._logo?.dispose(); // logo remove
+      
       root.setThemes([am5themes_Animated.new(root)]);
 
       root.dateFormatter.setAll({
@@ -163,7 +164,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
           layout: root.verticalLayout,
         })
       );
-
+      
       var data =
         // [{ Button: 14, Scream: 15, Time: '2020-02-01' }, { Button: 20, Scream: 15, Time: '2020-02-02' }, { Button: 7, Scream: 10, Time: '201909' }, { Button: 1, Scream: 4, Time: '201908' }];
         dataset;
@@ -179,6 +180,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
       );
 
       xAxis.data.setAll(data);
+      
 
       var yAxis = chart.yAxes.push(
         am5xy.ValueAxis.new(root, {
@@ -243,16 +245,19 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
         // https://www.amcharts.com/docs/v5/concepts/animations/
         series.appear();
 
-        series.bullets.push(function () {
-          return am5.Bullet.new(root, {
-            sprite: am5.Label.new(root, {
-              text: '{valueY}',
-              fill: root.interfaceColors.get('alternativeText'),
-              centerY: am5.p50,
-              centerX: am5.p50,
-              populateText: true,
-            }),
-          });
+        series.bullets.push((root, series, dataItem) => {
+          if (dataItem.get("valueY")) { // valueY == 0 -> hide
+            return am5.Bullet.new(root, {
+              locationY: 0.5,
+              sprite: am5.Label.new(root, {
+                text: '{valueY}',
+                fill: root.interfaceColors.get('alternativeText'),
+                centerY: am5.p50,
+                centerX: am5.p50,
+                populateText: true,
+              }),
+            });
+          }
         });
         legend.data.push(series);
       }
@@ -263,6 +268,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
       xAxis.get('renderer').labels.template.setAll({
         fill: root.interfaceColors.get('alternativeText'),
       });
+      
 
       // Make stuff animate on load
       // https://www.amcharts.com/docs/v5/concepts/animations/

@@ -2,7 +2,7 @@
   width: 100%;
   height: 100% !important;
   margin: auto;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .contain {
@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -3vh;
+  margin-top: -3dvh;
 }
 
 .title {
@@ -34,19 +34,20 @@ form {
   align-items: flex-end;
   justify-content: center;
   margin-bottom: 48px;
+  gap: 20px;
 }
 .inputDiv:nth-child(2) {
-margin-bottom: 52px;
+  margin-bottom: 52px;
 }
 
 input {
-  flex: 1;
+  flex-grow: 1 !important;
   background: transparent;
   border-bottom: teal 2px solid;
   border-left: medium none;
   border-right: medium none;
   border-top: medium none;
-  font-size: 1rem;
+  font-size: 16px;
   color: #ffffff;
   padding-block: 4px;
 }
@@ -58,7 +59,6 @@ input::placeholder {
 .icon {
   color: #ffffff;
   font-size: 30px;
-  margin-right: 20px;
   margin-bottom: 4px;
 }
 
@@ -88,7 +88,7 @@ input::placeholder {
   width: 90%;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   text-align: center;
   font-size: .9rem;
@@ -101,4 +101,16 @@ input::placeholder {
   color: teal;
   text-decoration: underline;
   font-size: 1rem;
+  line-height: 1;
+}
+@media (max-width: 576px) {
+  form {
+    width: 100%;
+  }
+  .another {
+    font-size: 1rem;
+  }
+  .anotherbutton {
+    font-size: 14px;
+  }
 }

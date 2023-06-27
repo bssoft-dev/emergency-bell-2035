@@ -3,6 +3,9 @@
   width: 100%;
   /* height: calc(100vh - 350px); */
 }
+.popup-container::-webkit-scrollbar {
+  display: none;
+}
 
 .SelTab {
   display: flex;
@@ -17,6 +20,7 @@
 th,
 td {
   height: 60px;
+  box-sizing: border-box;
 }
 th {
   font-size: 14px;
@@ -68,7 +72,7 @@ td {
   color: #ffffff;
   background-color: var(--tablehead-bg-color);
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 1rem;
   padding: 7px 50px;
 }
 
@@ -108,14 +112,9 @@ button {
   }
   .upload-container {
     flex-direction: column;
-    padding: 1.8rem 1rem;
+    padding: 1.8rem 1rem 0;
   }
-  .upload-container > mat-form-field.input1 {
-    width: 100%;
-    padding: 0;
-  }
-  
-  .upload-container > mat-form-field.input1 {
+  .upload-container :is(mat-form-field.input1, mat-form-field.input2) {
     width: 100%;
     padding: 0;
   }
@@ -123,11 +122,12 @@ button {
     min-width: 0;
   }
   .datatable td {
-    height: 50px !important;
+    height: 46px !important;
   }
   .datatable td button {
     font-size: 1rem;
-    min-width: 4rem;
+    min-width: 3rem;
+    line-height: 28px;
   }
   .datatable td .chagne-btn mat-icon.btn {
     margin-inline: 8px;
@@ -135,7 +135,9 @@ button {
   .demo-button {
     margin-top: 2rem;
     height: 36px;
-    font-size: 14px;
     padding: 0 15px;
+    font-weight: 600;
   }
+}
+@media (max-width: 576px) {
 }

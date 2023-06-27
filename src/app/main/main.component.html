@@ -31,8 +31,9 @@
                 </ul>
                 
                 <div class="sidebar">
-                    <app-sidebar (newItemEvent)="addItem($event)"></app-sidebar>
-                    <app-sidefooter></app-sidefooter>
+                    <app-profile></app-profile>
+                    <app-sidebar (newItemEvent)="addItem($event)" [userLog]="userLog"></app-sidebar>
+                    <app-sidefooter class="sidebarfooter"></app-sidefooter>
                 </div>
                 <div class="overlay"></div>
             </div>

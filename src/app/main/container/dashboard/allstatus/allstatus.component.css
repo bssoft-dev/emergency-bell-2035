@@ -2,7 +2,10 @@
   background-color: var(--MainBell-bg-color);
   border-radius: 30px;
 }
-
+.mat-grid-list {
+  border-radius: 15px;
+  overflow: hidden;
+}
 .mat-grid-tile {
   background-color: var(--bell-bg-color);
   color: var(--profile-font-color);
@@ -11,7 +14,6 @@
 .first {
   background-color: var(--MainBell-bg-color);
   color: #fff;
-  border-top-left-radius: 15px;
   box-shadow: 5px 6px 10px 4px rgba(40, 40, 40, 0.25);
   z-index: 1;
 }
@@ -64,6 +66,9 @@ img {
   }
 }
 @media (max-width: 576px) {
+  .mat-grid-list {
+    border-radius: 8px;
+  }
   .dashleft {
     width: 40%;
   }
@@ -72,5 +77,14 @@ img {
   } 
   img {
     width: 95%;
+  }
+}
+@media (max-height: 992px) and (orientation: landscape) {
+  .fontSt {
+    font-size: 1.2rem;
+  }
+  .socketFont {
+    font-size: 1.6rem;
+    margin-top: 1rem;
   }
 }

@@ -5,7 +5,7 @@
   padding: 20px;
   border-radius: 15px;
   margin-top: 30px;
-  height: calc(100vh - 210px);
+  height: calc(100dvh - 210px);
 }
 
 .demo-button-container {
@@ -21,13 +21,17 @@
   padding: 7px 15px;
 }
 
-th.mat-header-cell {
-  text-align: center;
-}
 
 table {
   width: 100%;
-  border-radius: 50% !important;
+}
+
+tr {
+  background: var(--table-default-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-bg-color);
 }
 
 th,
@@ -36,6 +40,7 @@ td {
   letter-spacing: 0em;
   text-align: center;
   z-index: 1 !important;
+  padding-inline: 2px !important;
 }
 
 th {
@@ -45,37 +50,31 @@ th {
   height: 60px;
   font-size: 1rem;
   line-height: 20px;
-  padding-inline: 2px !important;
 }
 
+th.mat-header-cell {
+  text-align: center;
+  z-index: 100 !important;
+}
 th.left {
   border-top-left-radius: 15px;
-  padding-left: 1.8rem;
 }
-th.right {
+th.mat-header-cell:last-of-type {
   border-top-right-radius: 15px;
 }
-tr {
-  background: var(--table-default-color);
-}
-
-tr:nth-child(even) {
-  background-color: var(--table-bg-color);
-}
-
 td {
   color: var(--profile-font-color);
   height: 100px;
   font-size: 1rem;
   line-height: 18px;
   word-break: keep-all;
-  padding-inline: 2px !important;
 }
-td.mat-cell:first-of-type {
-  padding-left: 1.8rem;
+
+th.left, td.mat-cell:first-of-type {
+  padding-inline: 1rem 2px !important;
 }
 td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
-  padding-right: 1.8rem;
+  padding-inline: 2px 1rem !important;
 }
 
 .chagne-btn {
@@ -135,56 +134,68 @@ mat-icon.btn {
 @media (max-width: 1200px) {
   .container-table {
     margin-top: 0;
-    height: calc(100vh - 170px);
+    height: calc(100dvh - 170px);
   }
   tr.mat-header-row {
     height: 50px;
   }
   th {
+    min-width: fit-content;
     height: 50px;
     font-size: 1rem !important;
+    white-space: nowrap;
   }
   td {
     height: 80px;
   }
-  th.left, td.mat-cell:first-of-type {
-    padding-left: 1.2rem;
-  }
-  td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
-    padding-right: 1.2rem;
-  }
 }
 @media (max-width: 576px) {
-  td {
-    height: 72px;
-  }
-  th.left {
-    border-top-left-radius: 8px;
-  }
-  th.right {
-    border-top-right-radius: 8px;
-  }
   tr.mat-header-row {
     height: 44px;
+  }
+  th,
+  td {
+    padding-inline: 4px !important;
+  }
+  td {
+    height: 72px;
+    padding-block: 2px !important;
   }
   th {
     min-width: 68px;
     height: 44px;
-    white-space: nowrap;
+    font-size: 14px !important;
+  }
+  th.left {
+    z-index: 101 !important;
+    border-top-left-radius: 8px;
+  }
+  th.mat-header-cell:last-of-type {
+    border-top-right-radius: 8px;
+  }
+  td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-inline: 4px 1rem !important;
   }
   td.mat-cell:first-of-type, th.left {
     position: sticky;
     left: 0;
-  }
-  th.left {
-    z-index: 101 !important;
+    padding-inline: 1rem 4px !important;
   }
   td.mat-cell:first-of-type {
-    background-color: #fafafa ;
+    background-color: var(--table-left-odd-color);
     z-index: 100 !important;
   }
   tr:nth-child(even) td.mat-cell:first-of-type {
-    background-color: #f1f1f1;
+    background-color: var(--table-left-even-color);
+  }
+  td.mat-cell.mat-column-picture {
+    padding-inline: 1rem !important;
+  }
+  .mat-column-location {
+    min-width: 112px
+  }
+  .mat-column-phone {
+    min-width: 88px;
   }
   .example-container {
     border-top-left-radius: 8px;
@@ -199,7 +210,7 @@ mat-icon.btn {
   .container-table {
     width: calc(100vw - 40px);
     box-sizing: border-box;
-    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
     overflow-y: scroll;
   }
   .example-container::-webkit-scrollbar {
@@ -208,5 +219,32 @@ mat-icon.btn {
   .demo-button {
     padding-block: 0;
   }
+  .mat-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
 
+@media (max-height: 992px) and (orientation: landscape) {
+  .container-table {
+    margin-top: 0;
+    height: calc(100dvh - 160px);
+    overflow: hidden;
+  }
+  .example-container {
+    height: calc(100% - 80px);
+    margin-bottom: 1rem;
+  }
+  table {
+    overflow: visible;
+  }
+  th {
+    height: 48px;
+  }
+  td, tr:not(.mat-header-row) {
+    height: 72px;
+  }
+  mat-icon.btn {
+    margin-inline: 10px;
+  }
 }

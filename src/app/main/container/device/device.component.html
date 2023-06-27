@@ -56,7 +56,7 @@
             <ng-container matColumnDef="inspection">
                 <th mat-header-cell *matHeaderCellDef> 점검여부 </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-slide-toggle [(ngModel)]="element.inspection" (change)="chkinspection(element)">
+                    <mat-slide-toggle  [(ngModel)]="element.inspection" (change)="chkinspection(element)">
                     </mat-slide-toggle>
                 </td>
             </ng-container>

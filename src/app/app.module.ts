@@ -69,6 +69,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { AuthGuard } from './auth/auth.guard';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -158,6 +159,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatPaginatorModule
   ],
   providers: [ApiService, WebsocketService],
   bootstrap: [AppComponent],

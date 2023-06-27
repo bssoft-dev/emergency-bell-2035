@@ -59,12 +59,10 @@
 			$('body').fadeIn(300);
 		}, 500);
 		window.addEventListener('DOMContentLoaded', () => {
-			const menuLinks = document.querySelectorAll('.menuLink');
-			menuLinks.forEach(menuLink => {
-				menuLink.addEventListener('click', () => {
-					const menuicon = document.getElementById('menuicon');
-					menuicon.checked = false;
-				});
+			const overlay = document.querySelector('.overlay');
+			overlay.addEventListener('click', () => {
+				const menuicon = document.getElementById('menuicon');
+				menuicon.checked = false;
 			});
 		});
 	</script>

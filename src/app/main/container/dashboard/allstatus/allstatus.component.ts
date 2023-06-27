@@ -7,15 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AllstatusComponent implements OnInit {
   @Input() socketdevicesdata = '';
-  rowHeight: number | string = '17.2vh';
+  rowHeight: number | string = '17.2dvh';
   constructor() {}
 
   ngOnInit() {}
   ngDoCheck() {
-    if (window.innerWidth >= window.innerHeight && window.innerWidth >= 992 && window.innerWidth <= 1200) {
-      this.rowHeight = '13.9vh'
+    if (window.innerWidth >= window.innerHeight) {
+      if(window.innerWidth >= 992 && window.innerWidth <= 1200) this.rowHeight = '14.6dvh';
+      else if (window.innerHeight <= 992) this.rowHeight = '13.8dvh';
     } else if (window.innerWidth <= 576) {
-      this.rowHeight = '15.7vh'
+      this.rowHeight = '15.7dvh'
     }
   }
 }

@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
   @Input() userLog = [];
   token = sessionStorage.getItem('token');
   manangerDisabled: boolean; // 관리자권한 제어
+  isHyperUser: boolean;
 
   displayedColumns = [
     'username',
@@ -42,21 +43,16 @@ export class UserComponent implements OnInit {
     this.dataList();
   }
 
-  datalist = []; // 버리는 데이터
   dataList() {
     return new Promise(() => {
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
-          if (res.is_hyperuser || res.is_superuser) {
-            this.manangerDisabled = true;
-          } else {
-            this.manangerDisabled = false;
-          } // 관리자 권한 제어
+          this.isHyperUser = res.is_hyperuser;
+          this.manangerDisabled = res.is_hyperuser || res.is_superuser;
 
           const temp = [this.token, res.customerCode];
           this.service.getallusers(temp).subscribe({
             next: (res) => {
-              this.datalist = res; //버리는 값이 있어서 이렇게 받아옴
               this.dataSource = res;
             },
           });
@@ -231,6 +227,7 @@ export class AdduserComponent implements OnInit {
           alert('등록이 완료 되었습니다');
         },
         error: (err) => {
+          console.log(err)
           alert('등록 권한이 없습니다');
         },
         complete: () => {

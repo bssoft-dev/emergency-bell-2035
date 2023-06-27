@@ -38,10 +38,20 @@ mat-grid-tile-header {
   bottom: 0;
   width: 100%;
   height: calc(100% - 70px);
+  border-radius: 15px;
+  overflow: hidden;
 }
 @media (max-width: 1200px) {
   .container-table {
     margin-top: 0;
+  }
+  .dashBottom {
+    height: calc(100% - 54px);
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 1200px) and (orientation: landscape) {
+  mat-grid-tile-header {
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 576px) {
@@ -50,5 +60,22 @@ mat-grid-tile-header {
   }
   .dashBottom {
     min-height: calc(100% - 40px);
+    border-radius: 8px;
+  }
+  .imgmap {
+    border-radius: 8px;
+  }
+}
+
+@media (max-height: 992px) and (orientation: landscape) {
+  .container-table {
+    margin-top: 0;
+  }
+  .mat-grid-tile-header {
+    font-size: 1.4rem;
+    height: max-content !important;
+  }
+  .dashBottom {
+    height: calc(100% - 42px);
   }
 }

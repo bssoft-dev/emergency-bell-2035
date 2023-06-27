@@ -1,4 +1,52 @@
 /* 테이블 */
+/* .mat-table {
+  height: 94%;
+} */
+th {
+  height: var(--th-height) !important;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
 td {
-  width: 20%;
+  /* width: 20%; */
+  height: calc((100dvh - var(--th-height) - 75px - 150px - 56px) / 15) !important;
+}
+
+.example-container {
+  overflow: hidden;
+}
+.mat-paginator {
+  border-radius: 0 0 15px 15px;
+  overflow: hidden;
+}
+@media (max-width: 1200px) {
+  tr.mat-row, tr.mat-footer-row, td {
+    height: calc((100dvh - var(--th-height) - 75px - 110px - 56px) / 15) !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .mat-column-location {
+    min-width: 0;
+  }
+  .mat-paginator {
+    min-height: 52px;
+    height: 52px;
+    border-radius: 0 0 8px 8px;
+  }
+  tr.mat-row, tr.mat-footer-row, td {
+    height: calc((100dvh - var(--th-height) - 75px - 110px - 56px) / 10) !important;
+  }
+}
+@media (max-height: 992px) and (orientation: landscape) {
+  th {
+    --th-height: 56px;
+  }
+  tr.mat-header-row {
+    
+    height: 56px;
+  }
+  tr.mat-row, tr.mat-footer-row, td {
+    height: calc((100dvh - var(--th-height) - 75px - 90px - 56px) / 15) !important;
+  }
 }

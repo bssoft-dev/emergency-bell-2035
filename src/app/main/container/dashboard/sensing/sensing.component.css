@@ -1,16 +1,43 @@
-table {
-  padding: 0 !important;
-}
 
-th,
-td {
-  height: 4vh;
+.mat-table {
+  padding: 0 !important;
+  height: 100%;
 }
 
 th {
+  --th-height: 56px;
+  height: var(--th-height) !important;
   font-size: 1.2rem !important;
+  box-sizing: border-box;
 }
 
 td {
   font-size: 1rem !important;
+}
+tr, td {
+  height: calc((100% - var(--th-height)) / 6) !important;
+}
+@media (max-width: 1200px) {
+  th {
+    --th-height: 52px;
+  }
+}
+@media screen and (min-width: 577px) and (max-width: 1200px) and (orientation: landscape), 
+(max-height: 992px) and (orientation: landscape) {
+  th {
+    --th-height: 40px;
+    font-size: 1rem !important;
+  }
+  th, td {
+    box-sizing: border-box;
+    line-height: 1;
+  }
+  td {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 576px) {
+  th {
+    --th-height: 42px;
+  }
 }

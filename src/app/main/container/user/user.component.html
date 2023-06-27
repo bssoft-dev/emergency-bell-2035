@@ -1,6 +1,6 @@
 <div class="container-table">
 
-    <div class="demo-button-container">
+    <div class="demo-button-container" *ngIf="isHyperUser">
         <button mat-raised-button (click)="clickedaddModal()" class="demo-button">
             회원등록
         </button>

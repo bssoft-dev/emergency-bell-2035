@@ -19662,7 +19662,7 @@ input:focus {
 /* Sidebar */
 
 .sidebar {
-    min-height: calc(100vh - 63px);
+    min-height: calc(100dvh - 63px);
     background-color: #252525;
     font-family: 'Pretendard Variable', "Roboto", sans-serif;
     padding: 0;
@@ -19704,7 +19704,7 @@ input:focus {
 
 
 #sidebar.sidebar {
-  height: 100vh;
+  height: 100dvh;
   left: 0;
   position: fixed;
   top: 0px;
@@ -20806,7 +20806,7 @@ html {
 }
 
 .page-body-wrapper {
-  min-height: calc(100vh - 63px);
+  min-height: calc(100dvh - 63px);
   padding-left: 0;
   padding-right: 0;
 }
@@ -20815,12 +20815,12 @@ html {
     width: 100%;
     height: 100% !important;
     margin: auto;
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 .main-panel {
   float: right;
   background-color: #f0f0f0;
-  min-height: calc(100vh - 63px);
+  min-height: calc(100dvh - 63px);
   transition: width 0.25s ease 0s, margin 0.25s ease 0s;
   width: calc(100% - 255px);
 }
@@ -28113,7 +28113,7 @@ ul li {
     right: -300px;
     bottom: 0;
     width: 300px;
-    height: 100vh;
+    height: 100dvh;
     min-height: 100%;
     background: #ffffff;
     padding-top: 15px;
@@ -28177,7 +28177,7 @@ ul li {
 
 .settings-panel .tab-content .tab-pane.scroll-wrapper {
     position: relative;
-    max-height: 100vh;
+    max-height: 100dvh;
     height: 100%;
     padding-bottom: 150px;
 }
@@ -29241,7 +29241,7 @@ ul li {
 
 @media (max-width: 767.98px) {
     .email-wrapper .mail-sidebar .menu-bar {
-        min-height: 100vh;
+        min-height: 100dvh;
         max-height: 100%;
         height: auto;
         overflow: hidden;
@@ -32403,9 +32403,9 @@ div.tagsinput span.tag a {
 
 .auth.theme-two .auto-form-wrapper {
     position: relative;
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
     padding: 110px 5% 5%;
     border-radius: 4px;
 }
@@ -34016,7 +34016,7 @@ div.tagsinput span.tag a {
         max-height: auto;
     }
     .sidebar-fixed .sidebar .nav {
-        max-height: calc(100vh - 63px);
+        max-height: calc(100dvh - 63px);
         overflow: auto;
         position: relative;
     }

@@ -26,7 +26,8 @@ export class SidebarComponent {
   // 사이드메뉴 클릭시 이벤트
   addNewItem(value) {
     this.newItemEvent.emit(value);
-
+    const menuicon = <HTMLInputElement> document.getElementById('menuicon');
+    menuicon.checked = false;
     // for (var i = 0; i < this.menulist.length; i++) {
     //   this.target[0] = document.getElementById(this.menulist[i]);
     //   this.target[1] = this.target[0].getElementsByClassName('menuName');
