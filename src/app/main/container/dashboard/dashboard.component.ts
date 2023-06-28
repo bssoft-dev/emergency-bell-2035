@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
     
     if (window.innerWidth >= window.innerHeight) {
       if(window.innerWidth >= 992 && window.innerWidth <= 1200) this.rowHeight = '41.2dvh';
-      else if (window.innerHeight <= 992) this.rowHeight = '40dvh';
+      else if (window.innerHeight <= 992) this.rowHeight = '40.5dvh';
     }
   }
 

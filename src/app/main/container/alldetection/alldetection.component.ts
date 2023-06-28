@@ -15,7 +15,7 @@ export class AlldetectionComponent implements OnInit {
 
   dataSource: any;
   length:number;
-  pageSize: number = 10;
+  pageSize: number = 8;
   currentPage = 0;
   totalSize = 0;
   
@@ -24,7 +24,7 @@ export class AlldetectionComponent implements OnInit {
 
   ngDoCheck() {
     if (window.innerWidth <= 576) {
-      this.pageSize = 10;
+      this.pageSize = 8;
     } else {
       this.pageSize = 15;
     }
@@ -44,11 +44,19 @@ export class AlldetectionComponent implements OnInit {
     return new Promise(() => {
       this.service.getcurrentuser(sessionStorage.getItem('token')).subscribe({
         next: (res) => {
+          const myCustomerCode = res.customerCode
+          const isHyperuser = res.is_hyperuser;
           this.service.alldetection(res.customerCode).subscribe({
             next: (res) => {
-              this.datalist = res;
-              this.dataSource = new MatTableDataSource<Element>(res);
-              this.length = res.length;
+              let resData = [];
+              if(isHyperuser) {
+                resData = res;
+              } else {
+                resData = res.filter(item => myCustomerCode === item.customerCode);
+              }
+              this.datalist = resData;
+              this.dataSource = new MatTableDataSource<Element>(resData);
+              this.length = resData.length;
               this.dataSource.paginator = this.paginator;
               this.totalSize = this.datalist.length;
               this.iterator();

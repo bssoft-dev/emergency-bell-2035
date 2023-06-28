@@ -23,10 +23,18 @@ export class SensingComponent  {
     return new Promise(() => {
       this.service.getcurrentuser(sessionStorage.getItem('token')).subscribe({
         next: (res) => {
+          const myCustomerCode = res.customerCode
+          const isHyperuser = res.is_hyperuser;
           this.service.alldetection(res.customerCode).subscribe({
             next: (res) => {
-              this.datalist = res.slice(0, 5);
-              this.dataSource = res.slice(0, 5);
+              let resData = [];
+              if(isHyperuser) {
+                resData = res;
+              } else {
+                resData = res.filter(item => myCustomerCode === item.customerCode);
+              }
+              this.datalist = resData.slice(0, 5);
+              this.dataSource = resData.slice(0, 5);
             },
           });
         },

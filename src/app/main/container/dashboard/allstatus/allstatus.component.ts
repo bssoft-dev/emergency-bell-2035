@@ -14,7 +14,7 @@ export class AllstatusComponent implements OnInit {
   ngDoCheck() {
     if (window.innerWidth >= window.innerHeight) {
       if(window.innerWidth >= 992 && window.innerWidth <= 1200) this.rowHeight = '14.6dvh';
-      else if (window.innerHeight <= 992) this.rowHeight = '13.8dvh';
+      else if (window.innerHeight <= 992) this.rowHeight = '14.5dvh';
     } else if (window.innerWidth <= 576) {
       this.rowHeight = '15.7dvh'
     }

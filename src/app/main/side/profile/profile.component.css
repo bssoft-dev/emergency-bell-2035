@@ -38,8 +38,8 @@
     justify-content: center;
     border: 1px solid var(--side-hover-bg);
     border-radius: 10px;
-    margin: 20px auto;
-    padding: 20px 0;
+    margin: 10px auto 20px;
+    padding: 24px 0;
   }
   .profileimg {
     height: 80px;
@@ -54,9 +54,10 @@
   .modifyprofile {
     width: 100%;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 16px;
     color: var(--profile-font-color) !important;
     font-weight: 500;
+    line-height: 1.2;
   }
 }
 @media (max-width: 992px) {
@@ -90,6 +91,5 @@
   .profileimg {
     width: 88px;
     height: 88px;
-    margin-bottom: 1rem;
   }
 }
