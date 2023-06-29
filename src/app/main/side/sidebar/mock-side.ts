@@ -11,7 +11,7 @@ export const SIDES: Sidebar[] = [
     menu: '회원관리',
     route: 'user',
     emt: '../../../../assets/images/dashboardicons/회원관리.svg',
-    ngif: [''],
+    ngif: ['super'],
   },
   {
     menu: '고객사관리',

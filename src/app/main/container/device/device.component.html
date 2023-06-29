@@ -45,7 +45,7 @@
 
             <ng-container matColumnDef="installDate">
                 <th mat-header-cell *matHeaderCellDef> 설치일 </th>
-                <td mat-cell *matCellDef="let element"> {{element.installDate}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.installDate.slice(-8)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="communicateMethod">

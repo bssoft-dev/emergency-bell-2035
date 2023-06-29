@@ -2,26 +2,32 @@
 
     <ng-container *ngFor="let side of sides">
 
-        <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" *ngIf="userLog[1]; else falseHyperuser"
+        <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" 
+            *ngIf="userLog[1]; else falseHyperuser"
             routerLink={{side.route}} (click)="addNewItem(side.menu)"
             routerLinkActive="active">
-
             <img class="filter" src={{side.emt}} />
             <div class="menuName">{{side.menu}}</div>
-
         </mat-radio-button>
 
         <ng-template #falseHyperuser>
-
-            <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" *ngIf="side.ngif.includes('hyper') != 1"
+            <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" 
+                *ngIf="side.ngif.includes('hyper') != 1 && userLog[3]; else flaseSuperuser"
                 routerLink={{side.route}} (click)="addNewItem(side.menu)"
                 routerLinkActive="active">
-
                 <img class="filter" src={{side.emt}} />
                 <div class="menuName">{{side.menu}}</div>
-
             </mat-radio-button>
+        </ng-template>
 
+        <ng-template #flaseSuperuser>
+            <mat-radio-button id={{side.menu}} class="example-radio-button menuLink" 
+                *ngIf="side.ngif.includes('hyper') != 1 && side.ngif.includes('super') != 1"
+                routerLink={{side.route}} (click)="addNewItem(side.menu)"
+                routerLinkActive="active">
+                <img class="filter" src={{side.emt}} />
+                <div class="menuName">{{side.menu}}</div>
+            </mat-radio-button>
         </ng-template>
 
     </ng-container>

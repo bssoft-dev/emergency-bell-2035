@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -7,11 +7,12 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './sidefooter.component.html',
   styleUrls: ['../side.component.css'],
 })
-export class SidefooterComponent implements DoCheck {
+export class SidefooterComponent implements DoCheck  {
   constructor(public router: Router, public dialog: MatDialog) {}
 
   bgmode: boolean;
 
+  @Input() userLog = [];
   // 상시 체크
   ngDoCheck() {
     this.bgmode = JSON.parse(localStorage.getItem('bgmode'));

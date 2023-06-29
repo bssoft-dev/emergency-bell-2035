@@ -23,10 +23,11 @@ export class AlldetectionComponent implements OnInit {
   constructor(private service: ApiService) {}
 
   ngDoCheck() {
-    if (window.innerWidth <= 576) {
-      this.pageSize = 8;
-    } else {
-      this.pageSize = 15;
+    if (window.innerWidth <= 576) this.pageSize = 8;
+    else this.pageSize = 15;
+    
+    if(window.devicePixelRatio <= 2 && window.innerWidth <= window.innerHeight && window.innerHeight <= 700) {
+      this.pageSize = 5;
     }
   }
   public handlePage(e: any) {
@@ -44,24 +45,17 @@ export class AlldetectionComponent implements OnInit {
     return new Promise(() => {
       this.service.getcurrentuser(sessionStorage.getItem('token')).subscribe({
         next: (res) => {
-          const myCustomerCode = res.customerCode
-          const isHyperuser = res.is_hyperuser;
           this.service.alldetection(res.customerCode).subscribe({
             next: (res) => {
-              let resData = [];
-              if(isHyperuser) {
-                resData = res;
-              } else {
-                resData = res.filter(item => myCustomerCode === item.customerCode);
-              }
-              this.datalist = resData;
-              this.dataSource = new MatTableDataSource<Element>(resData);
-              this.length = resData.length;
+              this.datalist = res;
+              this.dataSource = new MatTableDataSource<Element>(res);
+              this.length = res.length;
               this.dataSource.paginator = this.paginator;
               this.totalSize = this.datalist.length;
               this.iterator();
             },
           });
+          
         },
       });
     });

@@ -22,7 +22,6 @@ export class SidebarComponent {
       this.menulist.push(this.sides[i].menu);
     }
   }
-
   // 사이드메뉴 클릭시 이벤트
   addNewItem(value) {
     this.newItemEvent.emit(value);

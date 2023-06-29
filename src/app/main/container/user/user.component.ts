@@ -7,6 +7,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   token: string;
@@ -37,7 +39,7 @@ export class UserComponent implements OnInit {
 
   dataSource = []; // 회원데이터
 
-  constructor(private service: ApiService, public dialog: MatDialog) {}
+  constructor(private service: ApiService, public dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     this.dataList();
@@ -51,11 +53,13 @@ export class UserComponent implements OnInit {
           this.manangerDisabled = res.is_hyperuser || res.is_superuser;
 
           const temp = [this.token, res.customerCode];
-          this.service.getallusers(temp).subscribe({
-            next: (res) => {
-              this.dataSource = res;
-            },
-          });
+          if(this.manangerDisabled) {
+            this.service.getallusers(temp).subscribe({
+              next: (res) => {
+                this.dataSource = res;
+              },
+            });
+          }
         },
       });
     });
@@ -113,14 +117,41 @@ export class UserComponent implements OnInit {
   }
 
   // 관리자권한
-  checkManager(index) {
-    const temp = [];
-    const jsontemp = {
-      is_superuser: index.is_superuser,
-    };
-    temp.push(index.username);
-    temp.push(jsontemp);
-    this.service.usersupergrant(temp).subscribe({});
+  checkManager(index, event: MatSlideToggleChange) {
+    const modifySuperuser = () => {
+      const temp = [];
+      const jsontemp = {
+        is_superuser: index.is_superuser,
+      };
+      temp.push(index.username);
+      temp.push(jsontemp);
+      this.service.usersupergrant(temp).subscribe({});
+    }
+    this.service.getcurrentuser(this.token).subscribe({
+      next: (res) => {
+        if (!res.is_superuser) {
+          alert('관리자 권한 수정 권한이 없습니다.');
+        }else {
+          if(index.username === res.username) {
+            const confirmData = confirm('관리자 권한을 제거하면 회원관리 조회 및 알람 설정을 할 수 없습니다.\n정말로 제거하시겠습니까?')
+            if(confirmData) {
+              modifySuperuser();
+              this.router.navigate(['/main/dashboard']);
+              // const usermenu = document.getElementById('회원관리');
+              // usermenu.style.display = 'none';
+            } else {
+              event.source.checked = true; // 관리자 권한 유지
+            }
+          } else {
+            modifySuperuser();
+          }
+        }
+      },
+      error: (err) => {
+        alert('서버 에러');
+      },
+      complete: () => {},
+    });
   }
 }
 

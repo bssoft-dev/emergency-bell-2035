@@ -2,7 +2,9 @@
 
 
 
-    <mat-radio-button class="example-radio-button menuLink" (click)="openDialog()">
+    <mat-radio-button class="example-radio-button menuLink" 
+        *ngIf="userLog[3];"
+        (click)="openDialog()">
 
 
         <img class="filter" src="../../../../assets/images/dashboardicons/알람설정.svg" />

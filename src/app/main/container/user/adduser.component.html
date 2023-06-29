@@ -9,7 +9,8 @@
             <mat-form-field appearance="fill">
                 <mat-label>아이디</mat-label>
                 <input matInput formControlName="username">
-                <button mat-button matSuffix color="primary" type="button" (click)="idCheck()"
+                <button mat-button matSuffix class="duplicateBtn"
+                    color="primary" type="button" (click)="idCheck()"
                     [disabled]="Form.hasError('pattern','username') || Form.hasError('required', 'username')">
                     중복확인
                 </button>

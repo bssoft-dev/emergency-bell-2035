@@ -17,13 +17,21 @@ export class MainComponent implements DoCheck {
 
   userLog = [sessionStorage.getItem('token')]; // token, hyperuser, customeruser, superuser
 
-  constructor(private _snackBar: MatSnackBar, private service: ApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private _snackBar: MatSnackBar, 
+    private service: ApiService, 
+    private route: ActivatedRoute, 
+    private router: Router
+  ) {
     this.userCheck();
     
     // router 변경 감지, title 변경
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const path = route.children[0].routeConfig.path;
+        if(path === 'dashboard') {
+          this.userCheck();
+        }
         for (const side of SIDES) {
           if (side.route === path) {
             localStorage.setItem('whatTitle', side.menu);
@@ -34,14 +42,12 @@ export class MainComponent implements DoCheck {
       this.currentItem = localStorage.getItem('whatTitle');
     });
   }
-
   // 상시 체크
   ngDoCheck() {
     if (JSON.parse(localStorage.getItem('situation'))) {
       this.situation = false;
       localStorage.setItem('situation', JSON.stringify(false));
       this.openSnackBar();
-     
     }
     // if (this.situation) {
     //   this.openSnackBar();

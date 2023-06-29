@@ -8,7 +8,7 @@
                 <app-sidebar (newItemEvent)="addItem($event)" [userLog]="userLog"></app-sidebar>
             </div>
             <div class="sidefooter">
-                <app-sidefooter></app-sidefooter>
+                <app-sidefooter [userLog]="userLog"></app-sidefooter>
             </div>
         </div>
     </mat-drawer>
@@ -33,7 +33,7 @@
                 <div class="sidebar">
                     <app-profile></app-profile>
                     <app-sidebar (newItemEvent)="addItem($event)" [userLog]="userLog"></app-sidebar>
-                    <app-sidefooter class="sidebarfooter"></app-sidefooter>
+                    <app-sidefooter class="sidebarfooter" [userLog]="userLog"></app-sidefooter>
                 </div>
                 <div class="overlay"></div>
             </div>

@@ -76,6 +76,9 @@ th.left, td.mat-cell:first-of-type {
 td.mat-cell:last-of-type, th.mat-header-cell:last-of-type {
   padding-inline: 2px 1rem !important;
 }
+td.mat-column-createTime {
+  min-width: 142px;
+}
 
 .chagne-btn {
   color: var(--profile-font-color);
@@ -148,6 +151,9 @@ mat-icon.btn {
   td {
     height: 80px;
   }
+  td.mat-column-createTime {
+    min-width: 82px;
+  }
 }
 @media (max-width: 576px) {
   tr.mat-header-row {
@@ -202,9 +208,6 @@ mat-icon.btn {
   }
   .example-container.alldetectionList th {
     min-width: 0;
-  }
-  .example-container.alldetectionList :is(td.mat-cell:first-of-type, th.mat-header-cell:first-of-type) {
-    width: 11% !important;
   }
   
   .container-table {

@@ -315,9 +315,9 @@ export class ApiService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token} `,
     });
-    return this.http.post(`${this.apiUrl}` + 'auth/register', data, {
-      headers,
-    });
+    return this.http.post(`${this.apiUrl}` + 'auth/register', data, 
+    { headers }
+    );
   }
   usersupergrant(data: any): Observable<any> {
     const headers = new HttpHeaders({
