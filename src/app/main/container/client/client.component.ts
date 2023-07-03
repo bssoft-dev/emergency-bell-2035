@@ -65,7 +65,7 @@ export class ClientComponent implements OnInit {
   clickedaddModal() {
     const dialogRef = this.dialog.open(AddclientComponent, {
       width: '600px',
-      height: '1100px',
+      height: '1024px',
     });
     dialogRef.afterClosed().subscribe(() => {
       this.dataList();
@@ -76,7 +76,7 @@ export class ClientComponent implements OnInit {
   clickedregModal(customers) {
     const dialogRef = this.dialog.open(ResclientComponent, {
       width: '600px',
-      height: '1100px',
+      height: '1024px',
       data: {
         customers: customers,
       },

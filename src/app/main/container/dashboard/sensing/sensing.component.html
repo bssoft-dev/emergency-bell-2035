@@ -8,7 +8,7 @@
 
     <ng-container matColumnDef="time">
       <th class="left" smat-header-cell *matHeaderCellDef> 시간 </th>
-      <td class="left" mat-cell *matCellDef="let element">{{element.time}}</td>
+      <td class="left" mat-cell *matCellDef="let element">{{element.time.substr(2)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="location">

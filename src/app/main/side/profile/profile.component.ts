@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
     this.currentusercheck().then((res) => {
       this.getonecustomerslogo(res);
     });
+
   }
 }
 

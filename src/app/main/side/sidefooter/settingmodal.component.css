@@ -22,13 +22,8 @@ td {
   height: 60px;
   box-sizing: border-box;
 }
-th {
-  font-size: 14px;
-}
-
 td {
-  /* width: 25%; */
-  font-size: 12px;
+  height: 60px !important;
 }
 
 .tab {
