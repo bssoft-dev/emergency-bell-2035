@@ -1,6 +1,6 @@
 <div class="container-table">
 
-    <div class="demo-button-container">
+    <div class="demo-button-container" *ngIf="isHyperUser">
         <button mat-raised-button (click)="clickedaddModal()" class="demo-button">
             기기등록
         </button>
@@ -13,11 +13,11 @@
                 <col width="12%" />
                 <col width="14%" />
                 <col width="22%" />
-                <col width="9%" />
-                <col width="9%" />
-                <col width="9%" />
                 <col width="8%" />
                 <col width="8%" />
+                <col width="8%" />
+                <col width="7%" />
+                <col width="12%" />
             </colgroup>
 
             <ng-container matColumnDef="picture">

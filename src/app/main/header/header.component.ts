@@ -21,7 +21,7 @@ export class HeaderComponent implements DoCheck {
   constructor() {
     this.isChecked = JSON.parse(localStorage.getItem('bgmode'));
     this.whatmode();
-    console.log(typeof this.date);
+    // console.log(typeof this.date);
   }
 
   // 상시 체크

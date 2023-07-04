@@ -34,8 +34,17 @@ export class UserComponent implements OnInit {
     'email',
     'createTime',
     'manager',
-    'change',
   ];
+  hyperColumns = [
+    'username',
+    'customerName',
+    'name',
+    'phone',
+    'email',
+    'createTime',
+    'manager',
+    'change',
+  ]
 
   dataSource = []; // 회원데이터
 
@@ -102,13 +111,24 @@ export class UserComponent implements OnInit {
         index['username'] + ' 회원을 삭제 하시겠습니까?'
       );
       if (returnValue) {
-        this.service.deleteoneuser(index['username']).subscribe({
+        this.service.getcurrentuser(this.token).subscribe({
           next: (res) => {
-            alert('회원 삭제가 완료되었습니다');
-            this.dataList();
+            if (!res.is_hyperuser) {
+              alert('회원 정보 삭제 권한이 없습니다.');
+            }else {
+              this.service.deleteoneuser(index['username']).subscribe({
+                next: (res) => {
+                  alert('회원 삭제가 완료되었습니다');
+                  this.dataList();
+                },
+                error: (err) => {
+                  alert('회원 삭제를 처리하는 도중 문제가 발생했습니다.');
+                },
+              });
+            }
           },
           error: (err) => {
-            alert('회원 삭제를 처리하는 도중 문제가 발생했습니다.');
+            alert('서버 에러');
           },
         });
       }

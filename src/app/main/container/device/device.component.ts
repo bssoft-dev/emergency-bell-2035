@@ -21,6 +21,7 @@ export class DeviceComponent implements OnInit {
   @Input() userLog = [];
   token = sessionStorage.getItem('token');
   customer_code = '';
+  isHyperUser: boolean;
 
   displayedColumns = [
     'picture',
@@ -46,6 +47,8 @@ export class DeviceComponent implements OnInit {
     return new Promise(() => {
       this.service.getcurrentuser(this.token).subscribe({
         next: (res) => {
+          this.isHyperUser = res.is_hyperuser;
+          
           const temp = [this.token, res.customerCode];
           this.service.getalldevices(temp).subscribe({
             next: (res) => {

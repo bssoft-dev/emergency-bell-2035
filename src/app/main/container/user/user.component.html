@@ -8,7 +8,7 @@
 
     <section class="example-container mat-elevation-z8 margin20px-t" tabindex=" 0">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <colgroup>
+            <colgroup *ngIf="isHyperUser">
                 <col width="10%" />
                 <col width="12%" />
                 <col width="11%" />
@@ -67,8 +67,8 @@
                 </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-header-row *matHeaderRowDef="isHyperUser ? hyperColumns : displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: isHyperUser ? hyperColumns : displayedColumns;"></tr>
         </table>
     </section>
 </div>

@@ -22,9 +22,8 @@
 		<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 		<!-- endinject -->
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-			integrity="sha384-wvfXpqp
-	ZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
@@ -60,13 +59,17 @@
 		}, 500);
 		window.addEventListener('DOMContentLoaded', () => {
 			const overlay = document.querySelector('.overlay');
-			overlay.addEventListener('click', () => {
-				const menuicon = document.getElementById('menuicon');
-				menuicon.checked = false;
-			});
+			if(overlay !== null) {
+				overlay.addEventListener('click', () => {
+					const menuicon = document.getElementById('menuicon');
+					menuicon.checked = false;
+				});
+			}
 			const profileImg = document.querySelector('.profileimg');
-			let profileWidth = profileImg.clientWidth;
-			profileImg.style.height = profileWidth + "px";
+			if(profileImg !== null) {
+				let profileWidth = profileImg.clientWidth;
+				profileImg.style.height = profileWidth + "px";
+			}
 		});
 	</script>
 	<!-- endinject -->
@@ -76,9 +79,4 @@
 	<!-- <script type="text/javascript" src="assets/js/widgets.js"></script> -->
 	<!-- End custom js for this page-->
 	<script src="assets/js/misc.js"></script>
-	<script>
-
-
-	</script>
-
 </html>
