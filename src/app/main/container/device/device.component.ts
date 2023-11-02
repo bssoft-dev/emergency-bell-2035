@@ -107,13 +107,15 @@ export class DeviceComponent implements OnInit {
       const temp = [this.token, devicedata['deviceId']]
       this.service.getdevice(temp).subscribe({
         next: (res: null | Object[]) => {
-          if(Object.keys(res[0]).length > 2) {
+          console.log(temp, res)
+          if(res) {
             this.service.deleteonedevice(devicedata['deviceId']).subscribe({
               next: (res) => {
                 alert('기기 정보 삭제가 완료되었습니다');
                 this.dataList();
               },
               error: (err) => {
+                console.log(err)
                 alert('기기 정보 삭제를 처리하는 도중 문제가 발생했습니다.');
               },
             });
@@ -248,9 +250,11 @@ export class AdddeviceComponent implements OnInit {
     if (this.Form.valid) {
       this.service.getdevice(temp).subscribe({
         next: (res: null | Object[]) => {
-          if(res === null) {
-            alert('등록할 수 없는 디바이스입니다.');
-          } else if(Object.keys(res[0]).length > 2) {
+          // if(res === null) {
+          //   console.log('c')
+          //   alert('등록할 수 없는 디바이스입니다.');
+          // } else 
+          if (res.length > 0 && res[0] !== null && Object.keys(res[0]).length > 2) {
             alert('이미 등록된 디바이스입니다.');
           } else {
             this.service.deviceenroll(data).subscribe({
@@ -260,7 +264,7 @@ export class AdddeviceComponent implements OnInit {
               error: (err) => {
                 alert('권한이 없습니다');
               },
-              complete() {
+              complete: () => {
                 this.onNoClick();
               },
             });
