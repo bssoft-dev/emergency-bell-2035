@@ -20,15 +20,21 @@ export class SensingComponent  {
 
   datalist = [];
   dataList() {
-    return new Promise(() => {
-      this.service.getcurrentuser(sessionStorage.getItem('token')).subscribe({
+    return new Promise((resolve, reject) => {
+      const token = sessionStorage.getItem('token');
+      this.service.getcurrentuser(token).subscribe({
         next: (res) => {
           this.service.alldetection(res.customerCode).subscribe({
             next: (res) => {
               this.datalist = res.slice(0, 5);
               this.dataSource = res.slice(0, 5);
             },
+            error: (err) => {},
           });
+          resolve(res);
+        },
+        error: (err) => {
+          reject(new Error(err));
         },
       });
     });

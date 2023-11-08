@@ -298,6 +298,7 @@ export class RegdeviceComponent implements OnInit {
     private service: ApiService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
+  token = sessionStorage.getItem('token');
   devicedata = this.data.devicedata;
   imageSrc = this.devicedata['picture'];
   Form: FormGroup;
@@ -360,8 +361,8 @@ export class RegdeviceComponent implements OnInit {
   }
 
   submit() {
-    const temp = this.Form.value;
-    const data = [this.devicedata['deviceId'], temp];
+    const temp = [this.token, this.devicedata['deviceId']];
+    const data = [this.devicedata['deviceId'], this.Form.value];
     if (this.Form.valid) {
       this.service.getdevice(temp).subscribe({
         next: (res: null | Object[]) => {
