@@ -206,7 +206,7 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
       // Add series
       // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
       function makeSeries(name: any, fieldName: any) {
-        if (name === 'Button') {
+        if (name === '버튼') {
           var series = chart.series.push(
             am5xy.ColumnSeries.new(root, {
               fill: am5.color('#6794dc'),
@@ -262,8 +262,8 @@ export class DashboardComponent implements OnInit, OnDestroy, DoCheck {
         legend.data.push(series);
       }
 
-      makeSeries('Button', 'Button');
-      makeSeries('Scream', 'Scream');
+      makeSeries('버튼', 'Button');
+      makeSeries('위험', 'Scream');
 
       xAxis.get('renderer').labels.template.setAll({
         fill: root.interfaceColors.get('alternativeText'),

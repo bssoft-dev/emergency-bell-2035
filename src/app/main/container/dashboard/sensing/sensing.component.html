@@ -18,7 +18,7 @@
 
     <ng-container matColumnDef="type">
       <th class="right" mat-header-cell *matHeaderCellDef> 타입 </th>
-      <td class="right" mat-cell *matCellDef="let element"> {{element.type}} </td>
+      <td class="right" mat-cell *matCellDef="let element"> {{element.type === 'scream' ? '위험' : element.type}} </td>
     </ng-container>
 
 
