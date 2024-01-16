@@ -195,7 +195,7 @@ export class ApiService {
       `${this.apiUrl}` +
         'api/record/detections?customerCode=' +
         `${data}` +
-        '&limit=30',
+        '&limit=90',
       { headers }
     );
   }

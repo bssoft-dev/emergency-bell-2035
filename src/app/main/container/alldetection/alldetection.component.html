@@ -23,12 +23,12 @@
             </ng-container>
 
             <ng-container matColumnDef="time">
-                <th mat-header-cell *matHeaderCellDef> 시간 </th>
+                <th mat-header-cell *matHeaderCellDef> 감지시각 </th>
                 <td mat-cell *matCellDef="let element"> {{element.time.substr(2)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef> 타입 </th>
+                <th mat-header-cell *matHeaderCellDef> 감지유형 </th>
                 <td mat-cell *matCellDef="let element"> {{element.type === 'scream' ? '위험' : element.type}} </td>
             </ng-container>
 
